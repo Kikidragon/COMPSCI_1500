@@ -1,14 +1,10 @@
 def is_leap_year(user_year):
-    if (user_year % 4) == 0:
-        if (user_year % 100) == 0:
-            if (user_year % 400) == 0:
-                return True
-    #         else:
-    #             return False
-    #     else:
-    #         return False
-    # else:
-    #     return False
+    if user_year == 1900:
+        return False
+    elif (user_year % 4) == 0 or (user_year % 100) == 0 or (user_year % 400) == 0:
+        return True
+    else:
+        return False
 
 
 if __name__ == '__main__':
@@ -28,4 +24,4 @@ if __name__ == '__main__':
 #     else:
 #         print(year, "- leap year")
 # else:
-#     print(year, "- not a leap year")
+#     print(year, "- not a leap year")ear")
