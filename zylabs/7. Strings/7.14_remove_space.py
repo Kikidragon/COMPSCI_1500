@@ -10,7 +10,6 @@ def remove_spaces(user_string):
     # for i in no_space:
     #     print(i, end='')
 
-
 if __name__ == '__main__':
     words = input()
     print(remove_spaces(words))
