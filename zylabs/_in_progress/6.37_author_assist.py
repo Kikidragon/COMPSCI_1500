@@ -53,3 +53,20 @@ if __name__ == '__main__':
             choice = input("Choose an option:")
             if choice == 'c' or choice == 'w' or choice == 'f' or choice == 'r' or choice == 's':
                 execute_menu(choice, phrase)
+
+
+
+#
+# while not quit_program :
+#     print_menu()
+#     choice = int(input('Enter choice: '))
+#     if choice == 3 :
+#         print('Goodbye')
+#         quit_program = True
+#     else :
+#         print('Order: ')
+#         if choice == 1 :
+#             print('Gumbo')
+#         elif choice == 2 :
+#             print('Jambalaya')
+#         print()
