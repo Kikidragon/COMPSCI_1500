@@ -1,4 +1,4 @@
-# FIXME (1): Finish reading another word and an integer into variables.
+# Finish reading another word and an integer into variables.
 # Output all the values on a single line
 color = input('Enter favorite color:\n')
 pet = input('Enter pet\'s name:\n')
@@ -20,12 +20,12 @@ print("Number of characters in " + pass1 + ":", len(pass1))
 print("Number of characters in " + pass2 + ":", len(pass2))
 
 
-# FIXME (2): Output two password options
+#  Output two password options
 '''password1 = favorite_color
 print('\nFirst password:')'''
 
 
-# FIXME (3): Output the length of the two password options
+#  Output the length of the two password options
 
 
 

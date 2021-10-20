@@ -20,7 +20,7 @@ for i in range(len(contacts)):
 # print(splits[i+1])
 
 
-# FIXME
+#
 # while x > 0:
 #     x -= 1
 #     # a = contacts[len(contacts) - len(contacts)]

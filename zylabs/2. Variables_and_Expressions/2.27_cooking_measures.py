@@ -1,10 +1,10 @@
 # lemon_juice_cups = float(input('Enter amount of lemon juice (in cups):\n'))
 
-# FIXME (1): Finish reading other items into variables, then output the three ingredients
+# Finish reading other items into variables, then output the three ingredients
 
-# FIXME (2): Prompt user for desired number of servings. Convert and output the ingredients
+#Prompt user for desired number of servings. Convert and output the ingredients
 
-# FIXME (3): Convert and output the ingredients from (2) to gallons
+# Convert and output the ingredients from (2) to gallons
 
 '''Enter amount of lemon juice (in cups):
 2

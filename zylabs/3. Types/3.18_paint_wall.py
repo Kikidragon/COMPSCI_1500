@@ -7,7 +7,7 @@ paint_colors = {
     'green': 23
 }
 
-# FIXME (1): Prompt user to input wall's width
+#  Prompt user to input wall's width
 # Calculate and output wall area
 height = int(input('Enter wall height (feet):\n'))
 width = int(input('Enter wall width (feet):\n'))
@@ -33,8 +33,8 @@ if the_color == 'green':
     the_cost = paint_colors['green'] * cans
 print("Cost of purchasing", the_color, "paint: ${:.0f}".format(the_cost))
 
-# FIXME (2): Calculate and output the amount of paint in gallons needed to paint the wall
+#  Calculate and output the amount of paint in gallons needed to paint the wall
 
-# FIXME (3): Calculate and output the number of 1 gallon cans needed to paint the wall, rounded up to nearest integer
+# FCalculate and output the number of 1 gallon cans needed to paint the wall, rounded up to nearest integer
 
-# FIXME (4): Calculate and output the total cost of paint can needed depending on color
+#  Calculate and output the total cost of paint can needed depending on color

@@ -1,10 +1,10 @@
 # item_name = input('Enter food item name:\n')
 
-# FIXME (1): Finish reading item price and quantity, then output a receipt
+# Finish reading item price and quantity, then output a receipt
 
-# FIXME (2): Read in a second food item name, price, and quantity, then output a second receipt
+# Read in a second food item name, price, and quantity, then output a second receipt
 
-# FIXME (3): Add a gratuity and total with tip to the second receipt
+# Add a gratuity and total with tip to the second receipt
 
 '''Enter food item name:
 hot dog
