@@ -7,9 +7,10 @@ def print_menu():
     print('r - Replace punctuation')
     print('s - Shorten spaces')
     print('q - Quit')
+    # redirects to the proper choice
 
+#FIXME implement q
 
-# redirects to the proper choice
 def get_num_of_non_WS_characters(text):
     count = 0
     for c in text:
@@ -36,9 +37,14 @@ def get_num_of_words(text):
 
 
 def fix_capitalization(text):
+    sent = text.split('.')
+    for i in sent:
+        i = i.capitalize()
+    sent2 = '.'.join(sent)
+    print("Edited text:", sent2)
     # f - Fix capitalization
-    # FIXME
-    pass
+    # FIXME do this one
+
 
 
 def replace_punctuation(text):
@@ -82,7 +88,7 @@ def execute_menu(choice, text):
     elif choice == 'r':
         return replace_punctuation(text)
     elif choice == 's':
-        return shorten_spaces(text)
+        return shorten_space(text)
     elif choice == 'q':
         return -1
 
@@ -95,16 +101,21 @@ if __name__ == '__main__':
     print_menu()
     print()
     choice = input("Choose an option:\n")
-    execute_menu(choice, phrase)
-    # for i in execute_menu(choice, phrase):
-    #     print(i, end=' ')
+    # execute_menu(choice, phrase)
+    while choice != 'q':
+        if choice == 'c' or choice == 'w' or choice == 'f' or choice == 'r' or choice == 's':
+            execute_menu(choice, phrase)
+            print()
+            print_menu()
+            print()
+            choice = input("Choose an option:\n")
+        else:
+            while choice != 'q':
+                print()
+                print_menu()
+                print()
+                choice = input("Choose an option:\n")
+                if choice == 'c' or choice == 'w' or choice == 'f' or choice == 'r' or choice == 's':
+                    execute_menu(choice, phrase)
 
-    # if choice == 'c' or choice == 'w' or choice == 'f' or choice == 'r' or choice == 's':
-    #     execute_menu(choice, phrase)
-    # else:
-    #     while choice != 'q':
-    #         print_menu()
-    #         print()
-    #         choice = input("Choose an option:")
-    #         if choice == 'c' or choice == 'w' or choice == 'f' or choice == 'r' or choice == 's':
-    #             execute_menu(choice, phrase)
+#FIXME make them all return statements not print statements
