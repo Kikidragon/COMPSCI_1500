@@ -1,21 +1,23 @@
-class Duration:
-    def __init__(self, hours, minutes):
-        self.hours = hours
-        self.minutes = minutes
-
-    def __add__(self, other):
-        total_hours = self.hours + other.hours
-        total_minutes = self.minutes + other.minutes
-        if total_minutes >= 60:
-            total_hours += 1
-            total_minutes -= 60
-        return Duration(total_hours, total_minutes)
-
-first_trip = Duration(2, 31)
-second_trip = Duration(0, 53)
-
-first_time = first_trip + second_trip
-second_time = second_trip + second_trip
-
-print(first_time.hours, first_time.minutes)
-print(second_time.hours, second_time.minutes)
+numbers = [2, 4, 5, 8]
+user_input = input()
+while user_input != 'end':
+    try:
+        # Possible ValueError
+        divisor = int(user_input)
+        if divisor > 20:
+            # Possible NameError
+            # compute() is not defined
+            result = compute(result)
+        elif divisor < 0:
+            # Possible IndexError
+            result = numbers[divisor]
+        else:
+            # Possible ZeroDivisionError
+            result = 20 // divisor          # // truncates to an integer
+        print(result, end=' ')
+    except (ValueError, ZeroDivisionError):
+        print('r', end=' ')
+    except (NameError, IndexError):
+        print('s', end=' ')
+    user_input = input()
+print('OK')

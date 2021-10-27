@@ -1,0 +1,12 @@
+names = ['Ryley', 'Edan', 'Reagan', 'Henry', 'Caius', 'Jane', 'Guto', 'Sonya', 'Tyrese', 'Johnny']
+index = int(input())
+
+# Type your code here.
+try:
+    print("Name: {}".format(names[index]))
+except:
+    print("Exception! list index out of range")
+    if index < 0:
+        print("The closest name is: {}".format(names[0]))
+    else:
+        print("The closest name is: {}".format(names[len(names)-1]))
