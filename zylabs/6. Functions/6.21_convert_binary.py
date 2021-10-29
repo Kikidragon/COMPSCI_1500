@@ -5,21 +5,21 @@ def integer_to_reverse_binary(integer_value):
         y = str(y)
         binary.append(y)
         integer_value = integer_value // 2
-    binar = ''.join(binary)
-    return binar
+    z = ''.join(binary)
+    return z
 
 
 def reverse_string(input_string):
-    x = integer_to_reverse_binary(integer_value)[::-1]
+    x = input_string[::-1]
     return x
+#cant do integer_to_reverse_binary(integer_value)[::-1]
 
 
 if __name__ == '__main__':
-    # Type your code here. Your code must call the function.
     integer_value = int(input())
-    x = integer_to_reverse_binary(integer_value)
     # print(integer_to_reverse_binary(integer_value))
-    print(reverse_string(integer_to_reverse_binary(integer_value)))
+    input_string = integer_to_reverse_binary(integer_value)
+    print(reverse_string(input_string))
 
 # x = int(input())
 # while x > 0:

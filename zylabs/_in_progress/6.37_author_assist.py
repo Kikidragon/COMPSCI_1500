@@ -18,7 +18,7 @@ def get_num_of_non_WS_characters(text):
             count += 1
         else:
             continue
-    print("Number of non-whitespace characters:", count)
+    return count
     # WORKS fully complete
     # c - Number of non-whitespace characters
 
@@ -57,9 +57,10 @@ def replace_punctuation(text):
             count_semi += 1
     text = text.replace('!', '.')
     text = text.replace(';', ',')
-    print("exclamation_count:", count_exc)
-    print("semicolon_count:", count_semi)
-    print("Edited text:", text)
+    return count_exc, count_semi, text
+    # print("exclamation_count:", count_exc)
+    # print("semicolon_count:", count_semi)
+    # print("Edited text:", text)
     #WORKS FULLY
     # return count_exc, count_semi, text
     # WORKS
@@ -71,7 +72,8 @@ def shorten_space(text):
     for i in words:
         i = i.strip
     word = ' '.join(words)
-    print("Edited text:", word)
+    return word
+    # print("Edited text:", word)
     # text = text.replace('  ', ' ')
     # return text
     # s - Shorten spaces
@@ -80,15 +82,16 @@ def shorten_space(text):
 
 def execute_menu(choice, text):
     if choice == 'c':
-        return get_num_of_non_WS_characters(text)
+        return "Number of non-whitespace characters: ", get_num_of_non_WS_characters(text)
     elif choice == 'w':
         return get_num_of_words(text)
     elif choice == 'f':
         return fix_capitalization(text)
     elif choice == 'r':
-        return replace_punctuation(text)
+        exc, semi, txt = replace_punctuation(text)
+        return "exclamation_count: {}\nsemicolon_count: {}\nEdited text: {}".format(exc, semi, txt)
     elif choice == 's':
-        return shorten_space(text)
+        return "Edited text: ", shorten_space(text)
     elif choice == 'q':
         return -1
 
@@ -104,7 +107,9 @@ if __name__ == '__main__':
     # execute_menu(choice, phrase)
     while choice != 'q':
         if choice == 'c' or choice == 'w' or choice == 'f' or choice == 'r' or choice == 's':
-            execute_menu(choice, phrase)
+            for i in execute_menu(choice, phrase):
+                print(i, end='')
+            print()
             print()
             print_menu()
             print()
@@ -115,7 +120,10 @@ if __name__ == '__main__':
                 print_menu()
                 print()
                 choice = input("Choose an option:\n")
+                print()
                 if choice == 'c' or choice == 'w' or choice == 'f' or choice == 'r' or choice == 's':
-                    execute_menu(choice, phrase)
+                    for i in execute_menu(choice, phrase):
+                        print(i,end='')
+                    print()
 
 #FIXME make them all return statements not print statements
