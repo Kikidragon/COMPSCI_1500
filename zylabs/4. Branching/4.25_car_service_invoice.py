@@ -12,7 +12,6 @@ print("Car wax -- $12")
 print()
 first = input("Select first service:\n")
 second = input("Select second service:\n")
-
 if first == "Oil change":
     serv1 = services["Oil change"]
 elif first == "Tire rotation":

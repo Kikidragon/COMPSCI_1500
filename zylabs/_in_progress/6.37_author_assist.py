@@ -24,13 +24,17 @@ def get_num_of_non_WS_characters(text):
 
 
 def get_num_of_words(text):
-    words = text.split(' ')
-    word_real = []
+    words = text.split()
     for i in words:
-        if type(i) == str:
-            word_real.append(i)
-    num = len(word_real)
-    print("Number of words:", num)
+        i = i.strip
+    word = ' '.join(words)
+    words2 = word.split()
+    # word_real = []
+    # for i in words:
+    #     if type(i) == str:
+    #         word_real.append(i)
+    num = len(words2)
+    return num
     # FIXME so it returns only words not just anything separated by a space
     # WORKS has output
     # w - Number of words
@@ -84,9 +88,9 @@ def execute_menu(choice, text):
     if choice == 'c':
         return "Number of non-whitespace characters: ", get_num_of_non_WS_characters(text)
     elif choice == 'w':
-        return get_num_of_words(text)
+        return "Number of words: ", get_num_of_words(text)
     elif choice == 'f':
-        return fix_capitalization(text)
+        return "Edited text: ", fix_capitalization(text)
     elif choice == 'r':
         exc, semi, txt = replace_punctuation(text)
         return "exclamation_count: {}\nsemicolon_count: {}\nEdited text: {}".format(exc, semi, txt)
