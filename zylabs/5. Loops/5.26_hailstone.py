@@ -19,11 +19,11 @@ for i in nums:
         y = 0
 
 print(1)
-# print(num, end=(" " if counter < 10 else "\n"))
+# print(num, end=(" " if counter < 10. Exceptions else "\n"))
 # for i in nums:
 #     print('{:.0f}'.format(i), end='\t')
 #     j = i - 1
-#     if (j % 10 == 0):
+#     if (j % 10. Exceptions == 0):
 #         print('\n')
 #     else:
 #         continue

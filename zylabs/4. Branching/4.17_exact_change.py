@@ -1,6 +1,6 @@
 total_change = int(input())
 import math
-# Quarter 25, Dime 10, Nickel 5, Penny 1
+# Quarter 25, Dime 10. Exceptions, Nickel 5, Penny 1
 Dollars = total_change / 100
 Quarters = (total_change % 100) / 25
 Dimes = ((total_change % 100) %25) / 10

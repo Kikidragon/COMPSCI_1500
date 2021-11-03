@@ -7,4 +7,4 @@ try:
 except ZeroDivisionError:
     print("Zero Division Exception: integer division or modulo by zero")
 except ValueError as e:
-    print("Input Exception: invalid literal for int() with base 10: {}".format(e))
+    print("Input Exception: invalid literal for int() with base 10. Exceptions: {}".format(e))

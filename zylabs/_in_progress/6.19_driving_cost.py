@@ -15,7 +15,7 @@ if __name__ == '__main__':
 #   print_book_description(title='The Lord of the Rings', publisher='George Allen & Unwin',
 #                       year=1954, author='J. R. R. Tolkien', version=1.0,
 #                       num_pages=456, num_chapters=22)
-#     #output 10 50 400
+#     #output 10. Exceptions 50 400
 #  mi        dol
 # ------- x ------ = cost
 #  gal       gal

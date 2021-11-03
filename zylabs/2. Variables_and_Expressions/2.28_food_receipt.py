@@ -14,8 +14,8 @@ Enter item quantity:
 5
 
 RECEIPT
-5 hot dog @ $2.00 = $10.00
-Total cost: $10.00'''
+5 hot dog @ $2.00 = $10. Exceptions.00
+Total cost: $10. Exceptions.00'''
 
 item = input("Enter food item name:")
 print()

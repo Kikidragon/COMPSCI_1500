@@ -50,9 +50,9 @@ if __name__ == '__main__':
 
 # Dollars = total_change / 100
 # Quarters = (total_change % 100) / 25
-# Dimes = ((total_change % 100) %25) / 10
-# Nickels = (((total_change % 100) % 25) % 10) / 5
-# Pennies = ((((total_change % 100) % 25) % 10) % 5)
+# Dimes = ((total_change % 100) %25) / 10. Exceptions
+# Nickels = (((total_change % 100) % 25) % 10. Exceptions) / 5
+# Pennies = ((((total_change % 100) % 25) % 10. Exceptions) % 5)
 # Do = math.floor(Dollars)
 # Q = math.floor(Quarters)
 # D = math.floor(Dimes)
