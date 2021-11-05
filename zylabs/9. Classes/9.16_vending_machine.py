@@ -1,4 +1,3 @@
-# FIXME UNFINISHED
 class VendingMachine:
     def __init__(self):
         self.bottles = 20
@@ -18,16 +17,20 @@ class VendingMachine:
 
 if __name__ == "__main__":
 
-    VendingMachine = VendingMachine()
+    vending = VendingMachine()
 
-    inventory = 20
+    vending.bottles = 20
 
-    VendingMachine.purchase = int(input())
-    VendingMachine.restock = int(input())
+    less = int(input())
+    more = int(input())
 
-    print(VendingMachine.report())
+    vending.purchase(less)
+    vending.restock(more)
+    vending.get_inventory()
+    vending.report()
 
-# TODO: Create VendingMachine object
-# TODO: Purchase input number of drinks
-# TODO: Restock input number of bottles
-# TODO: Report inventory
+
+# Create VendingMachine object
+# Purchase input number of drinks
+# Restock input number of bottles
+# Report inventory
