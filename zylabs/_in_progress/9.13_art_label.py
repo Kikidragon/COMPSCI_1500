@@ -23,10 +23,11 @@ class Artwork:
         self.year_created = year_created
         self.artist = artist
 
-    #Define constructor with parameters to initialize instance attributes
+    # Define constructor with parameters to initialize instance attributes
     #       (title, year_created, artist)
 
     def print_info(self):
+        Artist.print_info()
         print("Title: {}, {}".format(self.title, self.year_created))
 
     # Define print_info() method
