@@ -1,6 +1,6 @@
-#FIXME unfinished
+# FIXME unfinished
 class Artist:
-    def __init__(self, name=None, birth_year=0, death_year=0):
+    def __init__(self, name, birth_year, death_year):
         self.name = name
         self.birth_year = birth_year
         self.death_year = death_year
@@ -18,7 +18,7 @@ class Artist:
 
 
 class Artwork:
-    def __init__(self, title=None, year_created=0, artist=None):
+    def __init__(self, title, year_created, artist):
         self.title = title
         self.year_created = year_created
         self.artist = artist
