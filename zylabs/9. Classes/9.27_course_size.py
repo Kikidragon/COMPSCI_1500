@@ -1,4 +1,3 @@
-# FIXME UNFINISHED
 class Student:
     def __init__(self, first, last, gpa):
         self.first = first  # first name
@@ -20,9 +19,10 @@ class Course:
         self.roster.append(student)
 
     def course_size(self):
+        count = 0
         for i in self.roster:
-            print(i)
-        return self.roster
+            count += 1
+        return count
         # Your code goes here
 
 
