@@ -1,4 +1,4 @@
-# FIXME UNFINISHED
+# FIXME UNFINISHED: 4/29
 class ItemToPurchase:
     def __init__(self):
         self.item_name = "none"
@@ -46,9 +46,10 @@ class ShoppingCart:
     def print_total(self):
         # print total of obj in cart
         print("OUTPUT SHOPPING CART")
-        if len(self.cart_items) > 0
+        if len(self.cart_items) > 0:
             print("{}'s Shopping Cart - {}".format(self.customer_name, self.current_date))
             print("Number of items: {}".format(len(self.cart_items)))
+            print()
             total = 0
             for item in self.cart_items:
                 print("{} {} @ ${} = ${}".format(item.item_name, item.item_quantity, item.item_price, item.item_quantity*item.item_price))
@@ -56,13 +57,16 @@ class ShoppingCart:
             print("Total: ${}".format(total))
         else:
             print("SHOPPING CART IS EMPTY")
-        pass
 
     def print_descriptions(self):
         # print each item's description
-        # print("{}: {}".format(item.item_name, item.item_description))
-        # total +=
-        pass
+        print("OUTPUT ITEMS' DESCRIPTIONS")
+        print("{}'s Shopping Cart - {}".format(self.customer_name, self.current_date))
+        print("Number of items: {}".format(len(self.cart_items)))
+        print()
+        for item in self.cart_items:
+            print("{}: {}".format(item.item_name, item.item_description))
+
 
 
 def print_menu():
@@ -127,7 +131,6 @@ if __name__ == "__main__":
                     for i in execute_menu(choice, cart):
                         print(i, end='')
                     print()
-
 
     # item1 = ItemToPurchase()
     # print("Item 1")
