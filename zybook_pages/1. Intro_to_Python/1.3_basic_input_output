@@ -1,0 +1,354 @@
+#fixme not done
+1.3 Basic input and output
+Basic text output
+
+Printing output to a screen is a common programming task. This section describes basic output; later sections have more details.
+
+The primary way to print output is to use the built-in function print(). Ex: print('hello world'). Text enclosed in quotes is known as a string literal. Text in string literals may have letters, numbers, spaces, or symbols like @ or #. Each use of print() starts on a new line.
+
+A string literal can be surrounded by matching single or double quotes: 'Python rocks!' or "Python rocks!". Good practice is to use single quotes for shorter strings and double quotes for more complicated text or text that contains single quotes, like print("Don't eat that!").
+Figure 1.3.1: Printing text.
+
+# Each print statement starts on a new line
+print('Hello there.')
+print('My name is...')
+print('Carl?')
+
+
+
+Hello there.
+My name is...
+Carl?
+
+participation activity
+1.3.1: Basic text output.
+1)
+Select the statement that prints the following: Welcome!
+participation activity
+1.3.2: Basic text output.
+1)
+Type a statement that prints the following: Hello
+
+challenge activity
+1.3.1: Output simple text.
+Write the simplest statement that prints the following:
+
+3 2 1 Go!
+
+Note: Whitespace (blank spaces / blank lines) matters; make sure your whitespace exactly matches the expected output.
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission:
+
+            print("3 2 1 Go!")
+
+
+challenge activity
+1.3.2: Output an eight with asterisks.
+Output the following figure with asterisks. Do not add spaces after the last character in each line.
+
+*****
+*   *
+*****
+*   *
+*****
+
+Note: Whitespace (blank spaces / blank lines) matters; make sure your whitespace exactly matches the expected output.
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission:
+
+            print("*****")
+            print("*   *")
+            print("*****")
+            print("*   *")
+            print("*****")
+
+Keeping output on the same line
+
+Each call to print() outputs on a new line. However, sometimes a programmer may want to keep output on the same line. A programmer can add end=' ' inside of print() to keep the output of a subsequent print statement on the same line separated by a single space. Ex: print('Hello', end=' ').
+Figure 1.3.2: Printing text on the same row.
+
+# Including end=' ' keeps output on same line
+print('Hello there.', end=' ')
+print('My name is...', end=' ')
+print('Carl?')
+
+
+
+Hello there. My name is... Carl?
+
+participation activity
+1.3.3: Printing text on the same row.
+1)
+Which pair of statements print output on the same line?
+Outputting a variable's value
+
+The value of a variable can be printed out via: print(variable_name) (without quotes).
+Figure 1.3.3: Printing the value of a variable.
+
+wage = 20
+
+print('Wage is', end=' ')
+print(wage)  # print variable's value
+print('Goodbye.')
+
+
+
+Wage is 20
+Goodbye.
+
+participation activity
+1.3.4: Basic variable output.
+1)
+Given the variable num_cars = 9, which statement prints 9?
+participation activity
+1.3.5: Basic variable output.
+1)
+Write a statement that prints the value of the variable num_people.
+
+Outputting multiple items with one statement
+
+Programmers commonly try to use a single print statement for each line of output by combining the printing of text, variable values, and new lines. A programmer can simply separate the items with commas, and each item in the output will be separated by a space. Combining string literals, variables, and new lines can improve program readability, because the program's code corresponds more closely to the program's printed output.
+Figure 1.3.4: Printing multiple items using a single print statement.
+
+wage = 20
+
+print('Wage:', wage)  # Comma separates multiple items
+print('Goodbye.')
+
+
+
+Wage: 20
+Goodbye.
+
+A common error is to forget the comma between items, as in print('Name' user_name).
+Newline characters
+
+Output can be moved to the next line by printing "\n", known as a newline character. Ex: print('1\n2\n3') prints "1" on the first line, "2" on the second line, and "3" on the third line of output. "\n" consists of two characters, \ and n, but together are considered by the Python interpreter as a single character.
+Figure 1.3.5: Printing using newline characters.
+
+print('1\n2\n3')
+
+
+
+1
+2
+3
+
+print() always adds a newline character after the output automatically to move the next output to the next row, unless end=' ' is provided to replace the newline character with a space (or some other character). An empty print() can be used to print only a newline.
+Figure 1.3.6: printing without text.
+
+print('123')
+print()
+print('abc')
+
+
+
+123
+
+abc
+
+Any space, tab, or newline is called whitespace.
+
+NOTE: In a normal programming environment, program input is provided interactively and completed by pressing the enter key. The enter key press would insert a newline. Since zyBooks input is pre-entered, no enter key press can be inferred. Thus, activities that require pre-entered input may need extra newline characters or blank print statements in zyBooks, compared to other environments.
+participation activity
+1.3.6: Output simulator.
+
+The tool below supports a subset of Python, allowing for experimenting with print statements. The variables country_population = 1344130000 and country_name = 'China' have been defined and can be used in the simulator.
+
+Try printing the following output:
+
+The population of China was 1344130000 in 2011.
+
+print()
+
+Change this string!
+participation activity
+1.3.7: Single print statement.
+
+Assume variable age = 22, pet = "dog", and pet_name = "Gerald".
+1)
+What is the output of
+print('You are', age, 'years old.')
+
+2)
+What is the output of
+print(pet_name, 'the', pet, 'is', age)
+
+challenge activity
+1.3.3: Enter the output.
+Type the program's output. Remember that print() outputs an ending newline, so press Enter or Return on your keyboard to indicate a newline in your answer.
+343716.2144758.qx3zqy7
+
+Type the program's output
+print('Joe is great.')
+
+1
+2
+3
+4
+1
+2
+3
+4
+Basic input
+
+Many useful programs allow a user to enter values, such as typing a number, a name, etc.
+
+Reading input is achieved using the input() function. The statement best_friend = input() will read text entered by the user and the best_friend variable is assigned with the entered text. The function input() causes the interpreter to wait until the user has entered some text and has pushed the return key.
+
+The input obtained by input() is any text that a user typed, including numbers, letters, or special characters like # or @. Such text in a computer program is called a string.
+
+A string simply represents a sequence of characters. For example, the string 'Hello' consists of the characters 'H', 'e', 'l', 'l', and 'o'. Similarly, the string '123' consists of the characters '1', '2', and '3'.
+participation activity
+1.3.8: A program can get an input value from the keyboard.
+
+print('Enter name of best friend:', end=' ')
+best_friend = input()
+print('My best friend is', best_friend)
+
+
+20
+best_friend
+Salary is
+40000
+ 20
+Input
+Marty McFly
+Output
+Marty McFly
+Enter name of best friend:
+Marty McFly
+My best friend is Marty McFly
+Captions
+
+    The input() statement gets an input value from the keyboard and puts that value into the best_friend variable.
+    best_friend's value can then be used in subsequent processing and outputs.
+
+participation activity
+1.3.9: Reading user input.
+1)
+Which statement reads a user-entered string into variable num_cars?
+participation activity
+1.3.10: Reading user input.
+1)
+Complete a statement that reads a user-entered string into variable my_var.
+
+Converting input types
+
+The string '123' (with quotes) is fundamentally different from the integer 123 (without quotes). The '123' string is a sequence of the characters '1', '2', and '3' arranged in a certain order, whereas 123 represents the integer value one-hundred twenty-three. Strings and integers are each an example of a type; a type determines how a value can behave. For example, integers can be divided by 2, but not strings (what sense would "Hello" / 2 make?). Types are discussed in detail later on.
+
+Reading from input always results in a string type. However, often a programmer wants to read in an integer, and then use that number in a calculation. If a string contains only numbers, like '123', then the int() function can be used to convert that string to the integer 123.
+Figure 1.3.7: Using int() to convert strings to integers.
+
+my_string = '123'
+my_int = int('123')
+
+print(my_string)
+print(my_int)
+
+
+
+123
+123
+
+A programmer can combine input() and int() to read in a string from the user and then convert that string to an integer for use in a calculation.
+Figure 1.3.8: Converting user input to integers.
+
+print('Enter wage:', end=' ')
+wage = int(input())
+
+new_wage = wage + 10
+print('New wage:', new_wage)
+
+
+
+Enter wage: 8
+New wage: 18
+
+participation activity
+1.3.11: Converting user input to integers.
+1)
+Type a statement that converts the string '15' to an integer and assigns my_var with the result.
+
+2)
+Complete the code so that new_var is equal to the entered number plus 5.
+
+my_var = int(input())
+new_var =
+
+Input prompt
+
+Adding a string inside the parentheses of input() displays a prompt to the user before waiting for input and is a useful shortcut to adding an additional print statement line.
+Figure 1.3.9: Basic input example.
+
+hours = 40
+weeks = 50
+hourly_wage = int(input('Enter hourly wage: '))
+
+print('Salary is', hourly_wage * hours * weeks)
+
+
+
+Enter hourly wage: 12
+Salary is 24000
+...
+Enter hourly wage: 20
+Salary is 40000
+
+NOTE: The below tool requires input to be pre-entered. This is a current limitation of the web-based tool and atypical of conventional Python environments, where users enter input as the program runs. For conventional behavior, you may copy-paste the program into a local environment, such as IDLE.
+zyDE 1.3.1: Basic input.
+
+Run the program and observe the output. Change the input box value from 3 to another number, and run again.
+
+challenge activity
+1.3.4: Read user input numbers and perform a calculation.
+Read two numbers from user input. Then, print the sum of those numbers.
+Hint -- Copy/paste the following code, then just type code where the question marks are to finish the code.
+
+num1 = int(input())
+num2 = ?
+print(num1 + ?)
+
+
+Note: Our system automatically runs your program several times, trying different input values each time to ensure your program works for any values. Notes on how to solve this. See How to Use zyBooks for info on how our automated program grader works.
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission:
+
+            number1 = int(input())
+            number2 = int(input())
+            print(number1 + number2)
+
+challenge activity
+1.3.5: Read user input and print to output.
+Read three integers from user input without a prompt. Then, print the product of those integers. Ex: If input is 2 3 5, output is 30.
+
+Note: Our system will run your program several times, automatically providing different input values each time, to ensure your program works for any input values. See How to Use zyBooks for info on how our automated program grader works.
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission:
+
+            num1 = int(input())
+            num2 = int(input())
+            num3 = int(input())
+            print (num1*num2*num3)
+
+challenge activity
+1.3.6: Output basics.
+For activities with output like below, your output's whitespace (newlines or spaces) must match exactly. See this note.
+343716.2144758.qx3zqy7
+Write code that outputs the following. End with a newline. Remember that print() automatically adds a newline.
+
+This dessert was satisfying.

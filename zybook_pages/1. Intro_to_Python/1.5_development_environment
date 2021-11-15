@@ -1,0 +1,21 @@
+#fixme
+1.5 Development environment
+IDEs
+
+This web material embeds a Python interpreter so that the reader may experiment with Python programming. However, for normal development, a programmer installs Python as an application on a local computer. Macintosh and Linux operating systems usually include Python, while Windows does not. Programmers can download the latest version of Python for free from https://python.org.
+
+Code development is usually done with an integrated development environment, or IDE. There are various IDEs that can be found online; some of the most popular are listed below.
+
+    IDLE is the official Python IDE that is distributed with the installation of Python from https://python.org. IDLE provides a basic environment for editing and running programs.
+    PyDev (http://pydev.org) is a plugin for the popular Eclipse program. PyDev includes extra features such as code completion, spell checking, and a debugger that can be useful tools while programming.
+    For learning purposes, web-based tools like CodePad (http://www.codepad.org) or Repl (http://www.repl.it) are useful.
+
+There are many other editors available—some of which are free, while others require a fee or subscription. Finding the right IDE is sometimes like finding a pair of jeans that fits just right—try a Google search for "Python IDE" and explore the options.
+Figure 1.5.1: IDLE environment for coding and running Python.
+Screenshots of the IDLE coding environment and Python shell for running a Python program
+participation activity
+1.5.1: Development environment basics.
+1)
+Python comes pre-installed on Windows machines.
+2)
+Python code can be written in a simple text editor, such as Notepad (Windows).

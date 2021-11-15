@@ -11,6 +11,7 @@ class Student:
     def get_last(self):
         return self.last
 
+
 class Course:
     def __init__(self):
         self.roster = []  # list of Student objects
@@ -24,14 +25,17 @@ class Course:
     def find_student_highest_gpa(self):
         maxx = 0.0
         for i in self.roster:
-            if i.get_gpa() >= maxx:
+            # print(type(i.get_gpa()))
+            # print(type(maxx))
+            if i.get_gpa() > maxx:
                 maxx = i
             else:
                 continue
         for i in self.roster:
             if i.get_gpa() == maxx:
                 return i
-        # FIXME it says >= not supported between student and float
+        # FIXME it says > not supported between student and float but i tested and theyre both float
+
 
 if __name__ == "__main__":
     course = Course()
@@ -41,4 +45,4 @@ if __name__ == "__main__":
     course.add_student(Student('Sonya', 'King', 3.9))
 
     student = course.find_student_highest_gpa()
-    print('Top student:', student.first, student.last, '( GPA:', student.gpa,')')
+    print('Top student:', student.first, student.last, '( GPA:', student.gpa, ')')

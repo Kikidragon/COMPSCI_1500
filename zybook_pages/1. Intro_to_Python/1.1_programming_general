@@ -1,0 +1,135 @@
+1.1 Programming (general)
+Computer program basics
+
+Computer programs are abundant in many people's lives today, carrying out applications on smartphones, tablets, and laptops, powering businesses like Amazon and Netflix, helping cars drive and planes fly, and much more.
+
+A computer program consists of instructions executing one at a time. Basic instruction types are:
+
+    Input: A program gets data, perhaps from a file, keyboard, touchscreen, network, etc.
+    Process: A program performs computations on that data, such as adding two values like x + y.
+    Output: A program puts that data somewhere, such as to a file, screen, or network.
+
+Programs use variables to refer to data, like x, y, and z below. The name is due to a variable's value "varying" as a program assigns a variable like x with new values.
+participation activity
+1.1.1: A basic computer program.
+Input (keyboard)
+Output (screen)
+x = Get next input
+y = Get next input
+z = x + y
+Put z to output
+2
+5
+7
+Computer program
+2
+5
+7
+x:
+y:
+z:
+2
+5
+Captions
+
+    A basic computer program's instructions get input, process, and put output. This program first assigns x with what is typed on the keyboard input, in this case 2.
+    The program's next instruction gets the next input, in this case 5.
+    The program then does some processing, in this case assigning z with x + y (so 2 + 5 yields z of 7).
+    Finally, the program puts z (7) to output, in this case to a screen.
+
+participation activity
+1.1.2: A basic computer program.
+
+Consider the example above.
+1)
+The program has _____ instructions.
+            4
+2)
+Suppose a new instruction were inserted as follows:
+
+...
+z = x + y
+Add 1 to z (new instruction)
+Put z to output
+
+What would the last instruction output to the screen?
+            8
+3)
+Consider the instruction: z = x + y. If x is 10 and y is 20, then z is assigned with _____.
+            30
+A program is like a recipe
+
+Some people think of a program as being like a cooking recipe. A recipe consists of instructions that a chef executes, like adding eggs or stirring ingredients.
+Baking chocolate chip cookies from a recipe
+
+    Mix 1 stick of butter and 1 cup of sugar.
+    Add egg and mix until combined.
+    Stir in flour and chocolate.
+    Bake at 350°F for 8 minutes.
+
+Likewise, a computer program consists of instructions that a computer executes, like multiplying numbers or outputting a number to a screen.
+A first programming activity
+
+Below is a simple tool that allows a user to rearrange some pre-written instructions (in no particular programming language). The tool illustrates how a computer executes each instruction one at a time, assigning variable m with new values throughout, and outputting ("printing") values to the screen.
+participation activity
+1.1.3: A first programming activity.
+Execute the program and observe the output. Click and drag the instructions to change the order of the instructions, and execute the program again. Not required, but can you make the program output a value greater than 500? How about greater than 1000?
+
+    m = 5
+    put m
+    m = m * 2
+    put m
+    m = m * m
+    put m
+    m = m + 15
+    put m
+
+
+m:
+participation activity
+1.1.4: Instructions.
+1)
+Which instruction completes the program to compute a triangle's area?
+base = Get next input
+height = Get next input
+Assign x with base * height
+_____
+Put x to output
+            multiply x by 1/2
+2)
+Which instruction completes the program to compute the average of three numbers?
+x = Get next input
+y = Get next input
+z = Get next input
+_____
+Put a to output
+            a = (x+y+z)/3
+Computational thinking
+
+Mathematical thinking became increasingly important throughout the industrial age, enabling people to successfully live and work. In the information age, many people believe computational thinking, or creating a sequence of instructions to solve a problem, will become increasingly important for work and everyday life. A sequence of instructions that solves a problem is called an algorithm.
+participation activity
+1.1.5: Computational thinking: Creating algorithms to draw shapes using turtle graphics.
+
+A common way to become familiar with algorithms is called turtle graphics: You instruct a robotic turtle to walk a certain path, via instructions like "Turn left", "Walk forward 10 steps", or "Pen down" (to draw a line while walking).
+
+The 6-instruction algorithm shown below ("Pen down", "Forward 100", etc.) draws a triangle.
+
+    Press "Run" to see the instructions execute from top to bottom, yielding a triangle.
+    Can you modify the instructions to draw a square? Hint: "Pen down", "Forward 100", "Left 90", "Forward 100", "Left 90" -- keep going!
+    Experiment to see what else you can draw.
+
+Note: The values after a Left or Right turn are angles in degrees.
+
+How to:
+
+    Add an instruction: Click an orange button ("Pen up", "Pen down", "Forward", "Turn left").
+    Delete an instruction: Click its "x".
+    Move an instruction: Drag it up or down.
+
+    Pen down ✖
+    Forward 100 ✖
+    Left 120 ✖
+    Forward 100 ✖
+    Left 120 ✖
+    Forward 100 ✖
+

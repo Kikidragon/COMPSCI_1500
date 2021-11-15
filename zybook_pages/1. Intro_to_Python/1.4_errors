@@ -1,0 +1,214 @@
+#fixme
+1.4 Errors
+Syntax errors
+
+As soon as a person begins trying to program, that person will make mistakes. One kind of mistake, known as a syntax error, is to violate a programming language's rules on how symbols can be combined to create a program. An example is putting multiple prints on the same line.
+
+The interpreter will generate a message when encountering a syntax error. The error message will report the number of the offending line, in this case 7, allowing the programmer to go back and fix the problem. Sometimes error messages can be confusing, or not particularly helpful. Below, the message "invalid syntax" is not very precise, but is the best information that the interpreter is able to report. With enough practice a programmer becomes familiar with common errors and is able to avoid them, avoiding headaches later.
+
+Note that syntax errors are found before the program is ever run by the interpreter. In the example below, none of the prints prior to the error is in the output.
+Figure 1.4.1: A program with a syntax error.
+
+print('Current salary is', end=' ')
+print(45000)
+
+print('Enter new salary:', end=' ')
+new_sal = int(input())
+
+print(new_sal) print(user_num)
+
+
+
+File "<main.py>", line 7
+    print(new_sal) print(user_num)
+                       ^
+SyntaxError: invalid syntax
+
+participation activity
+1.4.1: Syntax errors.
+
+Find the syntax errors. Assume variable num_dogs exists.
+1)
+print(num_dogs).
+2)
+print("Dogs: " num_dogs)
+3)
+print('Woof!")
+4)
+print(Woof!)
+5)
+print("Hello + friend!")
+participation activity
+1.4.2: Common syntax errors.
+
+Treat the following lines of code as a continuous program. Find and click on the 3 syntax errors.
+1)
+
+ triangle_base = 0    # Triangle base (cm)
+ triangle_height = 0  # Triangle height (cm)
+
+          # Triangle area (cm)
+
+ print('Enter triangle base (cm): ')
+
+
+2)
+
+ print('Enter triangle height (cm): ')
+
+
+
+
+
+ triangle_area = (triangle_base * triangle_height) / 2
+
+
+
+3)
+
+
+
+ print(triangle_base)
+
+
+
+
+
+ print(') / 2 = ', end=' ')
+ print(triangle_area, end=' ')
+
+
+
+Good coding practice
+
+New programmers will commonly write programs with many syntax errors, leading to many frustrating error messages. To avoid continually encountering error messages, a good practice is to execute the code frequently, writing perhaps a few (3–5) lines of code and then fixing errors, then writing a few more lines and running again and fixing errors, and so on. Experienced programmers may write more lines of code each time, but typically still run and test syntax frequently.
+participation activity
+1.4.3: Run code frequently to avoid many errors.
+Run code
+Run code
+Run code
+Run code
+stmt1
+stmt2
+stmt3
+stmt4
+stmt5
+stmt6
+stmt7
+stmt1
+stmt2
+stmt3
+
+
+stmt4
+stmt5
+stmt6
+stmt7
+Captions
+
+    Writing many lines of code without compiling is bad practice.
+    New programmers should compile their program after every couple of lines.
+
+participation activity
+1.4.4: Testing for syntax errors.
+1)
+Experienced programmers write an entire program before running and testing the code.
+Runtime errors
+
+The Python interpreter is able to detect syntax errors when the program is initially loaded, prior to actually executing any of the statements in the code. However, just because the program loads and executes does not mean that the program is correct. The program may have another kind of error called a runtime error, wherein a program's syntax is correct but the program attempts an impossible operation, such as dividing by zero or multiplying strings together (like 'Hello' * 'ABC').
+
+A runtime error halts the execution of the program. Abrupt and unintended termination of a program is often called a crash of the program.
+
+Consider the below program that begins executing, prints the salary, and then waits for the user to enter an integer value. The int() statement expects a number to be entered, but gets the text 'Henry' instead.
+Figure 1.4.2: Runtime errors can crash the program.
+
+The program crashes because the user enters 'Henry' instead of an integer value.
+
+print('Salary is', end=' ')
+print(20 * 40 * 50)
+
+print('Enter integer: ', end=' ')
+user_num = int(input())
+print(user_num)
+
+
+
+Salary is 40000
+Enter integer:  Henry
+Traceback (most recent call last):
+ File "<stdin>", line 5, in <module>
+ValueError: invalid literal for int() with base 10: 'Henry'
+
+Runtime errors are categorized into types that describe the sort of error that has occurred. Above, a ValueError occurred, indicating that the wrong sort of value was passed into the int() function. Other examples include a NameError and a TypeError, both described in the table below.
+Common error types
+Table 1.4.1: Common error types.
+Error type 	Description
+SyntaxError 	The program contains invalid code that cannot be understood.
+IndentationError 	The lines of the program are not properly indented.
+ValueError 	An invalid value is used – can occur if giving letters to int().
+NameError 	The program tries to use a variable that does not exist.
+TypeError 	An operation uses incorrect types – can occur if adding an integer to a string.
+participation activity
+1.4.5: Match the lines of code with the error type that they produce.
+
+Match the following lines of code with the correct error type. Assume that no variables already exist.
+
+    TypeError
+    ValueError
+    SyntaxError
+    NameError
+    IndentationError
+
+lyric = 99 + " bottles of pop on the wall"
+   print("Friday, Friday")
+int("Thursday")
+day_of_the_week = Friday
+print('Today is Monday")
+Logic errors
+
+Some errors may be subtle enough to silently misbehave, instead of causing a runtime error and a crash. An example might be if a programmer accidentally typed "2 * 4" rather than "2 * 40" – the program would load correctly, but would not behave as intended. Such an error is known as a logic error, because the program is logically flawed. A logic error is often called a bug.
+Figure 1.4.3: The programmer made a mistake that happens to be correct syntax, but has a different meaning.
+
+The below program attempts to calculate a 5% raise for an employee's salary. The programmer made a mistake by assigning raise_percentage with 5, instead of 0.05, thus giving a happy employee a 500% raise.
+
+current_salary = int(input('Enter current salary:'))
+
+raise_percentage = 5  # Logic error gives a 500% raise instead of 5%.
+new_salary = current_salary + (current_salary * raise_percentage)
+print('New salary:', new_salary)
+
+
+
+Enter current salary: 10000
+New salary: 60000
+
+The programmer clearly made an error, but the code is actually correct syntax – it just has a different meaning than was intended. So the interpreter will not generate an error message, but the program's output is not what the programmer expects – the new computed salary is much too high. These mistakes can be very hard to debug. Paying careful attention and running code after writing just a few lines can help avoid mistakes.
+zyDE 1.4.1: Fix the bug.
+
+Click run to execute the program and note the incorrect program output. Fix the bug in the program.
+
+Figure 1.4.4: The first bug.
+
+A sidenote: The term "bug" to describe a runtime error was popularized in 1947. That year, engineers working with pioneering computer scientist Grace Hopper discovered their program on a Harvard University Mark II computer was not working because a moth was stuck in one of the relays (a type of mechanical switch). They taped the bug into their engineering log book, which is still preserved today (http://en.wikipedia.org/wiki/Computer_bug).
+Picture of the first real bug preserved in the log book.
+challenge activity
+1.4.1: Basic syntax errors.
+Retype the statements, correcting the syntax error in each print statement.
+
+print('Predictions are hard.")
+print(Especially about the future.)
+user_num = 5
+print('user_num is:' user_num)
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission:
+
+            print('Predictions are hard.')
+            print('Especially about the future.')
+            user_num = 5
+            print('user_num is:', user_num)
+

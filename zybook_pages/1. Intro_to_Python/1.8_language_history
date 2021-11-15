@@ -1,0 +1,19 @@
+#fixme
+1.8 Language history
+Scripting languages and Python
+
+As computing evolved throughout the 1960s and 1970s, programmers began creating scripting languages to execute programs without the need for compilation. A script is a program whose instructions are executed by another program called an interpreter. Interpreted execution is slower due to requiring multiple interpreter instructions to execute one script instruction, but has advantages including avoiding the compilation step during programming, and being able to run the same script on different processors as long as each processor has an interpreter installed.
+
+In the late 1980s, Guido van Rossum began creating a scripting language called Python and an accompanying interpreter. He derived Python from an existing language called ABC. The name Python came from Guido being a fan of the TV show Monty Python. The goals for the language included simplicity and readability, while providing as much power and flexibility as other scripting languages like Perl.
+
+Python 1.0 was released in 1994 with support for some functional programming constructs derived from Lisp. Python 2.0 was released in 2000 and introduced automatic memory management (garbage collection, described elsewhere) and features from Haskell and other languages. Python 2 officially reached "end-of-life" (no more fixes or support) in 2020 (Source: Python.org). Python 3.0 was released in 2008 to rectify various language design issues. Python 2.7 still remained popular for years, due largely to third-party libraries supporting only Python 2.7. Python 2.7 programs cannot run on Python 3.0 or later interpreters, i.e., Python 3.0 is not backwards compatible. However, Python 3.x versions have become widely used as new projects adopted the version.
+
+Python is an open-source language, meaning the community of users participate in defining the language and creating new interpreters, and is supported by a large community of programmers. A January 2021 survey that measured the popularity of various programming languages found that Python (11.72%) is the third most popular language, and Python gained the most popularity of any language in 2020 (source: www.tiobe.com/tiobe-index/).
+participation activity
+1.8.1: Python background.
+1)
+Python was first implemented in 1960.
+2)
+Python is a high-level language that excels at creating exceptionally fast-executing programs.
+3)
+A major drawback of Python is that Python code is more difficult to read than code in most other programming languages.

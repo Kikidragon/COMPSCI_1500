@@ -1,0 +1,179 @@
+
+1.2 Programming using Python
+Python interpreter
+
+The Python interpreter is a computer program that executes code written in the Python programming language. An interactive interpreter is a program that allows the user to execute one line of code at a time.
+
+Code is a common word for the textual representation of a program (and hence programming is also called coding). A line is a row of text.
+
+The interactive interpreter displays a prompt (">>>") that indicates the interpreter is ready to accept code. The user types a line of Python code and presses the enter key to instruct the interpreter to execute the code. Initially you may think of the interactive interpreter as a powerful calculator. The example program below calculates a salary based on a given hourly wage, the number of hours worked per week, and the number of weeks per year. The specifics of the code are described elsewhere in the chapter.
+participation activity
+1.2.1: The Python interpreter.
+Python interpreter
+Name
+Value
+>>>
+wage = 20
+wage
+20
+>>>
+hours = 40
+hours
+40
+>>>
+weeks = 52
+weeks
+52
+|
+>>>
+salary = wage * hours * weeks
+20
+40
+52
+41600
+salary
+>>>
+print(salary)
+41600
+>>>
+hours = 35
+hours
+35
+>>>
+salary = wage * hours * weeks
+20
+52
+35
+36400
+salary
+>>>
+print(salary)
+36400
+>>>
+Captions
+
+    After each press of the enter key, the python interpreter executes the line of code.
+    The python interpreter can be used as a calculator and can perform a variety of calculations.
+    Users can change values and execute calculations again.
+
+participation activity
+1.2.2: Match the Python terms with their definitions.
+
+    Code
+    Interpreter
+    Line
+    Prompt
+
+A program that executes computer code.  interpreter
+The text that represents a computer program.    code
+Informs the programmer that the interpreter is ready to accept commands.    prompt
+A row of text.  line*
+Executing a Python program
+
+The Python interactive interpreter is useful for simple operations or programs consisting of only a few lines. However, entering code line-by-line into the interpreter quickly becomes unwieldy for any program spanning more than a few lines.
+
+Instead, a programmer can write Python code in a file, and then provide that file to the interpreter. The interpreter begins by executing the first line of code at the top of the file, and continues until the end is reached.
+
+    A statement is a program instruction. A program mostly consists of a series of statements, and each statement usually appears on its own line.
+    Expressions are code that return a value when evaluated; for example, the code wage * hours * weeks is an expression that computes a number. The symbol * is used for multiplication. The names wage, hours, weeks, and salary are variables, which are named references to values stored by the interpreter.
+    A new variable is created by performing an assignment using the = symbol, such as salary = wage * hours * weeks, which creates a new variable called salary.
+    The print() function displays variables or expression values.
+    '#' characters denote comments, which are optional but can be used to explain portions of code to a human reader.
+    Many code editors color certain words, as in the below program, to assist a human reader in understanding various words' roles.
+
+participation activity
+1.2.3: Executing a simple Python program.
+
+wage = 20
+hours = 40
+weeks = 52
+salary = wage * hours * weeks
+
+print('Salary is:', salary)
+
+hours = 35
+salary = wage * hours * weeks
+print('New salary is:', salary)
+
+
+file.py
+Python interpreter
+>>>
+Name
+Value
+
+wage = 20
+
+
+wage
+20
+
+hours = 40
+
+
+hours
+40
+
+weeks = 52
+
+
+weeks
+52
+
+salary = wage * hours * weeks
+
+
+20
+40
+52
+41600
+salary
+
+print('Salary is:', salary)
+
+
+41600
+Salary is:
+
+hours = 35
+
+
+hours
+35
+
+salary = wage * hours * weeks
+
+
+20
+35
+52
+36400
+
+print('New salary is:', salary)
+
+
+36400
+New salary is:
+Captions
+
+    The python interpreter reads a file line by line. Variables wage, hours, and weeks are named references that refer to values stored by the interpreter.
+    20 * 40 * 52 is computed, and then the variable salary is assigned with the value.
+    The print statement prints 'Salary is:' to the screen and displays the value of the variable salary.
+    Values can be overwritten if the same variable name is used.
+
+participation activity
+1.2.4: Python basics.
+1)
+What is the purpose of variables?
+            store values for later use
+2)
+The code 20 * 40 is an expression.
+            true
+3)
+How are most Python programs developed?
+            writing code in files
+4)
+Comments are required in a program.
+            false
+zyDE 1.2.1: A first program.
+

@@ -1,0 +1,64 @@
+#fixme
+1.7 Computer tour
+
+The term computer has changed meaning over the years. The term originally referred to a person that performed computations by hand, akin to an accountant ("We need to hire a computer"). In the 1940s/1950s, the term began to refer to large machines like in the earlier photo. In the 1970s/1980s, the term expanded to also refer to smaller home/office computers known as personal computers or PCs ("personal" because the computer wasn't shared among multiple users like the large ones) and to portable/laptop computers. In the 2000s/2010s, the term may also cover other computing devices like pads, book readers, and smartphones. The term computer even refers to computing devices embedded inside other electronic devices such as medical equipment, automobiles, aircraft, consumer electronics, and military systems.
+
+In the early days of computing, the physical equipment was prone to failures. As equipment became more stable and as programs became larger, the term "software" became popular to distinguish a computer's programs from the "hardware" on which they ran.
+
+A computer typically consists of several components (see animation below):
+
+    Input/output devices: A screen (or monitor) displays items to a user. The above examples displayed textual items, but today's computers display graphical items too. A keyboard allows a user to provide input to the computer, typically accompanied by a mouse for graphical displays. Keyboards and mice are increasingly being replaced by touchscreens. Other devices provide additional input and output means, such as microphones, speakers, printers, and USB interfaces. I/O devices are commonly called peripherals.
+    Storage: A disk (aka hard drive) stores files and other data, such as program files, song/movie files, or office documents. Disks are non-volatile, meaning they maintain their contents even when powered off. They do so by orienting magnetic particles in a 0 or 1 position. The disk spins under a head that pulses electricity at just the right times to orient specific particles (you can sometimes hear the disk spin and the head clicking as the head moves). New flash storage devices store 0s and 1s in a non-volatile memory rather than disk, by tunneling electrons into special circuits on the memory's chip, and removing them with a "flash" of electricity that draws the electrons back out.
+    Memory: RAM (random-access memory) temporarily holds data read from storage and is designed such that any address can be accessed much faster than disk, in just a few clock ticks (see below) rather than hundreds of ticks. The "random access" term comes from being able to access any memory location quickly and in arbitrary order, without having to spin a disk to get a proper location under a head. RAM is costlier per bit than disk, due to RAM's higher speed. RAM chips typically appear on a printed circuit board along with a processor chip. RAM is volatile, losing its contents when powered off. Memory size is typically listed in bits, or in bytes where a byte is 8 bits. Common sizes involve megabytes (million bytes), gigabytes (billion bytes), or terabytes (trillion bytes).
+    Processor: The processor runs the computer's programs, reading and executing instructions from memory, performing operations, and reading/writing data from/to memory. When powered on, the processor starts executing the program whose first instruction is (typically) at memory location 0. That program is commonly called the BIOS (basic input/output system), which sets up the computer's basic peripherals. The processor then begins executing a program called an operating system (OS). The operating system allows a user to run other programs and interfaces with the many other peripherals. Processors are also called CPUs (central processing unit) or microprocessors (a term introduced when processors began fitting on a single chip, the "micro" suggesting small). Because speed is so important, a processor may contain a small amount of RAM on its own chip, called cache memory, accessible in one clock tick rather than several, for maintaining a copy of the most-used instructions/data.
+    Clock: A processor's instructions execute at a rate governed by the processor's clock, which ticks at a specific frequency. Processors have clocks that tick at rates such as 1 MHz (1 million ticks/second) for an inexpensive processor ($1) like those found in a microwave oven or washing machine, to 1 GHz (1 billion ticks/second) for costlier ($10-$100) processors like those found in mobile phones and desktop computers. Executing about 1 instruction per clock tick, processors thus execute millions or billions of instructions per second.
+
+Computers typically run multiple programs simultaneously, such as a web browser, an office application, and a photo editing program. The operating system actually runs a little of program A, then a little of program B, etc., switching between programs thousands of times a second.
+participation activity
+1.7.1: Some computer components.
+Memory
+Processor
+Cache
+ProgA
+Doc1
+Doc2
+ProgB
+OS
+Head
+Disk
+Terabytes
+Gigabytes
+Megabytes
+Clock (GHz)
+Captions
+
+    A disk is able to store Terabytes of data and may contain various programs such as ProgA, ProgB, Doc1, Doc2, and OS. The memory is able to store Gigabytes of data. User runs ProgA. The disk spins and the head loads ProgA from the disk, storing the contents into memory.
+    The OS runs ProgB. The disk spins and the head loads ProgB from the disk, storing the contents into memory.
+    The OS lets ProgA run again. ProgA is already in memory so there is no need to read ProgA from the disk.
+
+After computers were first invented and occupied entire rooms, engineers created smaller switches called transistors, which in 1958 were integrated onto a single chip called an integrated circuit or IC. Engineers continued to find ways to make smaller transistors, leading to what is known as Moore's Law: The doubling of IC capacity roughly every 18 months, which continues today.1 By 1971, Intel produced the first single-IC processor named the 4004, called a microprocessor ("micro" suggesting small), having 2300 transistors. New more-powerful microprocessors appeared every few years, and by 2012, a single IC had several billion transistors containing multiple processors (each called a core).
+participation activity
+1.7.2: Computer components.
+
+    Cache
+    Operating system
+    Clock
+    Moore's Law
+    RAM
+    Disk
+
+Manages programs and interfaces with peripherals.
+Non-volatile storage with slower access.
+Volatile storage with faster access usually located off processor chip.
+Relatively small, volatile storage with fastest access located on processor chip.
+Measures the speed at which a processor executes instructions.
+The doubling of IC capacity roughly every 18 months.
+
+A sidenote: A common way to make a PC faster is to add more RAM. A processor spends much of its time moving instructions/data between memory and storage, because not all of a program's instructions/data may fit in memory—akin to a chef that spends most of his/her time walking back and forth between a stove and pantry. Just as adding a larger table next to the stove allows more ingredients to be kept close by, a larger memory allows more instructions/data to be kept close to the processor. Moore's Law results in RAM being cheaper a few years after buying a PC, so adding RAM to a several-year-old PC can yield good speedups for little cost.
+Exploring further:
+
+    Link: What's inside a computer (HowStuffWorks.com).
+
+    "How Microprocessors Work" from howstuffworks.com.
+
+(*1) Moore actually said every 2 years. And the actual trend has varied from 18 months. The key is that doubling occurs roughly every couple years, causing enormous improvements over time. Wikipedia: Moore's Law.

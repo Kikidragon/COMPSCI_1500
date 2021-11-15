@@ -1,4 +1,3 @@
-# FIXME UNFINISHED
 class Student:
     def __init__(self, first, last, gpa):
         self.first = first  # first name
@@ -14,16 +13,17 @@ class Student:
     def to_string(self):
         return self.first + ' ' + self.last + ' (GPA: ' + str(self.gpa) + ')'
 
+
 class Course:
     def __init__(self):
         self.roster = []  # list of Student objects
 
     def drop_student(self, student):
         for i in self.roster:
-            x = i.get_last
+            x = i.get_last()
             if x == student:
                 self.roster.remove(i)
-            # FIXME
+            # it was the darn parentheses
             # x = i.get_last
             # if x == student:
             #     if student in i:
