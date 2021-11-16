@@ -1,0 +1,81 @@
+
+8.13 Dictionary methods
+
+A dictionary method is a function provided by the dictionary type (dict) that operates on a specific dictionary object. Dictionary methods can perform some useful operations, such as adding or removing elements, obtaining all the keys or values in the dictionary, merging dictionaries, etc.
+
+Below are a list of common dictionary methods:
+Table 8.13.1: Dictionary methods.
+Dictionary method 	Description 	Code example 	Output
+my_dict.clear() 	Removes all items from the dictionary. 	my_dict = {'Ahmad': 1, 'Jane': 42}
+my_dict.clear()
+print(my_dict)
+
+{}
+
+my_dict.get(key, default) 	Reads the value of the key from the dictionary. If the key does not exist in the dictionary, then returns default. 	my_dict = {'Ahmad': 1, 'Jane': 42}
+print(my_dict.get('Jane', 'N/A'))
+print(my_dict.get('Chad', 'N/A'))
+
+42
+N/A
+
+my_dict1.update(my_dict2) 	Merges dictionary my_dict1 with another dictionary my_dict2. Existing entries in my_dict1 are overwritten if the same keys exist in my_dict2. 	my_dict = {'Ahmad': 1, 'Jane': 42}
+my_dict.update({'John': 50})
+print(my_dict)
+
+{'Ahmad': 1, 'Jane': 42, 'John': 50}
+
+my_dict.pop(key, default) 	Removes and returns the key value from the dictionary. If key does not exist, then default is returned. 	my_dict = {'Ahmad': 1, 'Jane': 42}
+val = my_dict.pop('Ahmad')
+print(my_dict)
+
+{'Jane': 42}
+
+Modification of dictionary elements using the above methods is performed in-place. Ex: Following the evaluation of the statement my_dict.pop('Ahmad'), any other variables that reference the same object as my_dict will also reflect the removal of 'Ahmad'. As with lists, a programmer should be careful not to modify dictionaries without realizing that other references to the objects may be affected.
+participation activity
+8.13.1: Dictionary methods.
+
+Determine the output of each code segment. If the code produces an error, type None. Assume that my_dict has the following entries: my_dict = dict(bananas=1.59, fries=2.39, burger=3.50, sandwich=2.99)
+1)
+
+my_dict.update(dict(soda=1.49, burger=3.69))
+burger_price = my_dict.get('burger', 0)
+print(burger_price)
+
+2)
+
+my_dict['burger'] = my_dict['sandwich']
+val = my_dict.pop('sandwich')
+print(my_dict['burger'])
+
+challenge activity
+8.13.1: Enter the output of dictionary methods.
+343716.2144758.qx3zqy7
+
+Type the program's output
+airport_codes = {
+    'Seattle': 'SEA',
+    'Paris': 'CDG',
+    'Dallas': 'DAL',
+    'Chicago': 'ORD',
+    'Amsterdam': 'AMS'
+}
+
+print(airport_codes.get('New York', 'na'))
+print(airport_codes.get('Dallas', 'na'))
+print(airport_codes.get('Atlanta', 'na'))
+
+1
+2
+3
+4
+1
+2
+3
+4
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+8.14 Iterating over a dictionary

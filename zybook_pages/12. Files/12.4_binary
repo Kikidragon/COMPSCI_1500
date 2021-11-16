@@ -1,0 +1,182 @@
+
+12.4 Binary data
+
+Some files consist of data stored as a sequence of bytes, known as binary data, that is not encoded into human-readable text using an encoding like ASCII or UTF-8. Images, videos, and PDF files are examples of the types of files commonly stored as binary data. Opening such a file with a text editor displays text that is incomprehensible to humans because the text editor attempts to encode raw byte values into readable characters.
+
+A bytes object is used to represent a sequence of single byte values, such as binary data read from a file. Bytes objects are immutable, just like strings, meaning the value of a bytes object cannot change once created. A byte object can be created using the bytes() built-in function:
+
+    bytes('A text string', 'ascii') – creates a sequence of bytes by encoding the string using ASCII.
+    bytes(100) – creates a sequence of 100 bytes whose values are all 0.
+    bytes([12, 15, 20]) – creates a sequence of 3 bytes with values from the list.
+
+Alternatively, a programmer can write a bytes literal, similar to a string literal, by prepending a 'b' prior to the opening quote:
+Figure 12.4.1: Creating a bytes object using a bytes literal.
+
+my_bytes = b'This is a bytes literal'
+
+print(my_bytes)
+print(type(my_bytes))
+
+b'This is a bytes literal'
+<class 'bytes'>
+
+A programmer can specify raw byte values in a string or bytes literal using the \x escape character preceding the hexadecimal value that describes the value of the byte. In the example below, the raw byte values 0x31 through 0x39 are automatically converted to the corresponding ASCII encoded values 1 - 9 when printed.
+Figure 12.4.2: Byte string literals.
+
+print(b'123456789 is the same as \x31\x32\x33\x34\x35\x36\x37\x38\x39')
+
+
+
+b'123456789 is the same as 123456789'
+
+Programs can also access files using a binary file mode by adding a "b" character to the end of the mode string in a call to open(), as in open('myfile.txt', 'rb'). When using binary file mode "b" on a Windows computer, newline characters "\n" in the file are not automatically mapped to the Windows format "\r\n". In normal text mode, i.e., when not using the "b" binary mode, Python performs this translation of line-endings as a helpful feature, easing compatibility issues between Windows and other operating systems. In binary mode, the translation is not done because inserting additional characters would corrupt the binary data. On non-Windows systems, newline characters are not translated when using binary mode.
+
+When a file is opened using a binary mode, the file.read() method returns a bytes object instead of a string. Also, the file.write() method expects a bytes argument.
+participation activity
+12.4.1: Binary Data.
+1)
+Open "data.txt" as read-only in binary mode.
+
+f = open('data.txt', )
+
+2)
+Open "myfile.txt" as read-only in binary mode.
+
+f =
+
+3)
+Assign x with a bytes object with a single byte whose hexadecimal value is 0x1a. Use a bytes literal.
+
+x =
+
+4)
+Assign x with a bytes object containing three bytes with hexadecimal values 0x05, 0x15, and 0xf2. Use a bytes literal.
+
+x =
+
+Consider a file ball.bmp that contains the following image:
+Cartoon of a soccer ball on fire.
+
+The ball.bmp file contains binary data in a format commonly called a bitmap (hence the .bmp extension at the end of the file name). Opening and reading the file with a binary mode creates a new bytes object consisting of the exact sequence of bytes found in the file's contents.
+Figure 12.4.3: Inspecting the binary contents of an image file.
+
+f = open('ball.bmp', 'rb')  # Open in binary mode using 'b'
+
+# Read image binary data
+contents = f.read()
+
+print('Contents of ball.bmp:\n')
+print(contents)
+
+f.close()
+
+Abbreviated output:
+
+Contents of ball.bmp:
+
+b'BMb\xe6\x00\x00\x00\x00\x00\x006\x04\x00\x00(\x00\x00\x00,\x01\x00\x00
+\xc1\x00\x00\x00\x01\x00\x08\x00\x00\x00\x00\x00,\xe2\x00\x00\xc4'
+
+The print(contents) statement displays the value of contents, converting each byte to human-readable character if that byte's value is a readable ASCII character (less than 128). The first portion of the file's contents is shown in the output, though the file portion is abbreviated because the image contains about 27,000 bytes. Note how the first 14 bytes of the bitmap file is "BMb\xe6\x00\x00\x00\x00\x00\x006\x04\x00\x00". This sequence constitutes the header of the binary file, which describes the bitmap's contents. The first 2 bytes "BM" indicates the type of bitmap. The following 4 bytes "b\xe6\x00\x00" indicates the size of the bitmap. The sequence "6\x04\x00\x00" indicates where in the file the RGB (red-green-blue) values for each pixel in the image are stored.
+Example 12.4.1: Altering a BMP image file.
+
+The following program reads in ball.bmp, overwrites a portion of the image with new pixel colors, and creates a new image file. Download the above image (click the link, "ball.bmp", above the image), and then run the program on your own computer, creating a new, altered version of ball.bmp. Try changing the alterations made by the program to get different colors.
+
+import struct
+
+ball_file = open('ball.bmp', 'rb')
+ball_data = ball_file.read()
+ball_file.close()
+
+# BMP image file format stores location
+# of pixel RGB values in bytes 10-14
+pixel_data_loc = ball_data[10:14]
+
+# Converts byte sequence into integer object
+pixel_data_loc = struct.unpack('<L', pixel_data_loc)[0]
+
+# Create sequence of 3000 red, green, and yellow pixels each
+new_pixels = b'\x01'*3000 + b'\x02'*3000 + b'\x03'*3000
+
+# Overwrite pixels in image with new pixels
+new_ball_data = ball_data[:pixel_data_loc] + \
+              new_pixels + \
+              ball_data[pixel_data_loc + len(new_pixels):]
+
+# Write new image
+new_ball_file = open('new_ball.bmp', 'wb')
+new_ball_file.write(new_ball_data)
+new_ball_file.close()
+
+
+One of a few sentences describing the item as precisely as possible for a blind person
+
+The struct module is a commonly used Python standard library module for packing values into sequences of bytes and unpacking sequences of bytes into values (like integers and strings). The struct.pack() function packs values such as strings and integers into sequences of bytes:
+Figure 12.4.4: Packing values into byte sequences.
+
+import struct
+
+print('Result of packing 5:', end=' ')
+print(struct.pack('>h', 5))
+
+print('Result of packing 256:', end=' ')
+print(struct.pack('>h', 256))
+
+print('Result of packing 5 and 256:', end=' ')
+print(struct.pack('>hh', 5, 256))
+
+
+
+Result of packing 5: b'\x00\x05'
+Result of packing 256: b'\x01\x00'
+Result of packing 5 and 256: b'\x00\x05\x01\x00'
+
+The first argument to struct.pack() is a format string that describes how the following arguments should be converted into bytes. The "<" character indicates the byte-order, or endianness, of the conversion, which determines whether the most-significant or least-significant byte is placed first in the byte sequence. ">" places the most-significant byte first (big-endian), and "<" sets the least-significant byte first. The "h" character in the format strings above describe the type of object being converted, which most importantly determines how many bytes are used when packing the value. "h" describes the value being converted as a 2-byte integer; other common format characters are "b" for a 1-byte integer, "I" for a 4-byte integer, and "s" for a string. Explore the links at the end of the section for more information on the struct module.
+
+The struct.unpack() module performs the reverse operation of struct.pack(), unpacking a sequence of bytes into a new object. Unpacking always returns a tuple with the results, even if only unpacking a single value:
+Figure 12.4.5: Unpacking values from byte sequences.
+
+The following code uses the repr() function, which returns a string version of an object.
+
+import struct
+
+print('Result of unpacking {}:'.format(repr('\x00\x05')), end=' ')
+print(struct.unpack('>h', b'\x00\x05'))
+
+
+print('Result of unpacking {}:'.format(repr('\x01\x00')), end=' ')
+print(struct.unpack('>h', b'\x01\x00'))
+
+print('Result of unpacking {}:'.format(repr('\x00\x05\x01\x00')), end=' ')
+print(struct.unpack('>hh', b'\x00\x05\x01\x00'))
+
+
+
+Result of unpacking '\x00\x05': (5,)
+Result of unpacking '\x01\x00': (256,)
+Result of unpacking '\x00\x05\x01\x00': (5, 256)
+
+participation activity
+12.4.2: The struct module.
+1)
+Complete the statement to pack an integer variable "my_num" into a 2-byte sequence. Assign my_bytes with the sequence. Use the byte ordering given by ">".
+
+my_bytes = struct.pack()
+
+2)
+Assume that variable my_bytes is b"\x00\x04\xff\x00". Complete the statement to assign my_num with the 4-byte integer obtained by unpacking my_bytes. Use the byte ordering given by ">".
+
+my_num = struct.unpack()
+
+Exploring further:
+
+    The bytes object
+    The bytearray type: mutable sequence of bytes
+    The struct module: converting strings into packed binary data
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+12.5 Command-line arguments and files

@@ -1,0 +1,116 @@
+
+8.12 Dictionaries
+
+A dictionary is another type of container object that is different from sequences like strings, tuples, and lists. Dictionaries contain references to objects as key-value pairs – each key in the dictionary is associated with a value, much like each word in an English language dictionary is associated with a definition. As of Python 3.7, dictionary elements maintain their insertion order. The dict type implements a dictionary in Python.
+participation activity
+8.12.1: Dictionaries.
+
+my_dict = {
+    'Bobby': 'A+',
+    'Alan': 67,
+    10: 5.0
+}
+
+
+Word
+Definition
+Key
+Value
+'cat'
+'car'
+'cave'
+'A small...'
+'...'
+'...'
+cat
+A small, feline
+carnivore.
+'Bobby'
+'A+'
+'Alan'
+67
+10
+5.0
+my_dict['Alan']
+67
+Captions
+
+    An English dictionary associates words with definitions.
+    A Python dictionary associates keys with values.
+
+There are several approaches to create a dict:
+
+    The first approach wraps braces { } around key-value pairs of literals and/or variables: {'Jose': 'A+', 'Gino': 'C-'} creates a dictionary with two keys 'Jose' and 'Gino' that are associated with the grades 'A+' and 'C-', respectively.
+    The second approach uses dictionary comprehension, which evaluates a loop to create a new dictionary, similar to how list comprehension creates a new list. Dictionary comprehension is out of scope for this material.
+    Other approaches use the dict() built-in function, using either keyword arguments to specify the key-value pairs or by specifying a list of tuple-pairs. The following creates equivalent dictionaries:
+        dict(Bobby='805-555-2232', Johnny='951-555-0055')
+        dict([('Bobby', '805-555-2232'), ('Johnny', '951-555-0055')])
+
+In practice, a programmer first creates a dictionary and then adds entries, perhaps by reading user-input or text from a file. Dictionaries are mutable, thus entries can be added, modified, or removed in-place. The table below shows some common dict operations.
+Table 8.12.1: Common dict operations.
+Operation 	Description 	Example code
+my_dict[key] 	Indexing operation – retrieves the value associated with key. 	jose_grade = my_dict['Jose']
+my_dict[key] = value 	Adds an entry if the entry does not exist, else modifies the existing entry. 	my_dict['Jose'] = 'B+'
+del my_dict[key] 	Deletes the key from a dict. 	del my_dict['Jose']
+key in my_dict 	Tests for existence of key in my_dict. 	if 'Jose' in my_dict: # ...
+
+Dictionaries can contain objects of arbitrary type, even other containers such as lists and nested dictionaries. Ex: my_dict['Jason'] = ['B+', 'A-'] creates an entry in my dict whose value is a list containing the grades of the student 'Jason'.
+zyDE 8.12.1: Dictionary example: Gradebook.
+
+Complete the program that implements a gradebook. The student_grades dict should consist of entries whose keys are student names, and whose values are lists of student scores.
+
+
+
+participation activity
+8.12.2: Dictionaries.
+1)
+Dictionary entries can be modified in-place – a new dictionary does not need to be created every time an element is added, changed, or removed.
+2)
+The variable my_dict created with the following code contains two keys, 'Bob' and 'A+'.
+
+my_dict = dict(name='Bob', grade='A+')
+
+challenge activity
+8.12.1: Delete from dictionary.
+Delete Prussia from country_capital.
+
+Sample output with input: 'Spain:Madrid,Togo:Lome,Prussia: Konigsberg'
+
+Prussia deleted? Yes.
+Spain deleted? No.
+Togo deleted? No.
+
+
+
+343716.2144758.qx3zqy7
+
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+8.12.2: Enter the output of dictionaries.
+343716.2144758.qx3zqy7
+
+Type the program's output
+airport_codes = {}
+airport_codes['Atlanta'] = 'ATL'
+airport_codes['Minneapolis'] = 'MSP'
+airport_codes['San Jose'] = 'SJC'
+
+print(airport_codes['Atlanta'])
+print(airport_codes['Minneapolis'])
+
+1
+2
+3
+4
+1
+2
+3
+4
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+8.13 Dictionary methods

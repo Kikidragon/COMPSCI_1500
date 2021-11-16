@@ -1,0 +1,96 @@
+
+6.14 Arbitrary argument lists
+Arbitrary arguments
+
+Sometimes a programmer doesn't know how many arguments a function requires. A function definition can include a *args parameter that collects optional positional parameters into an arbitrary argument list tuple.
+Figure 6.14.1: Arbitrary numbers of position arguments using *args.
+
+def print_sandwich(bread, meat, *args):
+    print('{} on {}'.format(meat, bread), end=' ')
+    if len(args) > 0:
+        print('with', end=' ')
+    for extra in args:
+        print(extra, end=' ')
+    print('')
+
+
+print_sandwich('sourdough', 'turkey', 'mayo')
+print_sandwich('wheat', 'ham', 'mustard', 'tomato', 'lettuce')
+
+
+
+turkey on sourdough with mayo
+ham on wheat with mustard tomato lettuce
+
+Adding a final function parameter of **kwargs creates a dictionary containing "extra" arguments not defined in the function definition; kwargs is short for keyword arguments. The keys of the dictionary are the parameter names specified in the function call.
+Figure 6.14.2: Arbitrary numbers of keyword arguments using **kwargs.
+
+def print_sandwich(bread, meat, **kwargs):
+    print('{} on {}'.format(meat, bread))
+    for category, extra in kwargs.items():
+        print('   {}: {}'.format(category, extra))
+
+print_sandwich('sourdough', 'turkey', sauce='mayo')
+print_sandwich('wheat', 'ham', sauce1='mustard', veggie1='tomato', veggie2='lettuce')
+
+
+
+turkey on sourdough
+   sauce: mayo
+
+ham on wheat
+   sauce1: mustard
+   veggie1: tomato
+   veggie2: lettuce
+
+The * and ** characters in *args and **kwargs are the important symbols. Using "args" and "kwargs" is standard practice, but any valid identifier is acceptable (like perhaps using *condiments in the sandwich example).
+
+One or both of *args or **kwargs can be used. They must come last (and in that order if both are used) in the parameter list, otherwise an error occurs.
+
+Below is a practical example showing how to combine normal parameters and the **kwargs parameter. Operating systems like Windows or MacOS have a command line that can be used instead of clicking icons on a desktop. To start an application using the command line, a user types in the application name followed by some options (usually denoted with a double dash --), as in notepad.exe or firefox.exe --new-window=http://google.com --private-toggle=True. The example below uses a function call's arguments to generate a new command.
+participation activity
+6.14.1: Arbitrary numbers of arguments using *args and **kwargs.
+1	def gen_command(application, **kwargs):
+2	    command = application
+3
+4	    for argument in kwargs:
+5	        command += ' --{}={}'.format(argument, kwargs[argument])
+6	    return command
+7
+8	print(gen_command('notepad.exe'))  # No options
+9	print(gen_command('Powerpoint.exe', file='pres.ppt', start=True, slide=3))
+Step 1 of 19
+line that has just executed
+
+next line to execute
+Frames
+
+Objects
+participation activity
+6.14.2: Arbitrary arguments.
+1)
+Complete the first line of the function definition for f() requiring two arguments arg1 and arg2, and an arbitrary argument list *args.
+
+def f():
+    # ...
+
+2)
+Complete the function call so that the output of the program is
+
+John is:
+age: 10
+gender: m
+
+def print_stats(name, **info):
+    print(name, 'is:')
+    for key, value in info.items():
+        print('{}: {}'.format(key, value))
+
+print_stats()
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+6.15 Multiple function outputs

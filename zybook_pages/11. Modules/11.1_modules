@@ -1,0 +1,302 @@
+
+11.1 Modules
+
+The interactive Python interpreter provides the most basic way to execute Python code. However, all of the defined variables, functions, classes, etc., are lost when a programmer closes the interpreter. Thus, a programmer will typically write Python code in a file, and then pass that file as input to the interpreter. Such a file is called a script.
+
+A programmer may find themselves writing the same function over and over again in multiple scripts, or creating very long and difficult to maintain scripts. A solution is to use a module, which is a file containing Python code that can be imported and used by scripts, other modules, or the interactive interpreter. To import a module means to execute the code contained by the module, and make the definitions within that module available for use by the importing program.
+participation activity
+11.1.1: A module is a file containing Python statements and definitions that can be used by other Python sources.
+
+def fct():
+   # ...
+
+
+def sq():
+   # ...
+
+
+x = fct() * sq()
+# ...
+
+
+script1.py
+
+def fct():
+   # ...
+
+
+def sq():
+   # ...
+
+
+x = fct() / sq()
+# ...
+
+
+script2.py
+funcs.py
+
+def fct():
+   # ...
+
+
+def sq():
+   # ...
+
+
+script1.py
+
+import funcs
+
+
+script2.py
+
+import funcs
+
+
+x = funcs.fct() *
+      funcs.sq()
+
+
+x = funcs.fct() /
+      funcs.sq()
+
+
+fct()
+sq()
+
+*
+
+
+fct()
+sq()
+
+/
+
+
+def fct():
+   # ...
+
+
+def sq():
+   # ...
+
+
+Captions
+
+    A programmer writes scripts containing functions and code using those functions. Multiple scripts might define the same functions.
+    The functions can instead be defined in another file. The file can be imported as a 'module'.
+
+A module's filename should end with ".py"; otherwise, the interpreter will not be able to import the module. The module_name item should match the filename of the module, but without the .py extension. Ex: If a programmer wants to import a module whose filename is HTTPServer.py, the import statement import HTTPServer would be used. Note that import statements are case-sensitive; thus, import ABC is distinct from import aBc.
+
+The interpreter must also be able to find the module to import. The simplest solution is to keep modules in the same directory as the executing script; however, the interpreter can also search the computer's file system for the modules. Later material covers these search mechanisms.
+
+Good practice is to place import statements at the top of a file. There are few useful instances of placing import statements in any location other than the top. The benefit of placing import statements at the top is that a reader of the program can quickly identify the modules required for the program to run. A module being required by another program is often called a dependency.
+participation activity
+11.1.2: Basic importing of modules.
+1)
+A programmer using the interactive interpreter wants to use a function defined in the file tools.py. Write a statement that imports the content of tools.py into the interpreter.
+
+>>>
+
+2)
+A file containing Python code that is passed as input to the interpreter is called a _______?
+
+3)
+A _______ is a file containing Python code that can be imported by a script.
+
+Evaluating an import statement initiates the following process to load the module:
+
+    A check is conducted to determine whether the module has already been imported. If already imported, then the loaded module is used.
+    If not already imported, a new module object is created and inserted in sys.modules.
+    The code in the module is executed in the new module object's namespace.
+
+When importing a module, the interpreter first checks to see if that module has already been imported. A dictionary of the loaded modules is stored in sys.modules (available from the sys standard library module). If the module has not yet been loaded, then a new module object is created. A module object is simply a namespace that contains definitions from the module. If the module has already been loaded, then the existing module object is used.
+
+If a module is not found in sys.modules, then the module is added and the statements within the module's code are executed. Definitions in the module's code, e.g., variable assignments and function definitions, are placed in the module's namespace. The module is then added to the importing script or module's namespace, so that the importer can access the definitions. The below animation illustrates.
+participation activity
+11.1.3: Importing a module.
+
+import HTTPServer
+import webpage
+
+my_ip = HTTPServer.address
+
+webpage.disp(my_ip)
+
+# ...
+
+
+sys.modules
+
+
+HTTPServer.py
+
+
+webpage.py
+
+
+empty
+
+HTTPServer
+
+
+HTTPServer
+
+
+import webpage
+
+address = ' '
+
+# ...
+
+
+def disp(ip):
+   # ...
+
+# ...
+
+
+webpage
+
+
+webpage
+
+
+disp
+
+
+webpage
+
+
+address
+
+
+webpage
+
+
+Captions
+
+    sys.modules checks for HTTPServer. A new module object is created. The module is then inserted into sys.modules.
+    HTTPServer's code is executed in module namespace. sys.modules checks for webpage. The new module object is created and inserted in sys.modules.
+    webpage's code is executed in module namespace. webpage is added to HTTPServer namespace.
+    HTTPServer's code continues executing.
+    webpage has already been imported. Existing module is loaded.
+
+Executing import HTTPServer causes a new module object to be created and added to sys.modules. The code of HTTPServer is executed, which contains another import statement import webpage. Since webpage has not yet been imported, a second new module object is created and added to sys.modules. Execution of the webpage code occurs, which defines a function within the webpage module's namespace. Once the webpage module is successfully imported, the execution of HTTPServer's code continues, creating new definitions in the HTTPServer module's namespace. If the script attempts to import webpage, the already created module object is used.
+participation activity
+11.1.4: The importing process.
+
+Order the events as they occur when the statement import HTTPServer executes, assuming HTTPServer has not been previously imported.
+
+    HTTPServer added to sys.modules
+    HTTPServer code executed
+    Module object created
+    sys.modules checked for HTTPServer
+    HTTPServer added to importer's namespace
+
+1st event
+2nd event
+3rd event
+4th event
+5th event
+
+Once a module has been imported, the program can access the definitions of a module using attribute reference operations, e.g., my_ip = HTTPServer.address sets my_ip to address defined in HTTPServer.py. The definitions can also be overwritten, e.g., HTTPServer.address = "www.yahoo.com" binds address in HTTPServer to 'www.yahoo.com'. Note that such changes are temporary and restricted to the current executing Python instance. Ending the program and then re-importing the module would reload the original value of HTTPServer.address.
+
+Consider a file my_funcs.py that contains the following:
+Figure 11.1.1: Contents of my_funcs.py.
+
+def factorial(num):
+    """Calculates and returns the factorial (num!)"""
+    x = 1
+    for i in range(1, num + 1):
+        x *= i
+
+    return x
+
+A programmer can then import my_funcs and use the factorial function as shown below:
+Figure 11.1.2: Using factorial from my_funcs.py.
+
+import my_funcs
+
+n = int(input('Enter number: '))
+fact = my_funcs.factorial(n)
+
+for i in range(1, n + 1):
+    print(i, end=' ')
+    if i != n:
+        print('*', end=' ')
+
+print('=', fact)
+
+
+
+Enter number: 5
+1 * 2 * 3 * 4 * 5 = 120
+...
+Enter number: 3
+1 * 2 * 3 = 6
+
+participation activity
+11.1.5: Basic usage of imported modules.
+
+Consider a file shapes.py with the following contents:
+
+cr = '#'
+
+def draw_square(size):
+    for h in range(size):
+        for w in range(size):
+            print(cr, end='')
+        print()
+
+def draw_rect(height, width):
+    for h in range(height):
+        for w in range(width):
+            print(cr, end='')
+        print()
+
+1)
+Complete the import statement to import shapes.py.
+
+import
+
+2)
+Complete the statement to call the draw_square function from the shapes module, passing an argument of 3.
+
+shapes.
+
+3)
+Write a statement that changes the output to use '$' when drawing shapes. (Change the value of shapes.cr.)
+
+challenge activity
+11.1.1: Enter the output of modules.
+343716.2144758.qx3zqy7
+
+Type the program's output
+
+    main.py
+    arithmetic.py
+
+import arithmetic
+
+def calculate(number):
+    return number - 2
+
+print(calculate(1))
+print(arithmetic.calculate(1))
+
+1
+2
+3
+4
+1
+2
+3
+4
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+11.2 Finding modules

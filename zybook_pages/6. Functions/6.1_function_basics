@@ -1,0 +1,427 @@
+
+6.1 User-defined function basics
+Functions (general)
+
+A program may perform the same operation repeatedly, causing a large and confusing program due to redundancy. Program redundancy can be reduced by creating a grouping of predefined statements for repeatedly used operations, known as a function. Even without redundancy, functions can prevent a main program from becoming large and confusing.
+participation activity
+6.1.1: Functions can reduce redundancy and keep the main program simple.
+Main program
+c1 = (f1 - 32.0) * (5.0 / 9.0)
+c2 = (f2 - 32.0) * (5.0 / 9.0)
+Main program
+c1 = F2C(f1)
+F2C(f)
+c = (f - 32.0) * (5.0 / 9.0)
+return c
+c2 = F2C(f2)
+c3 = F2C(f3)
+Simpler
+a = expression1
+b = a + expression2
+c = b * expression3
+c = XYZ(a, b)
+d = expression1
+e = d + expression2
+f = e * expression3
+f = XYZ(d, e)
+Main program
+Main program
+a = expression1
+b = a + expression2
+c = b * expression3
+c = XYZ(a, b)
+d = expression4
+e = d * d * d
+f = (e + 1) * 2
+f = CalcPQR(d, e, g)
+Main program
+Main program
+f = f / g
+XYZ
+XYZ
+XYZ
+PQR
+Cluttered
+Repeated code
+
+Oops, error in third calculation.
+
+c3 = (f3 + 32.0) * (5.0 / 9.0)
+Calculation only
+written once
+
+Captions
+
+    Commonly, a program performs the same operation, such as a calculation, in multiple places. Here, the Fahrenheit to Celsius calculation is done in three places.
+    Repeated operations clutter the main program. And such repeated operations are more prone to errors.
+    A better approach defines the Fahrenheit to Celsius calculation once, named F2C here. Then, F2C can be "called" three times, yielding a simpler main program.
+    The impact is even greater when the operation has multiple statements -- here 3 statements, but commonly tens of statements. The main program is much simpler.
+    Even without repeated operations, calling predefined operations keeps the main program simple and intuitive.
+
+participation activity
+6.1.2: Reasons for functions.
+
+Consider the animation above.
+1)
+In the original main program, the Fahrenheit to Celsius calculation appeared how many times?
+2)
+Along with yielding a simpler main program, using the predefined Fahrenheit to Celsius calculation prevented what error in the original program?
+3)
+In the last example above, the main program was simplified by _____.
+Function basics
+
+A function is a named series of statements.
+
+    A function definition consists of the new function's name and a block of statements. Ex: def calc_pizza_area():. An indented block of statements follows the definition.
+    A function call is an invocation of the function's name, causing the function's statements to execute.
+
+Python comes with a number of built-in functions, such as input(), int(), len(), etc. The def keyword is used to create new functions.
+
+The function call calc_pizza_area() in the animation below causes execution to jump to the function's statements. Execution returns to the original location after executing the function's last statement.
+
+Good practice is to follow the convention of naming functions with lowercase letters and underscores, such as get_name or calc_area.
+
+Other aspects of the function definition, like the (), are discussed later.
+participation activity
+6.1.3: Function example: Printing a pizza area.
+
+def calc_pizza_area():
+  pi_val = 3.14159265
+
+  pizza_diameter = 12.0
+  pizza_radius = pizza_diameter / 2.0
+  pizza_area = pi_val * pizza_radius * pizza_radius
+  return pizza_area
+
+print('{:.1f} inch pizza is {:.3f} square inches'
+      .format(12, calc_pizza_area()))
+
+
+12.0 inch pizza is 113.097 square inches
+
+12.0
+16.0 inch pizza is 201.062 square inches
+
+16.0
+Captions
+
+    The function call to calc_pizza_area() jumps execution to the function's statements.
+    After the last statement of the calc_pizza_area() function, execution returns to the original location and the area of the pizza is returned and printed.
+
+participation activity
+6.1.4: Function basics.
+
+Given the following program and the calc_pizza_area() function defined above:
+
+print('{:.1f} inch pizza is {:.3f} square inches'.format(12, calc_pizza_area()))
+print('{:.1f} inch pizza is {:.3f} square inches'.format(12, calc_pizza_area()))
+
+1)
+How many function calls to calc_pizza_area() exist?
+
+2)
+How many function definitions of calc_pizza_area() exist?
+
+3)
+How many output statements would execute in total?
+
+4)
+How many print statements exist in calc_pizza_area()?
+
+participation activity
+6.1.5: Calling a function.
+1	def get_face():
+2	   face_char = 'o   o\n  o\nooooo'
+3	   return face_char
+4
+5	print('Say cheese!')
+6
+7	print(get_face())
+8
+9	print('Did it turn out ok?')
+Step 1 of 8
+line that has just executed
+
+next line to execute
+Frames
+
+Objects
+challenge activity
+6.1.1: Basic function call
+get_pattern() returns 5 characters. Call get_pattern() twice in a print() statement to return and print 10 characters. Example output:
+
+*****
+*****
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+Return statements
+
+A function may return one value using a return statement. Below, the compute_square() function returns the square of its argument.
+participation activity
+6.1.6: Function example: Returning a value.
+
+def compute_square(num_to_square):
+    return num_to_square * num_to_square
+
+
+num_squared = compute_square(7)
+
+print('7 squared is', num_squared)
+
+
+7 squared is 49
+7
+7 * 7
+49
+Captions
+
+    Call compute_square and pass in the value 7.
+    Compute the square of num_to_square and return the result.
+    num_squared is assigned the return value of compute_square(7).
+
+A function can only return one item, not two or more (though a list or a tuple with multiple elements could be returned). A function with no return statement, or a return statement with no following expression, returns the value None. None is a special keyword that indicates no value.
+
+A return statement may appear at any point in a function, not just as the last statement. A function may also contain multiple return statements in different locations.
+participation activity
+6.1.7: Return basics.
+1)
+Add a return statement to the function that returns the result of adding num1 and num2.
+
+def compute_sum(num1, num2):
+      return
+
+2)
+Add a return statement to the function that returns the cube of the argument, i.e. (num*num*num).
+
+def compute_cube(num):
+
+
+Parameters
+
+A programmer can influence a function's behavior via an input.
+
+    A parameter is a function input specified in a function definition. Ex: A pizza area function might have diameter as an input.
+    An argument is a value provided to a function's parameter during a function call. Ex: A pizza area function might be called as calc_pizza_area(12.0) or as calc_pizza_area(16.0).
+
+A parameter is like a variable definition. Upon entering the function, the parameter is bound to the argument object provided by the call, creating a shared reference to the object. Upon return, the parameter can no longer be used.
+
+An argument may be an expression, like 12.0, x, or x * 1.5.
+participation activity
+6.1.8: Function parameters.
+1	import math
+2
+3	def calc_pizza_area(pizza_diameter):
+4	   pizza_radius = pizza_diameter / 2.0
+5	   pizza_area = math.pi * pizza_radius * pizza_radius
+6	   return pizza_area
+7
+8	print('12.0 inch pizza is {:.3f} square inches'
+9	     .format(calc_pizza_area(12.0)))
+10	print('16.0 inch pizza is {:.3f} square inches'
+11	     .format(calc_pizza_area(16.0)))
+Step 1 of 16
+line that has just executed
+
+next line to execute
+Frames
+
+Objects
+participation activity
+6.1.9: Parameters.
+1)
+Complete the function definition to have a parameter named num_grade.
+
+def get_letter_grade():
+
+2)
+Call a function named calc_calories(), passing the value 21 as an argument.
+
+3)
+Is the following a valid function definition beginning? Type yes or no.
+def my_fct(userNum + 5):
+
+4)
+Assume a function def get_birthday_age(user_age): simply returns the value of user_age + 1. What will the following code output?
+
+print(get_birthday_age(42), get_birthday_age(20))
+
+Multiple or no parameters
+
+A function may have multiple parameters, which are separated by commas. Parameters are assigned with argument values: First parameter with the first argument, second with the second, etc.
+
+A function definition with no parameters must still have the parentheses, as in: def calc_something():. The call to such a function must include parentheses, and they must be empty, as in: calc_something().
+Figure 6.1.1: Function with multiple parameters.
+
+def calc_pizza_volume(pizza_diameter, pizza_height):
+   pi_val = 3.14159265
+
+   pizza_radius = pizza_diameter / 2.0
+   pizza_area = pi_val * pizza_radius * pizza_radius
+   pizza_volume = pizza_area * pizza_height
+   return pizza_volume
+
+print('12.0 x 0.3 inch pizza is {:.3f} cubic inches.'
+     .format(calc_pizza_volume(12.0, 0.3)))
+
+print('12.0 x 0.8 inch pizza is {:.3f} cubic inches.'
+     .format(calc_pizza_volume(12.0, 0.8)))
+
+print('16.0 x 0.8 inch pizza is {:.3f} cubic inches.'
+     .format(calc_pizza_volume(16.0, 0.8)))
+
+12.0 x 0.3 inch pizza is 33.929 cubic inches.
+12.0 x 0.8 inch pizza is 90.478 cubic inches.
+16.0 x 0.8 inch pizza is 160.850 cubic inches.
+
+participation activity
+6.1.10: Multiple parameters.
+1)
+Which correctly defines two parameters x and y for a function definition:
+def calc_val(...):?
+2)
+Which correctly passes two integer arguments for the function call calc_val(...)?
+3)
+Given a function definition:
+def calc_val(a, b, c):,
+b is assigned with what value during this function call:
+calc_val(42, 55, 77)?
+4)
+Given a function definition:
+def calc_val(a, b, c):
+and given variables i, j, and k, which are valid arguments in the call calc_val(...)?
+participation activity
+6.1.11: Calls with multiple parameters.
+
+Given:
+
+def compute_sum(num1, num2):
+    return num1 + num2
+
+1)
+What will be returned for the following function call?
+ compute_sum(1, 2)
+
+2)
+Write a function call using compute_sum() to return the sum of x and 400 (providing the arguments in that order).
+
+Hierarchical function calls
+
+A function's statements may include function calls, known as hierarchical function calls or nested function calls. Code such as user_input = int(input()) consists of such a hierarchical function call, wherein the input() function is called and evaluates to a value that is then passed as an argument to the int() function.
+participation activity
+6.1.12: Hierarchical function calls
+1	def calc_circle_area(circle_diameter):
+2	    pi_val = 3.14159265
+3
+4	    circle_radius = circle_diameter / 2.0
+5	    circle_area = pi_val * circle_radius * circle_radius
+6	    return circle_area
+7
+8	def calc_pizza_calories(pizza_diameter):
+9	    calories_per_square_inch = 16.7    # Regular crust pepperoni pizza
+10
+11	    total_calories = calc_circle_area(pizza_diameter) * calories_per_square_inch
+12	    return total_calories
+13
+14
+15	print('12 inch pizza has {:.2f} calories.'.format(calc_pizza_calories(12.0)))
+16	print('14 inch pizza has {:.2f} calories.'.format(calc_pizza_calories(14.0)))
+Step 1 of 26
+line that has just executed
+
+next line to execute
+Frames
+
+Objects
+participation activity
+6.1.13: Hierarchical function calls.
+Complete the calc_pizza_calories_per_slice() function to calculate the calories for a single slice of pizza.
+A calc_pizza_calories() function returns a pizza's total calories given the pizza diameter passed as an argument.
+A calc_num_pizza_slices() function returns the number of slices in a pizza given the pizza diameter passed as an argument.
+
+def calc_pizza_calories_per_slice(pizza_diameter):
+    total_calories = <placeholder_A>
+    calories_per_slice = <placeholder_B>
+    return calories_per_slice
+
+1)
+Type the expression for placeholder_A to calculate the total calories for a pizza with diameter pizza_diameter.
+
+total_calories =
+
+2)
+Type the expression for placeholder_B to calculate the calories per slice.
+
+calories_per_slice =
+
+challenge activity
+6.1.2: Basic function call.
+Complete the function definition to return the hours given minutes.
+
+Sample output with input: 210.0
+
+3.5
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+6.1.3: Function call with parameters: Converting measurements.
+Define a function calc_total_inches, with parameters num_feet and num_inches, that returns the total number of inches. Note: There are 12 inches in a foot.
+
+Sample output with inputs: 5 8
+
+Total inches: 68
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+6.1.4: Enter the output of the returned value.
+343716.2144758.qx3zqy7
+
+Type the program's output
+def change_value(x):
+    return x + 3
+
+print(change_value(2))
+
+1
+2
+3
+1
+2
+3
+challenge activity
+6.1.5: Function definition: Volume of a pyramid.
+Define a function calc_pyramid_volume with parameters base_length, base_width, and pyramid_height, that returns the volume of a pyramid with a rectangular base.
+
+Sample output with inputs: 4.5 2.1 3.0
+
+Volume for 4.5, 2.1, 3.0 is: 9.45
+
+Relevant geometry equations:
+Volume = base area x height x 1/3
+Base area = base length x base width.
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+6.2 Print functions

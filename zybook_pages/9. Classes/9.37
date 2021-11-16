@@ -1,0 +1,13 @@
+
+9.37 LAB: The __str__() method
+
+Write a __str__() instance method for the Number class, which returns a string representation of a Number object. The string should be in the format 'The value is yourNum', where yourNum is the value of the integer attribute from the Number class.
+
+Ex: If the input is:
+
+723
+
+then the output is:
+
+The value is 723
+

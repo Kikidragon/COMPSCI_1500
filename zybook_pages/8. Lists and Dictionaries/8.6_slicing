@@ -1,0 +1,164 @@
+
+8.6 List slicing
+
+A programmer can use slice notation to read multiple elements from a list, creating a new list that contains only the desired elements. The programmer indicates the start and end positions of a range of elements to retrieve, as in my_list[0:2]. The 0 is the position of the first element to read, and the 2 indicates last element. Every element between 0 and 2 from my_list will be in the new list. The end position, 2 in this case, is not included in the resulting list.
+Figure 8.6.1: List slice notation.
+
+boston_bruins = ['Tyler', 'Zdeno', 'Patrice']
+print('Elements 0 and 1:', boston_bruins[0:2])
+print('Elements 1 and 2:', boston_bruins[1:3])
+
+
+
+Elements 0 and 1: ['Tyler', 'Zdeno']
+Elements 1 and 2: ['Zdeno', 'Patrice']
+
+The slice boston_bruins[0:2] produces a new list containing the elements in positions 0 and 1: ['Tyler', 'Zdeno']. The end position is not included in the produced list – to include the final element of a list in a slice, specify an end position past the end of the list. Ex: boston_bruins[1:3] produces the list ['Zdeno', 'Patrice'].
+participation activity
+8.6.1: List slicing.
+
+my_list = ['practicing', 'with', 'list', 'slicing']
+
+print(my_list[0:3])
+print(my_list[1:2])
+
+
+my_list
+'practicing'
+'with'
+'list'
+'slicing'
+0
+1
+2
+3
+Start here
+End before here
+['practicing', 'with', 'list']
+['with']
+Captions
+
+    The list object is created.
+    The list is sliced from 0 to 3, and then printed out.
+    The list is sliced from 1 up to 2.
+
+Negative indices can also be used to count backwards from the end of the list.
+Figure 8.6.2: List slicing: Using negative indices.
+
+election_years = [1992, 1996, 2000, 2004, 2008]
+print(election_years[0:-1])  # Every year except the last
+print(election_years[0:-3])  # Every year except the last three
+print(election_years[-3:-1])  # The third and second to last years
+
+
+
+[1992, 1996, 2000, 2004]
+[1992, 1996]
+[2000, 2004]
+
+A position of -1 refers to the last element of the list, thus election_years[0:-1] creates a slice containing all but the last election year. Such usage of negative indices is especially useful when the length of a list is not known, and is simpler than the equivalent expression election_years[0:len(election_years)-1].
+participation activity
+8.6.2: List slicing.
+
+Assume that the following code has been evaluated:
+
+nums = [1, 1, 2, 3, 5, 8, 13]
+
+1)
+What is the result of nums[1:5]?
+
+2)
+What is the result of nums[5:10]?
+
+3)
+What is the result of nums [3:-1]?
+
+An optional component of slice notation is the stride, which indicates how many elements are skipped between extracted items in the source list. Ex: The expression my_list[0:5:2] has a stride of 2, thus skipping every other element, and resulting in a slice that contains the elements in positions 0, 2, and 4. The default stride value is 1 (the expressions my_list[0:5:1] and my_list[0:5] being equivalent).
+
+If the reader has studied string slicing, then list slicing should be familiar. In fact, slicing has the same semantics for most sequence type objects.
+participation activity
+8.6.3: List slicing.
+
+Given the following code:
+
+nums = [0, 25, 50, 75, 100]
+
+1)
+The result of evaluating nums[0:5:2] is [25, 75].
+2)
+The result of evaluating nums[0:-1:3] is [0, 75].
+
+A table of common list slicing operations is given below. Note that omission of the start or end positions, such as my_list[:2] or my_list[4:], has the same meaning as in string slicing. my_list[:2] includes every element up to position 2. my_list[4:] includes every element following position 4 (including the element at position 4).
+Table 8.6.1: Some common list slicing operations.
+Operation 	Description 	Example code 	Example output
+my_list[start:end] 	Get a list from start to end (minus 1). 	my_list = [5, 10, 20]
+print(my_list[0:2])
+
+[5, 10]
+
+my_list[start:end:stride] 	Get a list of every stride element from start to end (minus 1). 	my_list = [5, 10, 20, 40, 80]
+print(my_list[0:5:3])
+
+[5, 40]
+
+my_list[start:] 	Get a list from start to end of the list. 	my_list = [5, 10, 20, 40, 80]
+print(my_list[2:])
+
+[20, 40, 80]
+
+my_list[:end] 	Get a list from beginning of list to end (minus 1). 	my_list = [5, 10, 20, 40, 80]
+print(my_list[:4])
+
+[5, 10, 20, 40]
+
+my_list[:] 	Get a copy of the list. 	my_list = [5, 10, 20, 40, 80]
+print(my_list[:])
+
+[5, 10, 20, 40, 80]
+
+The interpreter handles incorrect or invalid start and end positions in slice notation gracefully. An end position that exceeds the length of the list is treated as the end of the list. If the end position is less than the start position, an empty list is produced.
+participation activity
+8.6.4: Match the expressions to the list.
+
+Match the expression on the left to the resulting list on the right. Assume that my_list is the following Fibonacci sequence:
+
+my_list = [1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+    my_list[4:]
+    my_list[2:5]
+    my_list[3:1]
+    my_list[:20]
+    my_list[3:6]
+    my_list[len(my_list)//2:(len(my_list)//2) + 1]
+
+[5, 8, 13, 21, 34]
+[]
+[1, 1, 2, 3, 5, 8, 13, 21, 34]
+[5]
+[2, 3, 5]
+[3, 5, 8]
+challenge activity
+8.6.1: List slicing.
+343716.2144758.qx3zqy7
+
+Type the program's output
+my_list = [13, 14, 15, 16, 17, 18, 19]
+new_list = my_list[0:4]
+print(new_list)
+
+1
+2
+3
+4
+5
+1
+2
+3
+4
+5
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+8.7 Loops modifying lists

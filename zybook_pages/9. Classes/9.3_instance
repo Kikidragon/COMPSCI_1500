@@ -1,0 +1,144 @@
+
+9.3 Instance methods
+
+A function defined within a class is known as an instance method. An instance method can be referenced using dot notation. The following example illustrates:
+Figure 9.3.1: A class definition may include user-defined functions.
+
+class Time:
+    def __init__(self):
+        self.hours = 0
+        self.minutes = 0
+
+    def print_time(self):
+        print('Hours:', self.hours, end=' ')
+        print('Minutes:', self.minutes)
+
+
+time1 = Time()
+time1.hours = 7
+time1.minutes = 15
+time1.print_time()
+
+
+
+Hours: 7 Minutes: 15
+
+The definition of print_time() has a parameter "self" that provides a reference to the class instance. In the program above "self" is bound to time1 when time1.print_time() is called. A programmer does not specify an argument for "self" when calling the function; (the argument list in time1.print_time() is empty.) The method's code can use "self" to access other attributes or methods of the instance; for example, the print_time method uses "self.hours" and "self.minutes" to get the value of the time1 instance data attributes.
+participation activity
+9.3.1: Methods.
+
+Consider the following class definition:
+
+class Animal:
+    def __init__(self):
+        # ...
+
+    def noise(self, sound):
+        # ...
+
+1)
+Write a statement that creates an instance of Animal called "cat".
+
+2)
+Write a statement that calls the noise method of the cat instance with the argument "meow".
+
+3)
+What should the first item in the parameter list of every method be?
+
+zyDE 9.3.1: Adding methods to a class.
+
+Add a method calculate_pay() to the Employee class. The method should return the amount to pay the employee by multiplying the employee's wage and number of hours worked.
+
+
+
+Note that __init__ is also a method of the Time class; however, __init__ is a special method name, indicating that the method implements some special behavior of the class. In the case of __init__, that special behavior is the initialization of new instances. Special methods can always be identified by the double underscores __ that appear before and after an identifier. Good practice is to avoid using double underscores in identifiers to prevent collisions with special method names, which the Python interpreter recognizes and may handle differently. Later sections discuss special method names in more detail.
+
+A common error for new programmers is to omit the self argument as the first parameter of a method. In such cases, calling the method produces an error indicating too many arguments to the method were given by the programmer, because a method call automatically inserts an instance reference as the first argument:
+Figure 9.3.2: Accidentally forgetting the self parameter of a method generates an error when calling the method.
+
+class Employee:
+    def __init__(self):
+        self.wage = 0
+        self.hours_worked = 0
+
+    def calculate_pay():  # Programmer forgot self parameter
+        return self.wage * self.hours_worked
+
+
+alice = Employee()
+alice.wage = 9.25
+alice.hours_worked = 35
+print('Alice earned {:.2f}'.format(alice.calculate_pay()))
+
+Traceback (most recent call last):
+  File "<stdin>", line 13, in <module>
+TypeError: calculate_pay() takes 0 positional arguments but 1 was given
+
+participation activity
+9.3.2: Method definitions.
+1)
+Write the definition of a method "add" that has no parameters.
+
+class MyClass:
+    # ...
+    def :
+        return self.x + self.y
+
+2)
+Write the definition of a method "print_time" that has a single parameter "gmt".
+
+class Time:
+    # ...
+    def :
+        if gmt:
+            print('Time is: {}:{} GMT'
+                .format(self.hours-8, self.minutes))
+        else:
+            print('Time is: {}:{}'
+                .format(self.hours, self.minutes))
+
+challenge activity
+9.3.1: Instance methods.
+343716.2144758.qx3zqy7
+
+Type the program's output
+class Person:
+   def __init__(self):
+      self.first_name = ''
+
+   def print_name(self):
+      print('I am', self.first_name)
+
+person1 = Person()
+person1.first_name = 'Sam'
+person1.print_name()
+
+1
+2
+3
+4
+1
+2
+3
+4
+challenge activity
+9.3.2: Defining an instance method.
+Define the instance method inc_num_kids() for PersonInfo. inc_num_kids increments the member data num_kids.
+
+Sample output for the given program with one call to inc_num_kids():
+
+Kids: 0
+New baby, kids now: 1
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+9.4 Class and instance object types

@@ -1,0 +1,242 @@
+
+6.13 Keyword arguments and default parameter values
+Keyword arguments
+
+Sometimes a function requires many arguments. In such cases, a function call can become very long and difficult to read. Furthermore, a programmer might easily make a mistake when calling such a function if the ordering of the arguments is given incorrectly. Consider the following program:
+Figure 6.13.1: A function with many arguments.
+
+def print_book_description(title, author, publisher, year, version, num_chapters, num_pages):
+    # Format and print description of a book...
+
+print_book_description('The Lord of the Rings', 'J. R. R. Tolkien', 'George Allen & Unwin',
+                       1954, 1.0, 22, 456)
+
+In the example above, a programmer might very easily swap the positions of some of the arguments in the function call, potentially introducing a bug into the program. Python provides for keyword arguments that allow arguments to map to parameters by name, instead of implicitly by position in the argument list. When using keyword arguments, the argument list does not need to follow a specific ordering.
+Figure 6.13.2: Using keyword arguments.
+
+def print_book_description(title, author, publisher, year, version, num_chapters, num_pages):
+    # Format and print description of a book...
+
+print_book_description(title='The Lord of the Rings', publisher='George Allen & Unwin',
+                       year=1954, author='J. R. R. Tolkien', version=1.0,
+                       num_pages=456, num_chapters=22)
+
+Keyword arguments provide a bit of clarity to potentially confusing function calls. Good practice is to use keyword arguments for any function containing more than approximately 4 arguments.
+
+Keyword arguments can be mixed with positional arguments, provided that the keyword arguments come last. A common error is to place keyword arguments before all position arguments, which generates an exception.
+Figure 6.13.3: All keyword arguments must follow positional arguments.
+
+def split_check(amount, num_people, tax_percentage, tip_percentage):
+    # ...
+
+split_check(125.00, tip_percentage=0.15, num_people=2, tax_percentage=0.095)
+
+participation activity
+6.13.1: Keyword arguments.
+
+Assume the function below is defined:
+
+def split_check(amount, num_people, tax_percentage, tip_percentage):
+    # ...
+
+1)
+What value is passed as the tax_percentage argument in the function call split_check(60.52, 5, .07, tip_percentage=0.18)? Answer ERROR if an error occurs.
+
+2)
+What value is passed as the num_people argument in the function call split_check(tax_percentage=.07, 60.52, 2, tip_percentage=0.18)? Answer ERROR if an error occurs.
+
+Default parameter values
+
+Sometimes a function has parameters that are optional. A function can have a default parameter value for one or more parameters, meaning that a function call can optionally omit an argument, and the default parameter value will be substituted for the corresponding omitted argument.
+
+The following function prints a date in a particular style, given parameters for day, month, and year. The fourth parameter indicates the desired style, with 0 meaning American style, and 1 meaning European style. For July 30, 2012, the American style is 7/30/2012 and the European style is 30/7/2012.
+Figure 6.13.4: Parameter with a default value.
+
+def print_date(day, month, year, style=0):
+    if style == 0:  # American
+        print(month, '/', day, '/', year)
+    elif style == 1:  # European
+        print(day, '/', month, '/', year)
+    else:
+        print('Invalid Style')
+
+print_date(30, 7, 2012, 0)
+print_date(30, 7, 2012, 1)
+print_date(30, 7, 2012)  # style argument not provided! Default value of 0 used.
+
+
+
+7 / 30 / 2012
+30 / 7 / 2012
+7 / 30 / 2012
+
+The fourth (and last) parameter is defined with a default value: style=0. If the function call does not provide a fourth argument, then style has value 0. A parameter's default value is the value used in the absence of an argument in the function call.
+
+The same can be done for other parameters, as in: def print_date(day=1, month=1, year=2000, style=0). If positional arguments are passed (i.e., not keyword-arguments), then only the last arguments can be omitted. The following are valid calls to this print_date() function:
+Figure 6.13.5: Valid function calls with default parameter values.
+
+print_date(30, 7, 2012, 0)   # Defaults: none
+print_date(30, 7, 2012)      # Defaults:                            style=0
+print_date(30, 7)            # Defaults:                 year=2000, style=0
+print_date(30)               # Defaults:        month=1, year=2000, style=0
+print_date()                 # Defaults: day=1, month=1, year=2000, style=0
+
+If a parameter does not have a default value, then failing to provide an argument (either keyword or positional) generates an error.
+
+A common error is to provide a mutable object, like a list, as a default parameter. Such a definition can be problematic because the default argument object is created only once, at the time the function is defined (when the script is loaded), and not every time the function is called. Modification of the default parameter object will persist across function calls, which is likely not what a programmer intended. The below program demonstrates the problem with mutable default objects and illustrates a solution that creates a new empty list each time the function is called.
+Figure 6.13.6: Mutable default objects remain changed over multiple function calls.
+Default object modification
+
+def append_to_list(value, my_list=[]):
+    my_list.append(value)
+    return my_list
+
+numbers = append_to_list(50)  # default list appended with 50
+print(numbers)
+numbers = append_to_list(100)  # default list appended with 100
+print(numbers)
+
+[50]
+[50, 100]
+
+
+Solution: Make new list
+
+def append_to_list(value, my_list=None):  # Use default parameter value of None
+    if my_list == None:  # Create a new list if a list was not provided
+        my_list = []
+
+    my_list.append(value)
+    return my_list
+
+numbers = append_to_list(50)  # default list appended with 50
+print(numbers)
+numbers = append_to_list(100)  # default list appended with 100
+print(numbers)
+
+[50]
+[100]
+
+The left program shows a function append_to_list() that has an empty list as default value of my_list. A programmer might expect that each time the function is called without specifying my_list, a new empty list will be created and the result of the function will be [value]. However, the default object persists across function calls. The solution replaces the default list with None, checking for that value, and then creating a new empty list in the local scope if necessary.
+participation activity
+6.13.2: Default parameter values.
+
+The following function is defined:
+
+def split_check(amount, num_people, tax_percentage=0.095, tip_percentage=0.15)
+    # ...
+
+1)
+What will the parameter tax_percentage be assigned for the following call? Type ERROR if the call is invalid. split_check(65.50, 3)
+
+2)
+What will the parameter tax_percentage be assigned for the following call? Type ERROR if the call is invalid. split_check(65.50, 3, 0.125)
+
+3)
+What will the parameter num_people be assigned for the following call? Type ERROR if the call is invalid. split_check(12.50, tip_percentage=0.18)
+
+4)
+What will the parameter num_people be assigned for the following call? Type ERROR if the call is invalid. split_check(tip_percentage=0.18, 12.50, 4)
+
+Mixing keyword arguments and default parameter values
+
+Mixing keyword arguments and default parameter values allows a programmer to omit arbitrary arguments from a function call. Because keyword arguments use names instead of position to match arguments to parameters, any argument can be omitted as long as that argument has a default value.
+
+Consider the print_date function from above. If every parameter has a default value, then the user can use keyword arguments to pass specific arguments anywhere in the argument list. Below are some sample function calls:
+Figure 6.13.7: Mixing keyword arguments and default parameter values allows omitting arbitrary arguments.
+
+def print_date(day=1, month=1, year=2000, style=0):
+    # ...
+
+
+print_date(day=30, year=2012)   # Defaults:        month=1,            style=0
+print_date(style=1)             # Defaults: day=1, month=1, year=2000
+print_date(year=2012, month=4)  # Defaults: day=1,                     style=0
+
+participation activity
+6.13.3: Mixing keyword and default arguments.
+
+Assume the function below is defined:
+
+def split_check(amount=10, num_people=2, tax_percentage=0.095, tip_percentage=0.18):
+    # ...
+
+When entering answers, use the same number of significant digits as the default parameter values in the split_check() definition.
+1)
+What will the parameter tax_percentage be assigned for the following call? Type ERROR if the call is invalid. split_check(amount=49.50, num_people=3)
+
+2)
+Write a statement that splits a $50 check among 4 people. Use the default tax percentage and tip amount.
+
+3)
+Write a statement that splits a $25 check among 3 people and leaves a 25% tip. Use the default tax rate.
+
+challenge activity
+6.13.1: Keyword arguments and default parameters.
+343716.2144758.qx3zqy7
+
+Type the program's output
+def show(a, b, c):
+    print('{}/{}/{}'.format(a, b, c))
+
+show(a=4, c=2, b=6)
+
+1
+2
+3
+4
+1
+2
+3
+4
+challenge activity
+6.13.2: Return number of pennies in total.
+Write a function number_of_pennies() that returns the total number of pennies given a number of dollars and (optionally) a number of pennies. Ex: If you have $5.06 then the input is 5 6, and if you have $4.00 then the input is 4.
+
+Sample output with inputs: 5 6 4
+
+506
+400
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+6.13.3: Default parameters: Calculate splitting a check between diners.
+
+Write a split_check function that returns the amount that each diner must pay to cover the cost of the meal.
+
+The function has 4 parameters:
+
+    bill: The amount of the bill.
+    people: The number of diners to split the bill between.
+    tax_percentage: The extra tax percentage to add to the bill.
+    tip_percentage: The extra tip percentage to add to the bill.
+
+The tax or tip percentages are optional and may not be given when calling split_check. Use default parameter values of 0.15 (15%) for tip_percentage, and 0.09 (9%) for tax_percentage.
+
+Sample output with inputs: 25 2
+
+Cost per diner: 15.5
+
+Sample output with inputs: 100 2 0.075 0.21
+
+Cost per diner: 64.25
+
+
+
+343716.2144758.qx3zqy7
+
+
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+6.14 Arbitrary argument lists

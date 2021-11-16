@@ -1,0 +1,172 @@
+
+
+9.1 Classes: Introduction
+Grouping related items into objects
+
+The physical world is made up of material items like wood, metal, plastic, fabric, etc. To keep the world understandable, people think in terms of higher-level objects, like chairs, tables, and TV's. Those objects are groupings of the lower-level items.
+
+Likewise, a program is made up of lower-level items like variables and functions. To keep programs understandable, programmers often deal with higher-level groupings of those items, known as objects. In programming, an object is a grouping of data (variables) and operations that can be performed on that data (functions or methods).
+participation activity
+9.1.1: The world is viewed not as materials, but rather as objects.
+Green fabric
+Wood
+Wood
+Red fabric
+Wood
+Metal bar
+Sit
+Sit
+Lie down
+Put stuff in
+Take stuff out
+Chair
+Couch
+Drawer
+Green fabric
+Wood
+Wood
+Red fabric
+Wood
+Metal bar
+Captions
+
+    The world consists of items like, wood, metal, fabric, etc.
+    But people think in terms of higher-level objects, like chairs, couches, and drawers.
+    In fact, people think mostly of the operations that can be done with the objects. For a drawer, operations include put stuff in and take stuff out.
+
+participation activity
+9.1.2: Programs commonly are not viewed as variables and functions/methods, but rather as objects.
+Restaurant
+Name
+Phone
+Reviews
+Add review
+Hotel
+Name
+Phone
+Reviews
+Cuisines
+Amenities
+Set name/phone number
+Print all
+Set name/phone number
+Add amenity
+Add review
+Print all
+Name
+Phone
+Reviews
+Name
+Phone
+Reviews
+Cuisines
+Amenities
+Add cuisine
+Captions
+
+    A program consists of variables and functions/methods. But programmers may prefer to think of higher-level objects like Restaurants and Hotels.
+    In fact, programmers think mostly of the operations that can be done with the object, like giving a Hotel or Restaurant a name or adding a review.
+
+Creating a program as a collection of objects can lead to a more understandable, manageable, and properly-executing program.
+participation activity
+9.1.3: Objects.
+Some of the variables and functions for a used-car inventory program are to be grouped into an object type named CarOnLot. Select True if the item should become part of the CarOnLot object type, and False otherwise.
+1)
+car_sticker_price
+2)
+todays_temperature
+3)
+days_on_lot
+4)
+orig_purchase_price
+5)
+num_sales_people
+6)
+increment_car_days_on_lot()
+7)
+decrease_sticker_price()
+8)
+determine_top_salesman()
+Abstraction / Information hiding
+
+Abstraction occurs when a user interacts with an object at a high-level, allowing lower-level internal details to remain hidden (aka information hiding or encapsulation). Ex: An oven supports an abstraction of a food compartment and a knob to control heat. An oven's user does not need to interact with the internal parts of an oven.
+
+Objects support abstraction by hiding entire groups of functions and variables and exposing only certain functions to a user.
+
+An abstract data type (ADT) is a data type whose creation and update are constrained to specific well-defined operations. A class can be used to implement an ADT.
+participation activity
+9.1.4: Objects strongly support abstraction / information hiding.
+Don't do this
+Restaurant
+Set main info
+Add review
+Name
+Phone
+Reviews
+...
+Hidden
+Captions
+
+    Abstraction simplifies our world. An oven is viewed as having a compartment for food and a knob that can be turned to heat the food.
+    People need not be concerned with an oven's internal workings. Ex: People don't reach inside trying to adjust the flame.
+    Similarly, an object has operations that a user can apply. The object's internal data, and possibly other operations, are hidden from the user.
+
+participation activity
+9.1.5: Abstraction / information hiding.
+1)
+A car presents an abstraction to a user, including a steering wheel, gas pedal, and brake.
+2)
+A refrigerator presents an abstraction to a user, including freon gas, a compressor, and a fan.
+3)
+A software object is created for a soccer team. A reasonable abstraction allows setting the team's name, adding or deleting players, and printing a roster.
+4)
+A software object is created for a university class. A reasonable abstraction allows viewing and modifying variables for the teacher's name, and variables implementing a list of every student's name as well.
+Python built-in objects
+
+Python automatically creates built-in objects that are provided by the language for a programmer to use, and include the basic data types like integers and strings.
+
+A programmer always interacts with built-in objects when writing Python code. Ex: A string object created with mystr = 'Hello!'. The value of the string 'Hello!' is one part of the object, as are functions to operate on that string like str.isdigit() and str.lower().
+participation activity
+9.1.6: Built in objects.
+s1 = "Hello!!"
+
+i1 = 130
+
+s1
+
+value:    "Hello!!"
+isdigit() isascii() islower()
+startswith() isupper() split()
+format() swapcase() ...
+
+i1
+
+value:    130
+abs() float() complex()
+pow() ...
+
+Built-in objects are automatically provided by the programming language. Some examples include the string (str) and integer (int) data types.
+Captions
+
+    Defining a new string s1 creates a new built-in str object. The str object groups together the string value "Hello!!" along with useful functions.
+    Defining a new integer i1 creates a new built-in int object. The implementation of the int object abstracts many details away that a programmer doesn't need.
+
+participation activity
+9.1.7: Built-in objects.
+1)
+The Python programming language provides a built-in object for strings.
+2)
+Built-in objects often include useful functions.
+3)
+The built-in string object includes every function a programmer could ever find useful for dealing with strings.
+Survey
+
+The following questions are part of a zyBooks survey to help us learn about the experiences in programming classes among college students. The survey can be taken anonymously and takes just 5-10 minutes. Please take a short moment to answer by clicking the following link.
+
+Link: Student survey
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+9.2 Classes: Grouping data

@@ -1,0 +1,243 @@
+
+11.4 Executing modules as scripts
+
+An import statement executes the code contained within the imported module. Thus, any statements in the global scope of a module, like printing or getting user input, will be executed when that module is imported. Execution of those statements may be an unintended side effect of the import. Commonly a programmer wants to treat a Python file as both a script executed by the interpreter and as an importable module. When used as an importable module, the file should not produce side effects when imported.
+
+Ex: Consider the following Python file web_search.py, which contains functions for performing searches that "scrape" the results from a fictional web search engine, like Yahoo or Google. Executing the file as a script produces the following output:
+Figure 11.4.1: web_search.py: Get the 1st page of results for a web search.
+
+import urllib.request
+
+def search(terms):
+    """Do a fictional web engine search and return the results"""
+    html = _send_request(terms)
+    results = _get_results(html)
+    return results
+
+def _send_request(terms):
+    """Send search to fictional web search engine and receive HTML response"""
+    terms = terms.replace(' ', '%20')  #replace spaces
+
+    url = 'http://www.search.fake.zybooks.com/search?q=' + terms
+    info = {'User-Agent': 'Mozilla/5.0'}
+    req = urllib.request.Request(url, headers=info)
+
+    response = urllib.request.urlopen(req)
+    html = str(response.read())
+    return html
+
+def _get_results(html):
+    """
+    Finds the links returned in 1st page of results.
+    """
+    start_tag = '<cite>'  # start of results
+    end_tag = '</cite>'   # Results end with this tag
+    links = []            # list of result links
+
+    start_tag_loc = html.find(start_tag)  # find 1st link
+
+    while start_tag_loc > -1:
+        link_start = start_tag_loc + len(start_tag)
+        link_end = html.find(end_tag, link_start)
+        links.append(html[link_start:link_end])
+        start_tag_loc = html.find(start_tag, link_end)
+
+    return links
+
+search_term  = input('Enter search terms: ')
+result = search(search_term)
+
+print('Found {} links:'.format(len(result)))
+for link in result:
+    print(' ', link)
+
+
+
+Enter search terms: Funny pictures of cats
+Found 7 links:
+  icanhas.cheezburger.com/lolcats
+  icanhas.cheezburger.com/
+  www.funnycatpix.com/
+  www.lolcats.com/
+  www.buzzfeed.com/expresident/best-cat-pictures
+  photobucket.com/images/lol%20cat
+  https://www.facebook.com/pages/Funny-Cat-
+Pics/204188529615813
+
+...
+
+Enter search terms:  Videos of laughing babies
+Found 4 links:
+  www.godtube.com/watch/?v=W7ZP6WNX
+  afv.com/funniest-videos-week-laughing-babies/
+  www.today.com/.../laughing-baby-video-will-give-
+you-giggles-t22521
+  www.personalgrowthcourses.net/video/baby_laughing
+
+Note that the above program imports and uses the urllib module, which provides functions for fetching URLs. urllib is not supported in the online interpreter of this material and the example is for demo purposes only.
+
+If another script imports web_search.py to use the search() function, the statements at the bottom of web_search.py will also execute. The domain_freq.py file below tracks the frequency of specific domains in search results; however, importing web_search.py causes a search and listing of each site to unintentionally occur, because that search is called at the global scope of web_search.py.
+Figure 11.4.2: domain_freq.py: Importing web_search causes unintended search to occur.
+
+# Tracks frequency of domains in web searches
+import web_search  # Causes unintended search
+
+domains = {}
+
+terms = input("\nEnter search terms ('q' to quit): ")
+while terms != 'q':
+    results = web_search.search(terms)
+
+    for link in results:
+        if '.com' in link:
+            domain_end = link.find('.com')
+        elif '.net' in link:
+            domain_end = link.find('.net')
+        elif '.org' in link:
+            domain_end = link.find('.org')
+        else:
+            print('Unknown top level domain')
+            continue
+
+        dom = link[:domain_end + 4]
+        if dom not in domains:
+            domains[dom] = 1
+        else:
+            domains[dom] += 1
+
+    terms = input("Enter search terms ('q' to quit): ")
+
+print('\nNumber of search results for each site:')
+for domain, num in domains.items():
+    print(domain + ':', num)
+
+
+
+Enter search terms: Music Videos
+Found 9 links:
+  http://www.mtv.com/music/videos/
+  http://music.yahoo.com/videos/
+  http://www.vh1.com/video/
+  http://www.vevo.com/videos
+  http://en.wikipedia.org/wiki/Music_video
+  http://www.music.com/
+  http://www.youtube.com/watch%3Fv%3DSMpL6JKF5Ww
+  http://www.bet.com/music/music-videos.html
+  http://www.dailymotion.com/us/channel/music
+
+Enter search terms ('q' to quit): Britney Spears
+Enter search terms ('q' to quit): Michael Jackson
+Enter search terms ('q' to quit): q
+
+Number of search results for each site:
+  http://www.people.com: 1
+  http://www.britneyspears.com: 1
+  http://www.imdb.com: 1
+  http://www.michaeljackson.com: 1
+  https://twitter.com: 1
+  http://www.youtube.com: 3
+  http://perezhilton.com: 1
+  http://en.wikipedia.org: 2
+  http://www.tmz.com: 2
+  http://www.mtv.com: 2
+  http://www.biography.com: 1
+  https://www.facebook.com: 1
+
+A file can better support being executed as both a script and an importable module by utilizing the __name__ special name. __name__ is a global string variable automatically added to every module that contains the name of the module. Ex: my_funcs.__name__ would have the value "my_funcs", and web_search.__name__ would have the value "web_search". (Note that __name__ has two underscores before name and two underscores after.) However, the value of __name__ for the executing script is always set to "___main___" to differentiate the script from imported modules. The following comparison can be performed:
+Figure 11.4.3: Checking if a file is the executing script or an imported module.
+
+if __name__ == "__main__":
+    # File executed as a script
+
+If if __name__ == "__main__" is true, then the file is being executed as a script and the branch is taken. Otherwise, the file was imported and thus __name__ is equal to the module name, e.g., "web_search".
+
+The contents of the branch typically include a user interface to functions or class definitions within the file. A user can execute the file as a script and interact with the user interface, or another script can import the file just to use the definitions. The web_search.py file is modified below to fix the unintentional search.
+Figure 11.4.4: web_search.py modified to run as either script or module.
+
+Each file below is executed as a script.
+domain_freq.py
+
+# Tracks frequency of domains in web searches
+import web_search
+
+domains = {}
+
+terms = input("Enter search terms ('q' to quit): ")
+while terms != 'q':
+    results = web_search.search(terms)
+
+    # ...
+
+print('\nNumber of search results for each site:')
+for domain, num in domains.items():
+    print(domain + ':', num  )
+
+
+web_search.py
+
+import urllib.request
+
+def search(terms):
+    # ...
+
+def _send_request(terms):
+    # ...
+
+def _get_results(html):
+    # ...
+
+if __name__ == "__main__":
+    search_term  = input('Enter search terms:\n')
+    result = search(search_term)
+
+    print('Found {} links:'.format(len(result)))
+    for link in result:
+        print(' ', link)
+
+Enter search terms ('q' to quit): Britney Spears
+Enter search terms ('q' to quit): Michael Jackson
+Enter search terms ('q' to quit): q
+
+Number of search results for each site:
+  http://www.people.com: 1
+  http://www.britneyspears.com: 1
+  http://www.imdb.com: 1
+  http://www.michaeljackson.com: 1
+  https://twitter.com: 1
+  http://www.youtube.com: 3
+  http://perezhilton.com: 1
+  http://en.wikipedia.org: 2
+  http://www.tmz.com: 2
+  http://www.mtv.com: 2
+  http://www.biography.com: 1
+  https://www.facebook.com: 1
+
+
+
+Enter search terms: Music Videos
+Found 9 links:
+  http://www.mtv.com/music/videos/
+  http://music.yahoo.com/videos/
+  http://www.vh1.com/video/
+  http://www.vevo.com/videos
+  http://en.wikipedia.org/wiki/Music_video
+  http://www.music.com/
+  http://www.youtube.com/watch%3Fv%3DSMpL6JKF5Ww
+  http://www.bet.com/music/music-videos.html
+  http://www.dailymotion.com/us/channel/music
+
+The web_search.py file has been modified to compare __name__ to "__main__". When the file is executed as a script, a single search request is made and the results are displayed. Executing domain_freq.py imports web_search, which now does not perform the initial search because __name__ is equal to "web_search".
+participation activity
+11.4.1: Executing modules as scripts.
+1)
+Importing a module executes the statements contained within the imported module.
+2)
+The value of the __name__ variable of the executing script is always "__main__".
+3)
+If a module is imported with the statement import my_mod, then my_mod.__name__ is equal to "__main__".
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+11.5 Reloading modules

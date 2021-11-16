@@ -1,0 +1,13 @@
+
+7.18 LAB: Postfix of 3
+
+The postfix of 3 is the last 3 characters of a string. Given a string input, output the last three characters of that string. Assume the string will always have at least three characters.
+
+Ex: If the input is:
+
+chicken
+
+the output is:
+
+Postfix: ken
+

@@ -1,0 +1,169 @@
+
+6.8 Functions are objects
+Functions as objects
+
+A function is also an object in Python, having a type, identity, and value. A function definition like def print_face(): creates a new function object with the name print_face bound to that object.
+
+A part of the value of a function object is compiled bytecode that represents the statements to be executed by the function. A bytecode is a low-level operation, such as adding, subtracting, or loading from memory. One Python statement might require multiple bytecode operations. Ex: The function below adds 1 to an argument and returns the result. The corresponding bytecode for the function requires 4 bytecode operations to perform the addition, and 2 to return the result.
+Figure 6.8.1: Python bytecode.
+Program 	Bytecode
+
+def add_one(x):
+    y = x + 1
+    return y
+
+
+
+            0 LOAD_FAST                0 (x)
+            3 LOAD_CONST               1 (1)
+            6 BINARY_ADD
+            7 STORE_FAST               1 (y)
+
+           10 LOAD_FAST                1 (y)
+           13 RETURN_VALUE
+
+All Python code is compiled before being executed by the interpreter. Statements entered in an interactive interpreter are compiled immediately, then executed. Modules are compiled when imported, and functions are compiled when the interpreter evaluates the function definition.
+
+A statement like print_face() causes the function object to execute a call operation, which in turn executes the function's bytecode. A programmer never has to deal with bytecode – bytecode is used internally by the interpreter.
+
+Because a function is an object, a function can be used in an assignment statement just like other objects. This is illustrated in the following animation.
+participation activity
+6.8.1: Functions are objects.
+LOAD_CONST
+PRINT_ITEM
+...
+
+def print_face():
+   # print face statements...
+
+
+print_face()
+
+func = print_face
+func()
+
+
+Names:
+Objects:
+
+print_face
+
+
+print_face
+func
+o    o
+  >
+-------
+o    o
+  >
+-------
+Captions
+
+    def print_face() creates a new function object.
+    The compiled bytecode of print_face function is stored in the function object.
+    When print_face() is called, the print_face() function runs.
+    Calling func() is the same as calling print_face().
+
+The interpreter creates a new function object when the definition def print_face() is evaluated. The function object contains as part of its value the function's bytecode. Since a function is just an object, assignment operations work the same: func = print_face binds the name func to the same object as print_face, thus creating multiple names for a single function. Both func() and print_face() perform the same call operation and jump execution to print_face.
+
+Functions can be passed like any other object as an argument to another function. Consider the following example, which defines two different functions print_human_head() and print_monkey_head(). A third function print_figure() accepts a function as an argument, calling that function to print a head, and then printing a body.
+Figure 6.8.2: Functions can be passed as arguments.
+
+def print_human_head():
+    print('   ||||| ')
+    print('   o   o')
+    print('     >' )
+    print('   ooooo')
+    return
+
+def print_monkey_head():
+    print('   .-"-.')
+    print(' _/.-.-.\\_')
+    print('( ( o o ) )')
+    print(' |/  "  \\|')
+    print('  \\ .-. /')
+    print('  /`"""`\\')
+    return
+
+def print_figure(face):
+    face()  # Print the face
+    print('     |')
+    print('   --|--')
+    print('  /  |  \\')
+    print('@    |    @')
+    print('     |')
+    print('    /|\\')
+    print('   @   @')
+    return
+
+choice = int(input('Enter "1" to draw monkey, "2" for human: '))
+
+if choice == 1:
+    print_figure(print_monkey_head)
+elif choice == 2:
+    print_figure(print_human_head)
+
+
+
+Enter "1" to draw monkey, "2" for human: 1
+   .-"-.
+ _/.-.-.\_
+( ( o o ) )
+ |/  "  \|
+  \ .-. /
+  /`"""`\
+     |
+   --|--
+  /  |  \
+@    |    @
+     |
+    /|\
+   @   @
+
+...
+
+Enter "1" to draw monkey, "2" for human: 2
+   |||||
+   o   o
+     >
+   ooooo
+     |
+   --|--
+  /  |  \
+@    |    @
+     |
+    /|\
+   @   @
+
+Passing functions as arguments can sometimes improve the readability of code. The above example could have been implemented using an if statement to call either print_human_head() or print_monkey_head() followed by a call to a print_body() function. However, the code is simplified by reducing the required number of function calls in the first code block to the more simple print_figure(face).
+
+Whereas objects like integers support many operations (adding, subtracting, etc.), functions really only support the call operation.1
+participation activity
+6.8.2: Function objects.
+1)
+Functions are compiled into bytecode when the function definition is evaluated by the interpreter.
+2)
+
+The output of the following program is 'meow':
+
+def print_cat():
+    print('meow')
+
+def print_pig():
+    print('oink')
+
+print_cat = print_pig
+print_cat()
+
+3)
+If my_func1() and my_func2() are defined functions, then the expression my_func1 + my_func2 returns a valid value.
+4)
+The expression my_func1(my_func2()) passes the my_func2 function object as an argument to my_func1.
+
+(*1) Functions also support adding attributes with the attribute reference "." operator, but that concept is out of scope for the discussion here.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+6.9 Functions: Common errors

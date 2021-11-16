@@ -1,0 +1,233 @@
+
+6.2 Print functions
+Printing from a function
+
+A common operation for a function is to print text. Large text outputs can clutter the main program, especially if the text needs to be output multiple times. A function that only prints typically does not return a value. A function with no return statement is called a void function, and such a function returns the value None.
+participation activity
+6.2.1: Printing with a void function.
+
+def print_summary(oid, items, price):
+
+
+print('Order {}:'.format(oid))
+print('   Items: {}'.format(items))
+print('   Total: ${:.2f}'.format(price))
+
+
+Order
+
+
+42
+
+4
+
+13.99
+Order      :
+  Items:
+  Total: $
+
+...
+
+
+print_summary(oid, items, price)
+
+
+# Assume oid = 42, items = 4, price = 13.99
+
+
+...
+
+
+# Continues execution
+
+
+Captions
+
+    Printing instructions can clutter a program.
+    A print function can handle output and reduce clutter in the main program.
+    The main program calls function print_summary(), which prints the parameters as formatted output.
+    print_summary() completes execution and returns back to the caller, the main program.
+
+participation activity
+6.2.2: Print functions.
+1)
+Print operations must be performed in the main program.
+2)
+A void function can have any number of parameters.
+3)
+A print function must return the value that was output.
+
+A function that produces output can also return a value, but this material separates these operations for clarity. A function that both outputs and returns a value is not void.
+Calling a print function multiple times
+
+One benefit of a print function is that complex output statements can be written in code once. Then the print function can be called multiple times to produce the output instead of rewriting complex statements for every necessary instance. Changes to output and formatting are made easier and are less prone to error.
+participation activity
+6.2.3: Calling a print function repeatedly.
+
+...
+# Read from input: word = 'Show'
+print_greatest(word)
+...
+...
+
+
+def print_greatest(word):
+
+
+# Read from input: word = 'Song'
+print_greatest(word)
+
+
+print('--The Greatest *', end='')
+print(word, end='')
+
+
+...
+...
+
+
+# Read from input: word = 'Show'
+print('--The Greatest *', end='')
+print(word, end='')
+...
+
+
+# Read from input: word = 'Song'
+print('--The Greatest *', end='')
+print(word, end='')
+
+
+Program A
+Program B
+
+print('* on Earth!--')
+
+
+print('* on Earth!--')
+
+
+print('* on Earth!--')
+
+
+print('* on Earth--')
+
+
+print('* on Earth--')
+
+
+print('* on Earth--')
+
+
+Captions
+
+    A print function can improve the organization of a program.
+    The benefit of a print function increases with repeated calls. Both Program A and B output the formatted text twice, but the output code for Program B is only written once in the print_greatest() function.
+    In Program B, any changes to the output, e.g. adding '!', only have to be made in the print_greatest() function.
+    Without a function, like in Program A, output must be changed in multiple instances, which can be time-consuming and lead to errors.
+
+participation activity
+6.2.4: Calling a print function multiple times.
+
+Refer to the example programs above.
+1)
+To output the phrase, "The Greatest [word] on Earth", with ten different words, what is the minimum number of times the main program would need to call print_greatest() in Program B?
+2)
+To output "in the Galaxy" instead of "on Earth" in the phrase (Ex: "--The Greatest *Cafe* in the Galaxy!-- "), how many statements need to be changed in Program A and Program B?
+Example: Menu system
+Figure 6.2.1: Example: Menu System.
+
+def print_menu():
+    print("Today's Menu:")
+    print('   1) Gumbo')
+    print('   2) Jambalaya')
+    print('   3) Quit\n')
+
+quit_program = False;
+
+while not quit_program :
+    print_menu()
+    choice = int(input('Enter choice: '))
+    if choice == 3 :
+        print('Goodbye')
+        quit_program = True
+    else :
+        print('Order: ')
+        if choice == 1 :
+            print('Gumbo')
+        elif choice == 2 :
+            print('Jambalaya')
+        print()
+
+
+
+Today's Menu:
+   1) Gumbo
+   2) Jambalaya
+   3) Quit
+
+Enter choice: 2
+Order: Jambalaya
+
+Today's Menu:
+   1) Gumbo
+   2) Jambalaya
+   3) Quit
+
+Enter choice: 1
+Order: Gumbo
+
+Today's Menu:
+   1) Gumbo
+   2) Jambalaya
+   3) Quit
+
+Enter choice: 3
+Goodbye
+
+participation activity
+6.2.5: Example: Menu System.
+
+Consider the example above.
+1)
+How many times is print_menu() called?
+2)
+Which of the following code statements if added to print_menu() would produce an error?
+challenge activity
+6.2.1: Print functions.
+343716.2144758.qx3zqy7
+
+Type the program's output
+def print_age(user_age):
+    print('I am {}'.format(user_age))
+
+age_to_print = 23
+print_age(age_to_print)
+
+1
+2
+3
+4
+5
+1
+2
+3
+4
+5
+challenge activity
+6.2.2: Function call with parameter: Printing formatted measurement.
+Define a function print_feet_inch_short(), with parameters num_feet and num_inches, that prints using ' and " shorthand. End with a newline. Remember that print() outputs a newline by default. Ex: print_feet_inch_short(5, 8) prints:
+
+5' 8"
+
+Hint: Use \" to print a double quote.
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+6.3 Dynamic typing

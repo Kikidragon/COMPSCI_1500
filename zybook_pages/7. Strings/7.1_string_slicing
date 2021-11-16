@@ -1,0 +1,310 @@
+
+7.1 String slicing
+String slicing basics
+
+Strings are a sequence type, having characters ordered by index from left to right. An index is an integer matching to a specific position in a string's sequence of characters. An individual character is read using an index surrounded by brackets. Ex: my_str[5] reads the character at index 5 of the string my_str. Indices start at 0, so index 5 is a reference to the 6th character in the string.
+
+A programmer often needs to read more than one character at a time. Multiple consecutive characters can be read using slice notation. Slice notation has the form my_str[start:end], which creates a new string whose value contains the characters of my_str from indices start to end - 1. If my_str is 'Boggle', then my_str[0:3] yields string 'Bog'. Other sequence types like lists and tuples also support slice notation.
+Figure 7.1.1: String slicing.
+
+url = 'http://en.wikipedia.org/wiki/Turing'
+domain = url[7:23]  # Read 'en.wikipedia.org' from url
+print(domain)
+
+
+
+en.wikipedia.org
+
+The last character of the slice is one location before the specified end. Consider the string my_str = 'John Doe'. The slice my_str[0:4] includes the element at index 0 (J), 1 (o), 2 (h), and 3 (n), but not 4, thus yielding 'John'. The space character at index 4 is not included. Similarly, my_str[4:7] would yield ' Do', including the space character this time. To retrieve the last character, an end index greater than the length of the string can be used. Ex: my_str[5:8] or my_str[5:10] both yield the string 'Doe'.
+
+Negative numbers can be used to specify an index relative to the end of the string. Ex: If the variable my_str is 'Jane Doe!?', then my_str[0:-2] yields 'Jane Doe' because the -2 refers to the second-to-last character '!' (and the character at the end index is not included in the result string).
+participation activity
+7.1.1: Slicing.
+
+my_str =
+
+
+my_str[0:2]  :
+
+
+my_str[0:6]  :
+
+
+my_str[7:10] :
+
+
+O
+T
+D
+O
+N
+L
+I
+E
+!
+
+0
+
+
+1
+
+
+2
+
+
+3
+
+
+4
+
+
+5
+
+
+6
+
+
+7
+
+
+8
+
+
+9
+
+
+10
+
+
+D
+O
+
+0
+
+
+2
+
+
+0
+
+
+6
+
+
+N
+O
+T
+'          '
+D
+O
+'                           '
+
+10
+
+
+7
+
+
+L
+I
+E
+!
+'        '
+Captions
+
+    my_str[0:2] returns a substring of my_str starting at index 0 up to, but not including, index 2.
+    my_str[0:6] returns a substring of my_str starting at index 0 up to, but not including, index 6.
+    my_str[7:10] returns a substring of my_str starting at index 7 up to, but not including, index 10.
+
+participation activity
+7.1.2: Slicing basics.
+
+Determine the output of the following code:
+1)
+
+my_str = 'The cat in the hat'
+print(my_str[0:3])
+
+2)
+
+my_str = 'The cat in the hat'
+print(my_str[3:7])
+
+Slicing and slicing operations
+
+The Python interpreter creates a new string object for the slice. Thus, creating a slice of the string variable my_str, and then changing the value of my_str, does not also change the value of the slice.
+Figure 7.1.2: A slice creates a new object.
+
+my_str = "The cat jumped the brown cow"
+animal = my_str[4:7]
+print('The animal is a {}'.format(animal))
+
+my_str = 'The fox jumped the brown llama'
+print('The animal is still a', animal)  # animal variable remains unchanged.
+
+
+
+The animal is a cat
+The animal is still a cat
+
+A programmer often wants to read all characters that occur before or after some index in the string. Omitting a start index, such as in my_str[:end] yields the characters from indices 0 to end-1. Ex: my_str[:5] reads indices 0-4. Similarly, omitting the end index yields the characters from the start index to the end of the string. Ex: my_str[5:] yields all characters at and after index 5.
+
+Use the below tool to experiment with slice notation. After using positive values only, try entering negative start or end indices. Then try omitting either the start or end index.
+participation activity
+7.1.3: String slicing tool.
+
+string_var = ''
+
+print(string_var[:])
+
+
+Output:
+'ey f'
+H
+
+e
+
+y
+
+
+f
+
+o
+
+l
+
+k
+
+s
+
+!
+
+
+↑
+
+
+
+
+↑
+
+
+
+
+
+
+start
+
+
+
+
+end
+
+
+
+
+
+
+Variables can also be used in place of literals to specify slice notation start and end indices. Ex: my_str[x:y].
+zyDE 7.1.1: Slicing example: omitting start, end indices.
+
+Run the program below.
+
+
+Specifying a start index beyond the end of the string, or beyond the end index (like 3:2), yields an empty string. Ex: my_str[2:1] is ' '. Specifying an end index beyond the end of the string is equivalent to specifying the end of the string, so if a string's end is 5, then 1:7 or 1:99 are the same as 1:6.
+Table 7.1.1: Common slicing operations.
+
+A list of common slicing operations a programmer might use.
+Assume the value of my_str is 'http://en.wikipedia.org/wiki/Nasa/'
+Syntax 	Result 	Description
+my_str[10:19] 	wikipedia 	Gets the characters in indices 10-18.
+my_str[10:-5] 	wikipedia.org/wiki/ 	Gets the characters in indices 10-28.
+my_str[8:] 	n.wikipedia.org/wiki/Nasa/ 	All characters from index 8 until the end of the string.
+my_str[:23] 	http://en.wikipedia.org 	Every character up to index 23, but not including my_str[23].
+my_str[:-1] 	http://en.wikipedia.org/wiki/Nasa 	All but the last character.
+participation activity
+7.1.4: Slicing.
+1)
+What is the output?
+
+my_str = 'http://reddit.com/r/python'
+print(my_str[17:])
+
+2)
+What is the output?
+
+my_str = 'http://reddit.com/r/python'
+protocol = 'http://'
+print(my_str[len(protocol):])
+
+The slice stride
+
+Slice notation also provides for a third argument, known as the stride. The stride determines how much to increment the index after reading each element. For example, my_str[0:10:2] reads every other element between 0 and 10. The stride defaults to 1 if not specified.
+Figure 7.1.3: Slice stride.
+
+numbers = '0123456789'
+
+print('All numbers: {}'.format(numbers[::]))
+print('Every even number: {}'.format(numbers[::2]))
+print('Every third number between 1 and 8: {}'.format(numbers[1:9:3]))
+
+
+
+All numbers: 0123456789
+Every even number: 02468
+Every third number between 1 and 8: 147
+
+participation activity
+7.1.5: Slice stride.
+1)
+What is the output?
+
+my_str = 'Agt2t3afc2kjMhagrds!'
+print(my_str[0:5:1])
+
+2)
+What is the output?
+
+my_str = 'Agt2t3afc2kjMhagrds!'
+print(my_str[::2])
+
+challenge activity
+7.1.1: String slicing.
+343716.2144758.qx3zqy7
+
+Type the program's output
+state = 'Maine'
+state_slice = state[0:3]
+print(state_slice)
+
+1
+2
+3
+4
+5
+6
+1
+2
+3
+4
+5
+6
+challenge activity
+7.1.2: Slice a rhyme.
+Assign sub_lyric by slicing rhyme_lyric from start_index to end_index which are given as inputs.
+
+Sample output with inputs: 4 7
+
+cow
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+7.2 Advanced string formatting

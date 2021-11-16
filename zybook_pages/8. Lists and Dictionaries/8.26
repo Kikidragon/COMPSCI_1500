@@ -1,0 +1,13 @@
+
+8.26 LAB: Calculate average
+
+Complete the calc_average() function that has an integer list parameter and returns the average value of the elements in the list as a float.
+
+Ex: If the input list is:
+
+1 2 3 4 5
+
+then the returned average will be:
+
+3.0
+

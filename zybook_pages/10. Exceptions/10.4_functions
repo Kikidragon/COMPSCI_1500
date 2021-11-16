@@ -1,0 +1,72 @@
+
+10.4 Exceptions with functions
+
+The power of exceptions becomes even more clear when used within functions. If an exception is raised within a function and is not handled within that function, then the function is immediately exited and the calling function is checked for a handler, and so on up the function call hierarchy. The following program illustrates. Note the clarity of the normal code, which obviously "gets the weight, gets the height, and prints the BMI" – the error checking code does not obscure the normal code.
+Figure 10.4.1: BMI example using exception-handling constructs along with functions.
+
+def get_weight():
+    weight = int(input('Enter weight (in pounds): '))
+    if weight < 0:
+        raise ValueError('Invalid weight.')
+    return weight
+
+def get_height():
+    height = int(input('Enter height (in inches): '))
+    if height <= 0:
+        raise ValueError('Invalid height.')
+    return height
+
+user_input = ''
+while user_input != 'q':
+    try:
+        weight = get_weight()
+        height = get_height()
+
+        bmi = (float(weight) / float(height * height)) * 703
+        print('BMI:', bmi)
+        print('(CDC: 18.6-24.9 normal)\n')
+        # Source www.cdc.gov
+
+    except ValueError as excpt:
+        print(excpt)
+        print('Could not calculate health info.\n')
+
+    user_input = input("Enter any key ('q' to quit): ")
+
+
+
+Enter weight (in pounds): 150
+Enter height (in inches): 66
+BMI: 24.207988980716255
+(CDC: 18.6-24.9 normal)
+
+Enter any key ('q' to quit): a
+Enter weight (in pounds): -1
+Invalid weight.
+Could not calculate health info.
+
+Enter any key ('q' to quit): a
+Enter weight (in pounds): 150
+Enter height (in inches): -1
+Invalid height.
+Could not calculate health info.
+
+Enter any key ('q' to quit): q
+
+Suppose get_weight() raises an exception of type ValueError. The get_weight() function does not handle exceptions (there is no try block in the function) so it immediately exits. Going up the function call hierarchy returns execution to the global scope script code, where the call to get_weight() was in a try block, so the exception handler for ValueError is executed.
+
+Notice the clarity of the script's code. Without exceptions, the get_weight() function would have had to somehow indicate failure, perhaps through a special return value like -1. The script would have had to check for such failure and would have required additional if-else statements, obscuring the functionality of the code.
+participation activity
+10.4.1: Exceptions in functions.
+1)
+For a function that may contain a raise statement, the function's statements must be placed in a try block within the function.
+2)
+A raise statement executed in a function automatically causes a jump to the last return statement found in the function.
+3)
+A key goal of exception handling is to avoid polluting normal code with distracting error-handling code.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+10.5 Using finally to cleanup

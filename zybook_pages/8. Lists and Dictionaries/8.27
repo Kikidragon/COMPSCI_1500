@@ -1,0 +1,14 @@
+
+8.27 LAB: Reverse list
+
+Complete the reverse_list() function that returns a new string list containing all contents in the parameter but in reverse order.
+
+Ex: If the input list is:
+
+['a', 'b', 'c']
+
+then the returned list will be:
+
+['c', 'b', 'a']
+
+Note: Use a for loop. DO NOT use reverse() or reversed().

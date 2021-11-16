@@ -1,0 +1,47 @@
+
+6.3 Dynamic typing
+Dynamic and static typing
+
+A programmer can pass any type of object as an argument to a function. Consider a function add(x, y) that adds the two parameters:
+
+A programmer can call the add() function using two integer arguments, as in add(5, 7), which returns a value of 12. Alternatively, a programmer can pass in two string arguments, as in add('Tora', 'Bora'), which would concatenate the two strings and return 'ToraBora'.
+participation activity
+6.3.1: Polymorphic functions.
+1	def add(x, y):
+2	    return x + y
+3
+4	print('add(5, 7) is', add(5, 7))
+5	print("add('Tora', 'Bora') is", add('Tora', 'Bora'))
+Step 1 of 9
+line that has just executed
+
+next line to execute
+Frames
+
+Objects
+
+The function's behavior of being able to add together different types is a concept called polymorphism. Polymorphism is an inherent part of the Python language. For example, consider the multiplication operator *. If the two operands are numbers, then the result is the product of those two numbers. If one operand is a string and the other an integer (e.g., 'x' * 5) then the result is a repetition of the string 5 times: 'xxxxx'.
+
+Python uses dynamic typing to determine the type of objects as a program executes. Ex: The consecutive statements num = 5 and num = '7' first assign with an integer type, and then a string type. The type of num can change, depending on the value it references. The interpreter is responsible for checking that all operations are valid as the program executes. If the function call add(5, '100') is evaluated, an error is generated when adding the string to an integer.
+
+In contrast to dynamic typing, many other languages like C, C++, and Java use static typing, which requires the programmer to define the type of every variable and every function parameter in a program's source code. Ex: string name = "John" would declare a string variable in C and C++. When the source code is compiled, the compiler attempts to detect non type-safe operations, and halts the compilation process if such an operation is found.
+
+Dynamic typing typically allows for more flexibility in terms of the code that a programmer can write, but at the expense of potentially introducing more bugs, since there is no compilation process by which types can be checked. 1
+participation activity
+6.3.2: Dynamic and static typing.
+1)
+Polymorphism refers to how an operation depends on the involved object types.
+2)
+A programmer can pass only string arguments to a user-defined function.
+3)
+Static-typed languages require that the type of every variable is defined in the source code.
+4)
+A dynamic-typed language like Python checks that an operation is valid when that operation is executed by the interpreter. If the operation is invalid, a run-time error occurs.
+
+(*1) Python uses duck typing, a form of dynamic typing based on the maxim "If a bird walks, swims, and quacks like a duck, then call it a duck." For example, if an object can be concatenated, sliced, indexed, and converted to lower case, doing everything that a string can do, then treat the object like a string.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+6.4 Reasons for defining functions

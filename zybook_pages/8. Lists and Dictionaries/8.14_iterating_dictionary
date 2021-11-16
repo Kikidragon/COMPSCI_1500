@@ -1,0 +1,129 @@
+
+8.14 Iterating over a dictionary
+
+As usual with containers, a common programming task is to iterate over a dictionary and access or modify the elements of the dictionary. A for loop can be used to iterate over a dictionary object, the loop variable being set to a key of an entry in each iteration. The ordering in which the keys are iterated over is not necessarily the order in which the elements were inserted into the dictionary. The Python interpreter creates a hash of each key. A hash is a transformation of the key into a unique value that allows the interpreter to perform very fast lookup. Thus, the ordering is actually determined by the hash value, but such hash values can change depending on the Python version and other factors.
+Construct 8.14.1: A for loop over a dictionary retrieves each key in the dictionary.
+
+for key in dictionary:  # Loop expression
+    # Statements to execute in the loop
+
+#Statements to execute after the loop
+
+The dict type also supports the useful methods items(), keys(), and values() methods, which produce a view object. A view object provides read-only access to dictionary keys and values. A program can iterate over a view object to access one key-value pair, one key, or one value at a time, depending on the method used. A view object reflects any updates made to a dictionary, even if the dictionary is altered after the view object is created.
+
+    dict.items() – returns a view object that yields (key, value) tuples.
+    dict.keys() – returns a view object that yields dictionary keys.
+    dict.values() – returns a view object that yields dictionary values.
+
+The following examples show how to iterate over a dictionary using the above methods:
+Figure 8.14.1: Iterating over a dictionary.
+dict.items()
+
+num_calories = dict(Coke=90, Coke_zero=0, Pepsi=94)
+for soda, calories in num_calories.items():
+    print('{}: {}'.format(soda, calories))
+
+Coke: 90
+Coke_zero: 0
+Pepsi: 94
+
+dict.keys()
+
+num_calories = dict(Coke=90, Coke_zero=0, Pepsi=94)
+for soda in num_calories.keys():
+    print(soda)
+
+Coke
+Coke_zero
+Pepsi
+
+
+dict.values()
+
+num_calories = dict(Coke=90, Coke_zero=0, Pepsi=94)
+for soda in num_calories.values():
+    print(soda)
+
+90
+0
+94
+
+When a program iterates over a view object, one result is generated for each iteration as needed, instead of generating an entire list containing all of the keys or values. Such behavior allows the interpreter to save memory. Since results are generated as needed, view objects do not support indexing. A statement such as my_dict.keys()[0] produces an error. Instead, a valid approach is to use the list() built-in function to convert a view object into a list, and then perform the necessary operations. The example below converts a dictionary view into a list, so that the list can be sorted to find the first two closest planets to Earth.
+Figure 8.14.2: Use list() to convert view objects into lists.
+
+solar_distances = dict(mars=219.7e6, venus=116.4e6, jupiter=546e6, pluto=2.95e9)
+list_of_distances = list(solar_distances.values())  # Convert view to list
+
+sorted_distance_list = sorted(list_of_distances)
+closest = sorted_distance_list[0]
+next_closest = sorted_distance_list[1]
+
+print('Closest planet is {:.4e}'.format(closest))
+print('Second closest planet is {:.4e}'.format(next_closest))
+
+
+
+Closest planet is 1.1640e+08
+Second closest planet is 2.1970e+08
+
+The dict.items() method is particularly useful, as the view object that is returned produces tuples containing the key-value pairs of the dictionary. The key-value pairs can then be unpacked at each iteration, similar to the behavior of enumerate(), providing both the key and the value to the loop body statements without requiring extra code.
+zyDE 8.14.1: Iterating over a dictionary example: Gradebook statistics.
+
+Write a program that uses the keys(), values(), and/or items() dict methods to find statistics about the student_grades dictionary. Find the following:
+
+    Print the name and grade percentage of the student with the highest total of points.
+    Find the average score of each assignment.
+    Find and apply a curve to each student's total score, such that the best student has 100% of the total points.
+
+
+
+participation activity
+8.14.1: Iterating over dictionaries.
+
+Fill in the code, using the dict methods items(), keys(), or values() where appropriate.
+1)
+Print each key in the dictionary my_dict.
+
+for key in :
+    print(key)
+
+
+2)
+Change all negative values in my_dict to 0.
+
+for key, value in :
+    if value < 0:
+        my_dict[key] = 0
+
+
+3)
+Print twice the value of every value in my_dict.
+
+for v in :
+    print(2 * v)
+
+
+challenge activity
+8.14.1: Report country population.
+Write a loop that prints each country's population in country_pop.
+
+Sample output with input:
+'China:1365830000,India:1247220000,United States:318463000,Indonesia:252164800':
+
+United States has 318463000 people.
+India has 1247220000 people.
+Indonesia has 252164800 people.
+China has 1365830000 people.
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+8.15 Dictionary nesting

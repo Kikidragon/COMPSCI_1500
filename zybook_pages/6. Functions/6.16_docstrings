@@ -1,0 +1,47 @@
+
+6.15 Multiple function outputs
+6.16 Help! Using docstrings to document functions
+Docstrings
+
+A large program can contain many functions with a wide variety of uses. A programmer should document each function, giving a high-level description of the purpose of the function, so that later readers of the code can more easily understand. A docstring is a string literal placed in the first line of a function body.
+
+A docstring starts and ends with three consecutive quotation marks. Good practice is to keep the docstring of a simple function as a single line, including the quotes. Furthermore, there should be no blank lines before or after the docstring.
+
+Multi-line docstrings can be used for more complicated functions to describe the function arguments. Multi-line docstrings should use consistent indentation for each line, separating the ending triple-quotes by a blank line.
+Figure 6.16.1: A single and a multi-line docstring.
+
+def num_seats(airliner_type):
+    """Determines number of seats on a plane"""
+    #Function body statements ...
+
+def ticket_price(origin, destination, coach=True, first_class=False):
+    """Calculates the price of a ticket between two airports.
+    Only one of coach or first_class must be True.
+
+    Arguments:
+    origin -- string representing code of origin airport
+    destination -- string representing code of destination airport
+
+    Optional keyword arguments:
+    coach -- Boolean. True if ticket cost priced for a coach class ticket (default True)
+    first_class -- Boolean. True if ticket cost priced for a first class ticket (default False)
+
+    """
+    #Function body statements ...
+
+The help() function
+
+The help() function can aid a programmer by providing them with all the documentation associated with an object. A statement such as help(ticket_price) would print out the docstring for the ticket_price() function, providing the programmer with information about how to call that function.
+zyDE 6.16.1: Using the help() function.
+
+Run the following program that prints out the response of help(ticket_price). Add an additional parameter "vegetarian=False" to ticket_price, augment the docstring appropriately, and run the program again.
+
+
+
+The help() function actually works with most of the built-in Python names, since the language creators were nice enough to provide docstrings for many items. Notice that the output of help depends on the object passed as an argument. If the argument is a function, then the docstring is printed. If you have studied classes or modules, note how help(str) prints out a description of the string str class methods, and how help(math) prints out all the contents of the math module.
+zyDE 6.16.2: Use the help() function on built-in names.
+
+Use the following interpreter to play with the help() function. Try the following: help(str), help(range), and help(max). Try defining a function or two of your own. The statement help(__name__) runs the help function on the global scope of the editor, printing information about all items defined there.
+
+How was this section?
+6.17 Engineering examples

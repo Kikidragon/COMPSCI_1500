@@ -1,0 +1,166 @@
+
+8.9 Sorting lists
+
+One of the most useful list methods is sort(), which performs an in-place rearranging of the list elements, sorting the elements from lowest to highest. The normal relational equality rules are followed: numbers compare their values, strings compare ASCII/Unicode encoded values, lists compare element-by-element, etc. The following animation illustrates.
+participation activity
+8.9.1: Sorting a list using list.sort().
+
+my_list = [ 150, 47, 500, -37, 0]
+
+
+my_list.sort()
+
+
+my_list
+
+
+[ 150, 47, 500, -37, 0]
+
+
+150  47  500  -37  0
+
+
+150
+
+
+47
+
+
+500
+
+
+-37
+
+
+0
+
+
+[    ,  ,    ,    ,    ]
+
+
+Captions
+
+    The list my_list is created and holds integer values.
+    The list is sorted in-place.
+
+The sort() method performs element-by-element comparison to determine the final ordering. Numeric type elements like int and float have their values directly compared to determine relative ordering, i.e., 5 is less than 10.
+
+The below program illustrates the basic usage of the list.sort() method, reading book titles into a list and sorting the list alphabetically.
+Figure 8.9.1: list.sort() method example: Alphabetically sorting book titles.
+
+books = []
+prompt = 'Enter new book: '
+user_input = input(prompt).strip()
+
+while (user_input.lower() != 'exit'):
+    books.append(user_input)
+    user_input = input(prompt).strip()
+
+books.sort()
+
+print('\nAlphabetical order:')
+for book in books:
+    print(book)
+
+
+
+Enter new book: Pride, Prejudice, and Zombies
+Enter new book: Programming in Python
+Enter new book: Hackers and Painters
+Enter new book: World War Z
+Enter new book: exit
+
+Alphabetical order:
+Hackers and Painters
+Pride, Prejudice, and Zombies
+Programming in Python
+World War Z
+
+The sort() method performs in-place modification of a list. Following execution of the statement my_list.sort(), the contents of my_list are rearranged. The sorted() built-in function provides the same sorting functionality as the list.sort() method, however, sorted() creates and returns a new list instead of modifying an existing list.
+Figure 8.9.2: Using sorted() to create a new sorted list from an existing list without modifying the existing list.
+
+numbers = [int(i) for i in input('Enter numbers: ').split()]
+
+sorted_numbers = sorted(numbers)
+
+print('\nOriginal numbers:', numbers)
+print('Sorted numbers:', sorted_numbers)
+
+
+
+Enter numbers: -5 5 -100 23 4 5
+Original numbers: [-5, 5, -100, 23, 4, 5]
+Sorted numbers: [-100, -5, 4, 5, 5, 23]
+
+participation activity
+8.9.2: list.sort() and sorted().
+1)
+The sort() method modifies a list in-place.
+2)
+The output of the following is [13, 7, 5]:
+
+primes = [5, 13, 7]
+primes.sort()
+print(primes)
+
+3)
+The output of print(sorted([-5, 5, 2])) is [2, -5, 5].
+
+Both the list.sort() method and the built-in sorted() function have an optional key argument. The key specifies a function to be applied to each element prior to being compared. Examples of key functions are the string methods str.lower, str.upper, or str.capitalize.
+
+Consider the following example, in which a roster of names is sorted alphabetically. If a name is mistakenly uncapitalized, then the sort algorithm places the name at the end of the list, because lower-case letters have a larger encoded value than upper-case letters. Ex: 'a' maps to the ASCII decimal value of 97 and 'A' maps to 65. Specifying the key function as str.lower (note the absence of parentheses) automatically converts the elements to lower-case before comparison, thus placing the lower-case name at the appropriate position in the sorted list.
+Figure 8.9.3: Using the key argument.
+
+names = []
+prompt = 'Enter name: '
+
+user_input = input(prompt)
+
+while user_input != 'exit':
+    names.append(user_input)
+    user_input = input(prompt)
+
+no_key_sort = sorted(names)
+key_sort = sorted(names, key=str.lower)
+
+print('Sorting without key:', no_key_sort)
+print('Sorting with key: ', key_sort)
+
+Enter name: Serena Williams
+Enter name: Venus Williams
+Enter name: rafael Nadal
+Enter name: john McEnroe
+Enter name: exit
+Sorting without key: ['Serena Williams', 'Venus Williams', 'john McEnroe', 'rafael Nadal']
+Sorting with key:  ['john McEnroe', 'rafael Nadal', 'Serena Williams', 'Venus Williams']
+
+The key argument can be assigned any function, not just string methods like str.upper and str.lower. Ex: A programmer might want to sort a two-dimensional list by the max of the rows, which can be accomplished by assigning key with the built-in function max, as in: sorted(x, key=max).
+Figure 8.9.4: The key argument to list.sort() or sorted() can be assigned any function.
+
+my_list = [[25], [15, 25, 35], [10, 15]]
+
+sorted_list = sorted(my_list, key=max)
+
+print('Sorted list:', sorted_list)
+
+
+
+Sorted list: [[10, 15], [25], [15, 25, 35]]
+
+Sorting also supports the reverse argument. The reverse argument can be set to a Boolean value, either True or False. Setting reverse=True flips the sorting from lower-to-highest to highest-to-lowest. Thus, the statement sorted([15, 20, 25], reverse=True) produces a list with the elements [25, 20, 15].
+participation activity
+8.9.3: Sorting.
+
+Provide an expression using x.sort that sorts the list x accordingly.
+1)
+Sort the elements of x such that the greatest element is in position 0.
+
+2)
+Arrange the elements of x from lowest to highest, comparing the upper-case variant of each element in the list.
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+8.10 Command-line arguments

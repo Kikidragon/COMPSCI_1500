@@ -1,0 +1,159 @@
+
+8.2 List methods
+Common list methods
+
+A list method can perform a useful operation on a list such as adding or removing elements, sorting, reversing, etc.
+
+The table below shows the available list methods. Many of the methods perform in-place modification of the list contents — a programmer should be aware that a method that modifies the list in-place changes the underlying list object, and thus may affect the value of a variable that references the object.
+Table 8.2.1: Available list methods.
+List method 	Description 	Code example 	Final my_list value
+Adding elements
+list.append(x) 	Add an item to the end of list. 	my_list = [5, 8]
+my_list.append(16)
+
+[5, 8, 16]
+
+list.extend([x]) 	Add all items in [x] to list. 	my_list = [5, 8]
+my_list.extend([4, 12])
+
+[5, 8, 4, 12]
+
+list.insert(i, x) 	Insert x into list before position i. 	my_list = [5, 8]
+my_list.insert(1, 1.7)
+
+[5, 1.7, 8]
+
+Removing elements
+list.remove(x) 	Remove first item from list with value x. 	my_list = [5, 8, 14]
+my_list.remove(8)
+
+[5, 14]
+
+list.pop() 	Remove and return last item in list. 	my_list = [5, 8, 14]
+val = my_list.pop()
+
+[5, 8]
+
+
+val is 14
+list.pop(i) 	Remove and return item at position i in list. 	my_list = [5, 8, 14]
+val = my_list.pop(0)
+
+[8, 14]
+
+
+val is 5
+Modifying elements
+list.sort() 	Sort the items of list in-place. 	my_list = [14, 5, 8]
+my_list.sort()
+
+[5, 8, 14]
+
+list.reverse() 	Reverse the elements of list in-place. 	my_list = [14, 5, 8]
+my_list.reverse()
+
+[8, 5, 14]
+
+Miscellaneous
+list.index(x) 	Return index of first item in list with value x. 	my_list = [5, 8, 14]
+print(my_list.index(14)) 	Prints "2"
+list.count(x) 	Count the number of times value x is in list. 	my_list = [5, 8, 5, 5, 14]
+print(my_list.count(5)) 	Prints "3"
+
+Good practice is to use list methods to add and delete list elements, rather than alternative add/delete approaches. Alternative approaches include syntax such as my_list[len(my_list):] = [val] to add to a list, or del my_list[0] to remove from a list. Generally, using a list method yields more readable code.
+
+The list.sort() and list.reverse() methods rearrange a list element's ordering, performing in-place modification of the list.
+
+The list.index() and list.count() return information about the list and do not modify the list.
+
+The below interactive tool shows a few of the list methods in action:
+participation activity
+8.2.1: In-place modification using list methods.
+0
+1
+2
+vals:
+
+vals = [1, 4, 16]
+
+vals.append(9)
+vals.insert(2, 18)
+value = vals.pop()
+vals.remove(4)
+vals.remove(55)
+
+#...
+
+
+1
+4
+16
+3
+9
+18
+4
+2
+4
+55
+Captions
+
+    vals is a list containing elements 1, 4, and 16.
+    The statement vals.append(9) appends element 9 to the end of the list.
+    The statement vals.insert(2, 18) inserts element 18 into position 2 of the list.
+    The statement vals.pop() removes the last element, 9, from the list.
+    The statement vals.remove(4) removes the first instance of element 4 from the list.
+    The statement vals.remove(55) removes the first instance of element 55 from the list. The list does not contain the element 55 so vals is the same.
+
+zyDE 8.2.1: Amusement park ride reservation system.
+
+The following (unfinished) program implements a digital line queuing system for an amusement park ride. The system allows a rider to reserve a place in line without actually having to wait. The rider simply enters a name into a program to reserve a place. Riders that purchase a VIP pass get to skip past the common riders up to the last VIP rider in line. VIPs board the ride first. (Considering the average wait time for a Disneyland ride is about 45 minutes, this might be a useful program.) For this system, an employee manually selects when the ride is dispatched (thus removing the next riders from the front of the line).
+
+Complete the following program, as described above. Once finished, add the following commands:
+
+    The rider can enter a name to find the current position in line. (Hint: Use the list.index() method.)
+    The rider can enter a name to remove the rider from the line.
+
+
+
+participation activity
+8.2.2: List methods.
+1)
+What is the output of the following program?
+
+temps = [65, 67, 72, 75]
+temps.append(77)
+print(temps[-1])
+
+2)
+What is the output of the following program?
+
+actors = ['Pitt', 'Damon']
+actors.insert(1, 'Affleck')
+print(actors[0], actors[1], actors[2])
+
+3)
+Write the simplest two statements that first sort my_list, then remove the largest value element from the list, using list methods.
+
+4)
+Write a statement that counts the number of elements of my_list that have the value 15.
+
+challenge activity
+8.2.1: Reverse sort of list.
+Sort short_names in reverse alphabetic order.
+
+Sample output with input: 'Jan Sam Ann Joe Tod'
+
+['Tod', 'Sam', 'Joe', 'Jan', 'Ann']
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+8.3 Iterating over a list

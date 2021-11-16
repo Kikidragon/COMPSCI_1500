@@ -1,0 +1,152 @@
+
+12.1 Reading files
+
+A common programming task is to get input from a file using the built-in open() function rather than from a user typing on a keyboard.
+participation activity
+12.1.1: Reading text from a file.
+
+myjournal = open ('journal.txt')
+
+contents = myjournal.read()
+
+# print contents ...
+
+
+journal.txt
+Dear journal,
+~~~~~~~
+~~~~
+~~~~~~~
+
+myjournal
+contents
+Dear journal,
+
+Today I learned
+Python...
+
+Captions
+
+    The open function creates a file object. The read function saves the content of the file as a string.
+
+Assume a text file exists named "myfile.txt" with the contents shown (created, for example, using Notepad on a Windows computer or using TextEdit on a Mac computer).
+Figure 12.1.1: Creating a file object and reading text.
+
+print('Opening file myfile.txt.')
+f = open('myfile.txt')  # create file object
+
+print('Reading file myfile.txt.')
+contents = f.read()  # read file text into a string
+
+print('Closing file myfile.txt.')
+f.close()  # close the file
+
+print('\nContents of myfile.txt:\n', contents)
+
+	Contents of myfile.txt:
+
+Because he's the hero Gotham deserves,
+but not the one it needs right now.
+
+
+Program output:
+
+Opening file myfile.txt.
+Reading file myfile.txt.
+Closing file myfile.txt.
+
+Contents of myfile.txt:
+Because he's the hero Gotham deserves,
+but not the one it needs right now.
+
+The open() built-in function requires a single argument that specifies the path to the file. Ex: open('myfile.txt') opens myfile.txt located in the same directory as the executing script. Full path names can also be specified, as in open('C:\\Users\\BWayne\\tax_return.txt'). The file.close() method closes the file, after which no more reads or writes to the file are allowed.
+
+The most common methods to read text from a file are file.read() and file.readlines(). The file.read() method returns the file contents as a string. The file.readlines() method returns a list of strings, where the first element is the contents of the first line, the second element is the contents of the second line, and so on. Both methods can be given an optional argument that specifies the number of bytes to read from the file. Each method stops reading when the end-of-file (EOF) is detected, which indicates no more data is available.
+
+A third method, file.readline(), returns a single line at a time, which is useful when dealing with large files where the entire file contents may not fit into the available system memory.
+participation activity
+12.1.2: Opening files and reading text.
+1)
+Complete the statement to open the file "readme.txt" for reading.
+
+
+my_file =
+
+
+
+
+2)
+Complete the statement to read up to 500 bytes from "readme.txt" into the contents variable.
+
+
+my_file = open('readme.txt')
+
+contents =
+
+# ...
+
+3)
+Complete the program by echoing the second line of "readme.txt"
+
+
+my_file = open('readme.txt')
+
+lines = my_file.readlines()
+
+print()
+
+# ...
+
+One of the most common programming tasks is to read data from a file and then process that data to produce a useful result. Sometimes the data is a string, like in the example above, but often the data is a numeric value. Each unique data value is often placed on its own line. Thus, a program commonly 1) reads in the contents of a file, 2) iterates over each line to process data values, and 3) computes some value, such as the average value.
+Figure 12.1.2: Calculating the average of data values stored in a file.
+
+The file "mydata.txt" contains 100 integers, each on its own line:
+
+# Read file contents
+print ('Reading in data...')
+f = open('mydata.txt')
+lines = f.readlines()
+f.close()
+
+# Iterate over each line
+print('\nCalculating average...')
+total = 0
+for ln in lines:
+    total += int(ln)
+
+# Compute result
+avg = total/len(lines)
+print('Average value:', avg)
+
+	Contents of mydata.txt:
+
+105
+65
+78
+...
+
+
+Program output:
+
+Reading in data...
+
+Calculating average...
+Average value: 83
+
+Iterating over each line of a file is so common that file objects support iteration using the for ... in syntax. The below example echoes the contents of a file:
+Figure 12.1.3: Iterating over the lines of a file.
+
+"""Echo the contents of a file."""
+f = open('myfile.txt')
+
+for line in f:
+    print(line, end="")
+
+f.close()
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+12.2 Writing files

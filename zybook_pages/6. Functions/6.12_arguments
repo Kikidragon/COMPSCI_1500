@@ -1,0 +1,113 @@
+
+6.12 Function arguments
+Function arguments and mutability
+
+Arguments to functions are passed by object reference, a concept known in Python as pass-by-assignment. When a function is called, new local variables are created in the function's local namespace by binding the names in the parameter list to the passed arguments.
+participation activity
+6.12.1: Assignments to parameters have no effect outside the function.
+
+def birthday(age):
+    '''Celebrate birthday!'''
+    age = age + 1
+
+timmy_age = 7
+
+birthday(timmy_age)
+print('Timmy is', timmy_age)
+
+
+<funct>
+Objects
+birthday
+Global
+namespace
+Local
+namespace
+7
+timmy_age
+age
+8
+Timmy is 7
+Assigning age with a new value in the function doesn't change timmy_age.
+Captions
+
+    timmy_age and age reference the same object.
+    Assigning the parameter age with a new value doesn't change timmy_age.
+    Since timmy_age has not changed, "Timmy is 7" is displayed.
+
+The semantics of passing object references as arguments is important because modifying an argument that is referenced elsewhere in the program may cause side effects outside of the function scope. When a function modifies a parameter, whether or not that modification is seen outside the scope of the function depends on the mutability of the argument object.
+
+    If the object is immutable, such as a string or integer, then the modification is limited to inside the function. Any modification to an immutable object results in the creation of a new object in the function's local scope, thus leaving the original argument object unchanged.
+    If the object is mutable, then in-place modification of the object can be seen outside the scope of the function. Any operation like adding elements to a container or sorting a list that is performed within a function will also affect any other variables in the program that reference the same object.
+
+The following program illustrates how the modification of a list argument's elements inside a function persists outside of the function call.
+participation activity
+6.12.2: Modification of a list inside a function.
+1	def modify(num_list):
+2	    num_list[1] = 99
+3
+4	my_list = [10, 20, 30]
+5	modify(my_list)
+6	print(my_list)  # my_list still contains 99!
+Step 1 of 7
+line that has just executed
+
+next line to execute
+Frames
+
+Objects
+
+Sometimes a programmer needs to pass a mutable object to a function but wants to make sure that the function does not modify the object at all. One method to avoid unwanted changes is to pass a copy of the object as the argument instead, like in the statement my_func(num_list[:]).
+participation activity
+6.12.3: Modification of a list inside a function.
+1	def modify(num_list):
+2	    num_list[1] = 99  # Modifying only the copy
+3
+4	my_list = [10, 20, 30]
+5	modify(my_list[:])  # Pass a copy of the list
+6
+7	print(my_list)  # my_list does not contain 99!
+Step 1 of 7
+line that has just executed
+
+next line to execute
+Frames
+
+Objects
+zyDE 6.12.1: List argument modification.
+
+Address the FIX ME comments. Move the respective code from the while-loop to the created function. The add_grade function has already been created.
+
+Note: split() and strip() are string methods further explained elsewhere. split() separates a string into tokens using any whitespace as the default separator. The tokens are returned in a list (i.e., 'a b c'.split() returns ['a', 'b', 'c']). strip() returns a copy of a string with leading and trailing whitespace removed.
+
+
+participation activity
+6.12.4: Arguments and mutability.
+1)
+Assignments to a parameter name inside a function affect the code outside the function.
+2)
+When a function is called, copies of all the argument objects are made.
+3)
+Adding an element to a dictionary argument in a function might affect variables outside the function that reference the same dictionary object.
+4)
+A programmer can protect mutable arguments from unwanted changes by passing a copy of the object to a function.
+challenge activity
+6.12.1: Change order of elements in function list argument.
+Write a function swap that swaps the first and last elements of a list argument.
+
+Sample output with input: 'all,good,things,must,end,here'
+
+['here', 'good', 'things', 'must', 'end', 'all']
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+6.13 Keyword arguments and default parameter values

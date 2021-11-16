@@ -1,0 +1,11 @@
+
+9.24 LAB: Consecutive heads
+
+Given main() and GVCoin class, complete function consecutive_heads() that counts and returns the number of flips taken to achieve a desired number of consecutive heads without a tails. Function consecutive_heads() has a GVCoin object and an integer representing the desired number of consecutive heads without a tails as parameters.
+
+Note: For testing purposes, a GVCoin object is created in the main() function using a pseudo-random number generator with a fixed seed value. The program uses a seed value of 15 during development, but when submitted, a different seed value will be used for each test case. Refer to the textbook section on random numbers to learn more about pseudo-random numbers.
+
+Ex: If the GVCoin object is created with a seed value of 15 and the desired number of consecutive heads is 5, then the function consecutive_heads() returns 16 and the program outputs:
+
+Total number of flips for 5 consecutive heads: 16
+

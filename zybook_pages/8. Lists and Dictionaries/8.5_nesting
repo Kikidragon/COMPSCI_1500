@@ -1,0 +1,345 @@
+
+8.5 List nesting
+
+Since a list can contain any type of object as an element, and a list is itself an object, a list can contain another list as an element. Such embedding of a list inside another list is known as list nesting.Ex: The code my_list = [[5, 13], [50, 75, 100]] creates a list with two elements that are each another list.
+Figure 8.5.1: Multi-dimensional lists.
+
+my_list = [[10, 20], [30, 40]]
+print('First nested list:', my_list[0])
+print('Second nested list:', my_list[1])
+print('Element 0 of first nested list:', my_list[0][0])
+
+
+
+First nested list: [10, 20]
+Second nested list: [30, 40]
+Element 0 of first nested list: 10
+
+The program accesses elements of a nested list using syntax such as my_list[0][0].
+participation activity
+8.5.1: List nesting.
+
+my_list = [   ['a', 'b'], ['c', 'd'], ['e', 'f']   ]
+
+
+my_list[0]
+my_list[1]
+my_list[2]
+
+['a', 'b']
+
+
+['c', 'd']
+
+
+['e', 'f']
+
+
+my_list[0][0]
+my_list[0][1]
+=
+=
+
+'a'
+
+
+'b'
+
+
+my_list[1][0]
+my_list[1][1]
+
+'c'
+
+
+'d'
+
+
+=
+=
+my_list[2][0]
+my_list[2][1]
+=
+=
+
+'e'
+
+
+'f'
+
+
+Captions
+
+    The nested lists can be accessed using a single access operation.
+    The elements of each nested list can be accessed using two indexing operations.
+
+participation activity
+8.5.2: List nesting.
+1)
+Given the list nums = [[10, 20, 30], [98, 99]], what does nums[0][0] evaluate to?
+
+2)
+Given the list nums = [[10, 20, 30], [98, 99]], what does nums[1][1] evaluate to?
+
+3)
+Given the list nums = [[10, 20, 30], [98, 99]], what does nums[0] evaluate to?
+
+4)
+Create a nested list nums whose only element is the list [21, 22, 23].
+
+A list is a single-dimensional sequence of items, like a series of times, data samples, daily temperatures, etc. List nesting allows for a programmer to also create a multi-dimensional data structure, the simplest being a two-dimensional table, like a spreadsheet or tic-tac-toe board. The following code defines a two-dimensional table using nested lists:
+Figure 8.5.2: Representing a tic-tac-toe board using nested lists.
+
+tic_tac_toe = [
+    ['X', 'O', 'X'],
+    [' ', 'X', ' '],
+    ['O', 'O', 'X']
+]
+
+print(tic_tac_toe[0][0], tic_tac_toe[0][1], tic_tac_toe[0][2])
+print(tic_tac_toe[1][0], tic_tac_toe[1][1], tic_tac_toe[1][2])
+print(tic_tac_toe[2][0], tic_tac_toe[2][1], tic_tac_toe[2][2])
+
+
+
+X O X
+  X
+O O X
+
+The example above creates a variable tic_tac_toe that represents a 2-dimensional table with 3 rows and 3 columns, for 3*3=9 total table entries. Each row in the table is a nested list. Table entries can be accessed by specifying the desired row and column: tic_tac_toe [1][1] accesses the middle square in row 1, column 1 (starting from 0), which has a value of 'X'. The following animation illustrates:
+participation activity
+8.5.3: Two-dimensional list.
+
+my_list = [
+    [10, 0, 55],
+    [0, 4, 16]
+]
+
+# Write to some elements
+my_list[0][0] = 33
+my_list[1][1] = 77
+my_list[1][2] = 99
+
+
+[0][0]
+[0][1]
+[0][2]
+[1][0]
+[1][1]
+[1][2]
+Objects:
+my_list
+my_list[0]
+my_list[1]
+10
+0
+55
+0
+4
+16
+Rows [2]
+0
+1
+0
+1
+2
+Columns [3]
+Conceptually a table
+33
+77
+99
+Captions
+
+    New list object contains other lists as elements.
+    Elements accessed by [row][column].
+
+zyDE 8.5.1: Two-dimensional list example: Driving distance between cities.
+
+The following example illustrates the use of a two-dimensional list in a distance between cities example.
+
+Run the following program, entering the text '1 2' as input to find the distance between LA and Chicago. Try other pairs. Next, try modifying the program by adding a new city, Anchorage, that is 3400, 3571, and 4551 miles from Los Angeles, Chicago, and Boston, respectively.
+
+Note that the styling of the nested list in this example makes use of indentation to clearly indicate the elements of each list -- the spacing does not affect how the interpreter evaluates the list contents.
+
+
+
+The level of nested lists is arbitrary. A programmer might create a three-dimensional list structure as follows:
+Figure 8.5.3: The level of nested lists is arbitrary.
+
+nested_table = [
+    [
+        [10, 0, 55],
+        [0, 4, 16]
+    ],
+    [
+        [0, 0, 1],
+        [1, 20, 2]
+    ]
+]
+
+A number from the above three-dimensional list could be accessed using three indexing operations, as in nested_table[1][1][1].
+participation activity
+8.5.4: Multi-dimensional lists.
+Assume the following list has been created
+
+scores = [
+    [75, 100, 82, 76],
+    [85, 98, 89, 99],
+    [75, 82, 85, 5]
+]
+
+1)
+Write an indexing expression that gets the element from scores whose value is 100.
+
+2)
+How many elements does scores contain? (The result of len(scores))
+
+As always with lists, a typical task is to iterate through the list elements. A programmer can access all of the elements of nested lists by using nested for loops. The first for loop iterates through the elements of the outer list (rows of a table), while the nested loop iterates through the inner list elements (columns of a table). The code below defines a 3x3 table and iterates through each of the table entries:
+participation activity
+8.5.5: Iterating over multi-dimensional lists.
+
+currency = [
+
+        [1.00, 5.00, 10.0], # US Dollars
+        [0.75, 3.77, 7.53], # Euros
+        [0.65, 3.25, 6.50]  # British pounds
+]
+
+for row in currency:
+    for cell in row:
+        print(cell, end=' ')
+    print()
+
+
+1.00
+5.00
+10.0
+row -->
+0.75
+3.77
+7.53
+cell
+0.65
+3.25
+6.50
+Captions
+
+    Each iteration row is assigned the next list element from currency. Each item in a row is printed in the inner loop.
+
+The outer loop assigns the variable row with one of the list elements. The inner loop then iterates over the elements in that list. Ex: On the first iteration of the outer loop row is [1, 5, 10]. The inner loop then assigns cell 1 on the first iteration, 5 on the second iteration, and 10 on the last iteration.
+
+Combining nested for loops with the enumerate() function gives easy access to the current row and column:
+Figure 8.5.4: Iterating through multi-dimensional lists using enumerate().
+
+currency = [
+   [1, 5, 10 ],  # US Dollars
+   [0.75, 3.77, 7.53],  #Euros
+   [0.65, 3.25, 6.50]  # British pounds
+]
+for row_index, row in enumerate(currency):
+   for column_index, item in enumerate(row):
+       print('currency[{}][{}] is {:.2f}'.format(row_index, column_index, item))
+
+
+
+currency[0][0] is 1.00
+currency[0][1] is 5.00
+currency[0][2] is 10.00
+currency[1][0] is 0.75
+currency[1][1] is 3.77
+currency[1][2] is 7.53
+currency[2][0] is 0.65
+currency[2][1] is 3.25
+currency[2][2] is 6.50
+
+participation activity
+8.5.6: Find the error.
+
+The desired output and actual output of each program is given. Find the error in each program.
+1)
+
+Desired output:
+
+0 2 4 6
+0 3 6 9 12
+
+
+Actual output:
+
+[0, 2, 4, 6] [0, 3, 6, 9, 12]
+[0, 2, 4, 6] [0, 3, 6, 9, 12]
+
+
+nums = [
+    [0, 2, 4, 6],
+    [0, 3, 6, 9, 12]
+]
+
+for
+
+ in
+:
+    for
+ in
+
+:
+        print(n2, end=' ')
+    print()
+2)
+
+Desired output:
+
+X wins!
+
+
+Actual output:
+
+Cat's game!
+
+
+tictactoe = [
+    ['X', 'O', 'O'],
+    ['O', 'O', 'X'],
+    ['X', 'X', 'X']
+]
+
+# Check for 3 Xs in one row
+# (Doesn't check columns or diagonals)
+for row in
+
+:
+    num_X_in_row = 0
+    for square in
+:
+        if
+:
+            num_X_in_row += 1
+    if
+
+:
+        print('X wins!')
+        break
+else:
+    print("Cat's game!")
+challenge activity
+8.5.1: Print multiplication table.
+Print the two-dimensional list mult_table by row and column. On each line, each character is separated by a space. Hint: Use nested loops.
+
+Sample output with input: '1 2 3,2 4 6,3 6 9':
+
+1 | 2 | 3
+2 | 4 | 6
+3 | 6 | 9
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+8.6 List slicing

@@ -1,0 +1,48 @@
+
+6.15 Multiple function outputs
+Multiple function outputs
+
+Occasionally a function should produce multiple output values. However, function return statements are limited to returning only one value. A workaround is to package the multiple outputs into a single container, commonly a tuple, and to then return that container.
+Figure 6.15.1: Multiple outputs can be returned in a container.
+
+student_scores = [75, 84, 66, 99, 51, 65]
+
+def get_grade_stats(scores):
+    # Calculate the arithmetic mean
+    mean = sum(scores)/len(scores)
+
+    # Calculate the standard deviation
+    tmp = 0
+    for score in scores:
+        tmp += (score - mean )**2
+    std_dev = (tmp/len(scores))**0.5
+
+    # Package and return average, standard deviation in a tuple
+    return mean, std_dev
+
+# Unpack tuple
+average, standard_deviation = get_grade_stats(student_scores)
+
+print('Average score:', average)
+print('Standard deviation:', standard_deviation)
+
+
+
+Average score: 73.33333333333333
+Standard deviation: 15.260697523012796
+
+The above example calculates the mean and standard deviation of a set of student test scores. The statement return mean, std_dev creates and returns a tuple container. Recall that a tuple doesn't require parentheses around the contents, as the comma indicates a tuple should be created. An equivalent statement would have been return (mean, std_dev). The outputs could also have been returned in a list, as in return [mean, std_dev].
+
+The statement average, standard_deviation = get_grade_stats(student_scores) utilizes unpacking to perform multiple assignments at once, so that average and standard_deviation are assigned the first and second elements from the returned tuple.
+participation activity
+6.15.1: Multiple function outputs.
+1)
+The statement return a, b, [c, d] is valid.
+2)
+A function may return multiple objects.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+6.16 Help! Using docstrings to document functions

@@ -1,0 +1,25 @@
+
+9.30 LAB: Drop student
+
+Complete the Course class by implementing the drop_student() instance method, which removes a student (by last name) from the course roster. If the student is not found in the course roster, no student should be dropped.
+
+The file main.py contains:
+
+    The main function for testing the program.
+    Class Course represents a course, which contains a list of Student objects as a course roster. (Type your code in here.)
+    Class Student represents a classroom student, which has three attributes: first name, last name, and GPA. (Hint: get_last() returns the last name field.)
+
+Note: For testing purposes, different student values will be used.
+
+Ex. For the following students:
+
+Henry Nguyen 3.5
+Brenda Stern 2.0
+Lynda Robison 3.2
+Sonya King 3.9
+
+the output for dropping Stern is:
+
+Course size: 4 students
+Course size after drop: 3 students
+

@@ -1,0 +1,97 @@
+
+6.10 Scope of variables and functions
+Variable and function scope
+
+A variable or function object is only visible to part of a program, known as the object's scope. When a variable is created inside a function, the variable's scope is limited to inside that function. In fact, because a variable's name does not exist until bound to an object, the variable's scope is actually limited to after the first assignment of the variable until the end of the function. The following program highlights the scope of variable total_inches.
+Figure 6.10.1: Variable scope.
+
+centimeters_per_inch = 2.54
+inches_per_foot = 12
+
+def height_US_to_centimeters(feet, inches):
+    """ Converts a height in feet/inches to centimeters."""
+    total_inches = (feet * inches_per_foot) + inches  # Total inches
+    centimeters = total_inches * centimeters_per_inch
+    return centimeters
+
+feet = int(input('Enter feet: '))
+inches = int(input('Enter inches: '))
+
+print('Centimeters:', height_US_to_centimeters(feet, inches))
+
+
+Local variable scope extends from assignment to end of function. Global variable scope extends to end of file.
+
+The function's variables total_inches and centimeters are invisible to the code outside of the function and cannot be used. Such variables defined inside a function are called local variables.
+Global variables
+
+In contrast, a variable defined outside of a function is called a global variable. A global variable's scope extends from assignment to the end of the file and can be accessed inside of functions.
+
+A global statement must be used to change the value of a global variable inside of a function. The following shows two programs: the right uses a global statement to allow the modification of global variable employee_name inside of the get_name function.
+Figure 6.10.2: The global statement (right) allows modifying a global variable.
+
+employee_name = 'N/A'
+
+def get_name():
+
+    name = input('Enter employee name:')
+    employee_name = name
+
+get_name()
+print('Employee name:', employee_name)
+
+Enter employee name: Romeo Montague
+Employee name: N/A
+
+
+
+employee_name = 'N/A'
+
+def get_name():
+    global employee_name
+    name = input('Enter employee name:')
+    employee_name = name
+
+get_name()
+print('Employee name:', employee_name)
+
+Enter employee name: Juliet Capulet
+Employee name: Juliet Capulet
+
+The global statement must be applied to any global variable that is to be assigned in a function. Modification of mutable global variables, such as list or dict containers, does not require a global statement if a programmer is adding or removing elements from the container. The reasons for requiring a global statement are discussed in more detail later.
+
+Assignment of global variables in functions should be used sparingly. If a local variable (including a parameter) has the same name as a global variable, then the naming can be very confusing to a reader. Furthermore, if a function updates the global variable, then that function's behavior is no longer limited to its parameters and return value; the function may have side effects that are hard for a programmer to recognize. Good practice is to limit the use of global variables to defining constants that are independent of any function. Global variables should generally be avoided (with a few exceptions), especially by beginner programmers.
+
+A function also has scope, which extends from the function's definition to the end of the file. To be able to call a function, the interpreter must have already evaluated the function definition (thus binding the function name to a function object). An attempt to call a function before a function has been defined results in an error.
+Figure 6.10.3: Function definitions must be evaluated before that function is called.
+
+employee_name = 'N/A'
+
+get_name()
+print('Employee name:', employee_name)
+
+def get_name():
+    global employee_name
+    name = input('Enter employee name:')
+    employee_name = name
+
+
+
+NameError: name 'get_name' is not defined
+
+participation activity
+6.10.1: Variable/ function scope.
+1)
+A local variable is defined inside a function, while a global variable is defined outside any function.
+2)
+A local variable's scope extends from a function definition's ending colon ":" to the end of the function.
+3)
+A global statement must be used to assign a global variable inside a function.
+4)
+A function definition must be evaluated by the interpreter before the function can be called.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+6.11 Namespaces and scope resolution

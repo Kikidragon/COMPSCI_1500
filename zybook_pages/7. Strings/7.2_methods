@@ -1,0 +1,229 @@
+
+7.3 String methods
+
+String objects have many useful methods to do things like replacing characters, converting to lowercase, capitalizing the first character, etc. The methods are made possible due to a string's implementation as a class, which for purposes here can just be thought of as a mechanism supporting a set of methods for a particular type of object.
+Finding and replacing
+
+A common task for a programmer is to edit the contents of a string. Recall that string objects are immutable -- once created, strings can not be changed. To update a string variable, a new string object must be created and bound to the variable name, replacing the old object. The replace string method provides a simple way to create a new string by replacing all occurrences of a substring with a new substring.
+
+    replace(old, new) -- Returns a copy of the string with all occurrences of the substring old replaced by the string new. The old and new arguments may be string variables or string literals.
+    replace(old, new, count) -- Same as above, except only replaces the first count occurrences of old.
+
+participation activity
+7.3.1: replace() string method.
+1	phrase = 'One day I will have three goats, six horses, and nine llamas.'
+2
+3	# Replace English with Spanish.
+4	phrase = phrase.replace('one', 'uno')
+5	phrase  = phrase.replace('two', 'dos')
+6	phrase = phrase.replace('three', 'tres')
+7	phrase = phrase.replace('four', 'cuatro')
+8	phrase = phrase.replace('five', 'cinco')
+9	phrase = phrase.replace('six', 'seis')
+10	phrase  = phrase.replace('seven', 'siete')
+11	phrase  = phrase.replace('eight', 'ocho')
+12	phrase = phrase.replace('nine', 'nueve')
+13
+14	print('Translation:', phrase)
+Step 1 of 11
+line that has just executed
+
+next line to execute
+Frames
+
+Objects
+
+Some methods are useful for finding the position of where a character or substring is located in a string:
+
+    find(x) -- Returns the index of the first occurrence of item x in the string, else returns -1. x may be a string variable or string literal. Recall that in a string, the index of the first character is 0, not 1. If my_str is 'Boo Hoo!':
+        my_str.find('!')  # Returns 7
+        my_str.find('Boo')  # Returns 0
+        my_str.find('oo')  # Returns 1 (first occurrence only)
+    find(x, start) -- Same as find(x), but begins the search at index start:
+        my_str.find('oo', 2)  # Returns 5
+    find(x, start, end) -- Same as find(x, start), but stops the search at index end - 1:
+        my_str.find('oo', 2, 4)  # Returns -1 (not found)
+    rfind(x) -- Same as find(x) but searches the string in reverse, returning the last occurrence in the string.
+
+Another useful function is count, which counts the number of times a substring occurs in the string:
+
+    count(x) -- Returns the number of times x occurs in the string.
+        my_str.count('oo')  # Returns 2
+
+Note that methods such as find() and rfind() are useful only for cases where a programmer needs to know the exact location of the character or substring in the string. If the exact position is not important, then the in membership operator should be used to check if a character or substring is contained in the string:
+Figure 7.3.1: Use 'in' to check if a character or substring is contained by another string.
+
+if 'batman' in superhero_name:
+    # Statements to execute if superhero_name contains 'batman' in any position.
+
+zyDE 7.3.1: String searching example: Hangman.
+
+The following example carries out a simple guessing game, allowing a user a number of guesses to fill out the complete word.
+
+
+
+Comparing strings
+
+String objects may be compared using relational operators (<, <=, >, >=), equality operators (==, !=), membership operators (in, not in), and identity operators (is, is not).
+
+Evaluation of relational and equality operator comparisons occurs by first comparing the corresponding characters at element 0, then at element 1, etc., stopping as soon as a determination can be made. For an equality (==) comparison, the two strings must have the same length and every corresponding character pair must be the same. For a relational comparison (<, >, etc.), the result will be the result of comparing the ASCII/Unicode values of the first differing character pair.
+Table 7.3.1: String comparisons.
+Example 	Expression result 	Why?
+'Hello' == 'Hello' 	True 	The strings are exactly identical values
+'Hello' == 'Hello!' 	False 	The left hand string does not end with '!'
+'Yankee Sierra' > 'Amy Wise' 	True 	The first character of the left side 'Y' is "greater than" (in ASCII value) the first character of the right side 'A'
+'Yankee Sierra' > 'Yankee Zulu' 	False 	The characters of both sides match until the second word. The first character of the second word on the left 'S' is not "greater than" (in ASCII value) the first character on the right side 'Z'
+'seph' in 'Joseph' 	True 	The substring 'seph' can be found starting at the 3rd position of 'Joseph'
+'jo' in 'Joseph' 	False 	'jo' (with a lowercase 'j') is not in 'Joseph' (with an uppercase 'J')
+
+The following animation shows the process of comparing two string variables character by character using their ASCII values. Recall that ASCII values are an integer value representation of a character. 'A' is represented by the integer value 65, 'B' by 66, 'C' by 67, and so on. An ASCII table provides a quick lookup of ASCII values. There are many ASCII tables available online, for example www.asciitable.com.
+participation activity
+7.3.2: String comparison.
+K   a   y   ,   _   J
+K   a   y   ,   _   A
+m   y
+o
+0
+1
+2
+3
+4
+5
+6
+7
+student_name
+teacher_name
+student_name > teacher_name
+75
+75
+=
+97
+97
+=
+121
+121
+=
+44
+44
+32
+32
+=
+=
+74
+65
+>
+Captions
+
+    Each comparison uses ASCII values.
+    Values at indexes 0-4 are the same for both student_name and teacher_name.
+    'J' is greater than 'A', so student_name is greater than teacher_name.
+
+If one string is shorter than the other with all corresponding characters equal, then the shorter string is considered less than the longer string.
+
+The membership operators (in, not in) provide a simple method for detecting whether a specific substring exists in the string. The argument to the right of the operator is examined for the existence of the argument on the left. Note that reversing the arguments does not work, as 'Jo' is a substring of 'Kay, Jo', but 'Kay, Jo' is not a substring of 'Jo'.
+
+The identity operators (is, is not) determine whether the two arguments are bound to the same object. A common error is to use an identity operator in place of an equality operator. Ex: A programmer may write name is 'Amy Adams', intending to check if the value of name is the same as the literal 'Amy Adams'. Instead, the Python interpreter creates a new string object from the string literal on the right, and compares the identity of the new object to the name object, which returns False. Good practice is to always use the equality operator== when comparing values.
+Figure 7.3.2: Identity vs. equality operators.
+'
+
+student_name = input('Enter student name:\n')
+
+if student_name is 'Amy Adams':
+    print('Identity operator: True')
+else:
+    print('Identity operator: False')
+
+if student_name == 'Amy Adams':
+    print('Equality operator: True')
+else:
+    print('Equality operator: False')
+
+
+
+Enter student name: Amy Adams
+Identity operator: False
+Equality operator: True
+
+Because comparison uses the encoded values of characters (ASCII/Unicode), comparison may not behave intuitively for some situations. Comparisons are case-sensitive, so 'Apple' does not equal 'apple'. In particular, because the encoded value for 'A' is 65, and for 'a' is 97, then 'Apple' is less-than 'apple'. Furthermore, 'Banana' is less than 'apple', because 'B' is 66 while 'a' is 97.
+
+A number of methods are available to help manage string comparisons. The list below describes the most commonly used methods; a full list is available at docs.python.org.
+
+    Methods to check a string value that returns a True or False Boolean value:
+        isalnum() -- Returns True if all characters in the string are lowercase or uppercase letters, or the numbers 0-9.
+        isdigit() -- Returns True if all characters are the numbers 0-9.
+        islower() -- Returns True if all cased characters are lowercase letters.
+        isupper() -- Return True if all cased characters are uppercase letters.
+        isspace() -- Return True if all characters are whitespace.
+        startswith(x) -- Return True if the string starts with x.
+        endswith(x) -- Return True if the string ends with x.
+
+Note that the methods islower() and isupper() ignore non-cased characters. Ex: 'abc?'.islower() returns True, ignoring the question mark.
+participation activity
+7.3.3: String methods: Boolean string comparisons.
+
+Determine whether the given expression evaluates to True or False.
+1)
+'HTTPS://google.com'.isalnum()
+2)
+'HTTPS://google.com'.startswith('HTTP')
+3)
+'\n \n'.isspace()
+4)
+'1 2 3 4 5'.isdigit()
+5)
+'LINCOLN, ABRAHAM'.isupper()
+Creating new strings from a string
+
+A programmer often needs to transform two strings into similar formats to perform a comparison. The list below shows some of the more common string methods that create string copies, altering the case or amount of whitespace of the original string:
+
+    Methods to create new strings:
+        capitalize() -- Returns a copy of the string with the first character capitalized and the rest lowercased.
+        lower() -- Returns a copy of the string with all characters lowercased.
+        upper() -- Returns a copy of the string with all characters uppercased.
+        strip() -- Returns a copy of the string with leading and trailing whitespace removed.
+        title() -- Returns a copy of the string as a title, with first letters of words capitalized.
+
+A user may enter any one of the non-equivalent values 'Bob' , 'BOB ', or 'bob' into a program that reads in names. The statement name = input().strip().lower() reads in the user input, strips the leading and trailing whitespace, and changes all the characters to lowercase. Thus, user input of 'Bob', 'BOB ', or 'bob' would each result in name having just the value 'bob'.
+
+Good practice when reading user-entered strings is to apply transformations when reading in data (such as input), as opposed to later in the program. Applying transformations immediately limits the likelihood of introducing bugs because the user entered an unexpected string value. Of course, there are many examples of programs in which capitalization or whitespace should indicate a unique string -- the programmer should use discretion depending on the program being implemented.
+zyDE 7.3.2: String methods example: Passenger database.
+
+The example program below shows how the above methods might be used to store passenger names and travel destinations in a database. The use of strip(), lower(), and upper() standardize user-input for easy comparison.
+
+Run the program below and add some passengers into the database. Add a duplicate passenger name, using different capitalization, and print the list again.
+
+
+challenge activity
+7.3.1: Find abbreviation.
+Complete the if-else statement to print 'LOL means laughing out loud' if user_tweet contains 'LOL'.
+
+Sample output with input: 'I was LOL during the whole movie!'
+
+LOL means laughing out loud.
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+7.3.2: Replace abbreviation.
+Assign decoded_tweet with user_tweet, replacing any occurrence of 'TTYL' with 'talk to you later'.
+
+Sample output with input: 'Gotta go. I will TTYL.'
+
+Gotta go. I will talk to you later.
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+7.4 Splitting and joining strings

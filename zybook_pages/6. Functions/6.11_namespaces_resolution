@@ -1,0 +1,199 @@
+
+6.11 Namespaces and scope resolution
+Namespace
+
+A namespace maps names to objects. The Python interpreter uses namespaces to track all of the objects in a program. For example, when executing z = x + y, the interpreter looks in a namespace to find the value of the objects referenced by x and y, evaluates the expression, and then updates z in the namespace with the expression's result.
+participation activity
+6.11.1: Namespaces.
+
+x = 5
+y = 100
+z = x + y
+
+
+Global namespace
+x
+5
+y
+100
+x
+5
+y
+100
++     =
+105
+z
+Global variables are tracked in the global namespace
+Captions
+
+    Global variables are tracked in the global namespace.
+    The value of variables is found by looking in the namespace.
+
+In fact, a namespace is actually just a normal Python dictionary whose keys are the names and whose values are the objects. A programmer can examine the names in the current local and global namespace by using the locals() and globals() built-in functions.
+Figure 6.11.1: Using the globals() to get namespace names.
+
+print('Initial global namespace: ')
+print(globals())
+
+my_var = "This is a variable"
+print('\nCreated new variable')
+print(globals())
+
+def my_func():
+    pass
+
+print('\nCreated new function')
+print(globals())
+
+
+
+Initial global namespace:
+{}
+
+Created new variable
+{'my_var': 'This is a variable'}
+
+Created new function
+{'my_func': <function my_func at 0x2349d4>, 'my_var': 'This is a variable'}
+
+By default, a few names already exist in the global namespace – those names have been omitted in the output for brevity. Notice that my_var and my_func are added into the namespace once assigned.
+Scope and scope resolution
+
+Scope is the area of code where a name is visible. Namespaces are used to make scope work. Each scope, such as global scope or a local function scope, has its own namespace. If a namespace contains a name at a specific location in the code, then that name is visible and a programmer can use it in an expression.
+
+There are at least three nested scopes that are active at any point in a program's execution: 1
+
+    Built-in scope – Contains all of the built-in names of Python, such as int(), str(), list(), range(), etc.
+    Global scope – Contains all globally defined names outside of any functions.
+    Local scope – Usually refers to scope within the currently executing function, but is the same as global scope if no function is executing.
+
+When a name is referenced in code, the local scope's namespace is the first checked, followed by the global scope, and finally the built-in scope. If the name cannot be found in any namespace, the interpreter generates a NameError. The process of searching for a name in the available namespaces is called scope resolution.
+participation activity
+6.11.2: Scope resolution.
+
+daily_cals = 2300  # Daily calories
+soda_cals = 200
+
+def drink_soda(cals_left):
+    return cals_left - soda_cals
+
+daily_cals = drink_soda(daily_cals)
+
+
+Built-in namespace
+int()
+<funct>
+input()
+<funct>
+...
+...
+Global namespace
+daily_cals
+2300
+drink_soda
+<funct>
+Local namespace
+drink_soda
+daily_cals
+2300
+cals_left
+soda_cals
+200
+2300
+200
+-        =
+2100
+Global variables are tracked in the global namespace.
+Captions
+
+    Global variables are added to the global namespace.
+    Calling a function creates a new local namespace for local variables.
+    Variables are resolved by looking in the local namespace first, then global, then built-in.
+    The local namespace is removed when the function returns.
+
+As the code executes, the global scope namespace is filled with names as they are defined. The function call creates a new namespace to track the variables in the function's local scope. The new local namespace automatically contains the parameter value cals_left. When the expression cals_left - soda_cals is evaluated, the interpreter finds cals_left in the local namespace, then finds soda_cals in the global namespace after unsuccessfully searching the local namespace.
+participation activity
+6.11.3: Namespaces and scopes.
+
+    Scope
+    locals()
+    Namespace
+    Scope resolution
+
+Maps the visible names in a scope to objects.
+The area of code where a name is visible.
+Returns a dictionary of the names found in the local namespace.
+The process of searching namespaces for a name.
+participation activity
+6.11.4: Namespaces.
+
+Given the following program, select the namespace that each name would belong to.
+
+import random
+
+player_name = 'Gandalf'
+player_type = 'Wizard'
+
+def roll():
+    """Returns a roll of a 20-sided die"""
+    number = random.randint(1, 20)
+    return number
+
+print('A troll attacks!')
+troll_roll = roll()
+player_roll = roll()
+
+print('Player: {}    Troll: {}'.format(str(player_roll), str(troll_roll)))
+
+1)
+player_name
+2)
+roll
+3)
+number
+4)
+str
+More scoping and namespaces
+
+The concept of scopes and namespaces helps to explain how multiple variables can share the same name, yet have different values. Consider the following program that first creates a variable tmp in the global namespace, then creates another variable named tmp in a local function. The assignment statement in the avg() function creates a new variable within the function's local namespace. When the function returns, the namespace is deleted as well (since the local variables are now out of scope). The later statement print 'Sum: {:f}'.format(tmp) looks up the name tmp in the global scope, finding the tmp previously created with the statement tmp = a + b.
+
+Note that the Python Tutor tool below uses the term "frame" in place of "namespace".
+participation activity
+6.11.5: Function scope.
+1	def avg(a, b):
+2	    tmp = (a + b) / 2.0  # Creates tmp in local namespace
+3	    return tmp
+4
+5	a = 5
+6	b = 10
+7	tmp = a + b  # Creates tmp in global namespace
+8
+9	print('Avg: {:f}'.format(avg(a, b)))
+10	print('Sum: {:f}'.format(tmp))
+Step 1 of 10
+line that has just executed
+
+next line to execute
+Frames
+
+Objects
+
+By default, any assignment statement automatically creates (or modifies) a name in the local namespace only, even if the same name exists in a higher global or built-in scope. A global statement such as global tmp forces the interpreter to consider the variable in the global scope, thus allowing modification of existing global variables instead of creating local variables.
+participation activity
+6.11.6: Namespace and scope.
+1)
+A namespace is how the Python interpreter restricts variables to a specific scope.
+2)
+Whenever a function is called, a local namespace is created for that function.
+3)
+The same name cannot be in multiple namespaces.
+4)
+If a programmer defines a function called list(), the program will crash because there is already a built-in function with the same name.
+
+(*1) Actually, there are four levels of scopes. We have omitted a level between the local function scope and global scope for clarity. It is possible to define a function within another function – in such a case the scope of the outer function is checked before the global scope is checked.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+6.12 Function arguments

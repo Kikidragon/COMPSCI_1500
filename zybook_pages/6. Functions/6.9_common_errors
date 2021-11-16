@@ -1,0 +1,111 @@
+
+6.9 Functions: Common errors
+Copy-paste errors
+
+A common error is to copy-and-paste code among functions but then not complete all necessary modifications to the pasted code. For example, a programmer might have developed and tested a function to convert a temperature value in Celsius to Fahrenheit, and then copied and modified the original function into a new function to convert Fahrenheit to Celsius as shown:
+Figure 6.9.1: Copy-paste common error: Pasted code not properly modified. Find error on the right.
+
+def celsius_to_fahrenheit(celsius):
+    temperature = (9.0/5.0) * celsius
+    fahrenheit = temperature + 32
+
+    return fahrenheit
+
+
+
+def fahrenheit_to_celsius(fahrenheit):
+    temperature = fahrenheit- 32
+    celsius = temperature * (5.0/9.0)
+
+    return fahrenheit
+
+The programmer forgot to change the return statement to return celsius rather than fahrenheit. Copying-and-pasting code is a common and useful time-saver and can reduce errors by starting with known-correct code. Our advice is that when you copy-paste code, be extremely vigilant in making all necessary modifications. Just as the awareness that dark alleys or wet roads may be dangerous can cause you to vigilantly observe your surroundings or drive carefully, the awareness that copying-and-pasting is a common source of errors may cause you to more vigilantly ensure you modify a pasted function correctly.
+participation activity
+6.9.1: Copy-pasted sum-of-squares code.
+
+Original parameters were num1, num2, num3.
+Original code was:
+
+sum = (num1 * num1) + (num2 * num2) + (num3 * num3)
+return sum
+
+
+
+New parameters are num1, num2, num3, num4. Find the error in the copy-pasted new code below.
+
+1)
+
+
+(num1 * num1) + (num2 * num2) + (num3 * num3) +
+
+
+
+
+Return errors
+
+Another common error is to return the wrong variable, like if return temperature had been used in the temperature conversion program by accident. The function will work and sometimes even return the correct value.
+
+Another common error is to fail to return a value for a function. If execution reaches the end of a function's statements without encountering a return statement, then the function returns a value of None. If the function is expected to return an actual value, then such an assignment can cause confusion.
+participation activity
+6.9.2: Missing return common error.
+1	def steps_to_feet(num_steps):
+2	    feet_per_step = 3
+3	    feet = num_steps * feet_per_step
+4	    # Missing return statement!
+5
+6	feet_per_mile = 5280
+7	steps = 1000
+8
+9	feet = steps_to_feet(steps)
+10	print("Distance walked in feet:", feet)
+Step 1 of 9
+line that has just executed
+
+next line to execute
+Frames
+
+Objects
+
+The program above produces unexpected output, leading to a bug that's hard to find. The program does not contain syntax errors, but does contain a logic error because the function steps_to_feet() always returns a value None.
+participation activity
+6.9.3: Common function errors.
+1)
+Forgetting to return a value from a function is a common error.
+2)
+Copying-and-pasting code can lead to common errors if all necessary changes are not made to the pasted code.
+3)
+Returning the incorrect variable from a function is a common error.
+4)
+Is this function correct for squaring an integer?
+
+def sqr (a):
+    t = a * a
+
+5)
+Is this function correct for squaring an integer?
+
+def sqr (a):
+    t = a * a
+    return a
+
+challenge activity
+6.9.1: Function errors: Copying one function to create another.
+Using the celsius_to_kelvin function as a guide, create a new function, changing the name to kelvin_to_celsius, and modifying the function accordingly.
+
+Sample output with input: 283.15
+
+10.0 C is 283.15 K
+283.15 K is 10.0 C
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+6.10 Scope of variables and functions

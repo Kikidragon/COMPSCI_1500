@@ -1,0 +1,94 @@
+
+zyBooks
+
+    My library
+    >
+    COMP SCI 1500: Computational Problem Solving home
+    >
+    6.17: Engineering examples
+
+You have unverified email(s). Please click on your name in the top right corner and browse to your profile to send another verification email.
+6.16 Help! Using docstrings to document functions
+Students:
+Section 6.17 is a part of 2 assignments:
+Requirements:
+CA
+Due: 12/10/2021, 11:59 PM CST
+6.17 Engineering examples
+
+This section contains some examples of functions used to carry out engineering-type calculations.
+Example: Gas equation
+
+An equation used in physics and chemistry that relates pressure, volume, and temperature of a gas is PV = nRT. P is the pressure, V the volume, T the temperature, n the number of moles, and R a constant. The function below outputs the temperature of a gas given the other values.
+Figure 6.17.1: PV = nRT. Compute the temperature of a gas.
+
+gas_constant = 8.3144621  # Joules / (mol*Kelvin)
+
+def convert_to_temp(pressure, volume, mols):
+    """Convert pressure, volume, and moles to a temperature"""
+    return (pressure * volume) / (mols * gas_constant)
+
+press = float(input('Enter pressure (in Pascals): '))
+vol = float(input('Enter volume (in cubic meters): '))
+mols = float(input('Enter number of moles: '))
+
+print('Temperature = {:.2f} K'.format(convert_to_temp(press, vol, mols)))
+
+
+
+Enter pressure (in Pascals): 2500
+Enter volume (in cubic meters): 35.5
+Enter number of moles: 18
+Temperature = 593.01 K
+
+participation activity
+6.17.1: PV = nRT calculation.
+
+Questions refer to convert_to_temp function above.
+1)
+Function convert_to_temp uses a rewritten form of PV = nRT to solve for T, namely T = PV/nR.
+2)
+Function convert_to_temp uses a global variable for the gas constant R.
+3)
+Function convert_to_pres() would likely return (temp * volume) / (mols * gas_constant).
+Example: Trajectory of object on Earth
+
+Common physics equations determine the x and y coordinates of a projectile object at any time, given the object's initial velocity and angle at time 0 with initial position x = 0 and y = 0. The equation for x is v * t * cos(a). The equation for y is v * t * sin(a) - 0.5 * g * t * t.
+
+The program's code asks the user for the object's initial velocity, angle, and height (y position), and then prints the object's position for every second until the object's y position is no longer greater than 0 (meaning the object fell back to Earth).
+zyDE 6.17.1: Trajectory of object on Earth.
+
+
+
+participation activity
+6.17.2: Projective location.
+
+Questions refer to function trajectory above.
+1)
+trajectory() cannot return two values (for x and y), so instead returns a single tuple containing both x and y.
+2)
+The program could replace float() by int() without causing much change in computed values.
+3)
+Each iteration of the loop will see y_loc increase.
+4)
+Assuming the launch angle is less than 90 degrees, each iteration of the loop will see x_loc increase.
+challenge activity
+6.17.1: Function to compute gas volume.
+Define a function compute_gas_volume that returns the volume of a gas given parameters pressure, temperature, and moles. Use the gas equation PV = nRT, where P is pressure in Pascals, V is volume in cubic meters, n is number of moles, R is the gas constant 8.3144621 ( J / (mol*K)), and T is temperature in Kelvin.
+
+Sample output with inputs: 100.0 1.0 273.0
+
+Gas volume: 22.698481533 m^3
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+6.18 Lab training: Unit tests to evaluate your program

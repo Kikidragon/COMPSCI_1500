@@ -1,0 +1,178 @@
+
+6.5 Writing mathematical functions
+Mathematical functions
+
+A function is commonly defined to compute a mathematical calculation involving several numerical parameters and returning a numerical result. Ex: The following program uses a function to convert a person's height in U.S. units (feet and inches) into total centimeters.
+participation activity
+6.5.1: Program with a function to convert height in feet/inches to centimeters.
+1	CM_PER_INCH = 2.54
+2	INCHES_PER_FOOT = 12
+3
+4	def height_US_to_cm(feet, inches):
+5	   """Converts height in feet/inches to centimeters"""
+6	   total_inches = feet * INCHES_PER_FOOT + inches
+7	   cm = total_inches * CM_PER_INCH
+8	   return cm
+9
+10	feet = 6
+11	inches = 4
+12
+13	centimeters = height_US_to_cm(feet, inches)
+14	print('Centimeters:', centimeters)
+Step 1 of 12
+line that has just executed
+
+next line to execute
+Frames
+
+Objects
+Most Americans only know their height in feet/inches, not in total inches. Human average height is increasing, attributed largely to better nutrition. (Source: Our World in Data: Human height.)
+participation activity
+6.5.2: Mathematical functions.
+
+Indicate which is a valid use of the height_US_to_cm() function above.
+1)
+x = height_US_to_cm(5, 0)
+2)
+x = 2 * (height_US_to_cm(5, 0) + 1.0)
+3)
+x = (height_US_to_cm(5, 0) + height_US_to_cm(6, 1)) / 2.0
+4)
+Suppose pow(y, z) returns y to the power of z. Is the following valid?
+x = pow(2, pow(3, 2))
+zyDE 6.5.1: Temperature conversion.
+
+Complete the program by writing and calling a function that converts a temperature from Celsius into Fahrenheit. Use the formula F = C x 9/5 + 32. Test your program knowing that 50 Celsius is 122 Fahrenheit.
+
+Calling functions in expressions
+
+A function call evaluates to its returned value. Thus, a function call often appears within an expression. Ex: 5 + compute_square(4) would become 5 + 16, or 21. A function that returns None cannot be used as such within an expression.
+participation activity
+6.5.3: Function called twice in an expression.
+
+def compute_square(num_to_square):
+  return num_to_square * num_to_square
+
+
+c2 = compute_square(7) + compute_square(9)
+
+print('7 squared plus 9 squared is', c2)
+
+
+7
+7
+*
+7
+49
+7 squared plus 9 squared is 130
+9
+9
+9
+*
+
+
+81
+130
+Captions
+
+    compute_square() is called within an expression two times, first with the argument 7. 7 is passed to compute_square() the value 49 is returned.
+    compute_square() is called a second time with the argument 9 and the value 81 is returned to the expression.
+    The expression then evaluates to c2 = 49 + 81, which assigns variable c2 with 130. Lastly, the print statement executes.
+
+participation activity
+6.5.4: Function calls in an expression.
+
+Given the following functions, determine which statements are valid.
+
+def square_root(x):
+    return math.sqrt(x)
+
+def print_val(x):
+    print(x)
+
+1)
+y = square_root(49.0)
+2)
+square_root(49.0) = z
+3)
+y = 1.0 + square_root(144.0)
+4)
+y = square_root(square_root(16.0))
+5)
+y = square_root()
+6)
+square_root(9.0)
+7)
+y = print_val(9.0)
+8)
+y = 1 + print_val(9.0)
+9)
+print_val(9.0)
+challenge activity
+6.5.1: Function call in expression.
+Assign max_sum with the greater of num_a and num_b, PLUS the greater of num_y and num_z. Use just one statement. Hint: Call find_max() twice in an expression.
+
+Sample output with inputs: 5.0 10.0 3.0 7.0
+
+max_sum is: 17.0
+
+
+
+343716.2144758.qx3zqy7
+
+1 test passed
+All tests passed
+View your last submission
+Modular functions for mathematical expressions
+
+Modularity allows more complex functions to incorporate simpler functions. Complex mathematical functions often call other mathematical functions. Ex: A function that calculates the volume or surface area of a cylinder calls a function that returns the area of the cylinder's base, which is needed for both calculations.
+Figure 6.5.1: Program that calculates cylinder volume and surface area by calling a modular function for the cylinder's base.
+
+import math
+
+def calc_circular_base_area(radius):
+   return math.pi * radius * radius
+
+def calc_cylinder_volume(baseRadius, height):
+   return calc_circular_base_area(baseRadius) * height
+
+def calc_cylinder_surface_area(baseRadius, height):
+   return (2 * math.pi * baseRadius * height) + (2 * calc_circular_base_area(baseRadius))
+
+radius = float(input('Enter base radius: '))
+height = float(input('Enter height: '))
+
+print('Cylinder volume: ' + '{:.3f}'.format(calc_cylinder_volume(radius, height)))
+print('Cylinder surface area: ' + '{:.3f}'.format(calc_cylinder_surface_area(radius, height)))
+
+
+
+Enter base radius: 10
+Enter height: 5
+Cylinder volume: 1570.796
+Cylinder surface area: 942.478
+
+challenge activity
+6.5.2: Function definition: Volume of a pyramid with modular functions.
+Define a function calc_pyramid_volume() with parameters base_length, base_width, and pyramid_height, that returns the volume of a pyramid with a rectangular base. calc_pyramid_volume() calls the given calc_base_area() function in the calculation.
+
+Relevant geometry equations:
+Volume = base area x height x 1/3
+(Watch out for integer division).
+
+Sample output with inputs: 4.5 2.1 3.0
+
+Volume for 4.5, 2.1, 3.0 is: 9.45
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+6.6 Function stubs

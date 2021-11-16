@@ -1,0 +1,58 @@
+
+zyBooks
+
+    My library
+    >
+    COMP SCI 1500: Computational Problem Solving home
+    >
+    10.6: Custom exception types
+
+You have unverified email(s). Please click on your name in the top right corner and browse to your profile to send another verification email.
+10.5 Using finally to cleanup
+Students:
+Section 10.6 is a part of 1 assignment: Participation
+Requirements:
+PA
+Due: 12/10/2021, 11:59 PM CST
+10.6 Custom exception types
+
+When raising an exception, a programmer can use the existing built-in exception types. For example, if an exception should be raised when the value of my_num is less than 0, the programmer might use a ValueError, as in raise ValueError("my_num < 0"). Alternatively, a custom exception type can be defined and then raised. The following example shows how a custom exception type LessThanZeroError might be used.
+Figure 10.6.1: Custom exception types.
+
+# Define a custom exception type
+class LessThanZeroError(Exception):
+    def __init__(self, value):
+        self.value = value
+
+my_num = int(input('Enter number: '))
+
+if my_num < 0:
+    raise LessThanZeroError('my_num must be greater than 0')
+else:
+    print('my_num:', my_num)
+
+
+
+Enter number: -100
+Traceback (most recent call last):
+  File "test.py", line 11, in <module>
+    raise LessThanZeroError('my_num must be greater than 0')
+__main__.LessThanZeroError
+
+A programmer creates a custom exception type by creating a class that inherits from the built-in Exception class. The new class can contain a constructor, as shown above, that may accept an argument to be saved as an attribute. Alternatively, the class could have no constructor (and a "pass" statement might be used, since a class definition requires at least one statement). A custom exception class is typically kept bare, adding a minimal amount of functionality to keep track of information that an exception handler might need. Inheritance is discussed in detail elsewhere.
+
+Good practice is to include "Error" at the end of a custom exception type's name, as in LessThanZeroError or MyError. Custom exception types are useful to track and handle the unique exceptions that might occur in a program's code. Many larger third-party and Python standard library modules use custom exception types.
+participation activity
+10.6.1: Custom exception types.
+1)
+A custom exception type is usually defined by inheriting from the Exception class.
+2)
+The following statement defines a new type of exception: def MyMultError: pass
+3)
+"FileNotOpen" is a good name for a custom exception class.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+10.7 LAB: Fat-burning heart rate

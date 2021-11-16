@@ -1,0 +1,14 @@
+
+6.32 LAB: Write convert() function to cast float to int
+
+Complete the convert() function that casts the parameter from a float to an integer and returns the result.
+Note that the returned value of the convert() function is printed.
+
+Ex: If the float value is 19.9, then the output is:
+
+19
+
+Ex: If the float value is 3.1, then the output is:
+
+3
+

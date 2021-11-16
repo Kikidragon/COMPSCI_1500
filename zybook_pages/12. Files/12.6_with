@@ -1,0 +1,46 @@
+
+12.6 The 'with' statement
+
+A with statement can be used to open a file, execute a block of statements, and automatically close the file when complete.
+Construct 12.6.1: The with statement.
+
+with open('myfile.txt', 'r') as myfile:
+    # Statement-1
+    # Statement-2
+    # ...
+    # Statement-N
+
+Above, the file object returned by open() is bound to myfile. When the statements in the block complete, then myfile is closed. The with statement creates a context manager, which manages the usage of a resource, like a file, by performing setup and teardown operations. For files, the teardown operation is automatic closure. Other context managers exist for other resources, and new context managers can be written by a programmer, but is out of scope for this material.
+
+Forgetting to close a file can sometimes cause problems. For example, a file opened in write mode cannot be written to by other programs. Good practice is to use a with statement when opening files, to guarantee that the file is closed when no longer needed.
+Figure 12.6.1: Using the with statement to open a file.
+
+print('Opening myfile.txt')
+
+# Open a file for reading and appending
+with open('myfile.txt', 'r+') as f:
+    # Read in two integers
+    num1 = int(f.readline())
+    num2 = int(f.readline())
+
+    product = num1 * num2
+
+    # Write back result on own line
+    f.write('\n')
+    f.write(str(product))
+
+# No need to call f.close() - f closed automatically
+print('Closed myfile.txt')
+
+participation activity
+12.6.1: The with statement.
+1)
+When using a with statement to open a file, the file is automatically closed when the statements in the block finish executing.
+2)
+Use of a with statement is not recommended most of the time when opening files.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+12.7 Comma separated values files

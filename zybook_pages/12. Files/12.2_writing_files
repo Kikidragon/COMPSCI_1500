@@ -1,0 +1,137 @@
+
+12.2 Writing files
+
+Programs often write to a file to store data permanently. The file.write() method writes a string argument to a file.
+Figure 12.2.1: Writing to a file.
+
+f = open('myfile.txt', 'w')  # Open file
+f.write('Example string:\n  test...')  # Write string
+f.close()  # Close the file
+
+	Final contents of myfile.txt:
+
+Example string:
+  test...
+
+The write() method accepts a string argument only. Integers and floating-point values must first be converted using str(), as in f.write(str(5.75)).
+Figure 12.2.2: Numeric values must be converted to strings.
+
+num1 = 5
+num2 = 7.5
+num3 = num1 + num2
+
+f = open('myfile.txt', 'w')
+f.write(str(num1))
+f.write(' + ')
+f.write(str(num2))
+f.write(' = ')
+f.write(str(num3))
+f.close()
+
+	Final contents of myfile.txt:
+
+5 + 7.5 = 12.5
+
+When writing to a file, the mode of the file must be explicitly set in the open() function call. A mode indicates how a file is opened, e.g., whether or not writing to the file is allowed, if existing contents of the file are overwritten or appended, etc. The most used modes are 'r' (read) and 'w' (write). The mode is specified as the second argument in a call to open(), e.g., open('myfile.txt', 'w') opens myfile.txt for writing. If mode is not specified the default is 'r'.
+
+The below table lists common file modes:
+Table 12.2.1: Modes for opening files.
+Mode 	Description 	Allow read? 	Allow write? 	Create missing file? 	Overwrite file?
+'r' 	Open the file for reading. 	Yes 	No 	No 	No
+'w' 	Open the file for writing. If file does not exist then the file is created. Contents of an existing file are overwritten. 	No 	Yes 	Yes 	Yes
+'a' 	Open the file for appending. If file does not exist then the file is created. Writes are added to end of existing file contents. 	No 	Yes 	Yes 	No
+
+    Read mode 'r' opens a file for reading. If the file is missing, then an error will occur.
+    Write mode 'w' opens a file for writing. If the file is missing, then a new file is created. Contents of any existing file are overwritten.
+    Append mode 'a' opens a file for writing. If the file is missing, then a new file is created. Writes to the file are appended to the end of an existing file's contents.
+
+Additionally, a programmer can add a '+' character to the end of a mode, like 'r+' and 'w+' to specify an update mode. Update modes allow for both reading and writing of a file at the same time.
+participation activity
+12.2.1: File modes.
+
+For each question, complete the statement to open myfile.txt with the appropriate mode.
+1)
+Data will be appended to the end of existing contents.
+
+f = open('myfile.txt', '')
+
+2)
+Data will be written to a new file.
+
+f = open('myfile.txt', '')
+
+3)
+Existing contents will be read, and new data will be appended.
+
+f = open('myfile.txt', '')
+
+Output to a file is buffered by the interpreter before being written to the computer's hard disk. By default, data is line-buffered, e.g., data is written to disk only when a newline character is output. Thus, there may be a delay between a call of write() and that data actually being written to the disk. The following illustrates:
+participation activity
+12.2.2: Output is buffered.
+Interpreter
+myfile =     (            ,    )
+
+myfile.write(     )
+myfile.write(   )
+
+
+myfile.write(    )
+
+open
+ 'myfile.txt'  'w'
+
+'Num'
+'5'
+
+
+'\n'
+
+# End of line - write buffer
+
+buffer
+myfile.txt
+N
+u
+m
+5
+\n
+Captions
+
+    Statement myfile = open('myfile.txt', 'w') executes, which opens a file named myfile.txt for writing.
+    Statement myfile.write('Num') executes. The interpreter stores 'N', 'u', and 'm' in a buffer.
+    Statement myfile.write('5') executes. The interpreter stores '5' in a buffer.
+    Statement myfile.write('\n') executes. The interpreter stores '\n' in a buffer. Writing a newline causes the buffer to be written to the file, so 'Num5' is placed in myfile.txt.
+
+A programmer can toggle buffering on/off or specify a buffer size with the optional buffering argument to the open() function. Passing 0 disables buffering (valid only for binary files, discussed in another section), passing 1 enables the default line-buffering, and a value > 1 sets a specific buffer size in bytes. For example, f = open('myfile.txt', 'w', buffering=100) will write the output buffer to disk every 100 bytes.
+
+The flush() file method can be called to force the interpreter to flush the output buffer to disk. Additionally, the os.fsync() function may have to be called on some operating systems. Closing an open file also flushes the output buffer.
+Figure 12.2.3: Using flush() to force an output buffer to write to disk.
+
+import os
+
+# Open a file with default line-buffering.
+f = open('myfile.txt', 'w')
+
+# No newline character, so not written to disk immediately
+f.write('Write me to a file, please!')
+
+# Force output buffer to be written to disk
+f.flush()
+os.fsync(f.fileno())
+
+# ...
+
+participation activity
+12.2.3: Writing output.
+1)
+The statement f.write(10.0) always produces an error.
+2)
+The write() method immediately writes data to a file.
+3)
+The flush() method (and perhaps os.fsync() as well) forces the output buffer to write to disk.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+12.3 Interacting with file systems

@@ -1,0 +1,26 @@
+
+11.2 Finding modules
+
+Importing a module begins a search to find the corresponding file on the computer's file system. The interpreter first checks for a matching built-in module. A built-in module is a module that comes pre-installed with Python; examples of built-in modules include sys, time, and math. If no matching built-in module is found, then the interpreter searches the list of directories contained by sys.path, located in the sys module. A programmer must be careful to not give a name to a module that is already used by a built-in module. In such cases, the interpreter would load the built-in module because built-in names are checked first.
+
+The sys.path variable initially contains the following directories:
+
+    The directory of the executing script.
+    A list of directories specified by the environment variable PYTHONPATH.
+    The directory where Python is installed.
+
+For simple programs, a module might simply be placed in the same directory. Larger projects might contain tens or hundreds of modules or use third-party modules located in different directories. In such cases, a programmer might set the environment variable PYTHONPATH in the operating system. An operating system environment variable is much like a variable in a Python script, except that an environment variable is stored by the computer's operating system and can be accessed by every program running on the computer. In Windows, a user can set the value of PYTHONPATH permanently through the control panel, or temporarily on a single instance of a command terminal (cmd.exe) using the command set PYTHONPATH="c:\dir1;c:\other\directory".
+participation activity
+11.2.1: Finding modules.
+1)
+When an import statement executes, the interpreter immediately checks the current directory for a matching file.
+2)
+The environment variable PYTHONPATH can be set to specify optional directories where modules are located.
+3)
+math.py is a good name for a new module.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+11.3 Importing specific names from a module

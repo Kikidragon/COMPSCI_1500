@@ -1,0 +1,115 @@
+
+9.10 Memory allocation and garbage collection
+Memory allocation
+
+The process of an application requesting and being granted memory is known as memory allocation. Memory used by a Python application must be granted to the application by the operating system. When an application requests a specific amount of memory from the operating system, the operating system can then choose to grant or deny the request.
+
+While some languages require the programmer to write memory allocating code, the Python runtime handles memory allocation for the programmer. Ex: Creating a list in Python and then appending 100 items means that memory for the 100 items must be allocated. The Python runtime allocates memory for lists and other objects as necessary.
+participation activity
+9.10.1: Memory allocation in Python.
+Memory
+
+arr = []
+for i in range (0, 100):
+  arr.append(i)
+...
+
+
+Application 1
+arr and application 1's other
+variables reside in memory
+allocated for application 1
+
+...
+Application 2
+
+x = 10
+y = 20
+z = x * y
+...
+
+
+x, y, z, and the rest of application 2's
+variables reside in memory allocated
+for application 2
+
+Python allocates memory on programmer's behalf
+Captions
+
+    System memory is partitioned into segments and managed by the operating system.
+    A Python application creates an array with 100 items. The Python runtime has allocated space for this array.
+    Other applications may use other areas of allocated memory.
+    Memory allocation is usually invisible to the programmer, since the allocation is done by the Python runtime.
+
+participation activity
+9.10.2: Memory allocation in Python.
+1)
+The Python runtime requests memory from the operating system.
+2)
+Certain objects in a Python application may reside in memory that has not been allocated.
+3)
+All programming languages perform all memory allocation on behalf of the programmer.
+Garbage collection
+
+Python is a managed language, meaning objects are deallocated automatically by the Python runtime, and not by the programmer's code. When an object is no longer referenced by any variables, the object becomes a candidate for deallocation.
+
+A reference count is an integer counter that represents how many variables reference an object. When an object's reference count is 0, that object is no longer referenced. Python's garbage collector will deallocate objects with a reference count of 0. However, the time between an object's reference count becoming 0 and that object being deallocated may differ across different Python runtime implementations.
+participation activity
+9.10.3: Python's garbage collection.
+
+string1 = "Python"
+string2 = "Computer science"
+string3 = string2
+string1 = "zyBooks"
+string2 = string1
+
+
+string1
+string2
+string3
+Objects that cannot be deallocated
+Objects that can be deallocated
+ Python
+garbage
+collector
+
+Deallocated objects
+Python
+Computer science
+zyBooks
+RC = 0
+RC = 1
+RC = 1
+RC = 2
+RC = 2
+Captions
+
+    The variable string1 is a reference to the "Python" string object. string2 and string3 both reference the "Computer Science" string object.
+    The "Python" string object is referenced by 1 variable and therefore has a reference count (RC) of 1. The "Computer science" string object's RC is 2.
+    Reference counts > 0 imply that neither object can be deallocated.
+    When string1 is reassigned to reference the "zyBooks" string, the "Python" string object is no longer referenced and can be deallocated.
+    After assigning string2 with "zyBooks", "Computer Science" is still referenced by string3 and cannot be deallocated.
+    The Python garbage collector will eventually deallocate objects that are no longer referenced.
+
+participation activity
+9.10.4: Reference counts and garbage collection.
+1)
+An object with a reference count of 0 can be deallocated by the garbage collector.
+2)
+Immediately after an object's reference count is decremented from 1 to 0, the garbage collector deallocates the object.
+3)
+Swapping variables string1 and string2 with the code below is potentially problematic, because a moment exists when the "zyBooks" string has a reference count of 0.
+
+string1 = "zyBooks"
+string2 = "Computer science"
+
+temp = string1
+string1 = string2
+string2 = temp
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+9.11 LAB: Car value (classes)

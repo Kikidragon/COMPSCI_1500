@@ -1,0 +1,201 @@
+
+9.6 Class constructors
+
+A class instance is commonly initialized to a specific state. The __init__ method constructor can be customized with additional parameters, as shown below:
+Figure 9.6.1: Adding parameters to a constructor.
+
+class RaceTime:
+    def __init__(self, start_time, end_time, distance):
+        """
+         start_time: Race start time. String w/ format 'hours:minutes'.
+         end_time: Race end time. String w/ format 'hours:minutes'.
+         distance: Distance of race in miles.
+        """
+    # ...
+
+# The race times of marathon contestants
+time_jason = RaceTime('3:15', '7:45', 26.21875)
+time_bobby = RaceTime('3:15', '6:30', 26.21875)
+
+The above constructor has three parameters, start_time, end_time, and distance. When instantiating a new instance of RaceTime, arguments must be passed to the constructor, e.g., RaceTime('3:15', '7:45', 26.21875).
+
+Consider the example below, which fully implements the RaceTime class, adding methods to print the time taken to complete the race and average pace.
+Figure 9.6.2: Additional parameters can be added to a class constructor.
+
+class RaceTime:
+
+    def __init__(self, start_hrs, start_mins, end_hrs, end_mins, dist):
+        self.start_hrs = start_hrs
+        self.start_mins = start_mins
+        self.end_hrs = end_hrs
+        self.end_mins = end_mins
+        self.distance = dist
+
+    def print_time(self):
+        if self.end_mins >= self.start_mins:
+            minutes = self.end_mins - self.start_mins
+            hours = self.end_hrs - self.start_hrs
+        else:
+            minutes = 60 - self.start_mins + self.end_mins
+            hours = self.end_hrs - self.start_hrs - 1
+
+        print('Time to complete race: {}:{}'.format(hours, minutes))
+
+    def print_pace(self):
+        if self.end_mins >= self.start_mins:
+            minutes = self.end_mins - self.start_mins
+            hours = self.end_hrs - self.start_hrs
+        else:
+            minutes = 60 - self.start_mins + self.end_mins
+            hours = self.end_hrs - self.start_hrs - 1
+
+        total_minutes = hours*60 + minutes
+        print('Avg pace (mins/mile): {:.2f}'.format(total_minutes / self.distance))
+
+distance = 5.0
+
+start_hrs = int(input('Enter starting time hours: '))
+start_mins = int(input('Enter starting time minutes: '))
+end_hrs = int(input('Enter ending time hours: '))
+end_mins = int(input('Enter ending time minutes: '))
+
+race_time = RaceTime(start_hrs, start_mins, end_hrs, end_mins, distance)
+
+race_time.print_time()
+race_time.print_pace()
+
+
+
+Enter starting time hours: 5
+Enter starting time minutes: 30
+Enter ending time hours: 7
+Enter ending time minutes: 00
+Time to complete race: 1:30
+Avg pace (mins/mile): 18.00
+
+...
+
+Enter starting time hours: 5
+Enter starting time minutes: 30
+Enter ending time hours: 6
+Enter ending time minutes: 24
+Time to complete race: 0:54
+Avg pace (mins/mile): 10.80
+
+The arguments passed into the constructor are saved as instance attributes using the automatically added "self" parameter and dot notation, as in self.distance = distance. Creation of such instance attributes allows methods to later access the values passed as arguments; for example, print_time() uses self.start and self.end, and print_pace() uses self.distance.
+participation activity
+9.6.1: Method parameters.
+1)
+Write the definition of an __init__ method that requires the parameters x and y.
+
+2)
+Complete the statement to create a new instance of Widget with p1=15 and p2=5.
+
+class Widget:
+    def __init__(self, p1, p2):
+        # ...
+
+widg =
+
+Constructor parameters can have default values like any other function, using the name=value syntax. Default parameter values may indicate the default state of an instance. A programmer might then use constructor arguments only to modify the default state if necessary. For example, the Employee class constructor in the program below uses default values that represent a typical new employee's wage and scheduled hours per week.
+Figure 9.6.3: Constructor default parameters.
+
+class Employee:
+    def __init__(self, name, wage=8.25, hours=20):
+        """
+        Default employee is part time (20 hours/week)
+        and earns minimum wage
+        """
+        self.name = name
+        self.wage = wage
+        self.hours = hours
+
+    # ...
+
+
+todd = Employee('Todd')  # Typical part-time employee
+jason = Employee('Jason')  # Typical part-time employee
+tricia = Employee('Tricia', wage=12.50, hours=40)  # Manager employee
+
+employees = [todd, jason, tricia]
+
+for e in employees:
+    print ('{} earns {:.2f} per week'.format(e.name, e.wage*e.hours))
+
+
+
+Todd earns 165.00 per week
+Jason earns 165.00 per week
+Tricia earns 500.00 per week
+
+Similar to calling functions, default parameter values can be mixed with positional and name-mapped arguments in an instantiation operation. Arguments without default values are required, must come first, and must be in order. The following arguments with default values are optional, and can appear in any order.
+participation activity
+9.6.2: Default constructor parameters.
+
+Consider the class definition below. Match the instantiations of Student to the matching list of attributes.
+
+class Student:
+    def __init__(self, name, grade=9, honors=False, athletics=False):
+        self.name = name
+        self.grade = grade
+        self.honors = honors
+        self.athletics = athletics
+
+    # ...
+
+    Student('Tommy', grade=9, honors=True, athletics=True)
+    Student('Johnny', grade=11, honors=True)
+    Student('Johnny', grade=11, athletics=False)
+    Student('Tommy')
+
+self.name: 'Tommy', self.grade: 9, self.honors: False, self.athletics: False
+self.name: 'Tommy', self.grade: 9, self.honors: True, self.athletics: True
+self.name: Johnny, self.grade:11, self.honors: False, self.athletics: False
+self.name: Johnny, self.grade: 11, self.honors: True, self.athletics: False
+challenge activity
+9.6.1: Constructor customization.
+343716.2144758.qx3zqy7
+
+Type the program's output
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+rectangle1 = Rectangle(1, 11)
+rectangle2 = Rectangle(8, 15)
+
+print(rectangle2.length)
+print(rectangle1.width)
+
+1
+2
+3
+4
+1
+2
+3
+4
+challenge activity
+9.6.2: Defining a class constructor.
+Write a constructor with parameters self, num_mins and num_messages. num_mins and num_messages should have a default value of 0.
+
+Sample output with one plan created with input: 200 300, one plan created with no input, and one plan created with input: 500
+
+My plan... Mins: 200 Messages: 300
+Dad's plan... Mins: 0 Messages: 0
+Mom's plan... Mins: 500 Messages: 0
+
+
+
+343716.2144758.qx3zqy7
+
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+9.7 Class interfaces

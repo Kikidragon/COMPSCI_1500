@@ -1,0 +1,22 @@
+
+9.27 LAB: Course size
+
+Complete the Course class by implementing the course_size() instance method, which returns the total number of students in the course.
+
+The file main.py contains:
+
+    The main function for testing the program.
+    Class Course represents a course, which contains a list of Student objects as a course roster. (Type your code in here.)
+    Class Student represents a classroom student, which has three attributes: first name, last name, and GPA.
+
+Note: For testing purposes, different student values will be used.
+
+Ex. For the following students:
+
+Henry Bendel 3.6
+Johnny Min 2.9
+
+the output is:
+
+Course size: 2
+

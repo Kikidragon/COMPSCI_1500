@@ -1,0 +1,247 @@
+
+7.4 Splitting and joining strings
+The split() method
+
+A common programming task is to break a large string down into the comprising substrings. The string method split() splits a string into a list of tokens. Each token is a substring that forms a part of a larger string. A separator is a character or sequence of characters that indicates where to split the string into tokens.
+
+Ex: 'Martin Luther King Jr.'.split() splits the string literal "Martin Luther King Jr." using any whitespace character as the default separator and returns the list of tokens ['Martin', 'Luther', 'King', 'Jr.'].
+
+The separator can be changed by calling split() with a string argument. Ex: 'a#b#c'.split('#') uses the "#" separator to split the string "a#b#c" into the three tokens ['a', 'b', 'c'].
+participation activity
+7.4.1: Splitting a string into tokens.
+
+string = 'Music/artist/song.mp3'
+my_tokens = string.split('/')
+
+
+'Music/artist/song.mp3'
+'Music'
+'artist'
+'song.mp3'
+
+string = 'I love python'
+my_tokens = string.split()
+
+
+'I love python'
+'I'
+'love'
+'python'
+my_tokens =
+[
+]
+,
+,
+/
+/
+my_tokens =
+[
+]
+,
+,
+Captions
+
+    Original string contains a pathname to an mp3 of your favorite song.
+    The pathname is split using the delimiter ' / '.
+    The variable my_tokens is assigned with the 3 tokens as a list of strings.
+    When split() is called with no argument, the delimiter defaults to a space character.
+
+Figure 7.4.1: String split example.
+
+url = input('Enter URL:\n')
+
+tokens = url.split('/')  # Uses '/' separator
+print(tokens)
+
+
+
+Enter URL: http://en.wikipedia.org/wiki/Lucille_ball
+['http:', '', 'en.wikipedia.org', 'wiki', 'Lucille_ball']
+...
+Enter URL: en.wikipedia.org/wiki/ethernet/
+['en.wikipedia.org', 'wiki', 'ethernet', '']
+
+The example above shows how split() might be used to find the elements of a path to a web page; the separator used is the forward slash character '/'. The split() method creates a new list, ordered from left to right, containing a new string for each sequence of characters located between '/' separators. Thus the URL http://en.wikipedia.org/wiki/Lucille_ball is split into ['http:', '', 'en.wikipedia.org', 'wiki', 'Lucille_ball']. The separator character is not included in the resulting strings.
+
+If the split string starts or ends with the separator, or if two consecutive separators exist, then the resulting list will contain an empty string for each such occurrence. Ex: The consecutive forward slashes of 'http://' and the ending forward slash of '.../wiki/ethernet/' generate empty strings. If the separator argument is omitted from split(), thus splitting the string wherever whitespace occurs, then no empty strings are generated.
+zyDE 7.4.1: More string splitting.
+
+Run the following program and observe the output. Edit the program by changing the split() method separator to "//" and " " and observe the output.
+
+
+participation activity
+7.4.2: String split() method.
+
+Use the variable song to answer the questions below.
+
+song = "I scream; you scream; we all scream, for ice cream.\n"
+
+1)
+What is the result of song.split()?
+2)
+What is the result of song.split('\n')?
+3)
+What is the result of song.split('scream')?
+The join() method
+
+The join() string method performs the inverse operation of split() by joining a list of strings together to create a single string. Ex: my_str = '@'.join(['billgates', 'microsoft']) assigns my_str with the string 'billgates@microsoft'. The separator '@' provides a join() method that accepts a single list argument. Each element in the list, from left to right, is concatenated to create a new string object with the separator placed between each list element. The separator can be any string, including multiple characters or an empty string.
+participation activity
+7.4.3: String join() method.
+
+web_path = [ 'www.website.com', 'profile', 'settings' ]
+separator = '/'
+url = separator.join(web_path)
+
+
+www.website.com
+
+
+profile
+
+
+settings
+
+
+/
+
+
+url =
+
+
+/
+
+
+'                                 '
+
+
+Captions
+
+    web_path is a list of strings that form the path of the webpage.
+    Create a string with the separator "/".
+    Then join() concatenates the list of strings with the separator "/".
+
+A useful application of the join() method is to build a new string without separators. The empty string ('') is a perfectly valid string object, just with a length of 0. So the statement ''.join(['http://', 'www.', 'ebay', '.com']) produces the string 'http://www.ebay.com'.
+Figure 7.4.2: String join() example: Comparing join vs. loops.
+
+The following programs are equivalent, but join() is a simpler approach that uses less code and is easier to read.
+
+phrases = ['To be, ', 'or not to be.\n', 'That is the question.']
+
+sentence = ''
+for phrase in phrases:
+    sentence += phrase
+print(sentence)
+
+
+
+To be, or not to be.
+That is the question.
+
+phrases = ['To be, ', 'or not to be.\n', 'That is the question.']
+
+sentence = ''.join(phrases)
+print(sentence)
+
+
+
+To be, or not to be.
+That is the question.
+
+participation activity
+7.4.4: String join() method.
+1)
+Write a statement that uses the join() method to set my_str to 'images.google.com', using the list x = ['images', 'google', 'com']
+
+my_str =
+
+2)
+Write a statement that uses the join() method to set my_str to 'NewYork', using the list x = ['New', 'York']
+
+my_str =
+
+Using the split() and join() methods together
+
+The split() and join() methods are commonly used together to replace or remove specific sections of a string. Ex: A programmer may want to change 'C:/Users/Brian/report.txt' to 'C:\\Users\\Brian\\report.txt', perhaps because a different operating system uses different separators to specify file locations. The example below illustrates how split() and join() are used together.
+Figure 7.4.3: Splitting and joining: Replacing separators.
+
+path = input('Enter file name: ')
+
+new_separator = input('Enter new separator: ')
+tokens = path.split('/')
+print(new_separator.join(tokens))
+
+Enter file name: C:/Users/Wolfman/Documents/report.pdf
+Enter new separator: \\
+C:\\Users\\Wolfman\\Documents\\report.pdf
+
+A programmer may also want to add, remove, or replace specific token(s) from a string. Ex: The program below reads in a URL and checks whether the fourth token (index 3) is 'wiki', as Wikipedia URLs follow the format of http://language.wikipedia.org/wiki/topic. If 'wiki' is missing from the URL, the program uses the list method insert() (explained further elsewhere) to correct the URL by adding 'wiki' before index 3.
+Figure 7.4.4: Splitting and joining: Editing tokens.
+
+url = input('Enter Wikipedia URL: ')
+
+tokens = url.split('/')
+
+if 'wiki' != tokens[3]:
+    tokens.insert(3, 'wiki')
+    new_url = '/'.join(tokens)
+
+    print('{} is not a valid address.'.format(url))
+    print('Redirecting to {}'.format(new_url))
+else:
+    print('Loading {}'.format(url))
+
+Enter Wikipedia URL: http://en.wikipedia.org/wiki/Rome
+Loading http://en.wikipedia.org/wiki/Rome
+...
+Enter Wikipedia URL: http://en.wikipedia.org/Rome
+http://en.wikipedia.org/Rome is not a valid address.
+Redirecting to http://en.wikipedia.org/wiki/Rome
+
+participation activity
+7.4.5: Splitting and joining strings.
+1)
+Write a statement that replaces the separators in the string variable title from hyphens (-) to colons (:)
+
+title = 'Python-Lab-Warmup'
+tokens = title.split('-')
+title =
+
+challenge activity
+7.4.1: String split and join.
+343716.2144758.qx3zqy7
+
+Type the program's output
+item_info = 'Mug 14 15'
+
+item_tokens = item_info.split()
+item = item_tokens[0]
+quantity = item_tokens[1]
+price = item_tokens[2]
+
+print(item, 'stock:', quantity)
+print('Price:', price)
+
+1
+2
+1
+2
+challenge activity
+7.4.2: Extract area code.
+Assign number_segments with phone_number split by the hyphens.
+
+Sample output with input: '977-555-3221'
+
+Area code: 977
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+7.5 LAB: Checker for integer string

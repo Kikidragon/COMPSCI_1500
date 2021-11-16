@@ -1,0 +1,13 @@
+
+7.15 LAB: Midfix of 3
+
+The midfix of 3 is the middle 3 characters of a string. Given a string input, output the middle three characters of that string. Assume the word length is always odd and at least three characters.
+
+Ex: If the input is:
+
+xxxtoyxxx
+
+the output is:
+
+Midfix: toy
+

@@ -1,0 +1,247 @@
+
+zyBooks
+
+    My library
+    >
+    COMP SCI 1500: Computational Problem Solving home
+    >
+    12.3: File systems
+
+You have unverified email(s). Please click on your name in the top right corner and browse to your profile to send another verification email.
+12.2 Writing files
+Students:
+Section 12.3 is a part of 1 assignment: Participation
+Requirements:
+PA
+Due: 12/10/2021, 11:59 PM CST
+12.3 Interacting with file systems
+
+A program commonly needs to interact with the computer's file system, such as to get the size of a file or to open a file in a different directory. The computer's operating system, such as Windows or Mac OS X, controls the file system, and a program must use functions supplied by the operating system to interact with files. The Python standard library's os module provides an interface to operating system function calls and is thus a critical piece of a Python programmer's toolbox.
+participation activity
+12.3.1: Using the os module to interact with the file system.
+
+import os
+
+# ....
+
+my_file = open('myfile.txt', 'r')
+# ....
+file_info = os.stat('myfile.txt')
+# ....
+os.remove('myfile.txt')
+
+
+Python interpreter
+Operating system
+open('myfile.txt', 'r')
+HFILE WINAPI OpenFile('myfile.txt', ....)
+os.stat('myfile.txt')
+BOOL WINAPI GetFileInformationByHandler(....)
+myfile.txt[size, access time,etc.]
+os.remove('myfile.txt')
+BOOL WINAPI DeleteFile('myfile.txt')
+Hard disk
+Captions
+
+    The statement import os provides an interface to operating system function calls.
+    When open('myfile.txt', 'r') executes, the interpreter calls an operation system function to open the file to be read (OpenFile() on Windows).
+    The os module's stat() method can query file information. In Windows, the GetFileInformationByHandle(....) provides information about the file size, access time, etc.
+    When the os remove() method executes, the interpreter calls on the operating system function DeleteFile('myfile.txt'), which removes myfile.txt from the hard disk.
+
+A programmer should consider the portability of a program across different operating systems to avoid scenarios where the program behaves correctly on the programmer's computer but crashes on another. Portability must be considered when reading and writing files outside the executing program's directory since file path representations often differ between operating systems. For example, on Windows the path to a file is represented as "subdir\\bat_mobile.jpg", but on a Mac is "subdir/bat_mobile.jpg". The character between directories, e.g., "\\"or "/", is called the path separator, and using the incorrect path separator may result in that file not being found.1
+
+A common error is to reduce a program's portability by hardcoding file paths as string literals with operating system specific path separators. To help reduce such errors, good practice is to use the os.path module, which contains many portable functions for handling file paths. One of the most useful functions is os.path.join(), which concatenates the arguments using the correct path separator for the current operating system. Instead of writing the literal path = "subdir\\bat_mobile.jpg", a programmer should write path = os.path.join('subdir', 'bat_mobile.jpg'), which will result in "subdir\\bat_mobile.jpg" on Windows and "subdir/bat_mobile.jpg" on Linux/Mac.
+Figure 12.3.1: Using os.path.join() to create a portable file path string.
+
+The program below echoes the contents of logs stored in a hierarchical directory structure organized by date, using the os.path module to build a file path string that is portable across operating systems.
+
+import os
+import datetime
+
+curr_day = datetime.date(1997, 8, 29)
+
+num_days = 30
+for i in range(num_days):
+    year = str(curr_day.year)
+    month = str(curr_day.month)
+    day = str(curr_day.day)
+
+    # Build path string using current OS path separator
+    file_path = os.path.join('logs', year, month, day, 'log.txt')
+
+    f = open(file_path, 'r')
+    print('{}: {}'.format(file_path, f.read()))
+    f.close()
+
+    curr_day = curr_day + datetime.timedelta(days=1)
+
+
+Output on Windows:
+
+logs\1997\8\29\log.txt:  # ...
+logs\1997\8\30\log.txt:  # ...
+# ...
+logs\1997\9\28\log.txt:  # ...
+
+Output on Linux:
+
+logs/1997/8/29/log.txt:  # ...
+logs/1997/8/30/log.txt:  # ...
+# ...
+logs/1997/9/28/log.txt:  # ...
+
+On Windows systems, when using os.path.join() with a full path such that the first argument is a drive letter (e.g., 'C:' or 'D:'), the separator must be included with the drive letter. For example, os.path.join('C:\\', 'subdir1', 'myfile.txt') returns the string "C:\\subdir1\\myfile.txt".
+
+The inverse operation, splitting a path into individual tokens, can be done using the str.split() method. Ex: tokens = 'C:\\Users\\BWayne\\tax_return.txt'.split(os.path.sep) returns ['C:', 'Users', 'BWayne', 'tax_return.txt']. os.path.sep stores the path separator for the current operating system.
+participation activity
+12.3.2: Portable file paths.
+1)
+Fill in the arguments to os.path.join to assign file_path as "subdir\\output.txt" (on Windows).
+
+file_path = os.path.join()
+
+2)
+What is returned by os.path.join('sounds', 'cars', 'honk.mp3') on Windows? Use quotes in the answer.
+
+3)
+What is returned by os.path.join('sounds', 'cars', 'honk.mp3') on Mac OS X? Use quotes in the answer.
+
+The os and os.path modules contain other helpful functions, such as checking if a given path is a directory or a file, getting the size of a file, obtaining a file's extension (e.g., .txt, .doc, .pdf), creating and deleting directories, etc. Some of the most commonly used functions are listed below:
+
+    os.path.split(path) – Splits a path into a 2-tuple (head, tail), where tail is the last token in the path string and head is everything else.
+
+    import os
+    p = os.path.join('C:\\', 'Users', 'BWayne', 'batsuit.jpg')
+    print(os.path.split(p))
+
+
+
+    ('C:\\Users\\BWayne', 'batsuit.jpg')
+
+    os.path.exists(path) – Returns True if path exists, else returns False.
+
+    import os
+    p = os.path.join('C:\\', 'Users', 'BWayne', 'batsuit.jpg')
+    if os.path.exists(p):
+        print('Suit up...')
+    else:
+        print('The Lamborghini then?')
+
+    	If file exists:
+
+    Suit up...
+
+
+    If file does not exist:
+
+    The Lamborghini then?
+
+    os.path.isfile(path) – Returns True if path is an existing file, and false otherwise (e.g., path is a directory).
+
+    import os
+    p = os.path.join('C:\\', 'Users', 'BWayne', 'bat_chopper')
+    if os.path.isfile(p):
+        print('Found a file...')
+    else:
+        print('Not a file...')
+
+    	If path is a file:
+
+    Found a file...
+
+
+    If path is not a file:
+
+    Not a file...
+
+    os.path.getsize(path) – Returns the size in bytes of path.
+
+    import os
+    p = os.path.join('C:\\', 'Users', 'BWayne', 'batsuit.jpg')
+    print('Size of file:', os.path.getsize(p), 'bytes')
+
+
+
+    Size of file: 65544 bytes
+
+Explore the links at the end of the section to see all of the available functions in the os and os.path modules.
+participation activity
+12.3.3: Path name manipulation functions from os.path.
+1)
+What is the output of the following program?
+
+import os
+p = 'C:\\Programs\\Microsoft\\msword.exe'
+print(os.path.split(p))
+
+2)
+What does the call
+os.path.isfile('C:\\Program Files\\')
+return?
+3)
+What does os.path.getsize(path_str) return?
+
+A programmer commonly wants to check every file and/or subdirectory of a specific part of the file system. Consider the following directory structure, organized by year, month, and day:
+Figure 12.3.2: Directory structure organized by date.
+
+logs/
+    2009/
+        April/
+                1/
+                 log.txt
+                 words.doc
+        January/
+               15/
+                 log.txt
+               21/
+                 log.txt
+                 temp23.pdf
+               24/
+                 presentation.ppt
+    2010/
+        March/
+             3/
+              log.txt
+             7/
+              music.mp3
+
+The os.walk() function 'walks' a directory tree like the one above, visiting each subdirectory in the specified path. The following example walks a user-specified year of the above directory tree.
+Figure 12.3.3: Walking a directory tree.
+
+import os
+
+year = input('Enter year: ')
+path = os.path.join('logs', year)
+print()
+
+for dirname, subdirs, files in os.walk(path):
+    print(dirname, 'contains subdirectories:', subdirs, end=' ')
+    print('and the files:', files)
+
+Enter year:2009
+
+logs\2009 contains subdirectories: ['April', 'January'] and the files: []
+logs\2009\April contains subdirectories: ['1'] and the files: []
+logs\2009\April\1 contains subdirectories: [] and the files: ['log.txt', 'words.doc']
+logs\2009\January contains subdirectories: ['15', '21', '24'] and the files: []
+logs\2009\January\15 contains subdirectories: [] and the files: ['log.txt']
+logs\2009\January\21 contains subdirectories: [] and the files: ['log.txt', 'temp23.pdf']
+logs\2009\January\24 contains subdirectories: [] and the files: ['presentation.ppt']
+
+The os.walk() function is used as the iterable object in a for loop that yields a 3-tuple for each iteration.2 The first item dirname contains the path to the current directory. The second item subdirs is a list of all the subdirectories of the current directory. The third item files is a list of all the files residing in the current directory.
+
+A programmer might use os.walk() when searching for specific files within a directory tree, and the exact path is unknown. Another common task is to filter files based on their file extensions (.pdf, .txt, etc.), which are a convention used to indicate the type of data that a file holds.
+Exploring further:
+
+    The os module: Miscellaneous operating system interfaces
+    The os.path module: Common pathname manipulations
+
+(*1) Unix-based operating systems, like Linux and Mac OS X, will not recognize paths using the windows "\\" separator. Generally, Windows recognizes both "/" and "\\". The double backslash "\\" is the escape sequence to represent a single backslash within a String.
+
+(*2) os.walk() actually returns a special object called a generator, which is discussed elsewhere.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+12.4 Binary data

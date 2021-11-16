@@ -1,0 +1,195 @@
+
+zyBooks
+
+    My library
+    >
+    COMP SCI 1500: Computational Problem Solving home
+    >
+    10.2: Multiple handlers
+
+You have unverified email(s). Please click on your name in the top right corner and browse to your profile to send another verification email.
+10.1 Handling exceptions using try and except
+Students:
+Section 10.2 is a part of 2 assignments:
+Requirements:
+PA
+Due: 12/10/2021, 11:59 PM CST
+10.2 Multiple exception handlers
+
+Sometimes the code in a try block may generate different types of exceptions. In the previous BMI example, a ValueError was generated when the int() function was passed a string argument that contained letters. Other types of errors (such as NameError, TypeError, etc.) might also be generated, and thus a program may need to have unique exception handling code for each error type. Multiple exception handlers can be added to a try block by adding additional except blocks and specifying the specific type of exception that each except block handles.
+Construct 10.2.1: Multiple except blocks.
+
+try:
+    # ... Normal code
+except exceptiontype1:
+    # ... Code to handle exceptiontype1
+except exceptiontype2:
+    # ... Code to handle exceptiontype2
+...
+except:
+    # ... Code to handle other exception types
+
+participation activity
+10.2.1: Multiple exception handlers.
+
+try:
+    # ...
+    # ...
+    # ...
+except ValueError:
+    # Handle exception, e.g., print message 1
+except TypeError:
+    # Handle exception, e.g., print message 2
+except:
+    # Handle any other exception type
+
+# ...
+
+
+Error message 2...
+
+# No error
+
+
+# Causes TypeError
+
+
+Resume normal code below except
+Captions
+
+    Multiple exception handlers can be added to a try block by adding additional except blocks and specifying the particular type of exception that each except block handles.
+
+An except block with no type (as in the above BMI example) handles any unspecified exception type, acting as a catch-all for all other exception types. Good practice is to generally avoid the use of a catch-all except clause. A programmer should instead specify the particular exceptions to be handled. Otherwise, a program bug might be hidden when the catch-all except clause handles an unexpected type of error.
+
+If no exception handler exists for an error type, then an unhandled exception may occur. An unhandled exception causes the interpreter to print the exception that occurred and then halt.
+
+The following program introduces a second exception handler to the BMI program, handling a case where the user enters "0" as the height, which would cause a ZeroDivisionError exception to occur when calculating the BMI.
+Figure 10.2.1: BMI example with multiple exception types.
+
+user_input = ''
+while user_input != 'q':
+    try:
+        weight = int(input("Enter weight (in pounds): "))
+        height = int(input("Enter height (in inches): "))
+
+        bmi = (float(weight) / float(height * height)) * 703
+        print('BMI:', bmi)
+        print('(CDC: 18.6-24.9 normal)\n')  # Source www.cdc.gov
+    except ValueError:
+        print('Could not calculate health info.\n')
+    except ZeroDivisionError:
+        print('Invalid height entered. Must be > 0.')
+
+    user_input = input("Enter any key ('q' to quit): ")
+
+
+
+Enter weight (in pounds): 150
+Enter height (in inches): 66
+BMI: 24.207988980716255
+(CDC: 18.6-24.9 normal)
+
+Enter any key ('q' to quit): a
+Enter weight (in pounds): One-hundred fifty
+Could not calculate health info.
+
+Enter any key ('q' to quit): a
+Enter weight (in pounds): 150
+Enter height (in inches): 0
+Invalid height entered. Must be > 0.
+Enter any key ('q' to quit): q
+
+In some cases, multiple exception types should be handled by the same exception handler. A tuple can be used to specify all of the exception types for which a handler's code should be executed.
+Figure 10.2.2: Multiple exception types in a single exception handler.
+
+try:
+    # ...
+except (ValueError, TypeError):
+    # Exception handler for any ValueError or TypeError that occurs.
+except (NameError, AttributeError):
+    # A different handler for NameError and AttributeError exceptions.
+except:
+    # A different handler for any other exception type.
+
+participation activity
+10.2.2: Multiple exceptions.
+1)
+Fill in the missing code so that any type of error in the try block is handled.
+
+ages = []
+prompt = "Enter age ('q' to quit):"
+user_input = input(prompt)
+while user_input != 'q':
+      try:
+            ages.append(int(user_input))
+            user_input = input(prompt)
+
+            print('Unable to add age.')
+print(ages)
+
+2)
+An AttributeError occurs if a function does not exist in an imported module. Fill in the missing code to handle AttributeErrors gracefully and generate an error if other types of exceptions occur.
+
+import my_lib
+try:
+      result = my_lib.magic()
+
+      print('No magic() function in my_lib.')
+
+3)
+If a file cannot be opened, then an IOError may occur. Fill in the missing code so that the program specially handles AttributeErrors and IOErrors, and also doesn't crash for any other type of error.
+
+import my_lib
+try:
+      result = my_lib.magic()
+      f = open(result, 'r')
+      print f.read()
+
+      print('Could not open file.')
+except AttributeError:
+      print('No magic() function in my_lib')
+except:
+      print('Something bad has happened.')
+
+challenge activity
+10.2.1: Enter the output of multiple exception handlers.
+343716.2144758.qx3zqy7
+
+Type the program's output
+user_input = input()
+while user_input != 'end':
+    try:
+        # Possible ValueError
+        divisor = int(user_input)
+        # Possible ZeroDivisionError
+        print(60 // divisor) # Truncates to an integer
+    except ValueError:
+        print('v')
+    except ZeroDivisionError:
+        print('z')
+    user_input = input()
+print('OK')
+
+Input
+0
+4
+six
+10
+end
+Output
+1
+2
+3
+1
+2
+3
+Exploring further:
+
+    Python built-in exception types
+
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+10.3 Raising exceptions

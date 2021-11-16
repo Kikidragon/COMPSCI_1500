@@ -1,0 +1,13 @@
+
+7.17 LAB: Prefix of 3
+
+The prefix of 3 is the first 3 characters of a string. Given a string input, output the first three characters of that string. Assume the string will always have at least three characters.
+
+Ex: If the input is:
+
+chicken
+
+the output is:
+
+Prefix: chi
+

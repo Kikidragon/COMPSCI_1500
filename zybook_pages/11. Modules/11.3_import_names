@@ -1,0 +1,177 @@
+
+zyBooks
+
+    My library
+    >
+    COMP SCI 1500: Computational Problem Solving home
+    >
+    11.3: Importing names
+
+You have unverified email(s). Please click on your name in the top right corner and browse to your profile to send another verification email.
+11.2 Finding modules
+Students:
+Section 11.3 is a part of 1 assignment: Participation
+Requirements:
+PA
+Due: 12/10/2021, 11:59 PM CST
+11.3 Importing specific names from a module
+
+A programmer can specify names to import from a module by using the from keyword in an import statement:
+Construct 11.3.1: Importing specific names from a module.
+
+from module_name import name1, name2, ...
+
+A normal import statement, such as import HTTPServer, adds the new module into the global namespace, after which a programmer can access names through attribute reference operations (e.g., HTTPServer.address). In contrast, using from adds only the specified names. A statement such as from HTTPServer import address copies only the address variable from HTTPServer into the importing module's namespace. The following animation illustrates.
+participation activity
+11.3.1: 'import x' vs 'from x import y'.
+
+import my_mod
+
+y = 100
+z = my_mod.calc(y)
+
+
+x = 55
+
+
+def calc(a):
+   # ...
+
+
+global namespace
+my_mod namespace
+
+x
+
+
+calc
+
+
+my_mod
+
+
+y
+
+
+z
+
+
+from my_mod import calc
+
+y = 100
+z = calc(y)
+
+
+global namespace
+
+calc
+
+
+y
+
+
+z
+
+
+my_mod.py
+Captions
+
+    import my_mod adds my_mod into the global namespace.
+    calc can be accessed using attribute reference operations.
+    From my_mod import, calc only copies calc from the my_mod namespace into the global namespace.
+
+Using "from" changes how an imported name is used in a program.
+Table 11.3.1: 'import module' vs. 'from module import names'.
+Description 	Example import statement 	Using imported names
+Import an entire module
+
+import HTTPServer
+
+
+
+print(HTTPServer.address)
+
+Import specific name from a module
+
+from HTTPServer import address
+
+
+
+print(address)
+
+The program below imports names from the hashlib module, a Python standard library module that contains a number of algorithms for creating a secure hash of a text message. A secure hash correlates exactly to a single series of characters. A sender of an email might create and send a secure hash along with the contents of the message. The email's recipient creates their own secure hash from the message contents and compares it to the received hash to detect if the message was changed.
+Figure 11.3.1: Using the from keyword to import specific names.
+
+from hashlib import md5, sha1
+
+text = input("Enter text to hash ('q' to quit): ")
+
+while text != 'q':
+    algorithm = input('Enter algorithm (md5/sha1): ')
+    if algorithm == 'md5':
+        output = md5(text.encode('utf-8'))
+    elif algorithm == 'sha1':
+        output = sha1(text.encode('utf-8'))
+    else:
+        output = 'Invalid algorithm selection'
+    print('Hash value:', output.hexdigest())
+
+    text = input("\nEnter text to hash ('q' to quit): ")
+
+Enter text to hash ('q' to quit): Whether 'tis nobler in the mind to suffer...
+Enter algorithm (md5/sha1): md5
+Hash value: 5b39e6686305363a2d60a4162fe3d012
+
+Enter text to hash ('q' to quit): ...the slings and arrows of outrageous fortune,...
+Enter algorithm (md5/sha1): sha1
+Hash value: 70c137974ad24691c1bb6cf8114aa2e3172ef910
+
+Enter text to hash ('q' to quit): q
+
+The hashlib library requires argument strings to md5 and sha1 be encoded; above, we encode the text using UTF-8 before passing to one of the hashing algorithms.
+zyDE 11.3.1: Extending the hash example.
+
+Improve the hashing example from above by adding a new algorithm. Import the sha224() function from hashlib, and extend the user interface to allow that function to be called.
+
+
+
+All names from a module can be imported directly by using a "*" character, as in the statement from HTTPServer import *. A common error is to use the import * syntax in modules and scripts, which makes identification of dependencies and the origins of variables difficult for a reader of the code to understand. Good practice is to limit the use of import * syntax to interactive interpreter sessions.
+participation activity
+11.3.2: Importing specific names.
+
+my_funcs.py contains definitions for the factorial() and squared() functions.
+1)
+Write a statement that imports only the function factorial from my_funcs.py.
+
+2)
+The following code uses functions defined in my_funcs.py. Complete the import statement at the top of the program.
+
+
+
+a = 5
+
+print('a! =', my_funcs.factorial(a))
+
+print('a^2 =', my_funcs.squared(a))
+
+
+
+3)
+The following code uses functions defined in my_funcs.py. Complete the import statement at the top of the program.
+
+
+
+a = 5
+
+print('a! =', factorial(a))
+
+print('a^2 =', squared(a))
+
+
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+11.4 Executing modules as scripts

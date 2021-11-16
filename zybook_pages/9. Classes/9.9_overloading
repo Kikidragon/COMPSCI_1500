@@ -1,0 +1,214 @@
+
+9.9 More operator overloading: Classes as numeric types
+
+Numeric operators such as +, -, *, and / can be overloaded using class customization techniques. Thus, a user-defined class can be treated as a numeric type of object wherein instances of that class can be added together, multiplied, etc. Consider the example, which represents a 24-hour clock time.
+Figure 9.9.1: Extending the time class with overloaded subtraction operator.
+
+class Time24:
+    def __init__(self, hours, minutes):
+        self.hours = hours
+        self.minutes = minutes
+
+    def __str__(self):
+        return '{:02d}:{:02d}'.format(self.hours, self.minutes)
+
+    def __gt__(self, other):
+        if self.hours > other.hours:
+            return True
+        else:
+            if self.hours == other.hours:
+                if self.minutes > other.minutes:
+                    return True
+        return False
+
+    def __sub__(self, other):
+        """ Calculate absolute distance between two times """
+        if self > other:
+            larger = self
+            smaller = other
+        else:
+            larger = other
+            smaller = self
+
+        hrs = larger.hours - smaller.hours
+        mins = larger.minutes - smaller.minutes
+        if mins < 0:
+            mins += 60
+            hrs -=1
+
+        # Check if times wrap to new day
+        if hrs > 12:
+            hrs = 24 - (hrs + 1)
+            mins = 60 - mins
+
+        # Return new Time24 instance
+        return Time24(hrs, mins)
+
+t1 = input('Enter time1 (hours:minutes): ')
+tokens = t1.split(':')
+time1 = Time24(int(tokens[0]), int(tokens[1]))
+
+t2 = input('Enter time2 (hours:minutes): ')
+tokens = t2.split(':')
+time2 = Time24(int(tokens[0]), int(tokens[1]))
+
+print('Time difference:', time1 - time2)
+
+
+
+Enter time1 (hours:minutes): 5:00
+Enter time2 (hours:minutes): 3:30
+Time difference: 01:30
+...
+Enter time1 (hours:minutes): 22:30
+Enter time2 (hours:minutes): 2:40
+Time difference: 04:10
+
+The above program adds a definition of the __sub__method to the Time24 class that is called when an expression like time1 - time2 is evaluated. The method calculates the absolute difference between the two times, and returns a new instance of Time24 containing the result.
+
+The overloaded method will be called whenever the left operand is an instance Time24. Thus, an expression like time1 - 1 will also cause the overloaded method to be called. Such an expression would cause an error because the __sub__ method would attempt to access the attribute other.minutes, but the integer 1 does not contain a minutes attribute. The error occurs because the behavior is undefined; does time1 - 1 mean to subtract one hour or one minute?
+
+To handle subtraction of arbitrary object types, the built-in isinstance() function can be used. The isinstance() function returns a True or False Boolean depending on whether a given variable matches a given type. The __sub__ function is modified below to first check the type of the right operand, and subtract an hour if the right operand is an integer, or find the time difference if the right operand is another Time24 instance:
+Figure 9.9.2: The isinstance() built-in function.
+
+def __sub__(self, other):
+    if isinstance(other, int): # right op is integer
+        return Time24(self.hours - other, self.minutes)
+
+    if isinstance(other, Time24):  # right op is Time24
+        if self > other:
+            larger = self
+            smaller = other
+        else:
+            larger = other
+            smaller = self
+
+        hrs = larger.hours - smaller.hours
+        mins = larger.minutes - smaller.minutes
+        if mins < 0:
+            mins += 60
+            hrs -=1
+
+        # Check if times wrap to new day
+        if hrs > 12:
+            hrs = 24 - (hrs + 1)
+            mins = 60 - mins
+
+        # Return new Time24 instance
+        return Time24(hrs, mins)
+
+    print('{} unsupported'.format(type(other)))
+    raise NotImplementedError
+
+
+Operation 	Result
+t1 - t2 	Difference between t1, t2
+t1 - 5 	t1 minus 5 hours.
+t1 - 5.75 	"float unsupported"
+t1 - <other_type> 	"<other_type> unsupported"
+
+Every operator in Python can be overloaded. The table below lists some of the most common methods. A full list is available at the bottom of the section.
+Table 9.9.1: Methods for emulating numeric types.
+Method 	Description
+__add__(self, other) 	Add (+)
+__sub__(self, other) 	Subtract (-)
+__mul__(self, other) 	Multiply (*)
+__truediv__(self, other) 	Divide (/)
+__floordiv__(self, other) 	Floored division (//)
+__mod__(self, other) 	Modulus (%)
+__pow__(self, other) 	Exponentiation (**)
+__and__(self, other) 	"and" logical operator
+__or__(self, other) 	"or" logical operator
+__abs__(self) 	Absolute value (abs())
+__int__(self) 	Convert to integer (int())
+__float__(self) 	Convert to floating point (float())
+
+The table above lists common operators such as addition, subtraction, multiplication, division, and so on. Sometimes a class also needs to be able to handle being passed as arguments to built-in functions like abs(), int(), float(), etc. Defining the methods like __abs__(), __int__(), and __float__() will automatically cause those methods to be called when an instance of that class is passed to the corresponding function. The methods should return an appropriate object for each method, i.e., an integer value for __int__() and a floating-point value for __float__(). Note that not all such methods need to be implemented for a class; their usage is generally optional, but can provide for cleaner and more elegant code. Not defining a method will simply cause an error if that method is needed but not found, which indicates to the programmer that additional functionality must be implemented.
+participation activity
+9.9.1: Emulating numeric types with operating overloading.
+
+Assume that the following class is defined. Fill in the missing statements in the most direct possible way to complete the described method.
+
+class LooseChange:
+    def __init__(self, value):
+        self.value = value  # integer representing total number of cents.
+
+    # ...
+
+1)
+Adding two LooseChange instances lc1 + lc2 returns a new LooseChange instance with the summed value of lc1 and lc2.
+
+
+def __add__(self, other):
+
+      new_value =
+
+      return LooseChange(new_value)
+
+
+
+
+2)
+Executing the code:
+
+lc1  = LooseChange(135)
+print(float(lc1))
+
+
+
+yields the output
+
+1.35
+
+
+def __float__(self):
+
+      fp_value =
+
+      return fp_value
+
+challenge activity
+9.9.1: Enter the output of classes as numeric types.
+343716.2144758.qx3zqy7
+
+Type the program's output
+class Duration:
+    def __init__(self, hours, minutes):
+        self.hours = hours
+        self.minutes = minutes
+
+    def __add__(self, other):
+        total_hours = self.hours + other.hours
+        total_minutes = self.minutes + other.minutes
+        if total_minutes >= 60:
+            total_hours += 1
+            total_minutes -= 60
+        return Duration(total_hours, total_minutes)
+
+first_trip = Duration(1, 46)
+second_trip = Duration(0, 56)
+
+first_time = first_trip + second_trip
+second_time = second_trip + second_trip
+
+print(first_time.hours, first_time.minutes)
+print(second_time.hours, second_time.minutes)
+
+1
+2
+3
+4
+1
+2
+3
+4
+Exploring further:
+
+    List of numeric special method names
+
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+9.10 Memory allocation and garbage collection

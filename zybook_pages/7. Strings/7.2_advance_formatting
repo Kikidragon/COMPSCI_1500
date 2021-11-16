@@ -1,0 +1,277 @@
+
+7.2 Advanced string formatting
+Field width
+
+A program must commonly display nicely formatted output beyond the ability of basic print usage like print(x). Consider a program that displays a nicely formatted table of soccer player statistics:
+Figure 7.2.1: A formatted table of soccer statistics.
+
+Player Name      Goals    Games Played     Goals Per Game
+------------------------------------------------------------
+Sadio Mane         22          36               0.61
+Mohamed Salah      22          38               0.58
+Sergio Aguero      21          33               0.64
+Jamie Vardy        18          34               0.53
+Gabriel Jesus      7           29               0.24
+
+Note in the above example how the text is formatted into columns with the contents of each column (except the leftmost) centered under the column header. A programmer could achieve this careful formatting by placing spaces into their output strings, but each row would require different numbers of spaces depending on the player name (longer names requires less spaces between the first and second columns).
+
+A format specification may include a field width that defines the minimum number of characters that must be inserted into the string. If the replacement value is smaller in size than the given field width, then the string's left side is padded with space characters. Field widths set on each column in the example above cause the output to be formatted nicely.
+
+A field width is defined in a format specification by including an integer after the colon, as in {name:16} to specify a width of 16 characters. Numbers will be right-aligned within the width by default, whereas most other types like strings will be left-aligned.
+participation activity
+7.2.1: Field width.
+0  1  2  3  4  5  6  7  8  9
+10 11 12 13 14 15 16 17 18 19 20 21 22 23
+-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - -  -  -  -  -  -  -  -
+G    o    a     l     s
+N    a    m   e
+ P     l     a     y     e     r
+Goals
+Player Name
+
+------------------------
+S    a    d     i     o           M   a     n    e                                                                                 2    2
+
+G    a    b    r      i     e     l            J    e     s    u    s                                                                     7
+Sadio Mane
+22
+Gabriel Jesus
+7
+format_string = '{name:16}{goals:8}'
+
+
+print(format_string.format(name='Player Name', goals='Goals'))
+
+print('-' * 24)
+
+
+print(format_string.format(name='Sadio Mane', goals=22))
+
+print(format_string.format(name='Gabriel Jesus', goals=7))
+Captions
+
+    'Player Name' is inserted into the leftmost part of the first 16-character wide field. 'Goals' is inserted into the leftmost part of the second 8-character wide field.
+    The inserted values align themselves automatically according to the field width.
+
+participation activity
+7.2.2: Format specification field widths.
+1)
+Complete the format specification to assign a field width of 10 characters.
+
+{name:}
+
+2)
+Write a complete replacement field that assigns a field with named value "count" a field width of 5.
+
+challenge activity
+7.2.1: Field widths.
+343716.2144758.qx3zqy7
+
+Type the program's output
+format_string = '{name:5}'
+print(format_string.format(name='Austin'))
+
+1
+2
+3
+1
+2
+3
+Aligning text
+
+A format specification can include an alignment character that determines how a value should be aligned within the width of the field. Alignment is set in a format specification by adding a special character before the field width integer. The basic set of possible alignment options include left-aligned '<', right-aligned '>' and centered '^'.
+Figure 7.2.2: Aligning strings within a field.
+
+Consider the following code that prints a table, and how changing the alignment impacts the column organization.
+
+format_string = <format_string>  # Replaced in table below
+
+print(format_string.format(name='Player Name', goals='Goals'))
+print('-' * 24)
+
+print(format_string.format(name='Sadio Mane', goals=22))
+print(format_string.format(name='Gabriel Jesus', goals=7))
+
+
+
+Alignment type 	<format_string> 	Output
+Left-aligned 	'{name:<16}{goals:<8}'
+
+Player Name     Goals
+------------------------
+Sadio Mane      22
+Gabriel Jesus   7
+
+Right-aligned 	'{name:>16}{goals:>8}'
+
+     Player Name   Goals
+------------------------
+      Sadio Mane      22
+   Gabriel Jesus       7
+
+Centered 	'{name:^16}{goals:^8}'
+
+  Player Name    Goals
+------------------------
+   Sadio Mane      22
+ Gabriel Jesus     7
+
+participation activity
+7.2.3: Aligning text in fields.
+
+For each question, determine the value of the given expression.
+1)
+
+'{name:<5}'.format(name='Bob')
+
+2)
+
+'{name:>5}'.format(name='Bob')
+
+3)
+
+'{name:^5}'.format(name='Bob')
+
+4)
+
+x = '{name:<5}{score:<2}'.format(name='Bob', score=1)
+
+5)
+
+'{name:<5}{score:>2}'.format(name='Bob', score=1)
+
+Fill
+
+The fill character is used to pad a replacement field when the string being inserted is smaller than the field width. The default fill character is an empty space ' '. A programmer may define a different fill character in a format specification by placing the different fill character before the alignment character. Ex: {score:0>4} generates "0009" if score is 9 or "0250" if score is 250.
+Table 7.2.1: Using fill characters to pad tables.
+Format specification 	Value of score 	Output
+{score:} 	9
+
+9
+
+{score:4} 	9
+
+   9
+
+{score:0>4} 	9
+
+0009
+
+{score:0>4} 	18
+
+0018
+
+{score:0^4} 	18
+
+0180
+
+A programmer can set different alignments, widths, and fills on each field to construct nicely formatted output, as demonstrated below.
+participation activity
+7.2.4: Fill characters in strings.
+1	name = 'Wayne Rooney'
+2	goals = 36
+3
+4	# Use default empty space fill character
+5	print('{name:<16}{goals:>6}'.format(name=name, goals=goals))
+6
+7	# Use '0' as a fill character for score
+8	print('{name:<16}{goals:0>6}'.format(name=name, goals=goals))
+9
+10	# Use '_' as fill character for name
+11	print('{name:_<16}{goals:0>6}'.format(name=name, goals=goals))
+Step 1 of 5
+line that has just executed
+
+next line to execute
+Frames
+
+Objects
+participation activity
+7.2.5: Fill characters.
+1)
+What's the fill character in the following format specification?
+
+{score:*>4}
+
+2)
+What's the fill character in the following format specification?
+
+{score:>4}
+
+3)
+If name = 'Sally', what is the result of: {name:@>8}?
+Floating-point precision
+
+A programmer commonly wants to set how many digits to the right of a floating-point number to print. The optional precision component of a format specification indicates how many digits to the right of the decimal should be included in the output of floating types. The precision follows the field width component in the format specification, if a width is specified at all, and starts with a period character. Ex:  '{:.1f}'.format(1.725) indicates a precision of 1, thus the resulting string would be '1.7'.
+
+If the specified precision is greater than the number of digits available, trailing 0s are appended. Ex: '{:.3f}'.format(1.5) results in the string '1.500'. If the specified precision is less than the existing precision in the given number, then the number is rounded. Ex: '{:.2f}'.format(1.666) results in the string '1.67'.
+Figure 7.2.3: String formatting example: Setting precision of floating-point values.
+
+import math
+real_pi = math.pi  # math library provides close approximation of pi
+approximate_pi = 22.0 / 7.0  # Approximately correct pi to within 2 decimal places
+
+print('pi is {pi}'.format(pi=real_pi))
+print('22/7 is {pi}'.format(pi=approximate_pi))
+print('22/7 looks better like {pi:.2f}'.format(pi=approximate_pi))
+
+
+
+pi is 3.141592653589793
+22/7 is 3.142857142857143
+22/7 looks better like 3.14
+
+participation activity
+7.2.6: Floating-point precision in formatted strings.
+
+Fill in the string that results from evaluating the given expression.
+1)
+
+'{x:.1f}'.format(x=5)
+
+'5.'
+
+2)
+
+'{x:.3f}'.format(x=5)
+
+'5.'
+
+3)
+
+'{x:.3f}'.format(x=5.25)
+
+''
+
+4)
+
+'{x:.3f}'.format(x=5.2589)
+
+''
+
+5)
+
+'{x:4.1f}'.format(x=5)
+
+''
+
+challenge activity
+7.2.2: Format temperature output.
+Print air_temperature with 1 decimal point followed by C.
+
+Sample output with input: 36.4158102
+
+36.4C
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+7.3 String methods

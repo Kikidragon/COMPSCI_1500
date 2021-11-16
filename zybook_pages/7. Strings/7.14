@@ -1,0 +1,15 @@
+
+7.14 LAB: Remove spaces - functions
+
+Write a program that removes all spaces from the given input.
+
+Ex: If the input is:
+
+Hello my name is John.
+
+the output is:
+
+HellomynameisJohn.
+
+Your program must define and call the following function. The function should return a string representing the input string without spaces.
+remove_spaces (user_string)

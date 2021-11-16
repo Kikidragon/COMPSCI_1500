@@ -1,0 +1,99 @@
+
+9.7 Class interfaces
+
+A class usually contains a set of methods that a programmer interacts with. For example, the class RaceTime might contain the instance methods print_time() and print_pace() that a programmer calls to print some output. A class interface consists of the methods that a programmer calls to create, modify, or access a class instance. The figure below shows the class interface of the RaceTime class, which consists of the __init__ constructor and the print_time() and print_pace() methods.
+Figure 9.7.1: A class interface consists of methods to interact with an instance.
+
+class RaceTime:
+    def __init__(self, start_time, end_time, distance):
+        # ...
+
+    def print_time(self):
+        # ...
+
+    def print_pace(self):
+        # ...
+
+A class may also contain methods used internally that a user of the class need not access. For example, consider if the RaceTime class contains a separate method _diff_time() used by print_time() and print_pace() to find the total number of minutes to complete the race. A programmer using the RaceTime class does not need to use the _diff_time() function directly; thus, _diff_time() does not need to be a part of the class interface. Good practice is to prepend an underscore to methods only used internally by a class. The underscore is a widely recognized convention, but otherwise has no special syntactic meaning. A programmer could still call the method, e.g. time1._diff_time(), though such usage should be unnecessary if the class interface is well-designed.
+Figure 9.7.2: Internal instance methods.
+
+RaceTime class with internal instance method usage and definition highlighted.
+
+class RaceTime:
+    def __init__(self, start_hrs, start_mins, end_hrs, end_mins, dist):
+        self.start_hrs = start_hrs
+        self.start_mins = start_mins
+        self.end_hrs = end_hrs
+        self.end_mins = end_mins
+        self.distance = dist
+
+    def print_time(self):
+        total_time = self._diff_time()
+        print('Time to complete race: {}:{}'.format(total_time[0], total_time[1]))
+
+    def print_pace(self):
+        total_time = self._diff_time()
+        total_minutes = total_time[0]*60 + total_time[1]
+        print('Avg pace (mins/mile): {:.2f}'.format(total_minutes / self.distance))
+
+    def _diff_time(self):
+        """Calculate total race time. Returns a 2-tuple (hours, minutes)"""
+        if self.end_mins >= self.start_mins:
+            minutes = self.end_mins - self.start_mins
+            hours = self.end_hrs - self.start_hrs
+        else:
+            minutes = 60 - self.start_mins + self.end_mins
+            hours = self.end_hrs - self.start_hrs - 1
+
+        return (hours, minutes)
+
+
+distance = 5.0
+
+start_hrs = int(input('Enter starting time hours: '))
+start_mins = int(input('Enter starting time minutes: '))
+end_hrs = int(input('Enter ending time hours: '))
+end_mins = int(input('Enter ending time minutes: '))
+
+race_time = RaceTime(start_hrs, start_mins, end_hrs, end_mins, distance)
+
+race_time.print_time()
+race_time.print_pace()
+
+
+
+Enter starting time hours: 5
+Enter starting time minutes: 30
+Enter ending time hours: 7
+Enter ending time minutes: 0
+Time to complete race: 1:30
+Average pace (minutes/mile): 18.00
+...
+Enter starting time hours: 9
+Enter starting time minutes: 30
+Enter ending time hours: 10
+Enter ending time minutes: 3
+Time to complete race: 0:33
+Avg pace (mins/mile): 6.60
+
+A class can be used to implement the computing concept known as an abstract data type (ADT), which is a data type whose creation and update are constrained to specific, well-defined operations (the class interface). A key aspect of an ADT is that the internal implementation of the data and operations are hidden from the ADT user, a concept known as information hiding, which allows the ADT user to be more productive by focusing on higher-level concepts. Information hiding also allows the ADT developer to improve the internal implementation without requiring changes to programs using the ADT. In the previous example, a RaceTime ADT was defined that captured the number of hours and minutes to complete a race, and that presents a well-defined set of operations to create (via __init__) and view (via print_time and print_pace) the data.
+
+Programmers commonly refer to separating an object's interface from its implementation (internal methods and variables); the user of an object need only know the object's interface.
+
+Python lacks the ability to truly hide information from a user of the ADT, because all attributes of a class are always accessible from the outside. Many other computing languages require methods and variables to be marked as either public (part of a class interface) or private (internal), and attempting to access private methods and variables results in an error. Python on the other hand, is a more "trusting" language. A user of an ADT can always inspect, and if desired, utilize private variables and methods in ways unexpected by the ADT developer.
+participation activity
+9.7.1: Class interfaces.
+1)
+A class interface consists of the methods that a programmer should use to modify or access the class
+2)
+Internal methods used by the class should start with an underscore in their name.
+3)
+Internal methods can not be called; e.g., my_instance._calc() results in an error.
+4)
+A well-designed class separates its interface from its implementation.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+9.8 Class customization

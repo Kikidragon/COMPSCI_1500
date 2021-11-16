@@ -1,0 +1,80 @@
+
+zyBooks
+
+    My library
+    >
+    COMP SCI 1500: Computational Problem Solving home
+    >
+    7.22: String formatting using dictionaries
+
+You have unverified email(s). Please click on your name in the top right corner and browse to your profile to send another verification email.
+7.21 LAB*: Program: Data visualization
+Students:
+Section 7.22 is a part of 1 assignment: Participation
+Requirements:
+PA
+Due: 12/10/2021, 11:59 PM CST
+7.22 String formatting using dictionaries
+Mapping keys
+
+Sometimes a string contains many conversion specifiers. Such strings can be hard to read and understand. Furthermore, the programmer must be careful with the ordering of the tuple values, lest items are mistakenly swapped. A dictionary may be used in place of a tuple on the right side of the conversion operator to enhance clarity at the expense of brevity. If a dictionary is used, then all conversion specifiers must include a mapping key component. A mapping key is specified by indicating the key of the relevant value in the dictionary within parentheses.
+participation activity
+7.22.1: Using a dictionary and conversion specifiers with mapping keys.
+
+'time: %(hour)d:%(min)02d:%(sec)f' % {'hour':11, 'min':2, 'sec':15.002}
+
+
+'time: 11:02:15.002000'
+11
+02
+15.002000
+Captions
+
+    A mapping key is specified by indicating the key of the relevant value in the dict within parentheses.
+
+Figure 7.22.1: Comparing conversion operations using tuples and dicts.
+
+import time
+gmt = time.gmtime()  # Get current Greenwich Mean Time
+
+print('Time is: {:02d}/{:02d}/{:04d}  {:02d}:{:02d} {:02d} sec' \
+     .format(gmt.tm_mon, gmt.tm_mday, gmt.tm_year, gmt.tm_hour, gmt.tm_min, gmt.tm_sec))
+
+Time is: 06/07/2013  20:16 24 sec
+...
+Time is: 06/07/2013  20:16 28 sec
+
+import time
+gmt = time.gmtime()  # Get current Greenwich Mean Time
+
+print('Time is: %(month)02d/%(day)02d/%(year)04d  %(hour)02d:%(min)02d %(sec)02d sec' %  \
+      {
+        'year': gmt.tm_year, 'month': gmt.tm_mon, 'day': gmt.tm_mday,
+        'hour': gmt.tm_hour, 'min': gmt.tm_min, 'sec': gmt.tm_sec
+      }
+)
+
+Time is: 06/07/2013  20:16 24 sec
+...
+Time is: 06/07/2013  20:16 28 sec
+
+participation activity
+7.22.2: Mapping keys.
+
+Complete the print statement to produce the given output using mapping keys.
+1)
+"I need 12 lilies, 6 roses, and 18 tulips."
+
+print ('I need %(lilies)d lilies, %(roses)d roses, and %(tulips)d tulips.' % {})
+
+2)
+"My name is Jerome and I'm 15 years old."
+
+print ('My name is %(name)s and I am %(age)d years old' % {})
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+8.1 Lists

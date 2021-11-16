@@ -1,0 +1,233 @@
+
+9.8 Class customization
+
+Class customization is the process of defining how a class should behave for some common operations. Such operations might include printing, accessing attributes, or how instances of that class are compared to each other. To customize a class, a programmer implements instance methods with special method names that the Python interpreter recognizes. Ex: To change how a class instance object is printed, the special __str__() method can be defined, as illustrated below.
+Figure 9.8.1: Implementing __str__() alters how the class is printed.
+Normal printing
+
+class Toy:
+    def __init__(self, name, price, min_age):
+        self.name = name
+        self.price = price
+        self.min_age = min_age
+
+
+truck = Toy('Monster Truck XX', 14.99, 5)
+print(truck)
+
+<__main__.Toy instance at 0xb74cb98c>
+
+
+Customized printing
+
+class Toy:
+    def __init__(self, name, price, min_age):
+        self.name = name
+        self.price = price
+        self.min_age = min_age
+
+    def __str__(self):
+        return ('{} costs only ${:.2f}. Not for children under {}!'
+                .format(self.name, self.price, self.min_age))
+
+truck = Toy('Monster Truck XX', 14.99, 5)
+print(truck)
+
+Monster Truck XX costs only $14.99. Not for children under 5!
+
+The left program prints a default string for the class instance. The right program implements __str__(), generating a custom message using some instance attributes.
+
+Run the tool below, which visualizes the execution of the above example. When print(truck) is evaluated, the __str__() method is called.
+participation activity
+9.8.1: Implementing __str__() alters how the class is printed.
+1	class Toy:
+2	    def __init__(self, name, price, min_age):
+3	        self.name = name
+4	        self.price = price
+5	        self.min_age = min_age
+6
+7	    def __str__(self):
+8	        return ('{} costs only ${:.2f}.\nNot for children under {}!'
+9	               .format(self.name, self.price, self.min_age))
+10
+11	truck = Toy('Monster Truck XX', 14.99, 5)
+12	print(truck)
+Step 1 of 12
+line that has just executed
+
+next line to execute
+Frames
+
+Objects
+zyDE 9.8.1: Customization of printing a class instance.
+
+The following class represents a vehicle for sale in a used-car lot. Add a __str__() method so that printing an instance of Car displays a string in the following format:
+
+1989 Chevrolet Blazer:
+  Mileage: 115000
+  Sticker price: $3250
+
+
+
+
+Class customization can redefine the functionality of built-in operators like <, >=, +, -, and * when used with class instances, a technique known as operator overloading.
+
+The below code shows overloading of the less-than (<) operator of the Time class by defining a method with the __lt__ special method name.
+Figure 9.8.2: Overloading the less-than operator of the Time class allows for comparison of instances.
+
+class Time:
+    def __init__(self, hours, minutes):
+        self.hours = hours
+        self.minutes = minutes
+
+    def __str__(self):
+        return '{}:{}'.format(self.hours, self.minutes)
+
+    def __lt__(self, other):
+        if self.hours < other.hours:
+            return True
+        elif self.hours == other.hours:
+            if self.minutes < other.minutes:
+                return True
+        return False
+
+num_times = 3
+times = []
+
+# Obtain times from user input
+for i in range(num_times):
+    user_input = input('Enter time (Hrs:Mins): ')
+    tokens = user_input.split(':')
+    times.append(Time(int(tokens[0]), int(tokens[1])))
+
+min_time = times[0]
+for t in times:
+    if t < min_time :
+        min_time = t
+
+print('\nEarliest time is', min_time)
+
+
+
+Enter time (Hrs:Mins): 10:40
+Enter time (Hrs:Mins): 12:15
+Enter time (Hrs:Mins): 9:15
+
+Earliest time is 9:15
+
+In the above program, the Time class contains a definition for the __lt__ method, which overloads the < operator. When the comparison t < min_time is evaluated, the __lt__ method is automatically called. The self parameter of __lt__ is bound to the left operand, t, and the other parameter is bound to the right operand, min_time. Returning True indicates that t is indeed less-than min_time, and returning False indicates that t equal-to or greater-than min_time.
+
+Methods like _lt_ above are known as rich comparison methods. The following table describes rich comparison methods and the corresponding relational operator that is overloaded.
+Table 9.8.1: Rich comparison methods.
+Rich comparison method 	Overloaded operator
+__lt__(self, other) 	less-than (<)
+__le__(self, other) 	less-than or equal-to (<=)
+__gt__(self, other) 	greater-than (>)
+__ge__(self, other) 	greater-than or equal-to (>=)
+__eq__(self, other) 	equal to (==)
+__ne__(self, other) 	not-equal to (!=)
+zyDE 9.8.2: Rich comparisons for a quarterback class.
+
+Complete the __gt__ method. A quarterback is considered greater than another only if that quarterback has both more wins and a higher quarterback passer rating.
+
+Once __gt__ is complete, compare Tom Brady's 2007 stats as well (yards: 4806, TDs: 50, completions: 398, attempts: 578, interceptions: 8, wins: 16).
+
+
+More advanced usage of class customization is possible, such as customizing how a class accesses or sets its attributes. Such advanced topics are out of scope for this material; however, the reader is encouraged to explore the links at the end of the section for a complete list of class customizations and special method names.
+participation activity
+9.8.2: Rich comparison methods.
+
+Consider the following class:
+
+class UsedCar:
+    def __init__(self, price, condition):
+        self.price = price
+        self.condition = condition  # integer between 0-5; 0=poor condition, 5=new condition
+
+Fill in the missing code as described in each question to complete the rich comparison methods.
+1)
+A car is less than another if the price is lower.
+
+def __lt__(self, other):
+    if :
+        return True
+    return False
+
+
+2)
+A car is less than or equal-to another if the price is at most the same.
+
+def __le__(self, other):
+    if :
+        return True
+    return False
+
+
+3)
+A car is greater than another if the condition is better.
+
+def __gt__(self, other):
+    if :
+        return True
+    return False
+
+
+4)
+Two cars are not equivalent if either the prices or conditions don't match.
+
+def __ne__(self, other):
+    if :
+        return True
+    return False
+
+
+challenge activity
+9.8.1: Enter the output of the program that has a class with special methods.
+343716.2144758.qx3zqy7
+
+Type the program's output
+class Duration:
+    def __init__(self, hours, minutes):
+        self.hours = hours
+        self.minutes = minutes
+
+    def __str__(self):
+        minute_string = str(self.minutes)
+        if self.minutes < 10:
+            minute_string = '0{}'.format(minute_string)
+        return '{} mins {} hrs'.format(minute_string, self.hours)
+
+day = Duration(24, 0)
+print(day)
+
+1
+2
+3
+1
+2
+3
+challenge activity
+9.8.2: Defining __str__.
+Write the special method __str__() for CarRecord.
+
+Sample output with input: 2009 'ABC321'
+
+Year: 2009, VIN: ABC321
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+Exploring further:
+
+    Wikipedia: Operator overloading
+    Python documentation: Class customization
+
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+9.9 More operator overloading: Classes as numeric types

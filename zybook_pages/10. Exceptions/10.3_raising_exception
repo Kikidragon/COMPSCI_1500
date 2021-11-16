@@ -1,0 +1,123 @@
+
+10.3 Raising exceptions
+
+Consider the BMI example once again, in which a user enters a weight and height, and that outputs the corresponding body-mass index. The programmer may wish to ensure that a user enters only valid heights and weights, i.e., greater than 0. Thus, the programmer must introduce error-checking code.
+
+A naive approach to adding error-checking code is to intersperse if-else statements throughout the normal code. Of particular concern is the yellow-highlighted code, which is new branching logic added to the normal code, making the normal code flow of "get weight, get height, then print BMI" harder to see. Furthermore, the second check for negative values before printing the BMI is redundant and ripe for a programming error caused by inconsistency with the earlier checks (e.g., checking for <= here rather than just <).
+Figure 10.3.1: BMI example with error-checking code but without using exception-handling constructs.
+
+user_input = ''
+while user_input != 'q':
+    weight = int(input('Enter weight (in pounds): '))
+    if weight < 0:
+        print('Invalid weight.')
+    else:
+        height = int(input('Enter height (in inches): '))
+        if height <= 0:
+            print('Invalid height')
+
+    if (weight < 0) or (height <= 0):
+        print('Cannot compute info.')
+    else:
+        bmi = (float(weight) / float(height * height)) * 703
+        print('BMI:', bmi)
+        print('(CDC: 18.6-24.9 normal)\n')  # Source www.cdc.gov
+
+    user_input = input("Enter any key ('q' to quit): ")
+
+The following program shows the same error-checking carried out using exception-handling constructs. The normal code is enclosed in a try block. Code that detects an error can execute a raise statement, which causes immediate exit from the try block and the execution of an exception handler. The exception handler prints the argument passed by the raise statement that brought execution there. The key thing to notice is that the normal code flow is not obscured via new if-else statements. You can clearly see that the flow is "get weight, get height, then print BMI".
+Figure 10.3.2: BMI example with error-checking code that raises exceptions.
+
+user_input = ''
+while user_input != 'q':
+    try:
+        weight = int(input('Enter weight (in pounds): '))
+        if weight < 0:
+            raise ValueError('Invalid weight.')
+
+        height = int(input('Enter height (in inches): '))
+        if height <= 0:
+            raise ValueError('Invalid height.')
+
+        bmi = (float(weight) * 703) / (float(height * height))
+        print('BMI:', bmi)
+        print('(CDC: 18.6-24.9 normal)\n')
+        # Source www.cdc.gov
+
+    except ValueError as excpt:
+        print(excpt)
+        print('Could not calculate health info.\n')
+
+    user_input = input("Enter any key ('q' to quit): ")
+
+
+
+Enter weight (in pounds): 166
+Enter height (in inches): 55
+BMI: 38.57785123966942
+(CDC: 18.6-24.9 normal)
+
+Enter any key ('q' to quit): a
+Enter weight (in pounds): 180
+Enter height (in inches): -5
+Invalid height.
+Could not calculate health info.
+
+Enter any key ('q' to quit): a
+Enter weight (in pounds): -2
+Invalid weight.
+Could not calculate health info.
+
+Enter any key ('q' to quit): q
+
+A statement like raise ValueError('Invalid weight.') creates a new exception of type ValueError with a string argument that details the issue. The programmer could have specified any type of exception in place of ValueError, e.g., NameError or TypeError, but ValueError most closely describes the exception being handled in this case. The as keyword binds a name to the exception being handled. The statement except ValueError as excpt creates a new variable excpt that the exception handling code might inspect for details about the exception instance. Printing the variable excpt prints the string argument passed to the exception when raised.
+participation activity
+10.3.1: Exceptions.
+
+    except NameError:
+    except:
+    raise ValueError
+    try
+    except (ValueError, NameError):
+
+Describes a block of code that uses exception-handling
+An exception handler for NameError exceptions
+An exception handler for ValueError and NameError exceptions
+A catch-all exception handler
+Causes a ValueError exception to occur
+challenge activity
+10.3.1: Exception handling.
+343716.2144758.qx3zqy7
+
+Type the program's output
+try:
+    user_age = int(input())
+
+    if user_age < 0:
+        raise ValueError('Invalid age')
+
+    # Source: https://www.heart.org/en/healthy-living/fitness
+    avg_max_heart_rate = 220 - user_age
+
+    print('Avg:', avg_max_heart_rate)
+
+except ValueError as excpt:
+    print('Error: {}'.format(excpt))
+
+Input
+50
+Output
+1
+2
+3
+4
+1
+2
+3
+4
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+10.4 Exceptions with functions

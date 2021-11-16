@@ -1,0 +1,26 @@
+
+9.33 LAB: Count probations
+
+Students are put on probation if their GPA is below 2.0. Complete the Course class by implementing the count_probation() instance method, which returns the number of students with a GPA below 2.0.
+
+The file main.py contains:
+
+    The main function for testing the program.
+    Class Course represents a course, which contains a list of Student objects as a course roster. (Type your code in here.)
+    Class Student represents a classroom student, which has three attributes: first name, last name, and GPA.
+
+Hint: Refer to the Student class to explore the available instance methods that can be used for implementing the count_probation() method.
+
+Note: For testing purposes, different student values will be used.
+
+Ex. For the following students:
+
+Henry Cabot 3.2
+Brenda Stern 1.1
+Lynda Robison 2.4
+Jane Flynn 1.8
+
+the output is:
+
+Probation count: 2
+

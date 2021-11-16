@@ -1,0 +1,179 @@
+
+6.4 Reasons for defining functions
+Improving program readability
+
+Programs can become hard for humans to read and understand. Decomposing a program into functions can greatly aid program readability, helping yield an initially correct program, and easing future maintenance. The following program contains two user-defined functions, making the main program (after the function definitions) easier to read and understand. For larger programs, the effect is even greater.
+Figure 6.4.1: With user-defined functions, the main program is easy to understand.
+
+def steps_to_feet(num_steps):
+    feet_per_step = 3
+    feet = num_steps * feet_per_step
+    return feet
+
+def steps_to_calories(num_steps):
+    steps_per_minute = 70.0
+    calories_per_minute_walking = 3.5
+
+    minutes = num_steps / steps_per_minute
+    calories = minutes * calories_per_minute_walking
+    return calories
+
+steps = int(input('Enter number of steps walked: '))
+
+feet = steps_to_feet(steps)
+print('Feet:', feet)
+
+calories = steps_to_calories(steps)
+print('Calories:', calories)
+
+
+
+Enter number of steps walked: 1000
+Feet: 3000
+Calories: 50
+
+Figure 6.4.2: Without user-defined functions, the main program is harder to read and understand.
+
+feet_per_step = 3
+steps_per_minute = 70.0
+calories_per_minute_walking = 3.5
+
+steps = int(input('Enter number of steps walked: '))
+
+feet = steps * feet_per_step
+print('Feet:', feet)
+
+minutes = steps / steps_per_minute
+calories = minutes * calories_per_minute_walking
+print('Calories:', calories)
+
+
+
+Enter number of steps walked: 1000
+Feet: 3000
+Calories: 50
+
+participation activity
+6.4.1: Improved readability.
+
+Consider the above examples.
+1)
+In the example without functions, how many statements are in the main program?
+2)
+In the example with functions, how many statements are in the main program?
+3)
+Which has fewer total lines of code (including blank lines), the program with or without functions?
+Modular program development
+
+Programmers commonly use functions to write programs modularly. Modular development is the process of dividing a program into separate modules that can be developed and tested separately and then integrated into a single program.
+
+A programmer can use function stubs (described in depth elsewhere) to capture the high-level behavior of the required functions (or modules) before diving into details of each function, like planning a route for a road trip before starting to drive.
+Avoid writing redundant code
+
+A function can be defined once, then called from multiple places in a program, thus avoiding redundant code. Examples of such functions are math module functions like sqrt() that relieve a programmer from having to write several lines of code each time a square root needs to be computed.
+
+The skill of decomposing a program's behavior into a good set of functions is a fundamental part of programming that helps characterize a good programmer. Each function should have easily-recognizable behavior, and the behavior of the main program (and any function that calls other functions) should be easily understandable via the sequence of function calls.
+
+A general guideline (especially for beginner programmers) is that a function's definition usually shouldn't have more than about 30 lines of code, although this guideline is not a strict rule.
+participation activity
+6.4.2: Redundant code can be replaced by multiple calls to one function.
+
+pi_val = math.pi
+
+pizza_diameter_1 = 12.0
+circle_radius_1 = pizza_diameter_1 / 2.0
+circle_area_1 = pi_val * circle_radius_1 *
+               circle_radius_1
+
+pizza_diameter_2 = 14.0
+circle_radius_2 = pizza_diameter_2 / 2.0
+circle_area_2 = pi_val * circle_radius_2 *
+                circle_radius_2
+
+total_pizza_area = circle_area_1 +
+                  circle_area_2
+
+print('A 12 and 14 inch pizza has', end=' ')
+print('{:.2f}'.format(total_pizza_area),
+   end=' ')
+print('square inches combined.')
+
+
+pizza_diameter_1 = 12.0
+pizza_diameter_2 = 14.0
+
+total_pizza_area =
+   calc_circle_area(pizza_diameter_1) +
+   calc_circle_area(pizza_diameter_2)
+
+print('A 12 and 14 inch pizza has', end=' ')
+print('{:.2f}'.format(total_pizza_area), end=' ')
+print('square inches combined.')
+
+
+return circle_area
+
+
+circle_radius = circle_diameter / 2.0
+circle_area = pi_val * circle_radius *
+             circle_radius
+
+
+circle_radius = circle_diameter / 2.0
+circle_area = pi_val * circle_radius *
+            circle_radius
+
+
+def calc_circle_area(circle_diameter):
+   pi_val = math.pi
+
+
+main program with redundant code
+main program calls calc_circle_area()
+avoiding redundant code
+
+Captions
+
+    Circle area is calculated twice, leading to redundant code.
+    The redundant code can be replaced by defining a calc_circle_area() function.
+    Then main program is simplified by calling the calc_circle_area() function from multiple places in the program.
+
+participation activity
+6.4.3: Reasons for defining functions.
+1)
+A key reason for creating functions is to help the program run faster.
+2)
+Avoiding redundancy means to avoid calling a function from multiple places in a program.
+3)
+If a function's internal statements are revised, all function calls will have to be modified too.
+4)
+A benefit of functions is to increase redundant code.
+challenge activity
+6.4.1: Functions: Factoring out a unit-conversion calculation.
+Write a function so that the main program below can be replaced by the simpler code that calls function mph_and_minutes_to_miles(). Original main program:
+
+miles_per_hour = float(input())
+minutes_traveled = float(input())
+hours_traveled = minutes_traveled / 60.0
+miles_traveled = hours_traveled * miles_per_hour
+
+print('Miles: {:f}'.format(miles_traveled))
+
+
+
+Sample output with inputs: 70.0 100.0
+
+Miles: 116.666667
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+6.5 Writing mathematical functions

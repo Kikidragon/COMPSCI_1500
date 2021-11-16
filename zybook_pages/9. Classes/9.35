@@ -1,0 +1,19 @@
+
+9.35 LAB: Print student roster
+
+Complete the Course class by implementing the print_roster() instance method, which outputs a list of all students enrolled in a course and also the total number of students in the course.
+
+Given the following:
+
+    The main function for testing the program.
+    Class Course represents a course, which contains a list of Student objects as a course roster. (Type your code in here.)
+    Class Student represents a classroom student, which has three attributes: first name, last name, and GPA.
+
+Ex: If the program has 4 students enrolled in the course, the output looks like:
+
+Henry Cabot ( GPA: 3.5 )
+Brenda Stern ( GPA: 2.0 )
+Jane Flynn ( GPA: 3.9 )
+Lynda Robison ( GPA: 3.2 )
+Students: 4
+

@@ -1,0 +1,26 @@
+
+9.29 LAB: Dean's list
+
+Students make the Dean's list if their GPA is 3.5 or higher. Complete the Course class by implementing the get_deans_list() instance method, which returns a list of students with a GPA of 3.5 or higher.
+
+The file main.py contains:
+
+    The main function for testing the program.
+    Class Course represents a course, which contains a list of student objects as a course roster. (Type your code in here.)
+    Class Student represents a classroom student, which has three attributes: first name, last name, and GPA. (Hint: get_gpa() returns a student's GPA.)
+
+Note: For testing purposes, different student values will be used.
+
+Ex. For the following students:
+
+Henry Nguyen 3.5
+Brenda Stern 2.0
+Lynda Robison 3.2
+Sonya King 3.9
+
+the output is:
+
+Dean's list:
+Henry Nguyen (GPA: 3.5)
+Sonya King (GPA: 3.9)
+

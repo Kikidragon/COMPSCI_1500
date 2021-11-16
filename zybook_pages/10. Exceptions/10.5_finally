@@ -1,0 +1,115 @@
+
+10.5 Using finally to cleanup
+
+Commonly a programmer wants to execute code regardless of whether or not an exception has been raised in a try block. For example, consider if an exception occurs while reading data from a file – the file should still be closed using the file.close() method, no matter if an exception interrupted the read operation. The finally clause of a try statement allows a programmer to specify clean-up actions that are always executed. The following illustration demonstrates.
+participation activity
+10.5.1: Clean-up actions in a finally clause are always executed.
+
+try:
+    # ...
+except:
+    # Handle exception
+finally:
+    # Clean up actions always executed
+
+
+# No exception occurs
+
+
+In finally block...
+
+try:
+    # ...
+except:
+    # Handle exception
+finally:
+    # Clean up actions always executed
+
+
+In finally block...
+
+# exception occurs
+
+
+Exception message...
+Exception message...
+In finally block...
+In finally block...
+Captions
+
+    If no exception occurs, then execution continues in the finally clause and then proceeds with the rest of the program.
+    If a handled exception occurs, then an exception handler executes and then the finally clause executes.
+
+The finally clause is always the last code executed before the try block finishes.
+
+    If no exception occurs, then execution continues in the finally clause, and then proceeds with the rest of the program.
+    If a handled exception occurs, then an exception handler executes and then the finally clause.
+    If an unhandled exception occurs, then the finally clause executes and then the exception is re-raised.
+    The finally clause also executes if any break, continue, or return statement causes the try block to be exited.
+
+The finally clause can be combined with exception handlers, provided that the finally clause comes last. The following program attempts to read integers from a file. The finally clause is always executed, even if some exception occurs when reading the data (such as if the file contains letters, thus causing int() to raise an exception, or if the file does not exist).
+Figure 10.5.1: Clean-up actions using finally.
+
+nums = []
+rd_nums = -1
+my_file = input('Enter file name: ')
+
+try:
+    print('Opening', my_file)
+    rd_nums = open(my_file, 'r')  # Might cause IOError
+
+    for line in rd_nums:
+        nums.append(int(line))  # Might cause ValueError
+except IOError:
+    print('Could not find', my_file)
+except ValueError:
+    print('Could not read number from', my_file)
+finally:
+    print('Closing', my_file)
+    if rd_nums != -1:
+        rd_nums.close()
+    print('Numbers found:', ' '.join([str(n) for n in nums]))
+
+
+
+Enter file name: myfile.txt
+Opening myfile.txt
+Closing myfile.txt
+Numbers found: 5 423 234
+...
+Enter file name: myfile.txt
+Opening myfile.txt
+Could not read number from myfile.txt
+Closing myfile.txt
+Numbers found:
+...
+Enter file name: invalidfile.txt
+Opening invalidfile.txt
+Could not find invalidfile.txt
+Closing invalidfile.txt
+Numbers found:
+
+participation activity
+10.5.2: Finally.
+
+Assume that the following function has been defined.
+
+def divide(a, b):
+    z = -1
+    try:
+        z = a / b
+    except ZeroDivisionError:
+        print('Cannot divide by zero')
+    finally:
+        print('Result is', z)
+
+1)
+What is the output of divide(4, 2)?
+2)
+What is the output of divide(4, 0)?
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+10.6 Custom exception types

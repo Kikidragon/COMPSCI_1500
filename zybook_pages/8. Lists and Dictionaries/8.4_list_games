@@ -1,0 +1,34 @@
+
+8.4 List games
+
+The following activities can help one become comfortable with iterating through lists. Challenge yourself with these list games.
+participation activity
+8.4.1: Find the maximum value in the list.
+If a new maximum value is seen, then click 'Store value'. Try again to get your best time.
+	max
+X 	X 	X 	X 	X 	X 	X
+
+
+Time -Best time -
+participation activity
+8.4.2: Negative value counting in list.
+If a negative value is seen, then click 'Increment'. Try again to get your best time.
+	Counter
+X 	X 	X 	X 	X 	X 	X
+	0
+
+Time -Best time -
+participation activity
+8.4.3: Manually sorting largest value.
+Move the largest value to the right-most position of the list. If the larger of the two current values is on the left, then swap the values. Try again to get your best time.
+
+X 	X 	X 	X 	X 	X 	X
+
+
+Time -Best time -
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+8.5 List nesting
