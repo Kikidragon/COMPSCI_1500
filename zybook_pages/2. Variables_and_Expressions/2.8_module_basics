@@ -1,0 +1,151 @@
+
+2.8 Module basics
+Modules
+
+The interactive Python interpreter allows a programmer to execute one line of code at a time. This method of programming is mostly used for very short programs or for practicing the language syntax. Instead, programmers typically write Python program code in a file called a script, and execute the code by passing the script as input to the Python interpreter.
+participation activity
+2.8.1: Scripts are files executed by the interpreter.
+first = 'Larry'
+last = 'David'
+
+print('Hi', first, last)
+
+print_name.py
+  python
+Hi Larry David
+$
+$
+print_name.py
+Captions
+
+    Programmer writes code in a script file named print_name.py.
+    The programmer runs the Python interpreter, passing the script as input (shown above using the operating system command line).
+
+Programmers often write code in more than just a single script file. Collections of logically related code can be stored in separate files, and then imported for use into a script that requires that code. A module is a file containing Python code that can be used by other modules or scripts. A module is made available for use via the import statement. Once a module is imported, any object defined in that module can be accessed using dot notation. Ex: A variable speed_of_light defined in universe.py is accessed via universe.speed_of_light.
+participation activity
+2.8.2: Importing modules.
+import
+
+print('Hi', end=' ')
+print(           .first, end=' ')
+print(           .last)
+
+print_name.py
+  python
+Hi Larry David
+$
+$
+print_name.py
+first = 'Larry'
+last = 'David'
+
+names.py
+names
+names
+names
+A script can import and use the contents of a module.
+Captions
+
+    Code can be separated into multiple files. The names.py module has some predefined variables.
+    The print_name.py script imports variables from names.py using dot notation.
+    Running the script imports the module and accesses the module contents using dot notation.
+
+Separating code into different modules makes management of larger programs simpler. For example, a simple Tetris-like game might have a module for input (buttons.py), a module for descriptions of each piece shape (pieces.py), a module for score management (score.py), etc.
+
+The Python standard library, discussed elsewhere, is a collection of useful pre-installed modules. Modules also become more useful when dealing with topics such as functions and classes, where the logical boundaries of what code should be contained within a module is more obvious.
+participation activity
+2.8.3: Basic modules.
+
+    script
+    import
+    module
+    dot notation
+
+A file containing Python code that is passed as input to the interpreter
+A file containing Python code that is imported by a script, module, or the interactive interpreter
+Used to reference an object in an imported module.
+Executes the contents of a file containing Python code and makes the definitions from that file available.
+Importing modules and executing scripts
+
+When a module is imported, all code in the module is immediately executed. Python programs often use the built-in special name __name__ to determine if the file was executed as a script by the programmer, or if the file was imported by another module. If the value of __name__ is the string '__main__', then the file was executed as a script.
+
+In the figure below, two files are provided: pet_names.py initializes some variables, and favorite_pet.py imports pet_names.py as a module and uses some of the variable values to write a message. Running pet_names.py as a script (python pet_names.py) causes the code within the if __name__ == '__main__' block to execute, which prints some pet statistics. When favorite_pet.py is run and pet_names.py is imported as a module, the pet statistics are not printed.
+
+The if construct used in the program below is discussed elsewhere. For now, know that the code indented below the if __name__ == '__main__' block only executes when the file is passed to the interpreter directly.
+Figure 2.8.1: Checking if a file was executed as a script.
+
+# The pet_names.py module
+
+print ('Initializing pet variables…')
+pet_name1 = 'Ryder'
+pet_name2 = 'Jess'
+pet_weight1 = 5.1
+pet_weight2 = 8.5
+
+# Executes only if file run as a script (e.g., python baby_names.py)
+if __name__ == '__main__':
+    print('Pet 1:', pet_name1, 'was born', pet_weight1, 'lbs')
+    print('Pet 2:', pet_name2, 'was born', pet_weight2, 'lbs')
+
+# A script favorite_pet.py that imports and uses the pet_names module.
+
+import pet_names  # Importing the module executes the module contents
+
+print('My favorite pet is', pet_names.pet_name1, '-')
+print('I remember when he weighed only', pet_names.pet_weight1, 'pounds.')
+print('I love', pet_names.pet_name2, 'too, of course.')
+
+
+
+$ python pet_names.py
+Initializing pet variables...
+Pet 1: Ryder was born 5.1 lbs
+Pet 2: Jess was born 8.5 lbs
+
+
+
+
+
+$ python favorite_pet.py
+Initializing pet variables…
+My favorite pet is Ryder -
+I remember when he weighed only 5.1 pounds.
+I love Jess too, of course.
+
+participation activity
+2.8.4: Importing modules and executing scripts.
+
+What is the output when running the following commands? Assume valid input of "10" is provided to the program, if required. If no output is generated, select "NO OUTPUT". Note: The math module, imported in fall_time.py, provides functions for advanced math operations and is discussed in more detail elsewhere.
+constants.py 	fall_time.py
+
+# Gravitational constants for various planets
+
+earth_g = 9.81  # m/s^2
+mars_g = 3.71
+
+if __name__ == '__main__':
+    print('Earth constant:', earth_g)
+    print('Mars constant:', mars_g)
+
+
+
+# Find seconds to drop from a height on some planets.
+import constants
+import math
+
+height = int(input('Height in meters: '))  # Meters from planet
+
+if __name__ == '__main__':
+    print('Earth:', math.sqrt(2 * height / constants.earth_g), 'seconds')
+    print('Mars:', math.sqrt(2 * height / constants.mars_g), 'seconds')
+
+1)
+$ python constants.py
+2)
+$ python fall_time.py
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+2.9 Math module

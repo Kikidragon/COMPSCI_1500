@@ -1,0 +1,48 @@
+
+You have unverified email(s). Please click on your name in the top right corner and browse to your profile to send another verification email.
+1.10 Python example: Salary calculation
+1.11 Additional practice: Output art
+
+The following is a sample programming lab activity; not all classes using a zyBook require students to fully complete this activity. No auto-checking is performed. Users planning to fully complete this program may consider first developing their code in a separate programming environment.
+
+Pictures made entirely from keyboard characters are known as ASCII art. ASCII art can be quite complex, fun to make, and enjoyable to view. Take a look at Wikipedia: ASCII art for examples. Doing a web search for "ASCII art (some item)" can find ASCII art versions of an item; e.g., searching for "ASCII art cat" turns up thousands of examples of cats, most much more clever than the cat below.
+
+The following program outputs a simple triangle.
+Figure 1.11.1: Output art: Printing a triangle.
+
+print('  *  ')
+print(' *** ')
+print('*****')
+
+  *  
+ *** 
+*****
+
+zyDE 1.11.1: Create ASCII art.
+
+Create different versions of the below programs. First run the code, then alter the code to print the desired output.
+
+Print a tree by adding a base under a 4-level triangle:
+
+    *  
+   ***
+  ***** 
+ ******* 
+   ***
+
+zyDE 1.11.2: Create ASCII art.
+
+Complete the cat drawing below. Note the '\' character is actually displayed by printing the two character sequence '\\'.
+
+/\     /\
+  o   o
+ =     =
+   ---
+
+zyDE 1.11.3: Create ASCII art.
+
+Be creative: Print something you'd like to see that is more impressive than the previous programs.
+No template provided
+
+How was this section?
+1.12 zyLab training: Basics

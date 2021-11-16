@@ -1,0 +1,241 @@
+
+3.2 List basics
+Creating a list
+
+A container is a construct used to group related values together and contains references to other objects instead of data. A list is a container created by surrounding a sequence of variables or literals with brackets [ ]. Ex: my_list = [10, 'abc'] creates a new list variable my_list that contains the two items: 10 and 'abc'. A list item is called an element .
+
+A list is also a sequence, meaning the contained elements are ordered by position in the list, known as the element's index, starting with 0. my_list = [ ] creates an empty list.
+
+The animation below shows how a list is created and managed by the interpreter. A list itself is an object, and its value is a sequence of references to the list's elements.
+participation activity
+3.2.1: Creating lists.
+Python interpreter
+>>>
+
+prices = ['$20', 14.99, 5]
+
+
+>>>
+prices
+'$20'
+
+prices = ['$20', 14.99, 5]
+
+
+14.99
+5
+0
+1
+2
+Python (command line)
+Captions
+
+    User creates a new list.
+    The interpreter creates new object for each list element.
+    'prices' holds references to objects in list.
+
+zyDE 3.2.1: Creating lists.
+
+The following program prints a list of names. Try adding your name to the list, and run the program again.
+
+participation activity
+3.2.2: Creating lists.
+1)
+Write a statement that creates a list called my_nums, containing the elements 5, 10, and 20.
+
+2)
+Write a statement that creates a list called my_list with the elements -100 and the string 'lists are fun'.
+
+3)
+Write a statement that creates an empty list called class_grades.
+
+Accessing list elements
+
+Lists are useful for reducing the number of variables in a program. Instead of having a separate variable for the name of every student in a class, or for every word in an email, a single list can store an entire collection of related variables.
+
+Individual list elements can be accessed using an indexing expression by using brackets as in my_list[i], where i is an integer. This allows a programmer to quickly find the i'th element in a list.
+
+A list's index must be an integer. The index cannot be a floating-point type, even if the value is a whole number like 0.0 or 1.0. Using any type besides an integer will produce a runtime error and the program will terminate.
+Figure 3.2.1: Access list elements using an indexing expression.
+
+# Some of the most expensive cars in the world
+lamborghini_veneno = 3900000  # $3.9 million!
+bugatti_veyron = 2400000      # $2.4 million!
+aston_martin_one77 = 1850000  # $1.85 million!
+
+prices = [lamborghini_veneno, bugatti_veyron, aston_martin_one77]
+
+print('Lamborghini Veneno:', prices[0], 'dollars')
+print('Bugatti Veyron Super Sport:', prices[1], 'dollars')
+print('Aston Martin One-77:', prices[2], 'dollars')
+
+
+
+Lamborghini Veneno: 3900000 dollars
+Bugatti Veyron Super Sport: 2400000 dollars
+Aston Martin One-77: 1850000 dollars
+
+challenge activity
+3.2.1: Initialize a list.
+Initialize the list short_names with strings 'Gus', 'Bob', and 'Zoe'. Sample output for the given program:
+
+Gus
+Bob
+Zoe
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+Updating list elements
+
+Lists are mutable, meaning that a programmer can change a list's contents. An element can be updated with a new value by performing an assignment to a position in the list.
+Figure 3.2.2: Updating list elements.
+
+my_nums = [5, 12, 20]
+print(my_nums)
+
+# Update a list element
+my_nums[1] = -28
+print(my_nums)
+
+
+
+[5, 12, 20]
+[5, -28, 20]
+
+participation activity
+3.2.3: Accessing and updating list elements.
+1)
+Write a statement that assigns my_var with the 3rd element of my_list.
+
+2)
+Write a statement that assigns the 2nd element of my_towns with 'Detroit'.
+
+Adding and removing list elements
+
+Since lists are mutable, a programmer can also use methods to add and remove elements. A method instructs an object to perform some action, and is executed by specifying the method name following a "." symbol and an object. The append() list method is used to add new elements to a list. Elements can be removed using the pop() or remove() methods. Methods are covered in greater detail in another section.
+
+Adding elements to a list:
+
+    list.append(value): Adds value to the end of list. Ex: my_list.append('abc')
+
+Removing elements from a list:
+
+    list.pop(i): Removes the element at index i from list. Ex: my_list.pop(1)
+    list.remove(v): Removes the first element whose value is v. Ex: my_list.remove('abc')
+
+participation activity
+3.2.4: Adding and removing list elements.
+
+my_list = [10, 'bw']
+print(my_list)
+
+my_list.append('abc')
+print('After append:', my_list)
+
+my_list.pop(1)
+print('After pop:', my_list)
+
+my_list.remove('abc')
+print('After remove:', my_list)
+
+
+my_list:
+10
+'bw'
+'abc'
+[10, 'bw']
+After append: [10, 'bw', 'abc']
+After pop: [10, 'abc']
+After remove: [10]
+Captions
+
+    append() adds an element to the end of the list.
+    pop() removes the element at the given index from the list. 'bw', which is at index 1, is removed and 'abc' is now at index 1.
+    remove() removes the first element with a given value. 'abc' is removed and now the list only has one element.
+
+participation activity
+3.2.5: List modification.
+
+Write a statement that performs the desired action. Assume the list house_prices = ['$140,000', '$550,000', '$480,000'] exists.
+1)
+Update the price of the second item in house_prices to '$175,000'.
+
+2)
+Add a price to the end of the list with a value of '$1,000,000'.
+
+3)
+Remove the 1st element from house_prices, using the pop() method.
+
+4)
+Remove '$140,000' from house_prices, using the remove() method.
+
+Sequence-type methods and functions
+
+Sequence-type functions are built-in functions that operate on sequences like lists and strings. Sequence-type methods are methods built into the class definitions of sequences like lists and strings. A subset of such functions and methods is provided below.
+Table 3.2.1: Some of the functions and methods useful to lists.
+Operation 	Description
+len(list) 	Find the length of the list.
+list1 + list2 	Produce a new list by concatenating list2 to the end of list1.
+min(list) 	Find the element in list with the smallest value. All elements must be of the same type.
+max(list) 	Find the element in list with the largest value. All elements must be of the same type.
+sum(list) 	Find the sum of all elements of a list (numbers only).
+list.index(val) 	Find the index of the first element in list whose value matches val.
+list.count(val) 	Count the number of occurrences of the value val in list.
+Figure 3.2.3: Using sequence-type functions with lists.
+
+# Concatenating lists
+house_prices = [380000, 900000, 875000] + [225000]
+print('There are', len(house_prices), 'prices in the list.')
+
+# Finding min, max
+print('Cheapest house:', min(house_prices))
+print('Most expensive house:', max(house_prices))
+
+
+
+There are 4 prices in the list.
+Cheapest house: 225000
+Most expensive house: 900000
+
+Note that lists can contain mixed types of objects. Ex: x = [1, 2.5, 'abc'] creates a new list x that contains an integer, a floating-point number, and a string. Later material explores lists in detail, including how lists can even contain other lists as elements.
+zyDE 3.2.2: Student grade statistics.
+
+The following program calculates some information regarding final and midterm scores. Try enhancing the program by calculating the average midterm and final scores.
+
+
+participation activity
+3.2.6: Using sequence-type functions.
+1)
+Write an expression that concatenates the list feb_temps to the end of jan_temps.
+
+2)
+Write an expression that finds the minimum value in the list total_prices.
+
+3)
+Write a statement that assigns the variable avg_price with the average of the elements of prices.
+
+challenge activity
+3.2.2: List functions and methods.
+343716.2144758.qx3zqy7
+user_ages = [ 7, 5, 1, 3, 9, 4, 6 ]
+What is the value of len(user_ages)?
+1
+2
+3
+4
+5
+1
+2
+3
+4
+5
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+3.3 Tuple basics

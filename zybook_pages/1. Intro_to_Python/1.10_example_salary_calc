@@ -1,0 +1,32 @@
+
+You have unverified email(s). Please click on your name in the top right corner and browse to your profile to send another verification email.
+1.9 Why whitespace matters
+1.10 Python example: Salary calculation
+
+This section contains a very basic example for starters; the examples increase in size and complexity in later sections.
+zyDE 1.10.1: Executing Python code using the interpreter.
+
+The following program calculates yearly and monthly salary given an hourly wage. The program assumes a work-hours-per-week of 40 and work-weeks-per-year of 50.
+
+hourly_wage = 20
+
+print('Annual salary is: ')
+print(hourly_wage * 40 * 50)
+print()
+
+print('Monthly salary is: ')
+print(((hourly_wage * 40 * 50) / 1))
+print()
+
+#        the 1 so that the statement
+#        outputs monthly salary.
+
+
+
+
+
+
+    Insert the correct number in the code below to print a monthly salary. Then run the program. The monthly salary should be 3333.333... .
+
+How was this section?
+1.11 Additional practice: Output art

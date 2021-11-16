@@ -1,0 +1,75 @@
+
+4.8 Comparing data types and common errors
+Comparing characters, strings, and floating-point types
+
+The relational and equality operators work for integer, character, and floating-point built-in types.
+
+Floating-point types should not be compared using the equality operators, due to the imprecise representation of floating-point numbers, as discussed in a later section.
+
+The operators can also be used for the string type. Strings are equal if they have the same number of characters and corresponding characters are identical. If string my_str = 'Tuesday', then (my_str == 'Tuesday') is True, while (my_str == 'tuesday') is False because T differs from t.
+participation activity
+4.8.1: Comparing various types.
+
+Which comparisons will not result in a syntax error AND consistently yield expected results? Variables have types denoted by their names.
+1)
+my_int == 42
+2)
+my_float == 3.14
+3)
+my_string == 'Hello'
+
+The types of the values being compared determines the meaning of a comparison. If both values are numbers, then the numbers are compared arithmetically (5 < 2 is False). Comparisons that make no sense, such as 1 < 'abc' result in a TypeError.
+
+Comparison of values with the same type, like 5 < 2, or 'abc' >= 'ABCDEF', depend on the types being compared.
+
+    Numbers are arithmetically compared.
+    Strings are compared by converting each character to a number value (ASCII or Unicode), and then comparing each character in order. Most string comparisons use equality operators "==" or "!=", as in today == 'Friday'.
+    Lists and tuples are compared via an ordered comparison of every element in the sequence. Every element between the sequences must compare as equal for an equality operator to evaluate to True. Relational operators like < or > can also be used: The result is determined by the first mismatching elements in the sequences. For example, if x = [1, 5, 2] and y = [1, 4, 3], then evaluating x < y first evaluates that 1 and 1 match. The next elements do not match, so 5 < 4 is evaluated, which produces a value of False.
+    Dictionaries are compared only with == and !=. To be equal, two dictionaries must have the same set of keys and the same corresponding value for each key.
+
+participation activity
+4.8.2: Comparing various types.
+1)
+Click the expression that is False.
+2)
+Click the expression that is False.
+3)
+Click the expression that is True.
+Common branching errors
+
+A common error is to use = rather than == in an if-else expression, as in: if numDogs = 9:. In such cases, the interpreter should generate a syntax error.
+
+Another common error is to use invalid character sequences like =>, !<, or <>, which are not valid operators.
+participation activity
+4.8.3: Watch out for assignment in an if-else expression.
+
+What is the final value of num_items? Write "Error" if the code results in an error.
+1)
+
+num_items = 3
+if num_items == 3:
+   num_items = num_items + 1
+
+2)
+
+num_items = 3
+if num_items = 10:
+   num_items = num_items + 1
+
+3)
+
+num_items = 3
+if num_items > 10:
+   num_items = num_items + 1
+
+challenge activity
+4.8.1: If-else statement: Fix errors.
+343716.2144758.qx3zqy7
+Find and fix the error in the if-else statement.
+1
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+4.9 Membership and identity operators

@@ -1,0 +1,33 @@
+
+5.12 Getting both index and value when looping: enumerate()
+5.13 Additional practice: Dice statistics
+
+The following is a sample programming lab activity; not all classes using a zyBook require students to fully complete this activity. No auto-checking is performed. Users planning to fully complete this program may consider first developing their code in a separate programming environment.
+
+Analyzing dice rolls is a common example in understanding probability and statistics. The following program calculates the number of times the sum of two dice (randomly rolled) is equal to six or seven.
+zyDE 5.13.1: Dice statistics.
+
+
+
+Create a different version of the program that:
+
+    Calculates the number of times the sum of the randomly rolled dice equals each possible value from 2 to 12.
+    Repeatedly asks the user for the number of times to roll the dice, quitting only when the user-entered number is less than 1. Hint: Use a while loop that will execute as long as num_rolls is greater than 1.
+    Prints a histogram in which the total number of times the dice rolls equals each possible value is displayed by printing a character, such as *, that number of times. The following provides an example:
+
+Dice roll histogram:
+
+2s:  **
+3s:  ****
+4s:  ***
+5s:  ********
+6s:  *************
+7s:  *****************
+8s:  *************
+9s:  *********
+10s: **********
+11s: *****
+12s: **
+
+How was this section?
+5.14 LAB: Convert to binary

@@ -1,0 +1,17 @@
+
+2.19 LAB: Convert from seconds
+
+People find it easier to read time in hours, minutes, and seconds rather than just seconds.
+
+Write a program that reads in seconds as input, and outputs the time in hours, minutes, and seconds.
+
+Ex: If the input is:
+
+4000
+
+the output is:
+
+Hours: 1
+Minutes: 6
+Seconds: 40
+

@@ -1,0 +1,162 @@
+
+4.3 Detecting ranges with branches (general)
+Detecting ranges using if-elseif-else
+
+A common programming task is to detect if a value lies within a certain range and then perform an action depending on where the value lies. Ex: If Timmy is less than 6, he can play pee-wee soccer. If Timmy is between 6 and 17, he can play junior league soccer, and if he's older than 17, he can play professional soccer.
+
+An if-elseif-else structure can detect number ranges with each branch performing a different action for each range. Each expression only needs to indicate the upper range part; if execution reaches an expression, the lower range part is implicit from the previous expressions being false.
+participation activity
+4.3.1: An if-elseif-else structure can elegantly detect ranges.
+13
+12
+11
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+No teams
+12 or over
+10, 11
+Under 12
+8, 9
+Under 10
+6, 7
+Under 8
+No teams
+5 or under
+No teams
+Else:
+Play on U12 team
+Else If age < 12:
+Play on U10 team
+Else If age < 10:
+Play on U8 team
+Else If Age < 8:
+No teams
+If Age < 6:
+Captions
+
+    Kids of various ages may wish to play soccer. A soccer club may not have teams for kids 5 and under.
+    One level of teams is listed as "Under 8" (or just U8), which is understood to mean just 7 or 6, but not 5 or younger.
+    Likewise, U10 means 9 and 8, and U12 means 11 and 10. No teams exist for ages 12 and over.
+    An if-elseif-else structure can elegantly capture such ranges. When an expression is checked, one knows that all the previous expressions were false, thus defining the low range end.
+
+participation activity
+4.3.2: Using if-elseif-else to detect increasing ranges.
+
+Indicate the range corresponding to each branch. x is a non-negative integer.
+
+    30+
+    10 - 19
+    20 - 29
+    0 - 9
+
+If x < 10 : Branch 1
+Else If x < 20 : Branch 2
+Else If x < 30 : Branch 3
+Else : Branch 4
+participation activity
+4.3.3: More ranges with if-elseif-else.
+
+Indicate the range detected by the expression, assuming each question continues a single if-elseif-else structure. Type ranges as: 25 - 29
+1)
+If x > 100 : Branch 1
+
+ - infinity
+
+2)
+Else If x > 50 : Branch 2
+
+3)
+Else
+
+-infinity -
+
+4)
+Is this a reasonable if-elseif-else structure? Type yes or no.
+
+If x < 100: Branch 1
+Else If x < 200: Branch 2
+Else If x < 150: Branch 3
+Else: Branch 4
+
+challenge activity
+4.3.1: Decision sequence to detect increasing ranges.
+343716.2144758.qx3zqy7
+Indicate the range covered by the following decision. Assume x is a non-negative integer.
+x < 10
+x < 17
+// Range covered:
+..
+Else
+1
+2
+3
+1
+2
+3
+Using multi-branch if-else to detect ranges
+
+The sequential nature of multi-branch if-else statements is useful to detect ranges of numbers. In the following example, the second branch expression is only reached if the first expression is false. So the second branch is taken if userAge < 16 is false (so 16 or greater) AND userAge is < 25, meaning userAge is between 16 - 24 (inclusive).
+participation activity
+4.3.4: Using if-elseif for ranges: Insurance prices.
+StartuserAge = Get next inputuserAge < 16// 15 and underPut "Too young." to outputinsurancePrice = 0userAge < 25// 16 - 24insurancePrice = 4800userAge < 40// 25 - 39insurancePrice = 2350// 40 and upinsurancePrice = 2100Put "Annual price: $" to outputPut insurancePrice to outputEndtruefalsetruefalsetruefalse
+Variables
+0 	userAge 	integer
+0 	insurancePrice 	integer
+Input
+22
+Output
+
+_
+
+Execution speed
+participation activity
+4.3.5: Decision sequences and ranges.
+
+Type the range for each branch. Type ranges as 25 - 29, or as 30+ for 30 and up.
+A flowchart program. The statements are provided below. if numSales < 10 x = 1 elseif numSales < 20 x = 2 elseif numSales < 30 x = 3 else x = 4
+1)
+Range for x = 2
+
+2)
+Range for x = 3
+
+3)
+Range for x = 4
+
+challenge activity
+4.3.2: Flowchart decision sequence to detect increasing ranges.
+343716.2144758.qx3zqy7
+y = 1
+Type the range for the given branch. Assume x is a non-negative integer.
+Range for y = 1:
+y = 2
+y = 3
+y = 4
+Start
+End
+x < 15
+x < 20
+x < 29
+..
+1
+2
+3
+4
+1
+2
+3
+4
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+4.4 Detecting ranges with branches

@@ -1,0 +1,146 @@
+
+2.6 Python expressions
+
+Below is a simple program that includes an expression involving integers.
+Figure 2.6.1: Expression example: Leasing cost.
+
+""" Computes the total cost of leasing a car given the down payment,
+    monthly rate, and number of months """
+
+down_payment = int(input('Enter down payment: '))
+payment_per_month = int(input('Enter monthly payment: '))
+num_months = int(input('Enter number of months: '))
+
+total_cost = down_payment + (payment_per_month * num_months)
+
+print ('Total cost:', total_cost)
+
+
+
+Enter down payment: 500
+Enter monthly payment: 300
+Enter number of months: 60
+Total cost: 18500
+
+participation activity
+2.6.1: Simple program with an arithmetic expression.
+
+Consider the example above.
+1)
+Would removing the parentheses as below have yielded the same result?
+
+down_payment + payment_per_month * num_months
+
+2)
+Would using two assignment statements as below have yielded the same result?
+
+all_months_cost = payment_per_month * num_months
+total_cost = down_payment + all_months_cost
+
+Style: Single space around operators
+
+A good practice is to include a single space around operators for readability, as in num_items + 2, rather than num_items+2. An exception is minus used as negative, as in: x_coordinate = -y_coordinate. Minus (-) used as negative is known as unary minus.
+participation activity
+2.6.2: Single space around operators.
+
+Retype each statement to follow the good practice of a single space around operators.
+
+Note: If an answer is marked wrong, something differs in the spacing, spelling, capitalization, etc. This activity emphasizes the importance of such details.
+1)
+houses_city = houses_block *10
+
+2)
+total = num1+num2+2
+
+3)
+num_balls=num_balls+1
+
+4)
+num_entries = (user_val+1)*2
+
+Compound operators
+
+Special operators called compound operators provide a shorthand way to update a variable, such as age += 1 being shorthand for age = age + 1. Other compound operators include -=, *=, /=, and %=.
+Table 2.6.1: Compound operators.
+Compound operator 	Expression with compound operator 	Equivalent expression
+Addition assignment 	age += 1 	age = age + 1
+Subtraction assignment 	age -= 1 	age = age - 1
+Multiplication assignment 	age *= 1 	age = age * 1
+Division assignment 	age /= 1 	age = age / 1
+Modulo (operator further discussed elsewhere) assignment 	age %= 1 	age = age % 1
+participation activity
+2.6.3: Compound operators.
+1)
+num_atoms is initially 7. What is num_atoms after:
+num_atoms += 5?
+
+2)
+num_atoms is initially 7. What is num_atoms after:
+num_atoms *= 2?
+
+3)
+Rewrite the statement using a compound operator, or type: Not possible
+car_count = car_count / 2
+
+4)
+Rewrite the statement using a compound operator, or type: Not possible
+num_items = box_count + 1
+
+No commas allowed
+
+Commas are not allowed in an integer literal. So 1,333,555 is written as 1333555.
+participation activity
+2.6.4: Assigning an integer literal.
+1)
+The following code correctly assigns num_years with an integer value of 2 billion.
+
+num_years = 2,000,000,000
+
+challenge activity
+2.6.1: Computing an average.
+Write a single statement that assigns avg_sales with the average of num_sales1, num_sales2, and num_sales3.
+
+Sample output with inputs: 3 4 8
+
+Average sales: 5.00
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+2.6.2: Sphere volume.
+Given sphere_radius and pi, compute the volume of a sphere and assign sphere_volume with the volume. Volume of sphere = (4.0 / 3.0) π r3
+
+Sample output with input: 1.0
+
+Sphere volume: 4.19
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+2.6.3: Acceleration of gravity.
+Compute the approximate acceleration of gravity for an object above the earth's surface, assigning accel_gravity with the result. The expression for the acceleration of gravity is: (G * M) / (d 2), where G is the gravitational constant 6.673 x 10-11, M is the mass of the earth 5.98 x 1024 (in kg), and d is the distance in meters from the Earth's center (stored in variable dist_center).
+
+Sample output with input: 6.3782e6 (100 m above the Earth's surface at the equator)
+
+Acceleration of gravity: 9.81
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+2.7 Division and modulo

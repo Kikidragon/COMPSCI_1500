@@ -1,0 +1,142 @@
+
+2.7 Division and modulo
+Division: Integer rounding
+
+The division operator / performs division and returns a floating-point number. Ex:
+
+    20 / 10 is 2.0.
+    50 / 50 is 1.0.
+    5 / 10 is 0.5.
+
+The floored division operator // can be used to round down the result of a floating-point division to the closest whole number value. The resulting value is an integer type if both operands are integers; if either operand is a float, then a float is returned:
+
+    20 // 10 is 2.
+    50 // 50 is 1.
+    5 // 10 is 0. (5/10 is 0 and the remainder 5 is thrown away).
+    5.0 // 2 is 2.0
+
+For division, the second operand of / or // must never be 0, because division by 0 is mathematically undefined.
+participation activity
+2.7.1: Division and floored division.
+
+Determine the result. Type "Error" if the program would terminate due to division by 0. If the answer is a floating-point number, answer in the form #.#, even if the answer is a whole number.
+1)
+ 12 / 4
+
+2)
+ 5 / 10
+
+3)
+ 5.0 // 2
+
+4)
+ 100 / 0
+
+Modulo (%)
+
+The basic arithmetic operators include not just +, -, *, /, but also %. The modulo operator (%) evaluates the remainder of the division of two integer operands. Ex: 23 % 10 is 3.
+
+Examples:
+
+    24 % 10 is 4. Reason: 24 / 10 is 2 with remainder 4.
+    50 % 50 is 0. Reason: 50 / 50 is 1 with remainder 0.
+    1 % 2 is 1. Reason: 1 / 2 is 0 with remainder 1.
+
+zyDE 2.7.1: Example using expressions: Minutes to hours/minutes.
+
+The program below reads in the number of minutes entered by a user. The program then converts the number of minutes to hours and minutes.
+
+Run the program, then modify the code to work in reverse: The user enters two numbers for hours and minutes and the program outputs total minutes.
+
+
+participation activity
+2.7.2: Modulo.
+
+Determine the result. Type "Error" if appropriate. Only literals appear in these expressions to focus attention on the operators; most practical expressions include variables.
+1)
+ 50 % 2
+
+2)
+ 51 % 2
+
+3)
+ 78 % 10
+
+4)
+ 596 % 10
+
+5)
+100 % (1 // 2)
+
+challenge activity
+2.7.1: Enter the output of the integer expressions.
+343716.2144758.qx3zqy7
+
+Type the program's output
+x = 19
+y = x / 2
+
+print(y)
+
+1
+2
+3
+1
+2
+3
+Modulo examples
+
+Modulo has several useful applications. Below are just a few.
+Example 2.7.1: Getting digits.
+
+Given a number, % and // can be used to get each digit. For a 3-digit number user_val like 927:
+
+ones_digit     = user_val % 10    # Ex: 927 % 10 is 7.
+tmp_val        = user_val // 10
+
+tens_digit     = tmp_val % 10     # Ex: tmp_val = 927 // 10 is 92. Then 92 % 10 is 2.
+tmp_val        = tmp_val // 10
+
+hundreds_digit = tmp_val % 10     # Ex: tmp_val = 92 // 10 = 9. Then 9 % 10 is 9.
+
+Example 2.7.2: Get prefix.
+
+Given a 10-digit phone number stored as an integer, % and // can be used to get any part, such as the prefix. For phone_num = 9365551212 (whose prefix is 555):
+
+tmp_val = phone_num // 10000  # // 10000 shifts right by 4, so 936555.
+prefix_num = tmp_val % 1000 # % 1000 gets the right 3 digits, so 555.
+
+Dividing by a power of 10 shifts a value right. Ex: 321 // 10 is 32. Ex: 321 // 100 is 3.
+
+% by a power of 10 gets the rightmost digits. Ex: 321 % 10 is 1. Ex: 321 % 100 is 21.
+participation activity
+2.7.3: Modulo examples.
+1)
+Given a non-negative number x, which expression yields a number in the range 5 to 10?
+2)
+Given a non-negative number x, which expression has the range -10 to 10?
+3)
+Which gets the tens digit of x. Ex: If x = 693, which expression yields 9?
+4)
+Given a 16-digit credit card number stored in x, which expression gets the last (rightmost) four digits? (Assume the fourth digit from the right is non-zero).
+challenge activity
+2.7.2: Compute change.
+A cashier distributes change using the maximum number of five-dollar bills, followed by one-dollar bills. Write a single statement that assigns num_ones with the number of distributed one-dollar bills given amount_to_change. Hint: Use %.
+
+Sample output with input: 19
+
+Change for $ 19
+3 five dollar bill(s) and 4 one dollar bill(s)
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+2.8 Module basics

@@ -1,0 +1,71 @@
+
+3.9 Binary numbers
+Binary numbers
+
+Normally, a programmer can think in terms of base ten numbers. However, a computer must allocate some finite quantity of bits (e.g., 32 bits) for a variable, and that quantity of bits limits the range of numbers that the variable can represent. Python allocates additional memory to accommodate numbers of very large sizes (past a typical 32 or 64 bit size), and a Python programmer need not think of such low level details. However, binary base computation is a common and important part of computer science, so some background on how the quantity of bits influences a variable's number range is helpful.
+
+Because each memory location is composed of bits (0s and 1s), a processor stores a number using base 2, known as a binary number.
+
+For a number in the more familiar base 10, known as a decimal number, each digit must be 0-9 and each digit's place is weighed by increasing powers of 10.
+Table 3.9.1: Decimal numbers use weighed powers of 10.
+Decimal number with 3 digits 	Representation
+
+
+In base 2, each digit must be 0-1 and each digit's place is weighed by increasing powers of 2.
+Table 3.9.2: Binary numbers use weighed powers of 2.
+Binary number with 4 bits 	Representation
+
+participation activity
+3.9.1: Binary number tool.
+Set each binary digit for the unsigned binary number below to 1 or 0 to obtain the decimal equivalents of 9, then 50, then 212, then 255. Note also that 255 is the largest integer that the 8 bits can represent.
+128
+27
+64
+26
+32
+25
+16
+24
+8
+23
+4
+22
+2
+21
+1
+20
+0
+(decimal value)
+participation activity
+3.9.2: Binary numbers.
+1)
+Convert the binary number 00001111 to a decimal number.
+
+2)
+Convert the binary number 10001000 to a decimal number.
+
+3)
+Convert the decimal number 17 to an 8-bit binary number.
+
+4)
+Convert the decimal number 51 to an 8-bit binary number.
+
+challenge activity
+3.9.1: Create a binary number.
+343716.2144758.qx3zqy7
+
+Match the decimal value in binary.
+2
+0
+1
+2
+3
+1
+2
+3
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+3.10 String formatting

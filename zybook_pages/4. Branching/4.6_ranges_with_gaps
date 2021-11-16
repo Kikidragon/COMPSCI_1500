@@ -1,0 +1,164 @@
+
+4.6 Detecting ranges with gaps
+Basic ranges with gaps
+
+Oftentimes, ranges contain gaps. Ex: Movie theaters often give ticket discounts to children (anyone 12 and under) and seniors (anyone 65 and older). The gap is the group of people aged 13 to 64. An if-else statement can be used to detect such ranges with gaps.
+participation activity
+4.6.1: Using multi-branch if-else for detecting ranges with gaps: Movie ticket prices.
+user_age
+movie_ticket_price
+Memory
+95
+96
+97
+98
+==  0
+(true)
+
+movie_ticket_price = None
+
+user_age = int(input('Enter your age: '))
+
+if user_age <= 12:     # Age 12 and under
+    print('Child ticket discount.')
+    movie_ticket_price = 11
+elif user_age >= 65:   # Age 65 and older
+    print('Senior ticket discount.')
+    movie_ticket_price = 12
+else:                  # All other ages
+    movie_ticket_price = 14
+
+print('Movie ticket price: ${}'.format(
+       movie_ticket_price))
+
+
+Enter your age:
+67
+67
+Movie ticket price: $12
+12
+X
+X
+✓
+67
+<= 12
+67
+>= 65
+27
+< 40
+Senior ticket discount.
+Enter your age:
+19
+19
+14
+19
+<= 12
+X
+19
+>= 65
+X
+Movie ticket price: $14
+Captions
+
+    After the user enters their age, the else-if branch's first branch checks if age is <= 12.
+    user_age is 67, which is greater than 12, so the program moves to the second branch that checks if user_age is >= 65.
+    67 is >= 65, so the second branch's statements execute, applying the senior discount to the ticket price. The program concludes by outputting the ticket price.
+    If the user's age falls between the gap of 12 and 65 (13 to 64), the else branch executes and the ticket price is $14, the most expensive price.
+
+participation activity
+4.6.2: Detecting ranges with gaps and multi-branch if-else.
+
+Select the correct answers below.
+1)
+In the animation above, what is the age range for a child ticket discount?
+2)
+In the animation above, what is the age range for a senior ticket discount?
+3)
+What is the range for the last branch below?
+
+if num_items <= 0:
+    ...
+elif num_items > 100:
+    ...
+else:  # Range: ______
+    ...
+
+4)
+What is the range for the last branch below?
+
+if num_items < 50:
+    ...
+elif num_items > 50:
+    ...
+else:  # Range: ______
+    ...
+
+Ranges with gaps using logical operators
+
+Programmers often use logical operators to explicitly detect ranges with an upper and lower bound, including ranges with gaps that may have intermediate bounds. Ex: If a valid office number is within the ranges of 100 to 150 or 200 to 250, the logical AND operator or operator chaining can be used to identify the lower and upper bounds of the two ranges. Further, the ranges can be combined into a single branch using the logical OR operator.
+participation activity
+4.6.3: Explicit ranges with gaps detection using logical AND and OR.
+
+if office_num >= 100 and office_num <= 150:
+    # valid office number
+
+elif office_num >= 200 and office_num <= 250:
+    # valid office number
+
+else:
+    # invalid office number
+
+
+if (office_num >= 100 and office_num <= 150) or (office_num >= 200 and office_num <= 250):
+    # valid office number
+
+else:
+    # invalid office number
+
+
+Captions
+
+    The logical AND operator is used to identify the lower and upper bounds of the two valid ranges of office numbers (100 to 150 and 200 to 250). Any number outside of the ranges is in the gap.
+    Further, the two ranges can be combined into a single branch using the logical OR operator.
+
+participation activity
+4.6.4: NFL Jersey numbers.
+
+In the National Football League (NFL), player positions have jersey numbers in specific ranges. Ex: An NFL wide receiver can only wear jersey numbers from 10 to 19 or 80 to 89.
+Select the if statement that explicitly detects the correct NFL jersey number ranges.
+1)
+Linebacker: 40 to 59 or 90 to 99
+2)
+Tight end: 40 to 49 or 80 to 89
+3)
+Defensive lineman: 50 to 79 or 90 to 99
+4)
+Quarterback: 1 to 9
+challenge activity
+4.6.1: Enter the output of the branch expressions.
+343716.2144758.qx3zqy7
+
+Type the program's output
+x = 1
+
+if (x < 6) and (x > 2):
+    print('a')
+else:
+    print('b')
+
+1
+2
+3
+4
+5
+1
+2
+3
+4
+5
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+4.7 Detecting multiple features with branches

@@ -1,4 +1,3 @@
-#fixme not done
 1.3 Basic input and output
 Basic text output
 
@@ -24,11 +23,12 @@ participation activity
 1.3.1: Basic text output.
 1)
 Select the statement that prints the following: Welcome!
+            print('Welcome!')
 participation activity
 1.3.2: Basic text output.
 1)
 Type a statement that prints the following: Hello
-
+            print("Hello")
 challenge activity
 1.3.1: Output simple text.
 Write the simplest statement that prints the following:
@@ -89,6 +89,8 @@ participation activity
 1)
 Which pair of statements print output on the same line?
 Outputting a variable's value
+            print('Halt!', end='')
+            print('No access!')
 
 The value of a variable can be printed out via: print(variable_name) (without quotes).
 Figure 1.3.3: Printing the value of a variable.
@@ -109,10 +111,11 @@ participation activity
 1)
 Given the variable num_cars = 9, which statement prints 9?
 participation activity
+            print(num_cars)
 1.3.5: Basic variable output.
 1)
 Write a statement that prints the value of the variable num_people.
-
+            print(num_people)
 Outputting multiple items with one statement
 
 Programmers commonly try to use a single print statement for each line of output by combining the printing of text, variable values, and new lines. A programmer can simply separate the items with commas, and each item in the output will be separated by a space. Combining string literals, variables, and new lines can improve program readability, because the program's code corresponds more closely to the program's printed output.
@@ -177,10 +180,12 @@ Assume variable age = 22, pet = "dog", and pet_name = "Gerald".
 1)
 What is the output of
 print('You are', age, 'years old.')
+            You are 22 years old.
 
 2)
 What is the output of
 print(pet_name, 'the', pet, 'is', age)
+            Gerald the dog is 22 years old.
 
 challenge activity
 1.3.3: Enter the output.
@@ -237,10 +242,11 @@ participation activity
 1)
 Which statement reads a user-entered string into variable num_cars?
 participation activity
+            num_cars = input()
 1.3.10: Reading user input.
 1)
 Complete a statement that reads a user-entered string into variable my_var.
-
+            my_var = input()
 Converting input types
 
 The string '123' (with quotes) is fundamentally different from the integer 123 (without quotes). The '123' string is a sequence of the characters '1', '2', and '3' arranged in a certain order, whereas 123 represents the integer value one-hundred twenty-three. Strings and integers are each an example of a type; a type determines how a value can behave. For example, integers can be divided by 2, but not strings (what sense would "Hello" / 2 make?). Types are discussed in detail later on.

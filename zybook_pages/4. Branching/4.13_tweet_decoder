@@ -1,0 +1,30 @@
+
+4.12 Conditional expressions
+4.13 Additional practice: Tweet decoder
+
+The following is a sample programming lab activity; not all classes using a zyBook require students to fully complete this activity. No auto-checking is performed. Users planning to fully complete this program may consider first developing their code in a separate programming environment.
+
+The following program decodes a few common abbreviations in online communication such as messages in Twitter ("tweets") or email, and provides the corresponding English phrase.
+zyDE 4.13.1: Tweet decoder.
+
+            tweet = input('Enter abbreviation from tweet:\n')
+
+            if tweet == 'LOL':
+                print('LOL = laughing out loud')
+            elif tweet == 'BFN':
+                print('BFN = bye for now')
+            elif tweet == 'FTW':
+                print('FTW = for the win')
+            elif tweet == 'IRL':
+                print('IRL = in real life')
+            else:
+                print("Sorry, don't know that one")
+
+
+Create different versions of the program that:
+
+    Expand the number of abbreviations that can be decoded. Add support for abbreviations you commonly use or search the internet for some.
+    Allow the user to enter a complete tweet (160 characters or less) as a single line of text. Search the resulting string for abbreviations and print a list of each abbreviation along with its decoded meaning.
+
+How was this section?
+4.14 LAB: Smallest number

@@ -1,0 +1,338 @@
+
+4.4 Detecting ranges with branches
+Relational operators
+
+A relational operator checks how one operand's value relates to another, like being greater than.
+
+Some operators, like >=, involve two characters. A programmer cannot arbitrarily combine the >, =, and < symbols; only the shown two-character sequences represent valid operators.
+Table 4.4.1: Relational operators.
+Relational operators 	Description 	Example (assume x is 3)
+< 	a < b means a is less than b 	x < 4 is True
+x < 3 is False
+> 	a > b means a is greater than b 	x > 2 is True
+x > 3 is False
+<= 	a <= b means a is less than or equal to b 	x <= 4 is True
+x <= 3 is True
+x <= 2 is False
+>= 	a >= b means a is greater than or equal to b 	x >= 2 is True
+x >= 3 is True
+x >= 4 is False
+participation activity
+4.4.1: Evaluating equations having relational operators.
+
+Indicate whether the expression evaluates to True or False.
+x is 5, y is 7.
+1)
+x <= 7
+2)
+y >= 7
+3)
+Is x <> y a valid expression?
+4)
+Is x =< y a valid expression?
+participation activity
+4.4.2: Creating expressions with relational operators.
+
+Type the operator to complete the desired expression.
+1)
+num_dogs is greater than 10
+
+ num_dogs  10
+
+2)
+num_cars is greater than or equal to 5
+
+ num_cars  5
+
+3)
+num_cars is 5 or greater
+
+ num_cars  5
+
+4)
+cents_lost is a negative number
+
+ cents_lost  0
+
+Detecting ranges with if-else statements
+
+Programmers commonly use the sequential nature of the multi-branch if-else arrangement to detect ranges of numbers. In the following example, the second branch expression is only reached if the first expression is false. So the second branch is taken if user_age < 16 is False (so 16 or greater) AND user_age is < 25, meaning user_age is between 16 - 24 (inclusive).
+participation activity
+4.4.3: Using the sequential nature of multi-branch if-else for ranges: Insurance prices.
+user_age
+insurance_price
+Memory
+95
+96
+97
+98
+==  0
+(true)
+
+user_age = int(input('Enter your age: '))
+
+if user_age < 16:          # Age 15 and under
+   print('Too young.')
+   insurance_price = 0
+
+elif user_age < 25:        # Age 16 - 24
+   insurance_price = 4800
+
+elif user_age < 40:         # Age 25 - 39
+   insurance_price = 2350
+
+else:                      # Age 40 and up
+   insurance_price = 2100
+
+print('Annual price: $', insurance_price)
+
+
+Enter your age:
+27
+27
+Annual price: $2350
+2350
+X
+X
+✓
+27
+< 16
+27
+< 25
+27
+< 40
+Captions
+
+    The user enters 27 for their age, which is stored in memory as the variable user_age. The multi-branch if-else first checks if user_age is less than 16, which is False.
+    The next branch in the multi-branch if-else checks if user_age is less than 25, which is False.
+    The next branch checks if user_age is less than 40, which is True. The elif's statements execute and the variable insurance_price is set to 2350 in memory.
+
+participation activity
+4.4.4: Ranges and multi-branch if-else.
+
+Type the range for each branch. Type ranges as: 25 - 29, or type 30+ for all numbers 30 and larger.
+
+if num_sales < 10:
+    ...
+elif num_sales < 20:  # 2nd branch range: _____
+    ...
+elif num_sales < 30:  # 3rd branch range: _____
+    ...
+else:                 # 4th branch range: _____
+    ...
+
+1)
+2nd branch range:
+
+2)
+3rd branch range:
+
+3)
+4th branch range:
+
+4)
+What is the range for the last branch below?
+
+if num_items < 0:
+    ...
+elif num_items > 100:
+    ...
+else:   # Range: ______
+    ...
+
+participation activity
+4.4.5: Complete the multi-branch if-else.
+1)
+Second branch: user_num is less than 200
+
+
+if user_num < 100 :
+
+    ...
+
+elif  :
+
+    ...
+
+else :  # user_num >= 200
+
+    ...
+
+2)
+Second branch: user_num is positive (non-zero)
+
+
+if user_num < 0 :
+
+    ...
+
+ :
+
+    ...
+
+else :  # user_num is 0
+
+    ...
+
+3)
+Second branch: user_num is greater than 105
+
+
+if user_num < 100 :
+
+    ...
+
+ :
+
+    ...
+
+else :  # user_num is between
+
+      # 100 and 105
+
+    ...
+
+4)
+If the final else branch executes, what must user_num have been? Type "unknown" if appropriate.
+
+if user_num <= 9:
+    ...
+elif user_num >= 11:
+    ..
+else:
+   ... # user_num if this executes?
+
+5)
+Which branch will execute? Valid answers: 1, 2, 3, or none.
+
+user_num = 555;
+
+if user_num < 0:
+    ... # Branch 1
+elif user_num > 666:
+    ... # Branch 2
+elif user_num < 100:
+    ... # Branch 3
+
+challenge activity
+4.4.1: Enter the output for the branches with relational operators.
+343716.2144758.qx3zqy7
+
+Type the program's output
+num_eggs = 5
+
+if num_eggs <= 6:
+    print('c')
+else:
+    print('e')
+
+print('k')
+
+1
+2
+3
+4
+1
+2
+3
+4
+challenge activity
+4.4.2: Basic if-else expression.
+343716.2144758.qx3zqy7
+Write an expression that will cause the following code to print "greater than 20" if the value of user_age is greater than 20.
+1
+2
+3
+1
+2
+3
+challenge activity
+4.4.3: Relational expressions.
+343716.2144758.qx3zqy7
+Write an expression that will cause "Dollar or more" to print if the value of num_cents is greater than or equal to 100.
+1
+2
+3
+1
+2
+3
+challenge activity
+4.4.4: Detect ranges using branches.
+343716.2144758.qx3zqy7
+
+Type the program's output
+x = int(input())
+
+if x < 10:
+    print('s')
+elif x < 25:
+    print('c')
+elif x < 40:
+    print('w')
+else:
+    print('n')
+
+Input
+8
+Output
+1
+2
+3
+4
+1
+2
+3
+4
+challenge activity
+4.4.5: Multi-branch if-else statements: Print century.
+Write an if-else statement with multiple branches.
+If year is 2101 or later, print "Distant future" (without quotes). Otherwise, if year is 2001 or greater, print "21st century". Otherwise, if year is 1901 or greater, print "20th century". Else (1900 or earlier), print "Long ago".
+
+Sample output with input: 1776
+
+Long ago
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+Operator chaining
+
+Python supports operator chaining. For example, a < b < c determines whether b is greater-than a but less-than c. Chaining performs comparisons left to right, evaluating a < b first. If the result is True, then b < c is evaluated next. If the result of the first comparison a < b is False, then there is no need to continue evaluating the rest of the expression. Note that a is not compared to c.
+participation activity
+4.4.6: Chaining relational operators.
+
+Write a relational expression using operator chaining.
+1)
+x is less than y but greater than z
+
+2)
+x is a non-negative number less than 100.
+
+if :
+    # evaluated to True
+else:
+    # evaluated to False
+
+challenge activity
+4.4.6: If-else expression: Operator chaining.
+Write an expression that will print "in high school" if the value of user_grade is between 9 and 12 (inclusive).
+
+Sample output with input: 10
+
+in high school
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+4.5 Detecting ranges using logical operators

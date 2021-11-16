@@ -1,0 +1,78 @@
+
+5.12 Getting both index and value when looping: enumerate()
+The enumerate() function
+
+A programmer commonly requires both the current position index and corresponding element value when iterating over a sequence. The example below demonstrates how using a for loop with range() and len() to iterate over a sequence generates a position index but requires extra code to retrieve a value.
+Figure 5.12.1: Using range() and len() to iterate over a sequence.
+
+origins = [4, 8, 10]
+
+for index in range(len(origins)):
+    value = origins[index]  # Retrieve value of element in list.
+    print('Element {}: {}'.format(index, value))
+
+
+
+Element 0: 4
+Element 1: 8
+Element 2: 10
+
+Similarly, a for loop that iterates over a container obtains the value directly, but must look up the index with a function call.
+Figure 5.12.2: Using list.index() to find the index of each element.
+
+origins = [4, 8, 10]
+
+for value in origins:
+    index = origins.index(value)  # Retrieve index of value in list
+    print('Element {}: {}'.format(index, value))
+
+
+
+Element 0: 4
+Element 1: 8
+Element 2: 10
+
+The enumerate() function retrieves both the index and corresponding element value at the same time, providing a cleaner and more readable solution.
+Figure 5.12.3: The enumerate() function.
+
+origins = [4, 8, 10]
+
+for (index, value) in enumerate(origins):
+    print('Element {}: {}'.format(index, value))
+
+
+
+Element 0: 4
+Element 1: 8
+Element 2: 10
+
+The enumerate() function yields a new tuple each iteration of the loop, with the tuple containing the current index and corresponding element value. In the example above, the for loop unpacks the tuple yielded by each iteration of enumerate(origins) into two new variables: "index" and "value". Unpacking is a process that performs multiple assignments at once, binding comma-separated names on the left to the elements of a sequence on the right. Ex: num1, num2 = [350, 400] is equivalent to the statements num1 = 350 and num2 = 400.
+participation activity
+5.12.1: enumerate().
+
+Use the following code to answer the question below:
+
+for (index, value) in enumerate(my_list):
+    print(index, value)
+
+1)
+If my_list = ['Greek', 'Nordic', 'Mayan'], what is the output of the program?
+challenge activity
+5.12.1: Using enumerate in for loops.
+343716.2144758.qx3zqy7
+
+Type the program's output
+seasons = ['winter', 'spring', 'summer', 'fall']
+for (position, season) in enumerate(seasons):
+    print(season, position)
+
+1
+2
+1
+2
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+5.13 Additional practice: Dice statistics

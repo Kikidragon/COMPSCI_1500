@@ -1,0 +1,201 @@
+
+4.9 Membership and identity operators
+Membership operators: in/not in
+
+One common programming task involves determining whether a specific value can be found within a container, such as a list or dictionary. The in and not in operators, known as membership operators, yield True or False if the left operand matches the value of some element in the right operand, which is always a container.
+participation activity
+4.9.1: Membership operators: Checking for a value in a list.
+prices = [ '$20', 15, 5]
+Python interpreter
+prices
+print(15 in prices)
+True
+>>>
+>>>
+>>>
+15
+X
+Python (command line)
+5
+15
+'$20'
+✓
+print(44 in prices)
+44
+X
+X
+False
+Captions
+
+    A user creates a new list.
+    Every element in the list is checked for the value of 15.
+    Every element in the list is checked for the value of 44, which is not found. So the statement (44 in prices) evaluates to False.
+
+The membership operators can be used with sequence types. If the variable x is a list or tuple, then a in x evaluates to True if there exists an index idx for which a == x[idx] is True. The program below demonstrates membership operator usage in a list:
+Figure 4.9.1: Membership operators example: Checking for an item in a list.
+
+# Use the "in" operator
+barcelona_fc_roster = ['Alves', 'Messi', 'Fabregas']
+
+name = input('Enter name to check: ')
+
+if name in barcelona_fc_roster:
+    print('Found', name, 'on the roster.')
+else:
+    print('Could not find', name, 'on the roster.')
+
+Enter name to check: Messi
+Found Messi on the roster.
+...
+Enter name to check: Rooney
+Could not find Rooney on the roster.
+
+
+
+# Use the "not in" operator
+barcelona_fc_roster = ['Alves', 'Messi', 'Fabregas']
+
+name = input('Enter name to check: ')
+
+if name not in barcelona_fc_roster:
+    print('Could not find', name, 'on the roster.')
+else:
+    print('Found', name, 'on the roster.')
+
+Enter name to check: Messi
+Found Messi on the roster.
+...
+Enter name to check: Rooney
+Could not find Rooney on the roster.
+
+Membership operators can be used to check whether a string is a substring, or matching subset of characters, of a larger string. For example, 'abc' in '123abcd' returns True because the substring abc exists in the larger string.
+Figure 4.9.2: Checking for substrings.
+
+request_str = 'GET index.html HTTP/1.1'
+
+if '/1.1' in request_str:
+    print('HTTP protocol 1.1')
+
+if 'HTTPS' not in request_str:
+    print('Unsecured connection')
+
+
+
+HTTP protocol 1.1
+Unsecured connection
+
+Membership in a dictionary implies that a specific key exists in the dictionary. A common error is to assume that a membership operator checks the values of each dictionary key as well.
+Figure 4.9.3: Checking for membership in a dict.
+
+my_dict = {'A': 1, 'B': 2, 'C': 3}
+
+if 'B' in my_dict:
+   print("Found 'B'")
+else:
+   print("'B' not found")
+
+# Membership operator does not check values
+if 3 in my_dict:
+    print('Found 3')
+else:
+    print('3 not found')
+
+
+
+Found 'B'
+3 not found
+
+participation activity
+4.9.2: Membership operators.
+1)
+Which expression checks whether the list my_list contains the value 15?
+2)
+Which expression checks if the value 10 exists in the dictionary my_dict?
+Identity operators: is/is not
+
+Sometimes a programmer wants to determine whether two variables are the same object. The programmer can use the identity operator, is, to check whether two operands are bound to a single object. The inverse identity operator, is not, gives the negated value of 'is'. Thus, if x is y is True, then x is not y is False.
+
+Identity operators do not compare object values; rather, identity operators compare object identities to determine equivalence. Object identity is usually 1 the memory address of an object. Thus, identity operators return True only if the operands reference the same object.
+
+A common error is to confuse the equivalence operator "==" and the identity operator "is", because a statement such as if x is 3 is valid syntax and is grammatically appealing. Python may confusedly evaluate the statement x is 3 as True, but y is 1000 as False, when x = 3 and y = 1000. Python interpreters typically precreate objects for a small range of numbers to avoid constantly recreating objects for such small values. In the example above, an object for 3 was precreated and thus x references the same object as the literal. However, Python did not precreate an object for 1000. A good practice is to avoid using the identity operators "is" and "is not", unless explicitly testing whether two objects are identical.
+
+The id() function can be used to retrieve the identifier of any object. If x is y is True, then id(x) == id(y) is also True.
+Figure 4.9.4: Identity operators.
+
+w = 500
+x = 500 + 500  # Create a new object with value 1000
+y = w + w      # Create a second object with value 1000
+z = x          # Bind z to the same object as x
+
+if z is x:
+    print('z and x are bound to the same object')
+if z is not y:
+    print('z and y are NOT bound to the same object')
+
+
+
+z and x are bound to the same object
+z and y are NOT bound to the same object
+
+participation activity
+4.9.3: Membership and identity operators.
+
+Write the simplest expression that captures the desired comparison.
+1)
+x is a key in the dict my_dict
+
+2)
+The variables x and y are unique objects.
+
+3)
+The character 'G' exists in the string my_str
+
+4)
+my_str is not the third element in the list my_list
+
+challenge activity
+4.9.1: Membership and Identity: Enter the output of the code.
+343716.2144758.qx3zqy7
+
+Type the program's output
+numbers = [5, 6, 7, 8]
+x = int(input())
+
+if x in numbers:
+    print('in')
+else:
+    print('not in')
+
+Input
+3
+Output
+1
+2
+3
+4
+1
+2
+3
+4
+challenge activity
+4.9.2: Boolean operators: Detect specific values.
+Write an expression using membership operators that prints "Special number" if special_num is one of the special numbers stored in the list special_list = [-99, 0, 44].
+
+Sample output with input: 17
+
+Not special number
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+
+(*1) Object identity is an implementation detail of Python. For the standard CPython implementation, identity is the memory address of the object.
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+4.10 Order of evaluation

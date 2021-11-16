@@ -1,0 +1,327 @@
+
+4.5 Detecting ranges using logical operators
+Logical AND, OR, and NOT (general)
+
+A logical operator treats operands as being True or False, and evaluates to True or False. Logical operators include AND, OR, and NOT. Programming languages typically use various symbols for those operators, but below the words AND, OR, and NOT are used for introductory purposes.
+participation activity
+4.5.1: Logical operators: AND, OR, and NOT.
+a AND b
+NOT a
+False
+False
+False
+True
+
+a
+b
+False
+False
+True
+True
+
+False
+True
+False
+True
+
+a OR b
+False
+True
+True
+True
+
+a
+b
+False
+False
+True
+True
+
+False
+True
+False
+True
+
+False
+True
+
+True
+False
+
+a
+Let x = 7,   y = 9
+(x > 0) AND (y < 10)
+True
+True
+True
+(x > 0) AND (y < 5)
+True
+False
+False
+(x < 0) OR (y > 10)
+False
+False
+False
+(x < 0) OR (y > 5)
+False
+True
+True
+NOT (x < 0)
+False
+True
+NOT (x > 0)
+True
+False
+Captions
+
+    AND evaluates to True only if BOTH operands are True.
+    OR evaluates to True if ANY operand is True (one, the other, or both).
+    NOT evaluates to the opposite of the operand.
+    Each operand is commonly an expression itself. If x = 7, y = 9, then (x > 0) AND (y < 10) is True and True, so evaluates to True (both operands are True).
+
+Table 4.5.1: Logical operators.
+Logical operator 	Description
+a AND b 	Logical AND: True when both of its operands are True.
+a OR b 	Logical OR: True when at least one of its two operands are True.
+NOT a 	Logical NOT: True when its one operand is False, and vice-versa.
+participation activity
+4.5.2: Evaluating expressions with logical operators.
+
+Indicate whether the expression evaluates to True or False.
+x is 7, y is 9.
+1)
+x > 5
+2)
+(x > 5) AND (y < 20)
+3)
+(x > 10) AND (y < 20)
+4)
+(x > 10) OR (y < 20)
+5)
+(x > 10) OR (y > 20)
+6)
+NOT (x > 10)
+7)
+NOT ( (x > 5) AND (y < 20) )
+Detecting ranges with logical operators (general)
+
+A common use of logical operators is to detect if a value is within a range.
+participation activity
+4.5.3: Using AND to detect if a value is within a range.
+10
+15
+11
+12
+13
+14
+10 < x < 15
+10 < x
+AND
+x < 15
+Captions
+
+    The range 10 < x < 15 means that x may be 11, 12, 13, 14.
+    Specifying that range in a program can be done using two < operators along with an AND operator. 10 < x defines the range 11 and higher.
+    x < 15 defines the range 14 and lower. ANDing yields the overlapping range. Only when x is 11, 12, 13, or 14 will both expressions be true.
+
+participation activity
+4.5.4: Using AND to detect if a value is within a range.
+
+Assume x is an integer.
+1)
+Which approach uses a logical operator to detect if x is in the range 1 to 99?
+2)
+Which detects if x is in the range -4 to +4?
+3)
+Which detects if x is either less than -5, or greater than 10?
+Booleans and logical operators
+
+A Boolean refers to a value that is either True or False. Note that True and False are keywords in Python and must be capitalized. A programmer can assign a Boolean value by specifying True or False, or by evaluating an expression that yields a Boolean.
+Figure 4.5.1: Creating a Boolean.
+
+my_bool = True   # Assigns my_bool with the boolean value True
+
+is_small = my_val < 3  # Assigns is_small with the result of the expression (False)
+
+Keywords and, or, and not (lowercase) are used to represent the AND, OR, and NOT logical operators. Logical operators are commonly used in expressions of if-else statements.
+Table 4.5.2: Logical operators.
+Logical operator 	Description
+a and b 	Boolean AND: True when both operands are True.
+a or b 	Boolean OR: True when at least one operand is True.
+not a 	Boolean NOT (opposite): True when the single operand is False (and False when operand is True).
+Table 4.5.3: Logical operators examples.
+
+Given age = 19, days = 7, user_char = 'q'
+(age > 16) and (age < 25) 	True, because both operands are True.
+(age > 16) and (days > 10) 	False, because both operands are not True (days > 10 is False).
+(age > 16) or (days > 10) 	True, because at least one operand is True (age > 16 is True).
+not (days > 10) 	True, because operand is False.
+not (age > 16) 	False, because operand is True.
+not (user_char == 'q') 	False, because operand is True.
+participation activity
+4.5.5: Logical operators: Complete the expressions to detect the desired range.
+1)
+days_logged is greater than 30 and less than 90
+
+if (days_logged > 30)  (days_logged < 90):
+
+2)
+0 < max_cars < 100
+
+if (max_cars > 0)  (max_cars < 100):
+
+3)
+num_stores is between 10 and 20, inclusive.
+
+if (num_stores >= 10)  (num_stores <= 20):
+
+4)
+not_valid is either less than 15, or greater than 79.
+
+if (not_valid < 15)  (not_valid > 79):
+
+participation activity
+4.5.6: Creating expressions with logical operators.
+1)
+num_dogs has a minimum of 2 and a maximum of 5.
+
+if (num_dogs >= 2) :
+
+2)
+wage is greater than 10 and less than 18. Use > and < (not >= and <=). Use parentheses around sub-expressions.
+
+if :
+
+3)
+num is a 3-digit positive integer. Ex: 100, 989, and 523, are 3-digit positive integers, but 55, 1000, and -4 are not.
+
+For most direct readability, your expression should compare directly with the smallest and largest 3-digit number.
+
+if (num >= 100):
+
+Example: TV channels
+
+A cable TV provider may have regular channels numbered 2-499, and high-definition channels numbered 1002-1499. A program may set a character variable to 's' for standard, 'h' for high-definition, and 'e' for error.
+Figure 4.5.2: Detecting ranges: Cable TV channels.
+
+if (user_channel >= 2) and (user_channel <= 499):
+   channel_type = 's'
+
+elif (user_channel >= 1002) and (user_channel <= 1499):
+   channel_type = 'h'
+
+else:
+   channel_type = 'e'
+
+zyDE 4.5.1: Detecting ranges: Cable TV channels.
+
+Run the program and observe the output. Change the input box value from 3 to another number, and run again.
+
+
+participation activity
+4.5.7: TV channel example: Detecting ranges.
+
+Consider the above example.
+1)
+If user_channel is 300, to what does the if statement's expression, (user_channel >= 2) and (user_channel <= 499), evaluate?
+2)
+If user_channel is 300, does the else if's expression (user_channel >= 1002) and (user_channel <= 1499) get checked?
+3)
+Did the expressions use logical AND or logical OR?
+4)
+Channels 500-599 are pay channels. Does this expression detect that range? (user_channel >= 500) or (user_channel <= 599)
+Detecting ranges implicitly vs. explicitly
+
+A programmer often uses logical operators to detect a range by explicitly specifying the high-end and low-end of the range. However, if a program should detect increasing ranges without gaps, a multi-branch if-else statement can be used without logical operators; the low-end of the range is implicitly known upon reaching an expression. Likewise, a decreasing range without gaps has implicitly-known high-ends.
+participation activity
+4.5.8: Detecting ranges implicitly vs. explicitly.
+
+if x < 0 :
+  # Negative
+
+elif (x <= 10) :
+  # 0..10
+
+elif (x <= 20) :
+  # 11..20
+
+else :
+  # 21+
+
+
+if x < 0 :
+    # Negative
+
+elif  (x >= 0) and (x <= 10) :
+    # 0..10
+
+elif  (x >= 11) and (x <= 20) :
+    # 11..20
+
+else :
+    # 21+
+
+
+Explictly defined ranges
+Implictly defined ranges
+x >= 0 is implicit
+x > 10 is implicit
+x > 20 is implicit
+Captions
+
+    This code detects ranges explicitly using the AND operator. The first branch executes when x < 0, the second when (x >=0) and (x <= 10).
+    But, if the first branch doesn't execute, x must be >= 0. So the second branch's expression can just be x <= 10. The x >= 0 is implicit.
+    Implicit ranges can simplify a multi-branch if statement for ranges without gaps.
+
+participation activity
+4.5.9: Detecting ranges implicitly vs explicitly.
+
+For each pair of statements, does the second if-else statement detect the same ranges as the first if-else statement?
+1)
+
+if temp <= 0...
+elif (temp > 0) and (temp < 100)...
+
+
+
+if temp <= 0...
+elif temp < 100...
+
+
+2)
+
+if systolic < 130: ...
+elif (systolic >= 130) and (systolic <= 139): ...
+
+
+
+if systolic < 130: ...
+elif systolic >= 130: ...
+
+
+3)
+
+if (year >= 1901) and (year <= 2000): ...
+elif (year >= 2001) and (year <= 2100): ...
+
+
+
+if year <= 2000: ...
+elif year <= 2100: ...
+
+
+challenge activity
+4.5.1: Detect number range.
+Write an expression that prints "Eligible" if user_age is between 18 and 25 inclusive.
+Ex: 17 prints "Ineligible", 18 prints "Eligible".
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+4.6 Detecting ranges with gaps

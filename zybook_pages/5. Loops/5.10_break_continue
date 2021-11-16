@@ -1,0 +1,172 @@
+
+5.10 Break and continue
+Break statements
+
+A break statement in a loop causes the loop to exit immediately. A break statement can sometimes yield a loop that is easier to understand.
+
+In the example below, the nested for loops generate possible meal options for the number of empanadas and tacos that can be purchased. The inner loop body calculates the cost of the current meal option. If the meal cost is equal to the user's amount of money, the search is over, so the break statement immediately exits the inner loop. The outer loop body also checks if the meal cost and the user's amount of money are equal, and if so, that break statement exits the outer loop.
+
+The program could be written without break statements, but the loops' condition expressions would be more complex and the program would require additional code, perhaps being harder to understand.
+Figure 5.10.1: Break statement.
+
+empanada_cost = 3
+taco_cost = 4
+
+user_money = int(input('Enter money for meal: '))
+
+max_empanadas = user_money // empanada_cost
+max_tacos = user_money // taco_cost
+
+meal_cost = 0
+for num_tacos in range(max_tacos + 1):
+    for num_empanadas in range(max_empanadas + 1):
+        meal_cost = (num_empanadas * empanada_cost) + (num_tacos * taco_cost)
+
+        # Find first meal option that exactly matches user money
+        if meal_cost == user_money:
+            break
+
+    # Find first meal option that exactly matches user money
+    if meal_cost == user_money:
+        break
+
+if meal_cost == user_money:
+    print('${} buys {} empanadas and {} tacos without change.'
+        .format(meal_cost, num_empanadas, num_tacos))
+else:
+    print('You cannot buy a meal without having change left over.')
+
+Enter money for meal: 20
+$20 buys 4 empanadas and 2 tacos without change.
+...
+Enter money for meal: 31
+$31 buys 9 empanadas and 1 tacos without change.
+
+participation activity
+5.10.1: Break statements.
+
+Given the following while loop, what is the value variable z is assigned with for the given values of variables a, b and c?
+
+mult = 0
+while a < 10:
+    mult = b * a
+    if mult > c:
+        break
+    a = a + 1
+z = a
+
+1)
+a = 1, b = 1, c = 0
+
+2)
+a = 4, b = 5, c = 20
+
+Continue statements
+
+A continue statement in a loop causes an immediate jump to the while or for loop header statement. A continue statement can improve the readability of a loop. The example below extends the previous meal finder program to find meal options for which the total number of items purchased is evenly divisible by the number of diners. In addition, the following program will output all possible meal options, instead of reporting the first meal option found.
+
+The program uses two nested for loops to try all possible combinations of tacos and empanadas. If the total number of tacos and empanadas is not exactly divisible by the number of diners (e.g., num_tacos + num_empanadas) % num_diners != 0, the continue statement will immediately proceed to the next iteration of the for loop.
+
+Break and continue statements can be helpful to avoid excessive indenting/nesting within a loop. However, because someone reading a program could easily overlook a break or continue statement, such statements should be used only when their use is clear to the reader.
+Figure 5.10.2: Continue statement.
+
+empanada_cost = 3
+taco_cost = 4
+
+user_money = int(input('Enter money for meal: '))
+
+num_diners = int(input('How many people are eating: '))
+
+max_empanadas = user_money // empanada_cost
+max_tacos = user_money // taco_cost
+
+meal_cost = 0
+num_options = 0
+for num_tacos in range(max_tacos + 1):
+    for num_empanadas in range(max_empanadas + 1):
+
+        # Total items purchased must be equally divisible by number of diners
+        if (num_tacos + num_empanadas) % num_diners != 0:
+            continue
+
+        meal_cost = (num_empanadas * empanada_cost) + (num_tacos * taco_cost)
+
+        if meal_cost == user_money:
+            print('${} buys {} empanadas and {} tacos without change.'
+                  .format(meal_cost, num_empanadas, num_tacos))
+            num_options += 1
+
+if num_options == 0:
+    print('You cannot buy a meal without having change left over.')
+
+Enter money for meal: 60
+How many people are eating: 3
+$60 buys 12 empanadas and 6 tacos without change.
+$60 buys 0 empanadas and 15 tacos without change.
+...
+Enter money for meal: 54
+How many people are eating: 2
+$54 buys 18 empanadas and 0 tacos without change.
+$54 buys 10 empanadas and 6 tacos without change.
+$54 buys 2 empanadas and 12 tacos without change.
+
+participation activity
+5.10.2: Continue statements.
+Given:
+
+for i in range(5):
+    if i < 10:
+        continue
+    print(i)
+
+1)
+The loop will print at least some output.
+2)
+The loop will iterate only once.
+challenge activity
+5.10.1: Enter the output of break and continue.
+343716.2144758.qx3zqy7
+
+Type the program's output
+stop = int(input())
+result = 0
+for n in range(10):
+    result += n + 3
+    if result > stop:
+        break
+    print(n)
+print(result)
+
+Input
+11
+Output
+1
+2
+3
+4
+5
+1
+2
+3
+4
+5
+challenge activity
+5.10.2: Simon says.
+"Simon Says" is a memory game where "Simon" outputs a sequence of 10 characters (R, G, B, Y) and the user must repeat the sequence. Create a for loop that compares each character of the two strings. For each matching character, add one point to user_score. Upon a mismatch, end the loop.
+
+Sample output with inputs: 'RRGBRYYBGY' 'RRGBBRYBGY'
+
+User score: 4
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+5.11 Loop else

@@ -1,0 +1,26 @@
+
+3.10 String formatting
+3.11 Additional practice: Health data
+
+The following is a sample programming lab activity; not all classes using a zyBook require students to fully complete this activity. No auto-checking is performed. Users planning to fully complete this program may consider first developing their code in a separate programming environment.
+
+The following calculates a user's age in days based on the user's age in years.
+zyDE 3.11.1: Health data: Age in days.
+
+            user_age_years = int(input('enter your age in years:\n'))
+
+            user_age_days = user_age_years  * 365
+
+            print('You are at least {} days old.'.format(user_age_days))
+
+
+Create a different version of the program that:
+
+    Calculates the user's age in minutes and seconds.
+    Estimates the approximate number of times the user's heart has beat in his/her lifetime using an average heart rate of 72 beats per minute.
+    Estimates the number of times the person has sneezed in his/her lifetime.
+    Estimates the number of calories that the person has expended in his/her lifetime (research on the Internet to obtain a daily estimate). Also calculate the number of sandwiches (or other common food item) that equals that number of calories.
+    Be creative: Pick several other interesting health-related statistics. Try searching the Internet to determine how to calculate that data, and create a program to perform that calculation. The program can ask the user to enter any information needed to perform the calculation.
+
+How was this section?
+3.12 LAB: Input and formatted output: Right-facing arrow

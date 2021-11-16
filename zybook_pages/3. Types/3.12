@@ -1,0 +1,18 @@
+
+3.12 LAB: Input and formatted output: Right-facing arrow
+
+Given input characters for an arrowhead and arrow body, print a right-facing arrow.
+
+Ex: If the input is:
+
+*
+#
+
+Then the output is:
+
+      #
+******##
+******###
+******##
+      #
+

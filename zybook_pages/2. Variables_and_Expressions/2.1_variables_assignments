@@ -1,0 +1,211 @@
+
+2.1 Variables and assignments
+Remembering a value
+
+Here's a variation on a common school child riddle.
+participation activity
+2.1.1: People on bus.
+For each step, keep track of the current number of people by typing in the num_people box (it's editable).
+You are driving a bus.
+The bus starts with 5 people.
+num_people:
+1
+2
+3
+4
+5
+
+By the way, the real riddle's ending question is actually, "What is the bus driver's name?" The subject usually says, "How should I know?" The riddler then says, "I started with YOU are driving a bus."
+
+The box above serves the same purpose as a variable in a program, introduced below.
+Variables and assignments
+
+In a program, a variable is a named item, such as x or num_people, used to hold a value.
+
+An assignment statement assigns a variable with a value, such as x = 5. That statement means x is assigned with 5, and x keeps that value during subsequent statements, until x is assigned again.
+
+An assignment statement's left side must be a variable. The right side can be an expression, so a statement may be x = 5, y = x, or z = x + 2. The 5, x, and x + 2 are each an expression that evaluates to a value.
+participation activity
+2.1.2: Variables and assignments.
+x = 5
+x
+y
+y = x
+z = x + 2
+x = 3
+z
+x + y = 5
+x * y = 6
+Algebra
+x = 2
+y = 3
+Programming
+5
+5
+7
+3
+5
+Captions
+
+    In programming, a variable is a place to hold a value. Here, variables x, y, and z are depicted graphically as boxes.
+    An assignment statement assigns the left-side variable with the right-side expression's value. x = 5 assigns x with 5.
+    y = x assigns y with x's value, which presently is 5. z = x + 2 assigns z with x's present value plus 2, so 5 + 2 or 7.
+    A subsequent x = 3 statement assigns x with 3. x's former value of 5 is overwritten and thus lost. Note that the values held in y and z are unaffected, remaining as 5 and 7.
+    In algebra, an equation means "the item on the left always equals the item on the right." So for x + y = 5 and x * y = 6, one can determine x = 2 and y = 3.
+    Assignment statements look similar but have VERY different meaning. The left side MUST be one variable.
+    The = isn't "equals," but is an action that PUTS a value into the variable. Assignment statements only make sense when executed in sequence.
+
+= is not equals
+
+In programming, = is an assignment of a left-side variable with a right-side value. = is NOT equality as in mathematics. Thus, x = 5 is read as "x is assigned with 5," and not as "x equals 5." When one sees x = 5, one might think of a value being put into a box.
+participation activity
+2.1.3: Valid assignment statements.
+
+Indicate which assignment statements are valid.
+1)
+x = 1
+2)
+x = y
+3)
+x = y + 2
+4)
+x + 1 = 3
+5)
+x + y = y + x
+participation activity
+2.1.4: Variables and assignment statements.
+
+Given variables x, y, and z.
+1)
+x = 9
+y = x + 1
+What is y?
+
+2)
+x = 9
+y = x + 1
+What is x?
+
+3)
+x = 9
+y = x + 1
+x = 5
+What is y?
+
+participation activity
+2.1.5: Trace the variable value.
+Select the correct value for x, y, and z after the following statements execute.
+
+
+x = 0
+y = 4
+z = 9
+x = 7
+y = 9
+z = 0
+x = 6
+x is
+7 	6 	0
+y is
+7 	4 	9
+z is
+9 	0 	7
+
+
+
+
+1
+2
+3
+4
+challenge activity
+2.1.1: Enter the output of the variable assignments.
+343716.2144758.qx3zqy7
+
+Type the program's output
+x = 8
+y = 6
+
+print(x, y)
+
+1
+2
+3
+4
+5
+6
+1
+2
+3
+4
+5
+6
+Assignments with variable on left and right
+
+Because in programming = means assignment, a variable may appear on both the left and right as in x = x + 1. If x was originally 6, x is assigned with 6 + 1, or 7. The statement overwrites the original 6 in x.
+
+Increasing a variable's value by 1, as in x = x + 1, is common and known as incrementing the variable.
+participation activity
+2.1.6: A variable may appear on the left and right of an assignment statement.
+print ('A person with measles may cause', x)
+x = 1
+x = x * 20
+x = x * 20
+print ('people to be infected in two weeks.')
+x
+A person with measles may cause
+400
+people to be infected in two weeks.
+1
+20
+400
+Captions
+
+    A variable may appear on both sides of an assignment statement. After x = 1, then x = x * 20 assigns x with 1 * 20 or 20, overwriting x's previous 1.
+    Another x = x * 20 assigns x with 20 * 20 or 400, which overwrites x's previous 20.
+    Only the latest value is held in x.
+
+participation activity
+2.1.7: Variable on both sides.
+
+Indicate the value of x after the statements execute.
+1)
+x = 5
+x = x + 7
+
+2)
+x = 2
+y = 3
+
+x = x * y
+x = x * y
+
+3)
+y = 30
+x = y + 2
+x = x + 1
+
+4)
+Complete this statement to increment y:
+y = _____
+
+challenge activity
+2.1.2: Assigning a sum.
+Write a statement that assigns total_coins with the sum of nickel_count and dime_count. Sample output for 100 nickels and 200 dimes is:
+
+300
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+2.1.3: Multiplying the current value of a variable.
+Write a statement that assigns cell_count with cell_count multiplied by 10. * performs multiplication. If the input is 10, the output should be:
+
+100
+
+
+

@@ -1,0 +1,118 @@
+\
+4.11 Code blocks and indentation
+Code blocks
+
+A code block is a series of statements that are grouped together. A code block in Python is defined by its indentation level, i.e., the number of blank columns from the left edge. The initial code block is not indented. A new code block can follow a statement that ends with a colon, such as an "if" or "else". In addition, a new code block must be more indented than the previous code block. The program below includes comments indicating where each new code block begins.
+
+The amount of indentation used to indicate a new code block can be arbitrary, as long as the programmer uses the same indentation consistently for each line in the block. Good practice is to use the standard recommended 4 columns per indentation level.
+
+A common error for new Python programmers is the mixing of tabs and spaces. Never mix tabs and spaces for indentation in the same program. Many editors consider a tab to be equivalent to either 3 or 4 spaces, while in Python a tab is equivalent only to another tab. A program that mixes tabs and space to indent code blocks will automatically generate an IndentationError from the interpreter in Python 3. A good practice is to use spaces only when indenting code, and to set text editor options to automatically use spaces when possible.
+Figure 4.11.1: Code blocks are indicated with indentation.
+
+# First code block has no indentation
+
+model = input('Enter car model: ')
+year = int(input('Enter year of car manufacture: '))
+
+antique = False
+domestic = False
+
+if year < 1970:
+    # New code block has indentation of 4 columns
+    antique = True
+
+# Back to code block 0
+
+if model in ['Ford', 'Chevrolet', 'Dodge']:
+  # New code block has indentation of 2 columns
+  # Any amount of indentation > 0 is OK.
+  domestic = True
+
+# Back to code block 0
+
+if antique:
+    # New code block has indentation of 4 columns
+    if domestic:
+        # New block has 4 additional columns (8 total)
+        print('My own model-T still runs like a charm...')
+
+
+
+Enter car model: Ford
+Enter year of car manufacture: 1918
+My own model-T still runs like a charm...
+
+zyDE 4.11.1: Code blocks and indentation.
+
+Fix the errors in the code below so that you can run the program.
+
+
+
+Special cases
+
+The number of columns of text considered to be acceptable varies from 80 to 120. Good practice is to use the widely accepted standard of 80 columns. A few exceptions to the rules of indentation deal with very long statements that require more than one line and wrap to the next line. Such special situations do not indicate new code blocks.
+Figure 4.11.2: Some indentations are continuations of the previous line.
+
+Multiple lines enclosed within parentheses are implicitly joined into a single string (without newlines between each line); use implicit line joining for very long strings or functions with numerous arguments. Ex: All extra lines are indented to the same column as the opening quotation mark on the first line.
+
+When declaring list or dict literals, entries can be placed on separate lines for clarity.
+
+declaration = ("When in the Course of human events, it becomes necessary for "
+               "one people to dissolve the political bands which have connected "
+               "them with another, and to assume among the powers of the earth...")
+
+result_of_power = math.pow(long_variable_name_left_operand,
+                           long_variable_name_right_operand)
+
+Figure 4.11.3: List, dict multi-line constructs.
+
+Containers like lists and dicts can be broken into multiple lines, with the elements on separate, indented lines.
+
+my_list = [
+    1, 2, 3,
+    4, 5, 6
+    ]
+
+
+
+my_dict = {
+    'entryA': 1,
+    'entryB': 2
+}
+
+participation activity
+4.11.1: Indentation.
+1)
+The standard number of spaces to use for indentation is 4.
+2)
+Mixing spaces and tabs when indenting is considered an acceptable programming style.
+3)
+A programmer can start new code blocks at any point in the code, as long as the indentation for each line in the block is consistent.
+challenge activity
+4.11.1: Indentation: Fix the program.
+Retype the below code. Fix the indentation as necessary to make the program work.
+
+    if 'New York' in temperatures:
+        if temperatures['New York'] > 90:
+        print('The city is melting!')
+        else:
+            print('The temperature in New York is', temperatures['New York'])
+else:
+        print('The temperature in New York is unknown.')
+
+Sample output with input: 105
+
+The city is melting!
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+4.12 Conditional expressions

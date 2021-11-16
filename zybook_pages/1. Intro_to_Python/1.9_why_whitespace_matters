@@ -1,0 +1,93 @@
+1.9 Why whitespace matters
+Whitespace and precise formatting
+
+For program output, whitespace is any blank space or newline. Most coding activities strictly require a student program's output to exactly match the expected output, including whitespace. Students learning programming often complain:
+"My program is correct, but the system is complaining about output whitespace. "
+
+However, correctness often includes output being formatted correctly.
+participation activity
+1.9.1: Precisely formatting a meeting invite.
+Kia Smith is inviting you
+to a video meeting.
+
+Join meeting:
+  http://www.zoomskype.us/5592
+
+Phone:
+  1-669-555-2634 (San Jose)
+  1-929-555-4000 (New York)
+
+Meeting ID: 5592
+-------------------------
+Reminder: 10 min before
+Kia Smith is inviting you to a video
+meeting. Join meeting:
+
+http://www.zoomskype.us/5592 Phone:
+1-669-555-2634 (San Jose)
+1-929-555-4000 (New York)
+
+Meeting ID: 5592
+-------------------------
+Reminder: 10 min
+before
+Captions
+
+    This program for online meetings not only does computations like scheduling and creating a unique meeting ID, but also outputs text formatted neatly for a calendar event.
+    A calendar program may append more text after the meeting invitation text.
+    The programmer of the invitation on the right wasn't careful with whitespace. "Join meeting" is buried, the link is hard to see, and the "Phone" text is dangling at a line's end.
+    The programmer also didn't end with a newline, causing subsequent text to appear at the end of a line, and even wrap to the next line. This output looks unprofessional.
+
+participation activity
+1.9.2: Program correctness includes correctly-formatted output.
+
+Consider the example above.
+1)
+The programmer on the left intentionally inserted a newline in the first sentence, namely "Kia Smith ... video meeting". Why?
+2)
+The programmer on the right did not end the first sentence with a newline. What effect did that omission have?
+3)
+The programmer on the left neatly formatted the link, the "Phone:" text, and phone numbers. What did the programmer on the right do?
+4)
+On the right, why did the "Reminder..." text appear on the same line as the separator text "------"?
+5)
+Whitespace _____ important in program output.
+Programming is all about precision
+
+Programming is all about precision. Programs must be created precisely to run correctly. Ex:
+
+    = and == have different meanings.
+    Using i where j was meant can yield a hard-to-find bug.
+    Not considering that n could be 0 in sum/n can cause a program to fail entirely in rare but not insignificant cases.
+    Counting from i being 0 to i < 10 vs. i <= 10 can mean the difference between correct output and a program outputting garbage.
+
+In programming, every little detail counts. Programmers must get in a mindset of paying extreme attention to detail.
+
+Thus, another reason for caring about whitespace in program output is to help new programmers get into a "precision" mindset when programming. Paying careful attention to details like whitespace instructions, carefully examining feedback regarding whitespace differences, and then modifying a program to exactly match expected whitespace is an exercise in strengthening attention to detail. Such attention can lead programmers to make fewer mistakes when creating programs, thus spending less time debugging, and instead creating programs that work correctly.
+participation activity
+1.9.3: Thinking precisely, and attention to detail.
+
+Programmers benefit from having a mindset of thinking precisely and paying attention to details. The following questions emphasize attention to detail. See if you can get all of the questions correct on the first try.
+1)
+How many times is the letter F (any case) in the following?
+If Fred is from a part of France, then of course Fred's French is good.
+
+2)
+How many differences are in these two lines?
+Printing A linE is done using printIn
+Printing A linE is done using print1n
+
+3)
+How many typos are in the following?
+Keep calmn and cary on.
+
+4)
+If I and E are adjacent, I should come before E, except after C (where E should come before I). How many violations are in the following?
+BEIL CEIL ZIEL YIEIK TREIL
+
+5)
+A password must start with a letter, be at least 6 characters long, include a number, and include a special symbol. How many of the following passwords are valid?
+hello goodbye Maker1 dog!three Oops_again 1augh#3
+
+Programmer attention to details
+

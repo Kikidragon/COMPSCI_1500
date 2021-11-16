@@ -1,0 +1,172 @@
+
+2.5 Arithmetic expressions
+Basics
+
+An expression is a combination of items, like variables, literals, operators, and parentheses, that evaluates to a value, like 2 * (x + 1). A common place where expressions are used is on the right side of an assignment statement, as in y = 2 * (x + 1).
+
+A literal is a specific value in code like 2. An operator is a symbol that performs a built-in calculation, like +, which performs addition. Common programming operators are shown below.
+Table 2.5.1: Arithmetic operators.
+Arithmetic operator 	Description
++ 	The addition operator is +, as in x + y.
+- 	The subtraction operator is -, as in x - y. Also, the - operator is for negation, as in -x + y, or x + -y.
+* 	The multiplication operator is *, as in x * y.
+/ 	The division operator is /, as in x / y.
+** 	The exponent operator is **, as in x ** y (x to the power of y).
+participation activity
+2.5.1: Expressions.
+
+Indicate which are valid expressions. x and y are variables.
+1)
+x + 1
+2)
+2 * (x - y)
+3)
+x
+4)
+2
+5)
+2x
+6)
+2 + (xy)
+7)
+y = x + 1
+participation activity
+2.5.2: Capturing behavior with an expression.
+
+Does the expression correctly capture the intended behavior?
+1)
+6 plus num_items:
+
+6 + num_items
+2)
+6 times num_items:
+
+6 x num_items
+3)
+total_days divided by 12:
+
+total_days / 12
+4)
+5 times t:
+
+5t
+5)
+The negative of user_val:
+
+-user_val
+6)
+n factorial
+
+n!
+Evaluation of expressions
+
+An expression evaluates to a value, which replaces the expression. Ex: If x is 5, then x + 1 evaluates to 6, and y = x + 1 assigns y with 6.
+
+An expression is evaluated using the order of standard mathematics, and such order is known in programming as precedence rules, listed below.
+Table 2.5.2: Precedence rules for arithmetic operators.
+Operator/Convention 	Description 	Explanation
+( ) 	Items within parentheses are evaluated first. 	In 2 * (x + 1), the x + 1 is evaluated first, with the result then multiplied by 2.
+exponent ** 	** used for exponent is next. 	In x**y * 3, x to the power of y is computed first, with the results then multiplied by 3.
+unary - 	- used for negation (unary minus) is next. 	In 2 * -x, the -x is computed first, with the result then multiplied by 2.
+* / % 	Next to be evaluated are *, /, and %, having equal precedence. 	(% is discussed elsewhere.)
++ - 	Finally come + and - with equal precedence. 	In y = 3 + 2 * x, the 2 * x is evaluated first, with the result then added to 3, because * has higher precedence than +. Spacing doesn't matter: y = 3+2 * x would still evaluate 2 * x first.
+left-to-right 	If more than one operator of equal precedence could be evaluated, evaluation occurs left to right. Note: The ** operator is evaluated from right-to-left. 	In y = x * 2 / 3, the x * 2 is first evaluated, with the result then divided by 3.
+participation activity
+2.5.3: Evaluating expressions.
+y =
+3 * (x + 10 / w)
+x = 4
+w = 2
+5
+3 * (x + 5)
+3 * 9
+27
+10 / 2
+4 + 5
+9
+y =
+y = 3 * (x + (10 / w))
+Preferred
+Captions
+
+    An expression like 3 * (x + 10 / w) evaluates to a value, using precedence rules. Items within parentheses come first, and / comes before +, yielding 3 * (x + 5).
+    Evaluation finishes inside the parentheses: 3 * (x + 5) becomes 3 * 9.
+    Thus, the original expression evaluates to 3 * 9 or 27. That value replaces the expression. So y = 3 * (x + 10 / w) becomes y = 27, so y is assigned with 27.
+    Many programmers prefer to use parentheses to make order of evaluation more clear when such order is not obvious.
+
+participation activity
+2.5.4: Evaluating expressions and precedence rules.
+
+Select the expression whose parentheses match the evaluation order of the original expression.
+1)
+y + 2 * z
+2)
+z / 2 - x
+3)
+x * y * z
+4)
+x + 1 * y/2
+5)
+x / 2 + y / 2
+6)
+What is total_count after executing the following?
+
+num_items = 5
+total_count = 1 + (2 * num_items)  * 4
+
+Using parentheses to make the order of evaluation explicit
+
+A common error is to omit parentheses and assume an incorrect order of evaluation, leading to a bug. Ex: If x is 3, then 5 * x+1 might appear to evaluate as 5 * (3+1) or 20, but actually evaluates as (5 * 3) + 1 or 16 (spacing doesn't matter). Good practice is to use parentheses to make order of evaluation explicit, rather than relying on precedence rules, as in: y = (m * x) + b, unless order doesn't matter as in x + y + z.
+Example: Calorie expenditure
+
+A website lists the calories expended by men and women during exercise as follows (source):
+Men: Calories = [(Age × 0.2017) + (Weight × 0.09036) + (Heart Rate × 0.6309) — 55.0969] × Time / 4.184
+
+Women: Calories = [(Age × 0.074) — (Weight × 0.05741) + (Heart Rate × 0.4472) — 20.4022] × Time / 4.184
+
+Below are those expressions written using programming notation:
+calories_man = ( (age_years * 0.2017) + (weight_pounds * 0.09036) + (heart_bpm * 0.6309) - 55.0969 ) * time_minutes / 4.184
+
+calories_woman = ( (age_years * 0.074) - (weight_pounds * 0.05741) + (heart_bpm * 0.4472) - 20.4022 ) * time_minutes/ 4.184
+participation activity
+2.5.5: Converting a formatted expression to a program expression.
+
+Consider the example above. Match the changes that were made.
+
+    Spaces in variable names
+    —
+    [ ]
+    ×
+
+Replaced by ( )
+Underscores
+-
+*
+challenge activity
+2.5.1: Enter the output of the integer expressions.
+343716.2144758.qx3zqy7
+
+Type the program's output
+x = 13
+y = x + 4
+
+print(y)
+
+1
+2
+3
+4
+5
+6
+1
+2
+3
+4
+5
+6
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+2.6 Python expressions

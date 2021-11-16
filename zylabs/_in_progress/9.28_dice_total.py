@@ -18,7 +18,7 @@ class GVDie:
 
     # allows dice to be compared if necessary
     def compare_To(self, other):
-        return self.my_value - other.my_value
+        return self.my_value - d.my_value
 
 
 def roll_specific_times(die, rolls):

@@ -1,0 +1,304 @@
+
+5.2 While loops
+While loop: Basics
+
+A while loop is a construct that repeatedly executes an indented block of code (known as the loop body) as long as the loop's expression is True. At the end of the loop body, execution goes back to the while loop statement and the loop expression is evaluated again. If the loop expression is True, the loop body is executed again. But, if the expression evaluates to False, then execution instead proceeds to below the loop body. Each execution of the loop body is called an iteration, and looping is also called iterating.
+Construct 5.2.1: While loop.
+
+while expression:  # Loop expression
+    # Loop body: Sub-statements to execute
+    # if the loop expression evaluates to True
+
+# Statements to execute after the expression evaluates to False
+
+participation activity
+5.2.1: While loop.
+
+curr_power = 2
+user_char = 'y'
+
+while user_char == 'y':
+    print(curr_power)
+    curr_power = curr_power * 2
+    user_char = input()
+
+print('Done')
+
+
+y y n
+Input
+Done
+Output
+Python interpreter
+user_char
+curr_power
+2
+4
+8
+'y'
+2
+4
+8
+'n'
+16
+Captions
+
+    When encountered, a while loop's expression is evaluated. If true, the loop's body is entered. Here, user_char was initialized with 'y', so user_char == 'y' is true.
+    Thus, the loop body is executed, which outputs curr_power's current value of 2, doubles curr_power, and gets the next input.
+    Execution jumps back to the while part. user_char is 'y' (the first input), so user_char == 'y' is true, and the loop body executes (again), outputting 4.
+    user_char is 'y' (the second user input), so user_char == 'y' is true, and the loop body executes (a third time), outputting 8.
+    user_char is now 'n', so user_char == 'y' is false. Thus, execution jumps to after the loop, which outputs "Done".
+
+participation activity
+5.2.2: Basic while loops.
+
+For each question, indicate how many times will the loop body execute?
+1)
+
+x = 3
+while x >= 1:
+    # Do something
+    x = x - 1
+
+2)
+Assume user would enter 'n', then 'n', then 'y'.
+
+# Get character from user here
+while user_char != 'n':
+    # Do something
+    # Get character from user here
+
+3)
+Assume user would enter 'a', then 'b', then 'n'.
+
+# Get character from user here
+while user_char != 'n':
+    # Do something
+    # Get character from user here
+
+Example: While loop with a sentinel value
+
+The following example uses the statement while user_value != 'q': to allow a user to end a face-drawing program by entering the character 'q'. The letter 'q' in this case is a sentinel value, a value that when evaluated by the loop expression causes the loop to terminate.
+
+The code print(user_value*5) produces a new string, which repeats the value of user_value 5 times. In this case, the value of user_value may be "-", thus the result of the multiplication is "-----". Another valid (but long and visually unappealing) method is the statement print('{}{}{}{}{}'.format(user_value, user_value, user_value, user_value, user_value)).
+
+Note that input may read in a multi-character string from the user, so only the first character is extracted from user_input with user_value = user_input[0].
+
+Once execution enters the loop body, execution continues to the body's end even if the expression becomes False midway through.
+Figure 5.2.1: While loop example: Face-printing program that ends when user enters 'q'.
+
+nose = '0'  # Looks a little like a nose
+user_value = '-'
+
+while user_value != 'q':
+    print(' {} {} '.format(user_value, user_value))  # Print eyes
+    print('  {}  '.format(nose))  # Print nose
+    print(user_value*5)  # Print mouth
+    print('\n')
+
+    # Get new character for eyes and mouth
+    user_input = input("Enter a character ('q' for quit): \n")
+    user_value = user_input[0]
+
+print('Goodbye.\n')
+
+
+
+ - -
+  0
+-----
+
+Enter a character ('q' for quit): x
+ x x
+  0
+xxxxx
+
+
+Enter a character ('q' for quit): @
+ @ @
+  0
+@@@@@
+
+
+Enter a character ('q' for quit): q
+Goodbye.
+
+participation activity
+5.2.3: Loop expressions.
+
+Complete the loop expressions, using a single operator in your expression. Use the most straightforward translation of English to an expression.
+1)
+Iterate while x is less than 100.
+
+while :
+    # Loop body statements go here
+
+2)
+Iterate while x is greater than or equal to 0.
+
+while :
+    # Loop body statements go here
+
+3)
+Iterate while c equals 'g'.
+
+while :
+    # Loop body statements go here
+
+4)
+Iterate until c equals 'z'.
+
+while :
+    # Loop body statements go here
+
+Stepping through a while loop
+
+The following program animation provides another loop example. First, the user enters an integer. Then, the loop prints each digit one at a time starting from the right, using "% 10" to get the rightmost digit and "// 10" to remove that digit. The loop is only entered while num is greater than 0; once num reaches 0, the loop will have printed all digits.
+participation activity
+5.2.4: While loop step-by-step.
+
+...
+# Read num from user ...
+
+# Print each digit
+while num > 0:
+    print(num % 10)
+    num = num // 10
+
+
+Iteration
+num
+Output
+902
+1
+2
+90
+902
+2
+0
+9
+90
+3
+9
+0
+9
+Printing out every digit of a user-entered number using the % and // operators.
+Captions
+
+    User enters the number 902. The first iteration prints "2".
+    The second iteration prints "0".
+    The third iteration prints "9", so every digit has been printed. The loop condition is checked one more time, and since num is 0, the loop stops.
+
+Example: While loop: Iterations
+
+Each iteration of the program below prints one line with the year and the number of ancestors in that year. (Note: the program's output numbers are large due to not considering breeding among distant relatives, but nevertheless, a person has many ancestors.)
+
+The program checks for year_considered >= user_year rather than for year_considered != user_year, because year_considered might be reduced past user_year without equaling it, causing an infinite loop. An infinite loop is a loop that will always execute because the loop's expression is always True. A common error is to accidentally create an infinite loop by assuming equality will be reached. Good practice is to include greater than or less than along with equality in a loop expression to help avoid infinite loops.
+
+A program with an infinite loop may print output excessively, or just seem to stall (if the loop contains no printing). A user can halt a program by pressing Control-C in the command prompt running the Python program. Alternatively, some IDEs have a "Stop" button.
+zyDE 5.2.1: While loop example: Ancestors printing program.
+
+Run the program below.
+
+participation activity
+5.2.5: While loop iterations.
+
+What is the output of the following code? (Use "IL" for infinite loops.)
+1)
+
+x = 0
+while x > 0:
+    print(x, end=' ')
+    x = x - 1
+print('Bye')
+
+2)
+
+x = 5
+y = 18
+while y >= x:
+    print(y, end=' ')
+    y = y - x
+
+3)
+
+x = 10
+while x != 3:
+    print(x, end=' ')
+    x = x / 2
+
+4)
+
+x = 1
+y = 3
+z = 5
+while not (y < x < z):
+    print(x, end=' ')
+    x = x + 1
+
+challenge activity
+5.2.1: Enter the output of the while loop.
+343716.2144758.qx3zqy7
+
+Type the program's output
+g = 0
+
+while g <= 2:
+    print(g)
+    g += 1
+
+1
+2
+3
+4
+5
+1
+2
+3
+4
+5
+challenge activity
+5.2.2: Basic while loop with user input.
+Write an expression that executes the loop body as long as the user enters a non-negative number.
+
+Note: If the submitted code has an infinite loop, the system will stop running the code after a few seconds and report "Program end never reached." The system doesn't print the test case that caused the reported message.
+
+Sample outputs with inputs: 9 5 2 -1
+
+Body
+Body
+Body
+Done.
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+5.2.3: Basic while loop expression.
+Write a while loop that repeats while user_num ≥ 1. In each loop iteration, divide user_num by 2, then print user_num.
+
+Sample output with input: 20
+
+10.0
+5.0
+2.5
+1.25
+0.625
+
+
+
+Note: If the submitted code has an infinite loop, the system will stop running the code after a few seconds and report "Program end never reached." The system doesn't print the test case that caused the reported message.
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+5.3 More while examples

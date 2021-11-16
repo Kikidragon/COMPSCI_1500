@@ -1,0 +1,79 @@
+
+3.6 Common data types summary
+
+The most common Python types are presented below.
+Common data types
+
+Numeric types int and float represent the most common types used to store data. All numeric types support the normal mathematical operations such as addition, subtraction, multiplication, and division, among others.
+Table 3.6.1: Common data types.
+Type 	Notes
+int 	Numeric type: Used for variable-width integers.
+float 	Numeric type: Used for floating-point numbers.
+
+Sequence types string, list, and tuple are all containers for collections of objects ordered by position in the sequence, where the first object has an index of 0 and subsequent elements have indices 1, 2, etc. A list and a tuple are very similar, except that a list is mutable and individual elements may be edited or removed. Conversely, a tuple is immutable and individual elements may not be edited or removed. Lists and tuples can contain any type, whereas a string contains only single-characters. Sequence-type functions such as len() and element indexing using brackets [ ] can be applied to any sequence type.
+
+The only mapping type in Python is the dict type. Like a sequence type, a dict serves as a container. However, each element of a dict is independent, having no special ordering or relation to other elements. A dictionary uses key-value pairs to associate a key with a value.
+Table 3.6.2: Containers: sequence and mapping types.
+Type 	Notes
+string 	Sequence type: Used for text.
+list 	Sequence type: A mutable container with ordered elements.
+tuple 	Sequence type: An immutable container with ordered elements.
+set 	Set type: A mutable container with unordered and unique elements.
+dict 	Mapping type: A container with key-values associated elements.
+participation activity
+3.6.1: Common data types.
+1)
+The list ['a', 'b', 3] is invalid because the list contains a mix of strings and integers.
+2)
+int and float types can always hold the exact same values.
+3)
+A sorted collection of integers might best be contained in a list.
+Choosing a container type
+
+New programmers often struggle with choosing the types that best fit their needs, such as choosing whether to store particular data using a list, tuple, or dict. In general, a programmer might use a list when data has an order, such as lines of text on a page. A programmer might use a tuple instead of a list if the contained data should not change. If order is not important, a programmer might use a dictionary to capture relationships between elements, such as student names and grades.
+participation activity
+3.6.2: Choosing among different container types.
+
+Choose the container that best fits the described data.
+1)
+Student test scores that may later be adjusted, ordered from best to worst.
+2)
+A single student's name and their final grade in the class.
+3)
+Names and current grades for all students in the class.
+participation activity
+3.6.3: Finding errors in container code.
+Click on the error.
+1)
+
+# Student grade program.
+
+
+
+
+
+# Get student name, grade
+name = input('name:')
+grade = input('grade:')# Assign grade
+
+
+
+2)
+
+
+
+# Remove Amy from workers
+
+
+
+# Print workers
+
+
+
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+3.7 Additional practice: Grade calculation

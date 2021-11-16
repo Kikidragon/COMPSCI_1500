@@ -1,0 +1,119 @@
+
+4.12 Conditional expressions
+Conditional expressions
+
+A conditional expression has the following form:
+Construct 4.12.1: Conditional expression.
+
+expr_when_true if condition else expr_when_false
+
+All three operands are expressions. The condition in the middle is evaluated first. If the condition evaluates to True, then expr_when_true is evaluated. If the condition evaluates to False, then expr_when_false is evaluated. For example, if x is 2, then the conditional expression 5 if x==2 else 9*x evaluates to 5.
+
+A conditional expression has three operands and thus is sometimes referred to as a ternary operation.
+
+Good practice is to restrict usage of conditional expressions to an assignment statement, as in: y = 5 if (x == 2) else 9*x. Some Python programmers denounce conditional expressions as difficult to read and comprehend, since the middle operand is actually the first evaluated, and left-to-right syntax is preferred. However, simple assignments such as the statement above are acceptable.
+participation activity
+4.12.1: Conditional expression.
+
+if condition:
+   my_var = expr1
+else:
+   my_var = expr2
+
+
+my_var =
+
+
+my_var =
+
+
+if (condition) else
+
+
+expr1
+
+
+expr2
+
+
+Captions
+
+    This if-else form can be written as a conditional expression.
+    The condition in the middle is evaluated first.
+    If the condition evaluates to True, then expr1 is evaluated and my_var is assigned with expr1's value.
+    If the condition evaluates to False, then expr2 is evaluated and my_var is assigned with expr2's value.
+
+participation activity
+4.12.2: Conditional expressions.
+
+Convert each if-else statement to a single assignment statement using a conditional expression, using parentheses around the condition. Enter "Not possible" if appropriate.
+1)
+
+if x < 100:
+    y = 0
+else:
+    y = x
+
+2)
+
+if x < 0:
+    x = -x
+else:
+    x = x
+
+3)
+
+if x < 1:
+    y = x
+else:
+    z = x
+
+challenge activity
+4.12.1: Conditional expressions: Enter the output of the code.
+343716.2144758.qx3zqy7
+
+Type the program's output
+my_number = 5
+your_number = 8 if my_number < 4 else 2
+print(your_number)
+
+1
+2
+3
+1
+2
+3
+challenge activity
+4.12.2: Conditional expression: Print negative or non-negative.
+Create a conditional expression that evaluates to string "negative" if user_val is less than 0, and "non-negative" otherwise.
+
+Sample output with input: -9
+
+-9 is negative
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+4.12.3: Conditional expression: Conditional assignment.
+Using a conditional expression, write a statement that increments num_users if update_direction is 3, otherwise decrements num_users.
+
+Sample output with inputs: 8 3
+
+New value is: 9
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+4.13 Additional practice: Tweet decoder

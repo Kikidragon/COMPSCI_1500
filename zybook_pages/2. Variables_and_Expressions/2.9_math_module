@@ -1,0 +1,125 @@
+
+2.9 Math module
+The math module
+
+While basic math operations like + or * are sufficient for some computations, programmers sometimes wish to perform more advanced math operations such as computing a square root. Python comes with a standard math module to support such advanced math operations. A module is Python code located in another file. The programmer can import the module for use in their own file, or in an interactive interpreter. The programmer first imports the module to the top of a file.
+
+The math module provides a number of theoretic, trigonometric, and logarithmic operations that a programmer may use. A mathematical operation provided by the math module can be used as follows:
+Figure 2.9.1: Importing the math module and calling a math module function.
+
+import math
+
+num = 49
+num_sqrt = math.sqrt(num)
+
+sqrt() is known as a function. A function is a list of statements that can be executed simply by referring to the function's name. The statements for sqrt() are within the math module itself and are not relevant to the programmer. The programmer provides a value to the function (like num above). The function executes its statements and returns the computed value. Thus, sqrt(num) above will evaluate to 7.0.
+
+The process of invoking a function is referred to as a function call. The item passed to a function is referred to as an argument. Some functions have multiple arguments, such as the function pow(b, e), which returns be. The statement ten_generation_ancestors = 1024 * num_people could be replaced by ten_generation_ancestors = math.pow(2, 10) * num_people to be more clear.
+zyDE 2.9.1: Example of using a math function: Savings interest program.
+
+Note: Blank print statements are used to go to the next line after reading pre-entered input.
+
+
+Commonly used functions
+
+Commonly used functions from the math module are listed below. http://docs.python.org/3.7/library/math.html has a complete listing.
+Table 2.9.1: Functions in the standard math module.
+Function 	Description 		Function 	Description
+Number representation and theoretic functions
+ceil(x) 	Round up value 		fabs(x) 	Absolute value
+factorial(x) 	factorial (3! = 3 * 2 * 1) 		floor(x) 	Round down value
+fmod(x, y) 	Remainder of division 		fsum(x) 	Floating-point sum of a range, list, or array.
+Power, exponential, and logarithmic functions
+exp(x) 	Exponential function ex 		log(x, (base)) 	Natural logarithm; base is optional
+pow(x, y) 	Raise x to power y 		sqrt(x) 	Square root
+Trigonometric functions
+acos(x) 	Arc cosine 		asin(x) 	Arc sine
+atan(x) 	Arc tangent 		atan2(y, x) 	Arc tangent with two parameters
+cos(x) 	Cosine 		sin(x) 	Sine
+hypot(x1, x2, x3, ..., xn) 	Length of vector from origin 		degrees(x) 	Convert from radians to degrees
+radians(x) 	Convert degrees to radians 		tan(x) 	Tangent
+cosh(x) 	Hyperbolic cosine 		sinh(x) 	Hyperbolic sine
+Complex number functions
+gamma(x) 	Gamma function 		erf(x) 	Error function
+Mathematical constants
+pi (constant) 	Mathematical constant 3.141592... 		e (constant) 	Mathematical constant 2.718281...
+participation activity
+2.9.1: Variable assignments with math functions.
+
+Determine the final value of z.
+1)
+
+x = 2.3
+z = math.ceil(x)
+
+2)
+
+x = 2.3
+z = math.floor(x)
+
+3)
+
+z = 4.5
+z = math.pow(math.floor(z), 2.0)
+
+4)
+
+z = 15.75
+z = math.sqrt(math.ceil(z))
+
+5)
+
+z = 4
+z = math.factorial(z)
+
+challenge activity
+2.9.1: Math functions.
+343716.2144758.qx3zqy7
+
+Type the program's output
+import math
+
+x = math.sqrt(81.0)
+print(x)
+
+1
+2
+3
+4
+5
+1
+2
+3
+4
+5
+challenge activity
+2.9.2: Math functions.
+343716.2144758.qx3zqy7
+Compute:
+1
+2
+3
+1
+2
+3
+challenge activity
+2.9.3: Using math functions to calculate the distance between two points
+Assign point_dist with the distance between point (x1, y1) and point (x2, y2). The calculation is:
+Distance = SquareRootOf( (x2 - x1)2 + (y2 - y1)2 ).
+
+Sample output with inputs: 1.0 2.0 1.0 5.0
+
+Points distance: 3.0
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+2.10 Representing text

@@ -1,0 +1,14 @@
+
+4.22 LAB: Max of 2
+
+Write a program that takes in two integers and outputs the larger value.
+
+Ex: If the input is:
+
+4
+2
+
+the output is:
+
+4
+

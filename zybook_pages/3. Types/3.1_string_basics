@@ -1,0 +1,239 @@
+
+3.1 String basics
+Strings and string literals
+
+A string is a sequence of characters, like the text MARY, that can be stored in a variable. A string literal is a string value specified in the source code of a program. A programmer creates a string literal by surrounding text with single or double quotes, such as 'MARY' or "MARY".
+
+The string type is a special construct known as a sequence type: A type that specifies a collection of objects ordered from left to right. A string's characters are ordered from the string's first letter to the last. A character's position in a string is called the character's index, which starts at 0. Ex: In "Trish", T is at index 0, r at 1, etc.
+participation activity
+3.1.1: String indexing.
+Type a string below to see how a string is a sequence of characters ordered by position. The numbers on top indicate each character's index.
+Type a string
+(up to 6 characters)
+
+0 	1 	2 	3 	4 	5
+T 	r 	i 	s 	h
+
+A programmer can assign a string just as with other types. Ex: str1 = 'Hello', or str1 = str2. The input() function can also be used to get strings from the user.
+
+An empty string is a sequence type with 0 elements, created with two quotes. Ex: my_str = ''.
+zyDE 3.1.1: A program with strings.
+
+Try the 'mad libs' style game below.
+
+
+
+participation activity
+3.1.2: String literals.
+
+Indicate which items are string literals.
+1)
+'Hey'
+2)
+'Hey there.'
+3)
+674
+4)
+'674'
+5)
+"ok"
+6)
+"a"
+participation activity
+3.1.3: String basics.
+1)
+Which answer creates a string variable first_name with a value 'Daniel'?
+2)
+Which answer prints the value of the first_name variable?
+3)
+Which answer assigns first_name with a string read from input?
+4)
+Which answer assigns first_name with an empty string?
+String length and indexing
+
+A common operation is to find the length, or the number of characters, in a string. The len() built-in function can be used to find the length of a string (and any other sequence type).
+Figure 3.1.1: Using len() to get the length of a string.
+
+The \ character after the string literal extends the string to the following line.
+
+george_v = "His Majesty George V, by the Grace of God, " \
+           "of the United Kingdom of Great Britain and " \
+           "Ireland and of the British Dominions beyond " \
+           "the Seas, King, Defender of the Faith, Emperor of India"
+gandhi = 'Mohandas Karamchand Gandhi'
+john_f_kennedy = 'JFK'
+
+print(len(george_v), 'characters is much too long of a name!')
+print(len(gandhi), 'characters is better...')
+print(len(john_f_kennedy), 'characters is short enough.')
+
+
+
+185 characters is much too long of a name!
+26 characters is better...
+3 characters is short enough.
+
+participation activity
+3.1.4: Using len() to find the length of a string.
+1)
+What is the length of the string "Santa"?
+
+2)
+Write a statement that prints the length of the string variable first_name.
+
+Programs commonly access an individual character of a string. As a sequence type, every character in a string has an index, or position, starting at 0 from the leftmost character. For example, the 'A' in string 'ABC' is at index 0, 'B' is at index 1, and 'C' is at index 2. A programmer can access a character at a specific index by appending brackets [ ] containing the index:
+Figure 3.1.2: Accessing individual characters of a string.
+
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+print(alphabet[0], alphabet[1], alphabet[25])
+
+
+
+A B Z
+
+Note that negative indices can be used to access characters starting from the rightmost character of the string, instead of the leftmost. Ex: alphabet[-1] is 'Z'.
+zyDE 3.1.2: String indexing.
+
+Try the simple program that looks up the indices of letters in the alphabet. Try entering a negative value like -1, or -25.
+
+
+participation activity
+3.1.5: String indexing.
+1)
+What character is in index 2 of the string "America"?
+
+2)
+Write an expression that accesses the first character of the string my_country.
+
+3)
+Assign my_var with the last character in my_str. Use a negative index.
+
+Changing string variables and concatenating strings
+
+Writing or altering individual characters of a string variable is not allowed. Strings are immutable objects, meaning that string values cannot change once created. Instead, an assignment statement must be used to update an entire string variable.
+Figure 3.1.3: Strings are immutable and cannot be changed.
+Individual characters of a string cannot be directly changed.
+
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+# Change to upper case
+
+alphabet[0] = 'A'  # Invalid: Cannot change character
+alphabet[1] = 'B'  # Invalid: Cannot change character
+
+print('Alphabet:', alphabet)
+
+
+
+Traceback (most recent call last):
+  File "main.py", line 5, in <module>
+    alphabet[0] = 'A'  # Invalid: Cannot change character
+TypeError: 'str' object does not support item assignment
+
+
+Instead, update the variable by assigning an entirely new string.
+
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+# Change to upper case
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+print('Alphabet:', alphabet)
+
+
+
+Alphabet: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+A program can add new characters to the end of a string in a process known as string concatenation. The expression "New" + "York" concatenates the strings New and York to create a new string NewYork. Most sequence types support concatenation. String concatenation does not contradict the immutability of strings, because the result of concatenation is a new string; the original strings are not altered.
+Figure 3.1.4: String concatenation.
+
+string_1 = 'abc'
+string_2 = '123'
+concatenated_string = string_1 + string_2
+print('Easy as ' + concatenated_string)
+
+
+
+Easy as abc123
+
+participation activity
+3.1.6: String variables.
+1)
+Python string objects are mutable, meaning that individual characters can be changed.
+2)
+Executing the statements:
+
+address = '900 University Ave'
+address[0] = '6'
+address[1] = '2'
+
+
+is a valid way to change address to '620 University Ave'.
+3)
+Executing the statements:
+
+address = '900 University Ave'
+address = '620 University Ave'
+
+
+is a valid way to change address to '620 University Ave'.
+4)
+After the following executes, the value of address is '500 Floral Avenue'.
+
+street_num = '500'
+street = 'Floral Avenue'
+address = street_num + ' ' + street
+
+challenge activity
+3.1.1: String basics.
+343716.2144758.qx3zqy7
+
+Type the program's output
+print('Yuffie')
+
+1
+2
+3
+4
+5
+6
+7
+1
+2
+3
+4
+5
+6
+7
+challenge activity
+3.1.2: Reading multiple data types.
+Type two statements. The first reads user input into person_name. The second reads user input into person_age. Use the int() function to convert person_age into an integer. Below is a sample output for the given program if the user's input is: Amy 4
+
+In 5 years Amy will be 9
+
+Note: Do not write a prompt for the input values, use the format: variable_name = input()
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+3.1.3: Concatenating strings.
+Write two statements to read in values for my_city followed by my_state. Do not provide a prompt. Assign log_entry with current_time, my_city, and my_state. Values should be separated by a space. Sample output for given program if my_city is Houston and my_state is Texas:
+
+2014-07-26 02:12:18: Houston Texas
+
+Note: Do not write a prompt for the input values.
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+3.2 List basics

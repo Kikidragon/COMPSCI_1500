@@ -1,0 +1,804 @@
+Some words cant be used for variables:
+False      await      else       import     pass
+None       break      except     in         raise
+True       class      finally    is         return
+and        continue   for        lambda     try
+as         def        from       nonlocal   while
+assert     del        global     not        with
+async      elif       if         or         yield
+
+
+
+
+
+Add X, #num, Y	Adds data in memory location X to the number num, storing result in location Y
+Sub X, #num, Y	Subtracts num from data in location X, storing result in location Y
+Mul X, #num, Y	Multiplies data in location X by num, storing result in location Y
+Div X, #num, Y	Divides data in location X by num, storing result in location Y
+Jmp Z	Tells the processor that the next instruction to execute is in memory location Z
+
+
+
+
+Error type	Description
+SyntaxError	The program contains invalid code that cannot be understood.
+IndentationError	The lines of the program are not properly indented.
+ValueError	An invalid value is used – can occur if giving letters to int().
+NameError	The program tries to use a variable that does not exist.
+TypeError	An operation uses incorrect types – can occur if adding an integer to a string
+
+
+Arithmetic operator	Description
++	The additionoperator is +, as in x + y.
+-	The subtractionoperator is -, as in x - y. Also, the - operator is for negation, as in -x + y, or x + -y.
+*	The multiplicationoperator is *, as in x * y.
+/	The divisionoperator is /, as in x / y.
+**	The exponentoperator is **, as in x ** y (x to the power of y).
+
+
+
+
+Operator/Convention	Description	Explanation
+( )	Items within parentheses are evaluated first.	In 2 * (x + 1), the x + 1 is evaluated first, with the result then multiplied by 2.
+exponent **	** used for exponent is next.	In x**y * 3, x to the power of y is computed first, with the results then multiplied by 3.
+unary -	- used for negation (unary minus) is next.	In 2 * -x, the -x is computed first, with the result then multiplied by 2.
+* / %	Next to be evaluated are *, /, and %, having equal precedence.	(% is discussed elsewhere.)
++ -	Finally come + and - with equal precedence.	In y = 3 + 2 * x, the 2 * x is evaluated first, with the result then added to 3, because * has higher precedence than +. Spacing doesn't matter: y = 3+2 * x would still evaluate 2 * x first.
+left-to-right	If more than one operator of equal precedence could be evaluated, evaluation occurs left to right. Note: The ** operator is evaluated from right-to-left.	In y = x * 2 / 3, the x * 2 is first evaluated, with the result then divided by 3.
+
+
+
+Compound operator	Expression with compound operator	Equivalent expression
+Addition assignment	age += 1	age = age + 1
+Subtraction assignment	age -= 1	age = age - 1
+Multiplication assignment	age *= 1	age = age * 1
+Division assignment	age /= 1	age = age / 1
+Modulo (operator further discussed elsewhere) assignment	age %= 1	age = age % 1
+
+
+
+Given a 10-digit phone number stored as an integer, % and // can be used to get any part, such as the prefix. For phone_num = 9365551212 (whose prefix is 555):
+tmp_val = phone_num // 10000  # // 10000 shifts right by 4, so 936555.
+prefix_num = tmp_val % 1000 # % 1000 gets the right 3 digits, so 555.
+Dividing by a power of 10 shifts a value right. Ex: 321 // 10 is 32. Ex: 321 // 100 is 3.
+% by a power of 10 gets the rightmost digits. Ex: 321 % 10 is 1. Ex: 321 % 100 is 21.
+
+
+
+
+
+Function	Description	Function	Description
+Number representation and theoretic functions
+ceil(x)	Round up value	fabs(x)	Absolute value
+factorial(x)	factorial (3! = 3 * 2 * 1)	floor(x)	Round down value
+fmod(x, y)	Remainder of division	fsum(x)	Floating-point sum of a range, list, or array.
+Power, exponential, and logarithmic functions
+exp(x)	Exponential function ex	log(x, (base))	Natural logarithm; base is optional
+pow(x, y)	Raise x to power y	sqrt(x)	Square root
+Trigonometric functions
+acos(x)	Arc cosine	asin(x)	Arc sine
+atan(x)	Arc tangent	atan2(x)	Arc tangent with two parameters
+cos(x)	Cosine	sin(x)	Sine
+hypot(x1, x2, x3, ..., xn)	Length of vector from origin	degrees(x)	Convert from radians to degrees
+radians(x)	Convert degrees to radians	tan(x)	Tangent
+cosh(x)	Hyperbolic cosine	sinh(x)	Hyperbolic sine
+Complex number functions
+gamma(x)	Gamma function	erf(x)	Error function
+Mathematical constants
+pi (constant)	Mathematical constant 3.141592...	e (constant)	Mathematical constant 2.718281...
+
+
+
+
+
+Decimal	Decimal	Decimal
+Character	Character	Character
+32	64	96
+space	@	`
+33	65	97
+!	A	a
+34	66	98
+"	B	b
+35	67	99
+#	C	c
+36	68	100
+$	D	d
+37	69	101
+%	E	e
+38	70	102
+&	F	f
+39	71	103
+'	G	g
+40	72	104
+(	H	h
+41	73	105
+)	I	i
+42	74	106
+*	J	j
+43	75	107
++	K	k
+44	76	108
+,	L	l
+45	77	109
+-	M	m
+46	78	110
+.	N	n
+47	79	111
+/	O	o
+48	80	112
+0	P	p
+49	81	113
+1	Q	q
+50	82	114
+2	R	r
+51	83	115
+3	S	s
+52	84	116
+4	T	t
+53	85	117
+5	U	u
+54	86	118
+6	V	v
+55	87	119
+7	W	w
+56	88	120
+8	X	x
+57	89	121
+9	Y	y
+58	90	122
+:	Z	z
+59	91	123
+;	[	{
+60	92	124
+<	\	|
+61	93	125
+=	]	}
+62	94	126
+>	^	~
+63	95
+?	_
+20911  冯
+32043   紫
+ 40857  龙
+
+
+
+
+Escape Sequence	Explanation	Example code	Output
+\\	Backslash (\)	print('\\home\\users\\')	\home\users\
+\'	Single quote (')	print('Name: John O\'Donald')	Name: John O'Donald
+\"	Double quote (")	print("He said, \"Hello friend!\".")	He said, "Hello friend!".
+\n	Newline	print('My name...\nIs John...')	My name...
+Is John...
+\t	Tab (indent)	print('1. Bake cookies\n\t1.1. Preheat oven')	1. Bake cookies
+    1.1. Preheat oven
+
+
+Operation	Description
+len(list)	Find the length of the list.
+list1 + list2	Produce a new list by concatenating list2 to the end of list1.
+min(list)	Find the element in list with the smallest value. All elements must be of the same type.
+max(list)	Find the element in list with the largest value. All elements must be of the same type.
+sum(list)	Find the sum of all elements of a list (numbers only).
+list.index(val)	Find the index of the first element in list whose value matches val.
+list.count(val)	Count the number of occurrences of the value val in list.
+
+
+
+Operation	Description
+len(set)	Find the length (number of elements) of the set.
+set1.update(set2)	Adds the elements in set2 to set1.
+set.add(value)	Adds value into the set.
+set.remove(value)	Removes value from the set. Raises KeyError if value is not found.
+set.pop()	Removes a random element from the set.
+set.clear()	Clears all elements from the set.
+
+From <https://learn.zybooks.com/zybook/MSTCOMPSCI1500TaylorFall2021/chapter/3/section/4>
+
+
+
+
+Operation	Description
+set.intersection(set_a, set_b, set_c...)	Returns a new set containing only the elements in common between set and all provided sets.
+set.union(set_a, set_b, set_c...)	Returns a new set containing all of the unique elements in all sets.
+set.difference(set_a, set_b, set_c...)	Returns a set containing only the elements of set that are not found in any of the provided sets.
+set_a.symmetric_difference(set_b)	Returns a set containing only elements that appear in exactly one of set_a or set_b
+
+From <https://learn.zybooks.com/zybook/MSTCOMPSCI1500TaylorFall2021/chapter/3/section/4>
+
+
+
+Type	Notes
+string	Sequence type: Used for text.
+list	Sequence type: A mutable container with ordered elements.
+tuple	Sequence type: An immutable container with ordered elements.
+set	Set type: A mutable container with unordered and unique elements.
+dict	Mapping type: A container with key-values associated elements.
+
+From <https://learn.zybooks.com/zybook/MSTCOMPSCI1500TaylorFall2021/chapter/3/section/6>
+
+
+Function	Notes	Can convert:
+int()	Creates integers	int, float, strings w/ integers only
+float()	Creates floats	int, float, strings w/ integers or fractions
+str()	Creates strings	Any
+
+
+
+binary
+	128	64	32	16	8	4	2	1
+	27	26	25	24	23	22	21	20
+
+
+
+Replacement definition	Example	Formatted string result
+Positional replacement	'The {1} in the {0} is {2}.'.format('hat','cat','fat')	The cat in the hat is fat.
+Inferred positional replacement	'The {} in the {} is {}.'.format('cat','hat','fat')	The cat in the hat is fat.
+Named replacement	'The {animal} in the {headwear} is {shape}.'.format(animal='cat',headwear='hat',shape='fat')	The cat in the hat is fat.
+
+
+
+Type	Description	Example	Output
+s	String (default presentation type - can be omitted)	'{:s}'.format('Aiden')	Aiden
+d	Decimal (integer values only)	'{:d}'.format(4)	4
+b	Binary (integer values only)	'{:b}'.format(4)	100
+x, X	Hexadecimal in lowercase (x) and uppercase (X) (integer values only)	'{:x}'.format(15)	f
+e	Exponent notation	'{:e}'.format(44)	4.400000e+01
+f	Fixed-point notation (6 places of precision)	'{:f}'.format(4)	4.000000
+.[precision]f	Fixed-point notation (programmer-defined precision)	'{:.2f}'.format(4)	4.00
+0[precision]d	Leading 0 notation	'{:03d}'.format(4)	004
+>
+
+
+
+Replacement type	Example	Output
+Inferred positional replacement	'{:s} ${:.2f} tacos is ${:.2f} total'.format('Three',1.50,4.50)	Three $1.50 tacos is $4.50 total
+Positional replacement	'{0:s} ${2:.2f} tacos is ${1:.2f} total'.format('Three',4.50,1.50)	Three $1.50 tacos is $4.50 total
+Named replacement	'{cnt:s} ${cost:.2f} tacos is ${sum:.2f} total'.format(cnt ='Three',cost =1.50,sum =4.50)	Three $1.50 tacos is $4.50 total
+
+
+Equality operators	Description	Example (assume x is 3)
+==	a ==b means a is equal to b 	x == 3 is True
+		x == 4 is False
+!=	a !=b means a is not equal to b 	x != 3 is False
+		x != 4 is True
+
+
+
+
+Relational operators
+Description
+Example (assume x is 3)
+<
+a <b means a is less than b
+x < 4 is True
+x < 3 is False
+>
+a >b means a is greater than b
+x > 2 is True
+x > 3 is False
+<=
+a <=b means a is less than or equal to b
+x <= 4 is True
+x <= 3 is True
+x <= 2 is False
+>=
+a >=b means a is greater than or equal to b
+x >= 2 is True
+x >= 3 is True
+x >= 4 is False
+
+
+
+
+Logical operator
+Description
+a AND b
+Logical AND: True when both of its operands are True.
+a OR b
+Logical OR: True when at least one of its two operands are True.
+NOT a
+Logical NOT: True when its one operand is False, and vice-versa.
+
+
+
+Logical operator	Description
+a and b	Boolean AND: True when both operands are True.
+a or b	Boolean OR: True when at least one operand is True.
+not a	Boolean NOT (opposite): True when the single operand is False (and False when operand is True).
+
+Range	Generated sequence	Explanation
+range(5)		Every integer from 0 to 4.
+	0 1 2 3 4
+range(0, 5)		Every integer from 0 to 4.
+	0 1 2 3 4
+range(3, 7)		Every integer from 3 to 6.
+	3 4 5 6
+range(10, 13)		Every integer from 10 to 12.
+	10 11 12
+range(0, 5, 1)		Every 1 integer from 0 to 4.
+	0 1 2 3 4
+range(0, 5, 2)		Every 2nd integer from 0 to 4.
+	0 2 4
+range(5, 0, -1)		Every 1 integer from 5 down to 1
+	5 4 3 2 1
+range(5, 0, -2)		Every 2nd integer from 5 down to 1
+	5 3 1
+
+
+
+
+Given age = 19, days = 7, user_char = 'q'
+(age > 16) and (age < 25)	True, because both operands are True.
+(age > 16) and (days > 10)	False, because both operands are not True (days > 10 is False).
+(age > 16) or (days > 10)	True, because at least one operand is True (age > 16 is True).
+not (days > 10)	True, because operand is False.
+not (age > 16)	False, because operand is True.
+not (user_char == 'q')	False, because operand is True.
+
+
+
+Operator/Convention 	Description 	Explanation
+( ) 	Items within parentheses are evaluated first 	In  (a * (b + c)) - d, the + is evaluated first, then *, then -.
+* / % + -	Arithmetic operators (using their precedence rules; see earlier section) 	z - 45 * y < 53 evaluates * first, then -, then <.
+<   <=   >   >=   ==   !=	Relational, (in)equality, and membership operators	x < 2 or x >= 10 is evaluated as (x < 2) or (x >= 10)because < and >= have precedence over or.
+not 	not (logical NOT)	not x or y is evaluated as (not x) or y
+and 	Logical AND 	x == 5 or y == 10 and z != 10 is evaluated as (x == 5) or ((y == 10) and (z != 10)) because and has precedence over or.
+or 	Logical OR	  x == 7 or x < 2 is evaluated as (x == 7) or (x < 2)because < and == have precedence over or
+
+
+Syntax	Result	Description
+my_str[10:19]	wikipedia	Gets the characters in indices 10-18.
+my_str[10:-5]	wikipedia.org/wiki/	Gets the characters in indices 10-28.
+my_str[8:]	n.wikipedia.org/wiki/Nasa/	All characters from index 8 until the end of the string.
+my_str[:23]	http://en.wikipedia.org	Every character up to index 23, but not including my_str[23].
+my_str[:-1]	http://en.wikipedia.org/wiki/Nasa	All but the last character.
+
+Alignment type	<format_string>	Output
+Left-aligned	'{name:<16}{goals:<8}'
+		Player Name     Goals
+------------------------
+Sadio Mane      22
+Gabriel Jesus   7
+Right-aligned	'{name:>16}{goals:>8}'
+		     Player Name   Goals
+------------------------
+      Sadio Mane      22
+   Gabriel Jesus       7
+Centered	'{name:^16}{goals:^8}'
+		  Player Name    Goals
+------------------------
+   Sadio Mane      22
+ Gabriel Jesus     7
+
+
+
+Format specification	Value of score	Output
+{score:}	9
+		9
+{score:4}	9
+		   9
+{score:0>4}	9
+		0009
+{score:0>4}	18
+		0018
+{score:0^4}	18
+		0180
+
+
+• find(x) -- Returns the index of the first occurrence of item x in the string, else returns -1. x may be a string variable or string literal. Recall that in a string, the index of the first character is 0, not 1. If my_str is 'Boo Hoo!':
+	○ my_str.find('!')  # Returns 7
+	○ my_str.find('Boo')  # Returns 0
+	○ my_str.find('oo')  # Returns 1 (first occurrence only)
+	○ find(x, start) -- Same as find(x), but begins the search at index start:
+		§ my_str.find('oo', 2)  # Returns 5
+		§ find(x, start, end) -- Same as find(x, start), but stops the search at index end - 1:
+			□ my_str.find('oo', 2, 4)  # Returns -1 (not found)
+			□ rfind(x) -- Same as find(x) but searches the string in reverse, returning the last occurrence in the string.
+			Another useful function is count, which counts the number of times a substring occurs in the string:
+				® count(x) -- Returns the number of times x occurs in the string.
+					◊ my_str.count('oo')  # Returns 2
+
+
+Example	Expression result	Why?
+'Hello' == 'Hello'	True	The strings are exactly identical values
+'Hello' == 'Hello!'	False	The left hand string does not end with '!'
+'Yankee Sierra' > 'Amy Wise'	True	The first character of the left side 'Y' is "greater than" (in ASCII value) the first character of the right side 'A'
+'Yankee Sierra' > 'Yankee Zulu'	False	The characters of both sides match until the second word. The first character of the second word on the left 'S' is not "greater than" (in ASCII value) the first character on the right side 'Z'
+'seph' in 'Joseph'	True	The substring 'seph' can be found starting at the 3rd position of 'Joseph'
+'jo' in 'Joseph'	False	'jo' (with a lowercase 'j') is not in 'Joseph' (with an uppercase 'J')
+
+
+
+• isalnum() -- Returns True if all characters in the string are lowercase or uppercase letters, or the numbers 0-9.
+• isdigit() -- Returns True if all characters are the numbers 0-9.
+• islower() -- Returns True if all cased characters are lowercase letters.
+• isupper() -- Return True if all cased characters are uppercase letters.
+• isspace() -- Return True if all characters are whitespace.
+• startswith(x) -- Return True if the string starts with x.
+• endswith(x) -- Return True if the string ends with x.
+• capitalize() -- Returns a copy of the string with the first character capitalized and the rest lowercased.
+• lower() -- Returns a copy of the string with all characters lowercased.
+• upper() -- Returns a copy of the string with all characters uppercased.
+• strip() -- Returns a copy of the string with leading and trailing whitespace removed.
+• title() -- Returns a copy of the string as a title, with first letters of words capitalized.
+
+
+
+
+'time: %(hour)d:%(min)02d:%(sec)f'%{'hour':11,'min':2,'sec':15.002}
+'time: 11:02:15.002000'
+
+
+
+
+Operation	Description	Example code	Example output
+my_list = [1, 2, 3]	Creates a list.
+		my_list = [1, 2, 3]
+print(my_list)	[1, 2, 3]
+list(iter)	Creates a list.
+		my_list = list('123')
+print(my_list)	['1', '2', '3']
+my_list[index]	Get an element from a list.
+		my_list = [1, 2, 3]
+print(my_list[1])	2
+my_list[start:end]	Get a new list containing some of another list's elements.
+		my_list = [1, 2, 3]
+print(my_list[1:3])	[2, 3]
+my_list1 + my_list2	Get a new list with elements of my_list2 added to end of my_list1.
+		my_list = [1, 2] + [3]
+print(my_list)	[1, 2, 3]
+my_list[i] = x	Change the value of the ith element in-place.
+		my_list = [1, 2, 3]
+my_list[2] = 9
+print(my_list)	[1, 2, 9]
+my_list[len(my_list):] = [x]	Add the elements in [x] to the end of my_list. The append(x) method (explained in another section) may be preferred for clarity.
+		my_list = [1, 2, 3]
+my_list[len(my_list):] = [9]
+print(my_list)	[1, 2, 3, 9]
+del my_list[i]	Delete an element from a list.
+		my_list = [1, 2, 3]
+del my_list[1]
+print(my_list)	[1, 3]
+
+
+
+
+
+List method
+Description
+Code example
+Final my_list value
+Adding elements
+
+
+
+list.append(x)
+Add an item to the end of list.
+my_list = [5, 8]
+my_list.append(16)
+
+[5, 8, 16]
+list.extend([x])
+Add all items in [x] to list.
+my_list = [5, 8]
+my_list.extend([4, 12])
+
+[5, 8, 4, 12]
+list.insert(i, x)
+Insert x into list before position i.
+my_list = [5, 8]
+my_list.insert(1, 1.7)
+
+[5, 1.7, 8]
+Removing elements
+
+
+
+list.remove(x)
+Remove first item from list with value x.
+my_list = [5, 8, 14]
+my_list.remove(8)
+
+[5, 14]
+list.pop()
+Remove and return last item in list.
+my_list = [5, 8, 14]
+val = my_list.pop()
+
+[5, 8]
+
+val is 14
+list.pop(i)
+Remove and return item at position i in list.
+my_list = [5, 8, 14]
+val = my_list.pop(0)
+
+[8, 14]
+
+val is 5
+Modifying elements
+
+
+
+list.sort()
+Sort the items of list in-place.
+my_list = [14, 5, 8]
+my_list.sort()
+
+[5, 8, 14]
+list.reverse()
+Reverse the elements of list in-place.
+my_list = [14, 5, 8]
+my_list.reverse()
+
+[8, 5, 14]
+Miscellaneous
+
+
+
+list.index(x)
+Return index of first item in list with value x.
+my_list = [5, 8, 14]
+print(my_list.index(14))
+Prints "2"
+list.count(x)
+Count the number of times value x is in list.
+my_list = [5, 8, 5, 5, 14]
+print(my_list.count(5))
+Prints "3"
+
+
+
+Function	Description	Example code	Example output
+all(list)	True if every element in list is True (!= 0), or if the list is empty.	print(all([1, 2, 3]))
+		print(all([0, 1, 2]))	True
+False
+any(list)	True if any element in the list is True.	print(any([0, 2]))
+		print(any([0, 0]))	True
+False
+max(list)	Get the maximum element in the list.	print(max([-3, 5, 25]))
+			25
+min(list)	Get the minimum element in the list.	print(min([-3, 5, 25]))
+			-3
+sum(list)	Get the sum of all elements in the list.	print(sum([-3, 5, 25]))
+			27
+
+
+
+
+
+
+Operation	Description	Example code	Example output
+my_list[start:end]	Get a list from start to end (minus 1). 	my_list = [5, 10, 20]
+		print(my_list[0:2])	[5, 10]
+my_list[start:end:stride]	Get a list of every stride element from start to end (minus 1).	my_list = [5, 10, 20, 40, 80]
+		print(my_list[0:5:3])	[5, 40]
+my_list[start:]	Get a list from start to end of the list.	my_list = [5, 10, 20, 40, 80]
+		print(my_list[2:])	[20, 40, 80]
+my_list[:end]	Get a list from beginning of list to end (minus 1).	my_list = [5, 10, 20, 40, 80]
+		print(my_list[:4])	[5, 10, 20, 40]
+my_list[:]	Get a copy of the list.	my_list = [5, 10, 20, 40, 80]
+		print(my_list[:])	[5, 10, 20, 40, 80]
+
+
+
+
+Num	Description	For loop	Equivalent list comprehension	Output of both programs
+1	Add 10 to every element.			[15, 30, 60]
+		my_list =[5,20,50]fori inrange(len(my_list)):my_list[i ]+=10print(my_list)	my_list =[5,20,50]my_list =[(i+10)fori inmy_list]print(my_list)
+2	Convert every element to a string.			['5', '20', '50']
+		my_list =[5,20,50]fori inrange(len(my_list)):my_list[i ]=str(my_list[i ])print(my_list)	my_list =[5,20,50]my_list =[str(i)fori inmy_list]print(my_list)
+3	Convert user input into a list of integers.			Enter numbers: 7 9 3
+		inp =input('Enter numbers:')my_list =[]fori ininp.split():my_list.append(int(i))print(my_list)	inp =input('Enter numbers:')my_list =[int(i)fori ininp.split()]print(my_list)	[7, 9, 3]
+4	Find the sum of each row in a two-dimensional list.			[30, 21, 100]
+		my_list =[[5,10,15],[2,3,16],[100]]sum_list =[]forrow inmy_list:sum_list.append(sum(row))print(sum_list)	my_list =[[5,10,15],[2,3,16],[100]]sum_list =[sum(row)forrow inmy_list]print(sum_list)
+5	Find the sum of the row with the smallest sum in a two-dimensional table.			21
+		my_list =[[5,10,15],[2,3,16],[100]]sum_list =[]forrow inmy_list:sum_list.append(sum(row))min_row =min(sum_list)print(min_row)	my_list =[[5,10,15],[2,3,16],[100]]min_row =min([sum(row)forrow inmy_list])print(min_row)
+
+
+
+
+Operation	Description	Example code
+my_dict[key]	Indexing operation – retrieves the value associated with key.	jose_grade = my_dict['Jose']
+my_dict[key] = value	Adds an entry if the entry does not exist, else modifies the existing entry.	my_dict['Jose'] = 'B+'
+del my_dict[key]	Deletes the key from a dict.	del my_dict['Jose']
+key in my_dict	Tests for existence of key in my_dict.	if 'Jose' in my_dict: # ...
+
+
+
+Dictionary method	Description	Code example	Output
+my_dict.clear()	Removes all items from the dictionary.	my_dict = {'Ahmad': 1, 'Jane': 42}
+		my_dict.clear()	{}
+		print(my_dict)
+my_dict.get(key, default)	Reads the value of the key from the dictionary. If the key does not exist in the dictionary, then returns default.	my_dict = {'Ahmad': 1, 'Jane': 42}
+		print(my_dict.get('Jane', 'N/A'))	42
+N/A
+		print(my_dict.get('Chad', 'N/A'))
+my_dict1.update(my_dict2)	Merges dictionary my_dict1 with another dictionary my_dict2. Existing entries in my_dict1 are overwritten if the same keys exist in my_dict2.	my_dict = {'Ahmad': 1, 'Jane': 42}
+		my_dict.update({'John': 50})	{'Ahmad': 1, 'Jane': 42, 'John': 50}
+		print(my_dict)
+my_dict.pop(key, default)	Removes and returns the key value from the dictionary. If key does not exist, then default is returned.	my_dict = {'Ahmad': 1, 'Jane': 42}
+		val = my_dict.pop('Ahmad')	{'Jane'
+		print(my_dict)
+
+
+
+
+Rich comparison method	Overloaded operator
+__lt__(self, other)	less-than (<)
+__le__(self, other)	less-than or equal-to (<=)
+__gt__(self, other)	greater-than (>)
+__ge__(self, other)	greater-than or equal-to (>=)
+__eq__(self, other)	equal to (==)
+__ne__(self, other)	not-equal to (!=)
+
+
+
+Method	Description
+__add__(self, other)	Add (+)
+__sub__(self, other)	Subtract (-)
+__mul__(self, other)	Multiply (*)
+__truediv__(self, other)	Divide (/)
+__floordiv__(self, other)	Floored division (//)
+__mod__(self, other)	Modulus (%)
+__pow__(self, other)	Exponentiation (**)
+__and__(self, other)	"and" logical operator
+__or__(self, other)	"or" logical operator
+__abs__(self)	Absolute value (abs())
+__int__(self)	Convert to integer (int())
+__float__(self)	Convert to floating point (float())
+
+
+
+Type	Reason exception is raised
+EOFError	input() hits an end-of-file condition (EOF) without reading any input
+KeyError	A dictionary key is not found in the set of keys
+ZeroDivisionError	Divide by zero error
+ValueError	Invalid value (Ex: Input mismatch)
+IndexError	Index out of bounds
+
+
+Description	Example import statement	Using imported names
+Import an entire module	importHTTPServer	print(HTTPServer.address)
+Import specific name from a module	fromHTTPServer importaddress	print(address)
+
+From <https://learn.zybooks.com/zybook/MSTCOMPSCI1500TaylorFall2021/chapter/11/section/3>
+
+Module name 	Description 	Documentation link
+datetime 	Creation and editing of dates and times objects 	https://docs.python.org/3/library/datetime.html
+random 	Functions for working with random numbers 	https://docs.python.org/3/library/random.html
+copy 	Create complete copies of objects 	https://docs.python.org/3/library/copy.html
+time 	Get the current time, convert time zones, sleep for a number of seconds 	https://docs.python.org/3/library/time.html
+math 	Mathematical functions 	https://docs.python.org/3/library/math.html
+os 	Operating system informational and management helpers 	https://docs.python.org/3/library/os.html
+sys 	System specific environment or configuration helpers 	https://docs.python.org/3/library/sys.html
+pdb 	The Python interactive debugger 	https://docs.python.org/3/library/pdb.html
+urllib 	URL handling functions, such as requesting web pages 	https://docs.python.org/3/library/urllib.html
+
+From <https://learn.zybooks.com/zybook/MSTCOMPSCI1500TaylorFall2021/chapter/11/section/7>
+
+
+Mode	Description	Allow read?	Allow write?	Create missing file?	Overwrite file?
+'r'	Open the file for reading.	Yes	No	No	No
+'w'	Open the file for writing. If file does not exist then the file is created. Contents of an existing file are overwritten.	No	Yes	Yes	Yes
+'a'	Open the file for appending. If file does not exist then the file is created. Writes are added to end of existing file contents.	No	Yes	Yes	No
+
+From <https://learn.zybooks.com/zybook/MSTCOMPSCI1500TaylorFall2021/chapter/12/section/2>
+A+ read and write
+
+
+
+
+
+
+
+
+
+
+
+Shape	Description	Documentation
+Rectangle	Draws a rectangle on the canvas.	create_rectangle() method
+Oval	Draws and ellipse on the canvas.	create_oval() method
+Line	Draws a line on the canvas.	create_line() method
+Polygon	Draws a polygon on the canvas.	create_polygon() method
+
+From <https://learn.zybooks.com/zybook/MSTCOMPSCI1500TaylorFall2021/chapter/17/section/1>
+
+Method	Checks that
+assertEqual(a, b)	a==b
+assertNotEqual(a,b)	a!=b
+assertTrue(x)	bool(x)isTrue
+assertFalse(x)	bool(x)isFalse
+assertIs(a, b)	aisb
+assertIsNot(a,b)	aisnotb
+assertIsNone(x)	xisNone
+assertIsNotNone(x)	xisnotNone
+assertIn(a, b)	ainb
+assertNotIn(a, b)	anotinb
+assertAlmostEqual(a, b)	round(a - b, 7) == 0
+assertGreater(a, b)	a > b
+assertGreaterEqual(a, b)	a >= b
+assertLess(a, b)	a < b
+assertLessEqual(a, b)	a <= b
+
+From <https://learn.zybooks.com/zybook/MSTCOMPSCI1500TaylorFall2021/chapter/13/section/6>
+
+
+
+
+Character(s)	Line color/style	Character(s)	Marker style	Character(s)	Marker style
+b	Blue	.	Point marker	1	Tri-down marker
+g	Green	,	Pixel marker	2	Tri-up marker
+r	Red	o	Circle marker	3	Tri-left marker
+w	White	+	Plus marker	4	Tri-right marker
+k	Black	X	X marker	h	Hexagon1 marker
+y	Yellow	v	Triangle-down marker	H	Hexagon2 marker
+m	Magenta	^	Triangle-up marker	D	Diamond marker
+c	Cyan	<	Triangle-left marker	d	Thin diamond marker
+-	Solid line	>	Triangle-right marger	|	Vertical line marker
+--	Dashed line	*	Star marker	_	Horizontal line marker
+-.	Dashed-dot line	p	Pentagon marker	s	Square marker
+:	Dotted line
+
+From <https://learn.zybooks.com/zybook/MSTCOMPSCI1500TaylorFall2021/chapter/15/section/2>
+
+
+
+Property	Possible property values	Description
+alpha	float	alpha compositing enables transparency
+antialiased	Boolean	Enabled anti-aliasing of the line
+color	A matplotlib color	Color of the markers, line
+solid_capstyle	'butt', 'round', or 'projecting'	How the cap of a line appears
+solid_joinstyle	'miter', 'round', or 'bevel'	How the join of a line appears
+data	[x_data, y_data]	The arrays of x and y coordinates
+label	string	The label to use for the line
+linestyle	'-', '--', '-.', ':', ... (see above)	The style of the line
+linewidth	float	The width of the line when drawn.
+marker	'+', ',', '.', '1', '2', ... (see above)	The style of the marker to use
+markersize	float	The size of the marker
+visible	Boolean	Show/hide the line
+
+From <https://learn.zybooks.com/zybook/MSTCOMPSCI1500TaylorFall2021/chapter/15/section/2>
+
+Composite function	Big O notation
+c · O(f(x)) 	O(f(x))
+c + O(f(x)) 	O(f(x))
+g(x) · O(f(x)) 	O(g(x)·O(f(x)))
+g(x) + O(f(x)) 	O(g(x) + O(f(x)))
+
+From <https://learn.zybooks.com/zybook/MSTCOMPSCI1500TaylorFall2021/chapter/16/section/3?content_resource_id=49220546>
+
+Function	N = 10	N = 50	N = 100	N = 1000	N = 10000	N = 100000
+3.3 μs	5.65 μs	6.6 μs	9.9 μs	13.3 μs	16.6 μs
+10 μs	50 μs	100 μs	1000 μs	10 ms	1 s
+.03 ms	.28 ms	.66 ms	.099 s	.132 s	1.66 s
+.1 ms	2.5 ms	10 ms	1 s	100 s	2.7 hours
+1 ms	.125 s 	1 s	16.7 min	11.57 days	31.7 years
+.001 s	35.7 years	*	*	*	*
+
+From <https://learn.zybooks.com/zybook/MSTCOMPSCI1500TaylorFall2021/chapter/16/section/3?content_resource_id=49220546>
+
+
+
+
+Notation	Name	Example Python
+O(1)	Constant	deffind_min(x,y):ifx <y:returnx
+   else:returny
+O(log N)	Logarithmic	defbinary_search(numbers,key):low =0high =len(numbers)-1whilehigh >=low:mid =(high +low)//2ifnumbers[mid]<key:low =mid +1elifnumbers[mid]>key:high =mid -1else:returnmid
+   return-1# not found
+O(N)	Linear	deflinear_search(numbers,key):fori inrange(len(numbers)):ifnumbers[i]==key:returni
+    return-1# not found
+O(N log N)	Log-linear	defmerge_sort(numbers,i,k):ifi <k:j =(i +k)//2# Find midpoint merge_sort(numbers,i,j)# Sort left partmerge_sort(numbers,j +1,k)# Sort right partmerge(numbers,i,j,k)# Merge parts
+O(N
+)	Quadratic	defselection_sort(numbers):fori inrange(len(numbers)):index_smallest =i
+        forj inrange(i +1,len(numbers)):ifnumbers[j]<numbers[index_smallest]:index_smallest =j
+
+        temp =numbers[i]numbers[i]=numbers[index_smallest]numbers[index_smallest]=temp
+O(c
+)	Exponential	deffibonacci(N):if(1==N)or(2==N):returnN
+    returnfibonacci(N-1)+fibonacci(N-2)
+
+From <https://learn.zybooks.com/zybook/MSTCOMPSCI1500TaylorFall2021/chapter/16/section/3?content_resource_id=49220546>
+
+

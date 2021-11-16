@@ -1,0 +1,232 @@
+
+5.4 Counting
+Counting with a while loop
+
+Commonly, a loop should iterate a specific number of times, such as 10 times. The programmer can use a variable to count the number of iterations, called a loop variable. To iterate N times using an integer loop variable i, a loop1 with the following form is used:
+Construct 5.4.1: Counting while loop form.
+
+# Iterating N times using a loop variable
+i = 1
+while i <= N:
+    # Loop body statements go here
+    i = i + 1
+
+A common error is to forget to include the loop variable update (e.g., i = i +1) at the end of the loop, causing an unintended infinite loop.
+
+The following program outputs the amount of money in a savings account each year for the user-entered number of years, with $10,000 initial savings and 5% yearly interest:
+zyDE 5.4.1: While loop that counts iterations: Savings interest program.
+
+
+participation activity
+5.4.1: Savings interest program.
+
+Refer to the program above.
+1)
+With an initial savings of $10000 and interest rate of 0.05, what's the amount of savings at the beginning of year 4? Ignore cents and do not include the dollar sign ($).
+
+2)
+If interest_rate is 3% and initial_savings are $5000, savings will be greater than $7500 after how many loop iterations?
+
+participation activity
+5.4.2: Basic counting with while loops.
+
+Use <= in each answer.
+1)
+Loop iterates 10 times.
+
+i = 1
+while :
+    # Loop body statements go here
+    i = i + 1
+
+2)
+Loop iterates 99 times.
+
+i = 1
+while :
+    # Loop body statements go here
+    i = i + 1
+
+3)
+Loop iterates 2 times.
+
+i = 1
+while :
+    # Loop body statements go here
+    i = i + 1
+
+Other forms of counting
+
+Counting down is also common, as in counting down from 5 to 1. The loop body executes when i is 5, 4, 3, 2, and 1, but does not execute when i reaches 0.
+Figure 5.4.1: While loop with loop variable that counts down.
+
+i = 5
+while i >= 1:
+    # Loop body statements go here
+    i = i - 1
+
+The loop body executes when i is 5, 4, 3, 2, and 1, but does not execute when i reaches 0.
+
+Counting sometimes occurs by steps greater than 1. Ex: A loop that prints even values from 0 to 100 (i.e., counts from 0 to 100 by 2s) is:
+Figure 5.4.2: Loop variable increased by 2 per iteration.
+
+i = 0
+while i <= 100:
+    # Loop body statements go here
+    i = i + 2
+
+zyDE 5.4.2: Loop over presidential election years.
+
+Write a program that prints the U.S. presidential election years from 1792 to present day, knowing that such elections occur every 4 years.
+
+Hint: Initialize your loop variable to 1792. Don't forget to use <= rather than == to help avoid an infinite loop.
+
+participation activity
+5.4.3: Forms of counting.
+
+Complete the missing parts of the code.
+1)
+Loop iterates over the odd integers from 1 to 9 (inclusive).
+
+i = 1
+while i <= 9:
+    # Loop body statements go here
+
+
+2)
+Loop iterates over multiples of 5 from 0 to 1000 (inclusive).
+
+i = 0
+while :
+    # Loop body statements go here
+    i = i + 5
+
+3)
+Loop iterates over the odd integers from 211 down to 31 (inclusive).
+
+i = 211
+while i >= 31:
+    # Loop body statements go here
+
+
+4)
+Loop iterates from -100 to 65.
+
+
+while i <= 65:
+    # Loop body statements go here
+    i = i + 1
+
+participation activity
+5.4.4: Counting in a loop simulator.
+
+The following tool allows you to enter values for a loop's parts, and then executes the loop. Using the tool, try to solve each listed problem individually.
+
+The tool can use any relational or equality operator, such as <, <=, >, >=, ==, etc. Identity and membership operators like "is" or "in" will not work.
+
+    0 to 10,000 by 500s (0, 500, 1000, ...)
+    -19 to 19 by 1s
+    10 to -10 by 1s
+    Multiples of 3 between 0 and 100
+    Powers of 2 from 1 to 256 (1, 2, 4, 8, ...)
+    Come up with your own challenges
+
+
+
+
+i =
+while i  :
+   print(i, end=' ')
+   i = i
+
+
+
+Output is: Awaiting your input...
+zyDE 5.4.3: Calculate a factorial.
+
+Write a program that lets a user enter N and that outputs N! (N factorial, meaning N*(N-1)*(N-2)*...*2*1). Hint:Use a loop variable i that counts from total-1 down to 1. Compare your output with some of these answers: 1:1, 2:2, 3:6, 4:24, 5:120, 8:40320.
+
+
+Shorthand operators
+
+Because assignments such as i = i + 1 are so common in programs, the programming language provides a shorthand version: i += 1. Similar operators include +=, -=, *=, and /=. For example, num *= x is shorthand for num = num * x. The item on the right can be an expression, so num *= x + y is shorthand for num = num * (x + y). Usage of such operators is common in loops.
+Construct 5.4.2: Operators like += are common in loops.
+
+i = 0
+while i < N:
+    # Loop body statements go here
+    i += 1
+
+participation activity
+5.4.5: Shorthand operators.
+
+Answer each question using the operators of the form +=, *=, /=, -=, etc.
+1)
+Write a statement using *= that doubles the value of a variable my_var.
+
+2)
+Write a statement using += that is equivalent to
+my_var = my_var + my_var / 2
+
+challenge activity
+5.4.1: Loops with variables that count.
+343716.2144758.qx3zqy7
+
+Type the program's output
+n = 1
+while n < 6:
+    print(n - 2)
+    n = n + 1
+
+1
+2
+3
+4
+1
+2
+3
+4
+challenge activity
+5.4.2: While loop: Print 1 to N.
+Write a while loop that prints from 1 to user_num, increasing by 1 each time.
+
+Sample output with input: 4
+
+1
+2
+3
+4
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+5.4.3: Printing output using a counter.
+Retype or copy, and then run the following code; note incorrect behavior. Then fix errors in the code, which should print num_stars asterisks.
+
+while num_printed != num_stars:
+    print('*')
+
+Sample output with input: 3
+
+*
+*
+*
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+
+(*1) Focus is placed on mastering basic looping using while loops, before introducing for loops and range().
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+5.5 For loops

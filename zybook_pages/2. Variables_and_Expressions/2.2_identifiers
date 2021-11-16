@@ -1,0 +1,75 @@
+
+2.2 Identifiers
+Rules for identifiers
+
+A programmer gives names to various items, such as variables (and also functions, described later). For example, x = 5 uses the name "x" to refer to the value 5. An identifier, also called a name, is a sequence of letters (a-z, A-Z), underscores (_), and digits (0–9), and must start with a letter or an underscore.
+
+Python is case sensitive, meaning upper- and lowercase letters differ. Ex: "Cat" and "cat" are different. The following are valid names: c, cat, Cat, n1m1, short1, and _hello. The following are invalid names: 42c (doesn't start with a letter or underscore), hi there (has a space), and cat$ (has a symbol other than a letter, digit, or underscore).
+
+Names that start and end with double underscores (for example, __init__) are allowed but should be avoided because Python has special usages for double underscore names, explained elsewhere. A good variable name should describe the purpose of the variable, such as "temperature" or "age," rather than just "t" or "A."
+
+Certain words like "and" or "True" cannot be used as names. Reserved words, or keywords, are words that are part of the language, and thus, cannot be used as a programmer-defined name. Many language editors will automatically color a program's reserved words. A list of reserved words appears at the end of this section.
+participation activity
+2.2.1: Valid names.
+
+Which of the following are valid names?
+1)
+numCars
+2)
+num_cars1
+3)
+_num_cars
+4)
+___numcars2
+5)
+num cars
+6)
+3rd_place
+7)
+third_place_
+8)
+third_place!
+9)
+output
+10)
+return_copy
+Style guidelines for identifiers
+
+A good practice when naming variables is to use all lowercase letters and to place underscores between words. This lowercase and underscore convention for naming variables originates from the Python style guide, PEP 8. PEP 8 (PEP is an acronym for Python Enhancement Proposal) is a document that outlines the basics of how to write Python code neatly and consistently. Code is read more often than written, so having a consistent variable naming scheme helps to ensure that programmers can understand each other's code.
+
+Programmers should create meaningful names that describe an item's purpose. If a variable will store a person's age, then a name like "age" is better than "a". A good practice when dealing with scientific or engineering names is to append the unit of measure, for example, instead of temperature, use temperature_celsius. Abbreviations should only be used if widely understandable, as in tv_model or ios_app. While meaningful names are important, very long variable names, such as "average_age_of_a_UCLA_graduate_student," can make subsequent statements too long and thus hard to read, so programmers find a balance between meaningful names and short names. Below are some examples of names that perhaps are less meaningful and more meaningful.
+Table 2.2.1: Use meaningful variable names.
+Purpose 	Less meaningful names 	More meaningful names
+The number of students attending UCLA 	ucla
+num
+nu 	num_students_UCLA
+The size of a television set measured as its diagonal length 	sz_tv
+size 	diagonal_tv_size_inches
+The word for the ratio of a circle's circumference/diameter 	p 	pi
+The number of jelly beans in a jar, as guessed by a user 	guess
+num
+njb 	num_guessed_jelly_beans
+user_guess_jelly_beans
+
+A list of reserved keywords in the language are shown below:
+Table 2.2.2: Python 3 reserved keywords.
+
+False      await      else       import     pass
+None       break      except     in         raise
+True       class      finally    is         return
+and        continue   for        lambda     try
+as         def        from       nonlocal   while
+assert     del        global     not        with
+async      elif       if         or         yield
+
+Source: http://docs.python.org/3/reference/lexical_analysis.html
+participation activity
+2.2.2: Python 3 name validator.
+Use the tool below to test valid and invalid names.
+Enter an identifier:
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+2.3 Objects

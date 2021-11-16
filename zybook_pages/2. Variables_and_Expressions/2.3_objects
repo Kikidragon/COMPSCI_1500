@@ -1,0 +1,144 @@
+
+2.3 Objects
+Objects
+
+The Python interpreter is a program that runs on a computer, just like an Internet browser or a text editor. Instead of displaying a web page or creating a document, the purpose of the interpreter is to run Python programs. An object represents a value and is automatically created by the interpreter when executing a line of code. For example, executing x = 4 creates a new object to represent the value 4. A programmer does not explicitly create objects; instead, the interpreter creates and manipulates objects as needed to run the Python code. Objects are used to represent everything in a Python program, including integers, strings, functions, lists, etc.
+
+The animation below shows some objects being created while executing Python code statements in an interactive Python interpreter. The interpreter assigns an object to a location somewhere in memory automatically.
+participation activity
+2.3.1: Creating new objects.
+Interpreter
+Memory
+96
+97
+98
+99
+>>>
+|
+print(2 + 2)
+2 + 2
+4
+4
+>>>
+x = 7
+x
+7
+>>>
+print(x)
+7
+>>>
+Captions
+
+    The interpreter creates a new object with the value 4. The object is stored somewhere in memory.
+    Once 4 is printed, the object is no longer needed and is thrown away.
+    New object created: 'x' references object stored in address 98.
+    Objects are retrieved from memory when needed.
+
+Above, the interpreter performs an addition of 2+2, resulting in a new object being created with a value of 4. Once 4 is printed the object is no longer needed, so the object is automatically deleted from memory and thrown away. Deleting unused objects is an automatic process called garbage collection that helps to keep the memory of the computer less utilized.
+Name binding
+Name binding is the process of associating names with interpreter objects. An object can have more than one name bound to it, and every name is always bound to exactly one object. Name binding occurs whenever an assignment statement is executed, as demonstrated below.
+participation activity
+2.3.2: Manipulating variables.
+
+bob_salary = 25000
+tom_salary = 30000
+bob_salary = tom_salary
+tom_salary = tom_salary * 1.2
+total_salaries = bob_salary + tom_salary
+
+
+file.py
+Interpreter
+Names
+Objects
+bob_salary
+25000
+tom_salary
+30000
+bob_salary = 25000
+tom_salary = 30000
+bob_salary = tom_salary
+tom_salary = tom_salary * 1.2
+30000
+* 1.2
+36000
+total_salaries = bob_salary + tom_salary
+30000
+36000
+66000
+total_salaries
+Captions
+
+    bob_salary object is created by the interpreter.
+    tom_salary object is created by the interpreter.
+    bob_salary is assigned tom_salary, and the 25000 object is garbage collected.
+    tom_salary is assigned tom_salary * 1.2.
+    total_salaries object is created by the interpreter and is assigned bob_salary + tom_salary
+
+Properties of objects
+
+Each Python object has three defining properties: value, type, and identity.
+
+    Value: A value such as "20", "abcdef", or 55.
+    Type: The type of the object, such as integer or string.
+    Identity: A unique identifier that describes the object.
+
+The value of an object is the data associated with the object. For example, evaluating the expression 2 + 2 creates a new object whose value is 4. The value of an object can generally be examined by printing that object.
+Figure 2.3.1: Printing displays an object's value.
+
+x = 2 + 2    # Create a new object with a value of 4, referenced by 'x'.
+print(x)     # Print the value of the object.
+print(5)
+
+
+
+4
+5
+
+The type of an object determines the object's supported behavior. For example, integers can be added and multiplied, while strings can be appended with additional text or concatenated together. An object's type never changes once created. The built-in function type() returns the type of an object.
+
+The type of an object also determines the mutability of an object. Mutability indicates whether the object's value is allowed to be changed. Integers and strings are immutable; modifying their values with assignment statements results in new objects being created and the names bound to the new object.
+Figure 2.3.2: Using type() to print an object's type.
+
+x = 2 + 2           # Create a new object with a value of 4, referenced by 'x'.
+print(type(x))      # Print the type of the object.
+
+print(type('ABC'))  # Create and print the type of a string object.
+
+
+
+<class 'int'>
+<class 'str'>
+
+The identity of an object is a unique numeric identifier, such as 1, 500, or 505534. Only one object at any time may have a particular identifier. The identity normally refers to the memory address where the object is stored. Python provides a built-in function id() that gives the value of an object's identity.
+Figure 2.3.3: Using id() to print an object's identity.
+
+x = 2 + 2           # Create a new object with a value of 4, referenced by 'x'
+print(id(x))        # Print the identity (memory address) of the x object
+
+print(id('ABC'))    # Create and print the identity of a string ('ABC') object
+
+
+
+1752608
+2330312
+
+zyDE 2.3.1: Experimenting with objects.
+
+Run the following code and observe the results of str(), type(), and id(). Create a new object called "age" that has a value of 19, and then print the id and type of the new object.
+
+
+participation activity
+2.3.3: Objects basics.
+1)
+Which built-in function finds the type of an object?
+
+2)
+Write an expression that gives the identity of the variable num.
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+2.4 Numeric types: Floating-point

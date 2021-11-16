@@ -1,0 +1,117 @@
+
+3.8 Type conversions
+Type conversions
+
+A calculation sometimes must mix integer and floating-point numbers. For example, given that about 50.4% of human births are males, then 0.504 * num_births calculates the number of expected males in num_births births. If num_births is an integer type, then the expression combines a floating-point and integer.
+
+A type conversion is a conversion of one type to another, such as an int to a float. An implicit conversion is a type conversion automatically made by the interpreter, usually between numeric types. For example, the result of an arithmetic operation like + or * will be a float only if either operand of the operation is a float.
+
+    1 + 2 returns an integer type.
+    1 + 2.0 returns a float type.
+    1.0 + 2.0 returns a float type.
+
+int-to-float conversion is straightforward: 25 becomes 25.0.
+
+float-to-int conversion just drops the fraction: 4.9 becomes 4.
+participation activity
+3.8.1: Implicit conversions between float and int.
+
+Type the value held in the variable after the assignment statement, given:
+
+    num_items = 5
+    item_weight = 0.5
+
+For any floating-point answer, type answer to tenths. Ex: 8.0, 6.5, or 0.1
+1)
+num_items + num_items
+
+2)
+item_weight * num_items
+
+3)
+(num_items + num_items) * item_weight
+
+Conversion functions
+
+Sometimes a programmer needs to explicitly convert an item's type. Conversion can be explicitly performed using the below conversion functions:
+Table 3.8.1: Conversion functions for some common types.
+Function 	Notes 	Can convert:
+int() 	Creates integers 	int, float, strings w/ integers only
+float() 	Creates floats 	int, float, strings w/ integers or fractions
+str() 	Creates strings 	Any
+
+Converting a float to an int will truncate the floating-point number's fraction. For example, the variable temperature might have a value of 18.75232, but can be converted to an integer expression int(temperature). The result would have the value 18, with the fractional part removed.
+
+Conversion of types is very common. In fact, all user input obtained using input() is initially a string and a programmer must explicitly convert the input to a numeric type.
+
+Strings can also be converted to numeric types, if the strings follow the correct formatting, i.e. using only numbers and possibly a decimal point. For example, int('500') yields an integer with a value of 500, and float('1.75') yields the floating-point value 1.75.
+zyDE 3.8.1: Simple example of converting float and int types.
+
+Run the below program. Observe how the type conversion affects the entered number. Change the input to 18.552 and run the program again.
+
+
+participation activity
+3.8.2: Type conversions.
+
+What is the result of each expression?
+1)
+int(1.55)
+2)
+float("7.99")
+3)
+str(99)
+challenge activity
+3.8.1: Type conversions.
+343716.2144758.qx3zqy7
+
+Type the program's output
+number = 2
+new_number = number * 1
+print(new_number)
+
+1
+2
+3
+4
+5
+6
+1
+2
+3
+4
+5
+6
+challenge activity
+3.8.2: Type casting: Computing average owls per zoo.
+Assign avg_owls with the average owls per zoo. Print avg_owls as an integer.
+
+Sample output for inputs: 1 2 4
+
+Average owls per zoo: 2
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+3.8.3: Type casting: Reading and adding values.
+Assign total_owls with the sum of num_owls_A and num_owls_B.
+
+Sample output with inputs: 3 4
+
+Number of owls: 7
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+3.9 Binary numbers

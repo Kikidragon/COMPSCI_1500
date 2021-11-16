@@ -1,0 +1,83 @@
+
+5.7 While vs. for loops
+While loop and for loop correspondence
+
+Both for loops and while loops can be used to count a specific number of loop iterations. A for loop combined with range() is generally preferred over while loops, since for loops are less likely to become stuck in an infinite loop situation. A programmer may easily forget to increment a while loop's variable (causing an infinite loop), but for loops iterate over a finite number of elements in a container and are thus guaranteed to complete.
+participation activity
+5.7.1: While/for loop correspondence.
+
+i = 0
+while i < 100 :
+   # Loop body statements
+   i += 1
+
+
+for
+
+
+in
+
+
+range(
+
+
+i
+
+
+# Loop body statements
+
+
+):
+
+
+0,
+
+
+100,
+
+
+1
+
+
+i = 0
+while
+i < 100
+:
+#Loop body statements
+i += 1
+for
+in range(
+#Loop body statements
+):
+i
+0,
+100,
+1
+Captions
+
+    A for loop and range function can replace a while loop.
+    A more concise for loop uses a single argument for range().
+
+As a general rule:
+
+    Use a for loop when the number of iterations is computable before entering the loop, as when counting down from X to 0, printing a string N times, etc.
+    Use a for loop when accessing the elements of a container, as when adding 1 to every element in a list, or printing the key of every entry in a dict, etc.
+    Use a while loop when the number of iterations is not computable before entering the loop, as when iterating until a user enters a particular character.
+
+These are not hard rules, just general guidelines.
+participation activity
+5.7.2: While loops and for loops.
+
+Indicate whether a while loop or for loop should be used in the following scenarios:
+1)
+Iterate as long as the user-entered string c is not q.
+2)
+Iterate until the values of x and y are equal, where x and y are changed in the loop body.
+3)
+Iterate 1500 times
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+5.8 Nested loops

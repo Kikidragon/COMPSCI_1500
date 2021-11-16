@@ -1,0 +1,251 @@
+
+3.4 Set basics
+Set basics
+A set is an unordered collection of unique elements. Sets have the following properties:
+
+    Elements are unordered: Elements in the set do not have a position or index.
+    Elements are unique: No elements in the set share the same value.
+
+A set can be created using the set() function, which accepts a sequence-type iterable object (list, tuple, string, etc.) whose elements are inserted into the set. A set literal can be written using curly braces { } with commas separating set elements. Note that an empty set can only be created using set().
+Figure 3.4.1: Creating sets.
+
+# Create a set using the set() function.
+nums1 = set([1, 2, 3])
+
+# Create a set using a set literal.
+nums2 = { 7, 8, 9 }
+
+# Print the contents of the sets.
+print(nums1)
+print(nums2)
+
+
+
+{1, 2, 3}
+{7, 8, 9}
+
+Because the elements of a set are unordered and have no meaningful position in the collection, the index operator is not valid. Attempting to access the element of a set by position, for example nums1[2] to access the element at index 2, is invalid and will produce a runtime error.
+
+A set is often used to reduce a list of items that potentially contains duplicates into a collection of unique values. Simply passing a list into set() will cause any duplicates to be omitted in the created set.
+zyDE 3.4.1: Creating sets.
+
+
+participation activity
+3.4.1: Basic sets.
+1)
+What's the result of set(['A', 'Z'])?
+2)
+What's the result of set(10, 20, 25)?
+3)
+What's the result of set([100, 200, 100, 200, 300])?
+Modifying sets
+
+Sets are mutable – elements can be added or removed using set methods. The add() method places a new element into the set if the set does not contain an element with the provided value. The remove() and pop() methods remove an element from the set.
+
+Additionally, sets support the len() function to return the number of elements in a set. To check if a specific value exists in a set, a membership test such as value in set (discussed in another section) can be used.
+
+Adding elements to a set:
+
+    set.add(value): Add value into the set. Ex: my_set.add('abc')
+
+Remove elements from a set:
+
+    set.remove(value): Remove the element with given value from the set. Raises KeyError if value is not found. Ex: my_set.remove('abc')
+    set.pop(): Remove a random element from the set. Ex: my_set.pop()
+
+Table 3.4.1: Some of the methods useful to sets.
+Operation 	Description
+len(set) 	Find the length (number of elements) of the set.
+set1.update(set2) 	Adds the elements in set2 to set1.
+set.add(value) 	Adds value into the set.
+set.remove(value) 	Removes value from the set. Raises KeyError if value is not found.
+set.pop() 	Removes a random element from the set.
+set.clear() 	Clears all elements from the set.
+participation activity
+3.4.2: Modifying sets.
+
+# Create sets
+names1 = {'Pedro', 'Khan', 'Dean'}
+names2 = {'Emilia', 'Kara', 'Tia'}
+
+# Add element to set
+names1.add('Hyungu')
+
+# Add names2 to names1
+names1.update(names2)
+
+# Remove element from set
+names1.remove('Dean')
+
+# Clear all elements from set
+names2.clear()
+
+
+names1
+Khan
+Dean
+Pedro
+Hyungu
+names2
+Tia
+Kara
+Emilia
+Tia
+Kara
+Emilia
+Captions
+
+    Sets can be created using braces {} with commas separating the elements.
+    The add() method adds a single element to a set.
+    The update() method adds the elements of one set to another set.
+    The remove() method removes a single element from a set.
+    The clear() method removes all elements from a set, leaving the set with a length of 0.
+
+participation activity
+3.4.3: Modifying sets.
+
+Write a line of code to complete the following operations.
+1)
+Add the literal 'Ryder' to the set names.
+
+2)
+Add all of the elements of set goblins into set monsters.
+
+3)
+Remove all of the elements from the trolls set.
+
+4)
+Get the number of elements in the set elves.
+
+challenge activity
+3.4.1: Creating and modifying sets.
+
+The top 3 most popular male names of 2017 are Oliver, Declan, and Henry according to babynames.com.
+
+Write a program that modifies the male_names set by removing a name and adding a different name.
+
+Sample output with inputs: 'Oliver' 'Atlas'
+
+{ 'Atlas', 'Declan', 'Henry' }
+
+NOTE: Because sets are unordered, the order in which the names in male_names appear may differ from above.
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+Set operations
+Python set objects support typical set theory operations like intersections and unions. A brief overview of common set operations supported in Python are provided below:
+Table 3.4.2: Common set theory operations.
+.
+Operation 	Description
+set.intersection(set_a, set_b, set_c...) 	Returns a new set containing only the elements in common between set and all provided sets.
+set.union(set_a, set_b, set_c...) 	Returns a new set containing all of the unique elements in all sets.
+set.difference(set_a, set_b, set_c...) 	Returns a set containing only the elements of set that are not found in any of the provided sets.
+set_a.symmetric_difference(set_b) 	Returns a set containing only elements that appear in exactly one of set_a or set_b
+participation activity
+3.4.4: Set theory operations.
+
+# Create sets
+names1 = {'Corrin', 'Pedro', 'Khan', 'Dean'}
+names2 = {'Emilia', 'Kara', 'Corrin', 'Tia'}
+names3 = {'Karat', 'Kara', 'Karah', 'Khan'}
+names4 = {'Khan', 'Dean', 'Pascale'}
+
+# Union names1 and names2
+result_set = names1.union(names2)
+
+# Intersection btwn result_set and names3
+result_set = result_set.intersection(names3)
+
+# Difference btwn result_set and names4
+result_set = result_set.difference(names4)
+
+
+names1
+Khan
+Dean
+Pedro
+Corrin
+result_set
+names3
+Kara
+Karah
+Karat
+Khan
+names4
+Pascale
+Khan
+Dean
+Khan
+Dean
+Pedro
+Corrin
+Tia
+Kara
+Emilia
+names2
+Tia
+Kara
+Corrin
+Emilia
+Captions
+
+    The union() method builds a set containing the unique elements from names1 and names2. 'Corrin' only appears once in the resulting set.
+    The intersection() method builds a set that contains all common elements between result_set and names3.
+    The difference() method builds a set that contains elements only found in result_set that are not in names4.
+
+participation activity
+3.4.5: Set theory operations.
+
+Assume that:
+
+    monsters = {'Gorgon', 'Medusa'}
+    trolls = {'William', 'Bert', 'Tom'}
+    horde = {'Gorgon', 'Bert', 'Tom'}
+
+Fill in the code to complete the line that would produce the given set.
+
+1)
+{'Gorgon', 'Bert', 'Tom', 'Medusa', 'William'}
+
+monsters.(trolls)
+
+2)
+{'Gorgon'}
+
+monsters.(horde)
+
+3)
+{'Medusa', 'Bert', 'Tom'}
+
+monsters.symmetric_difference()
+
+challenge activity
+3.4.2: Set theory methods.
+
+The following program includes fictional sets of the top 10 male and female baby names for the current year. Write a program that creates:
+
+    A set all_names that contains all of the top 10 male and all of the top 10 female names.
+    A set neutral_names that contains only names found in both male_names and female_names.
+    A set specific_names that contains only gender specific names.
+
+Sample output for all_names:
+
+{'Michael', 'Henry', 'Jayden', 'Bailey', 'Lucas', 'Chuck', 'Aiden', 'Khloe', 'Elizabeth', 'Maria', 'Veronica', 'Meghan', 'John', 'Samuel', 'Britney', 'Charlie', 'Kim'}
+
+NOTE: Because sets are unordered, they are printed using the sorted() function here for comparison.
+
+343716.2144758.qx3zqy7
+
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+3.5 Dictionary basics

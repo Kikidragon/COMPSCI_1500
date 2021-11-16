@@ -1,0 +1,144 @@
+
+2.4 Numeric types: Floating-point
+Floating-point numbers and scientific notation
+
+A floating-point number is a real number, like 98.6, 0.0001, or -666.667. The term "floating-point" refers to the decimal point being able to appear anywhere ("float") in the number. Thus, float is a data type for floating-point numbers.
+
+A floating-point literal is written with the fractional part even if that fraction is 0, as in 1.0, 0.0, or 99.0.
+Figure 2.4.1: A program using float-type variables.
+
+The below program reads in a floating-point value from a user and calculates the time to drive and fly the distance. Note the use of the built-in function float() when reading the input to convert the input string into a float.
+
+Note that print handles floating-point numbers straightforwardly.
+
+miles = float(input('Enter a distance in miles: '))
+hours_to_fly = miles / 500.0
+hours_to_drive = miles / 60.0
+
+print(miles, 'miles would take:')
+print(hours_to_fly, 'hours to fly')
+print(hours_to_drive, 'hours to drive')
+
+
+
+Enter a distance in miles: 450
+450.0 miles would take:
+0.9 hours to fly
+7.5 hours to drive
+...
+Enter a distance in miles: 1800
+1800.0 miles would take:
+3.6 hours to fly
+30.0 hours to drive
+
+Scientific notation is useful for representing floating-point numbers that are much greater than or much less than 0, such as 6.02x1023. A floating-point literal using scientific notation is written using an e preceding the power-of-10 exponent, as in 6.02e23 to represent 6.02x1023. The e stands for exponent. Likewise, 0.001 is 1x10-3, so it can be written as 1.0e-3.
+participation activity
+2.4.1: Scientific notation.
+1)
+Type 1.0e-4 as a floating-point literal but not using scientific notation, with a single digit before and four digits after the decimal point.
+
+2)
+Type 7.2e-4 as a floating-point literal but not using scientific notation, with a single digit before and five digits after the decimal point.
+
+3)
+Type 540,000,000 as a floating-point literal using scientific notation with a single digit before and after the decimal point.
+
+4)
+Type 0.000001 as a floating-point literal using scientific notation with a single digit before and after the decimal point.
+
+5)
+Type 623.596 as a floating-point literal using scientific notation with a single digit before and five digits after the decimal point.
+
+zyDE 2.4.1: Energy to mass conversion.
+
+Albert Einstein's equation E = mc2 is likely the most widely known mathematical formula. The equation describes the mass-energy equivalence, which states that the mass (amount of matter) m of a body is directly related to the amount of energy E of the body, connected via a constant value c2, the speed of light squared. The significance of the equation is that matter can be converted to energy, (and theoretically, energy back to matter). The mass-energy equivalence equation can be used to calculate the energy released in nuclear reactions, such as nuclear fission or nuclear fusion, which form the basis of modern technologies like nuclear weapons and nuclear power plants.
+
+The following program reads in a mass in kilograms and prints the amount of energy stored in the mass. Also printed is the equivalent numbers of AA batteries and tons of TNT.
+
+
+Overflow
+
+Float-type objects have a limited range of values that can be represented. For a standard 32-bit installation of Python, the maximum floating-point value is approximately 1.8x10308, and the minimum floating-point value is 2.3x10-308. Assigning a floating-point value outside of this range generates an OverflowError. Overflow occurs when a value is too large to be stored in the memory allocated by the interpreter. For example, the program in the figure below tries to store the value 2.01024, which causes an overflow error.
+
+In general, floating-point types should be used to represent quantities that are measured, such as distances, temperatures, volumes, and weights, whereas integer types should be used to represent quantities that are counted, such as numbers of cars, students, cities, hours, and minutes.
+Figure 2.4.2: Float can overflow.
+
+print('2.0 to the power of 256 =', 2.0**256)
+print('2.0 to the power of 512 = ', 2.0**512)
+print('2.0 to the power of 1024 = ', 2.0**1024)
+
+
+
+2.0 to the power of 256 = 1.15792089237e+77
+2.0 to the power of 512 =  1.34078079299e+154
+2.0 to the power of 1024 =
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+OverflowError: (34, 'Result too large')
+
+participation activity
+2.4.2: Floating-point versus integer.
+
+Choose the right type for a variable to represent each item.
+1)
+The number of cars in a parking lot.
+2)
+The current temperature in Celsius.
+3)
+A person's height in centimeters.
+4)
+The number of hairs on a person's head.
+5)
+The average number of kids per household.
+Manipulating floating-point output
+
+Some floating-point numbers have many digits after the decimal point. Ex: Irrational numbers (Ex: 3.14159265359...) and repeating decimals (Ex: 4.33333333...) have an infinite number of digits after the decimal. By default, most programming languages output at least 5 digits after the decimal point. But for many simple programs, this level of detail is not necessary. A common approach is to output floating-point numbers with a specific number of digits after the decimal to reduce complexity or produce a certain numerical type (Ex: Representing currency with two digits after the decimal). The syntax for outputting the float myFloat with two digits after the decimal point is
+print('{:.2f}'.format(myFloat))
+
+When outputting a certain number of digits after the decimal using print(), Python rounds the last output digit, but the floating-point value remains the same. Manipulating how numbers are output is discussed in detail elsewhere.
+participation activity
+2.4.3: Reducing the output of Pi.
+
+import math
+
+print('Default output of Pi:',  math.pi)
+print('Pi reduced to 4 digits after the decimal:', end=' ')
+print('{:.4f}'.format(math.pi))
+
+
+Pi reduced to 4 digits after the decimal: 3.1416
+Default output of Pi: 3.141592653589793
+3.141592653589793...
+Captions
+
+    The mathematical constant Pi (π) is irrational, a floating-point number whose digits after the decimal point are infinite and non-repeating. The math module defines the constant pi with the value of Pi.
+    Though Python does not attempt to output the full value of Pi, by default, 15 digits after the decimal are output.
+    print('{:.4f}'.format(math.pi)) outputs Pi to only four digits after the decimal. The last digit is rounded up in the output, but the value of Pi remains the same.
+
+participation activity
+2.4.4: Reducing floating-point output.
+1)
+Which of the following arguments completes print() to output two digits after the decimal point?
+print(_____.format(7.0 / 3.0))
+2)
+What is output by print('{:.1f}'.format(0.125))?
+3)
+What is output by print('{:.3f}'.format(9.1357))?
+challenge activity
+2.4.1: Gallons of paint needed to paint walls.
+Finish the program to compute how many gallons of paint are needed to cover the given square feet of walls. Assume 1 gallon can cover 350.0 square feet. So gallons = the square feet divided by 350.0. If the input is 250.0, the output should be:
+
+0.714285714286
+
+Note: Do not format the output.
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+2.5 Arithmetic expressions

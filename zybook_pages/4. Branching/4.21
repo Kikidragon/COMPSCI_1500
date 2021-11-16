@@ -1,0 +1,14 @@
+
+4.21 LAB: Longest string
+
+Write a program that takes in two strings and returns the longest string. If they are the same length then return the second string.
+
+Ex. If the input is:
+
+almond
+pistachio
+
+the output is:
+
+pistachio
+

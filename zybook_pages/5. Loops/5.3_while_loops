@@ -1,0 +1,133 @@
+
+5.3 More while examples
+Example: GCD
+
+The following is an example of using a loop to compute a mathematical quantity. The program computes the greatest common divisor (GCD) among two user-entered integers num_a and num_b, using Euclid's algorithm: If num_a > num_b, set num_a to num_a - num_b, else set num_b to num_b - num_a. Repeat until num_a equals num_b, at which point num_a and num_b both equal the GCD.
+zyDE 5.3.1: While loop example: GCD program.
+
+Try running the program below that calculates the greatest common divisor (GCD) of two positive integers.
+
+
+participation activity
+5.3.1: Loop example: Greatest common divisor.
+
+Use input values of num_a = 15 and num_b = 10 in the above GCD program. Try to answer the questions by mentally executing the statements. If stuck, consider adding additional print statements to the program.
+1)
+What is the value of num_a before the first loop iteration?
+
+2)
+What is num_a after the first and before the second iteration?
+
+3)
+What is num_b after the second and before the third iteration?
+
+4)
+How many loop iterations will the algorithm execute?
+
+Example: Conversation
+
+Below is a program that has a "conversation" with the user. The program asks the user to type something and then randomly prints one of four possible responses until the user enters "Goodbye". Note that the first few lines of the program represent a docstring: a multi-line string literal delimited at the beginning and end by triple-quotes. Either single ' or double " quotes can be used.
+zyDE 5.3.2: While loop example: Conversation.
+
+Run the program below. Try adding additional conditions to leave the conversation, such as "See you later". Program input must end with the string 'Goodbye'.
+
+
+Each time through the while loop, the program will check if the user-entered string user_text is equal to the string literal "Goodbye". If the two strings are not equal, the while loop body executes. Within the while loop body, the program obtains a random number between 0 and 2 by using the random library. The randint() function provides a new random number each time the function is called. The arguments to randint(), 0 and 2, provide the minimum and maximum values that the function may return. Using the number given by randint(), the program's elif statements branch to a particular response.
+participation activity
+5.3.2: Conversation program.
+
+Refer to the above conversation program. If appropriate, type: unknown
+1)
+Which if-else branch will execute if the user types "Goodbye"?
+Valid answers are branch 0, 1, 2 or none.
+
+2)
+How many times does the loop iterate in the program?
+
+3)
+Write an expression using random.randint() that returns a number between 0 and 5, inclusive.
+
+Example: Getting input until a sentinel is seen
+
+Loops are commonly used to process a series of input values. A sentinel value is used to terminate a loop's processing. The example below computes the average of an input list of positive integers, ending with 0. The 0 is not included in the average.
+zyDE 5.3.3: Computing average of a list with a sentinel.
+
+participation activity
+5.3.3: Average example with a sentinel.
+
+Consider the example above and the given example input sequence 10 1 6 3 0.
+1)
+How many actual (non-sentinel) values are given in the first input sequence?
+2)
+For the given input sequence, what is the final value of num_values?
+3)
+Suppose the first input was 0. Would values_sum / num_values be 0?
+4)
+What would happen if the following list was input: 10 1 6 3 -1?
+challenge activity
+5.3.1: While loop with sentinel.
+343716.2144758.qx3zqy7
+
+Type the program's output
+entered_value = int(input())
+
+max_value = entered_value
+
+while entered_value > 0:
+    if entered_value > max_value:
+        max_value = entered_value
+    entered_value = int(input())
+
+print('Max value:', max_value, end='')
+
+Input
+6
+7
+4
+9
+2
+0
+Output
+1
+2
+3
+1
+2
+3
+challenge activity
+5.3.2: Bidding example.
+Write an expression that continues to bid until the user enters 'n'.
+
+Sample output with inputs: 'y' 'y' 'n'
+
+I'll bid $7!
+Continue bidding? I'll bid $15!
+Continue bidding? I'll bid $23!
+Continue bidding?
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+5.3.3: While loop: Insect growth.
+Given positive integer num_insects, write a while loop that prints, then doubles, num_insects each iteration. Print values ≤ 100. Follow each number with a space.
+
+Sample output with input: 8
+
+8 16 32 64
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+5.4 Counting

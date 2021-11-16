@@ -1,0 +1,19 @@
+
+2.20 LAB: Pizza party
+
+Given the number of people attending a pizza party, output the number of needed pizzas and total cost. For the calculation, assume that people eat 2 slices on average and each pizza has 12 slices and costs $14.95.
+
+Output each floating-point value with two digits after the decimal point, which can be achieved as follows:
+print('Cost: ${:.2f}'.format(cost))
+
+Hint: Use the ceil() function from the math module to round up the number of pizzas so that enough pizzas are ordered.
+
+Ex: If the input is:
+
+4
+
+the output is:
+
+Pizzas: 1
+Cost: $14.95
+

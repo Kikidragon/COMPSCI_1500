@@ -1,0 +1,17 @@
+
+2.23 LAB: Ordering pizza
+
+A local pizza shop is selling a large pizza for $9.99. Given the number of pizzas to order as input, output the subtotal for the pizzas, and then output the total after applying a sales tax of 6%.
+
+Output each floating-point value with two digits after the decimal point, which can be achieved as follows:
+print('Subtotal: ${:.2f}'.format(yourValue))
+
+Ex: If the input is:
+
+3
+
+the output is:
+
+Subtotal: $29.97
+Total due: $31.77
+

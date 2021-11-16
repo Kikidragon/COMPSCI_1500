@@ -1,0 +1,25 @@
+
+2.25 LAB: Volume and area of cylinder
+
+The volume and area of a cylinder are calculated as:
+
+    Volume = πr2h
+    Area = 2πrh + 2πr2
+
+Given the radius and height of a cylinder as floating-point numbers, output the volume and area of the cylinder.
+
+Hint: Use the built-in pow() function and the constant pi from the math module in your calculations.
+
+Output each floating-point value with one digit after the decimal point, which can be achieved as follows:
+print('Volume: {:.1f} cubic inches'.format(yourValue)).
+
+Ex: If the input is:
+
+5.2
+8.1
+
+where 5.2 is the radius of the cylinder and 8.1 is the height of the cylinder, then the output is:
+
+Volume: 688.1 cubic inches
+Surface area: 434.5 square inches
+

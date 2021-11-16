@@ -1,0 +1,347 @@
+
+3.10 String formatting
+The format() method
+
+Program output commonly includes variables as a part of the text. The string format() method allows a programmer to create a string with placeholders that are replaced by values or variable values at execution. A placeholder surrounded by curly braces { } is called a replacement field. Values inside the format() parentheses are inserted into the replacement fields in the string.
+participation activity
+3.10.1: String formatting.
+
+number = 6
+amount = 32
+
+print('  burritos cost $  '.format(      ,       ))
+
+
+{}
+{}
+6
+number
+burritos cost $
+32
+amount
+Empty curly brackets { } are placeholders for the variable values in the format() parentheses.
+Captions
+
+    The first replacement field {} in the string is replaced with the first value in the format() parentheses.
+    The next replacement field uses the next value, and so on.
+
+The three ways to provide values to replacements fields include:
+Table 3.10.1: Three ways to format strings.
+Replacement definition 	Example 	Formatted string result
+Positional replacement
+
+'The {1} in the {0} is {2}.'.format('hat', 'cat', 'fat')
+
+
+
+The cat in the hat is fat.
+
+Inferred positional replacement
+
+'The {} in the {} is {}.'.format('cat', 'hat', 'fat')
+
+
+
+The cat in the hat is fat.
+
+Named replacement
+
+'The {animal} in the {headwear} is {shape}.'.format(animal='cat', headwear='hat', shape='fat')
+
+
+
+The cat in the hat is fat.
+
+Named replacement allows a programmer to create a keyword argument that defines a name and value in the format() parentheses. The name can then be placed into a replacement field. Ex: animal='cat' is a keyword argument that can be used in a replacement field like {animal} to insert the word "cat". Good practice is to use named replacement when formatting strings with many replacement fields to make the code more readable.
+
+Note: The positional and inferred positional replacement types cannot be combined. Ex: '{} + {1} is {2}'.format(2, 2, 4) is not allowed. However, named and either positional replacement type can be combined. Ex: '{} + {} is {sum}'.format(2, 2, sum = 4)
+
+Double braces {{ }} can be used to place an actual curly brace into a string. Ex: '{0} {{Bezos}}'.format('Amazon') produces the string "Amazon {Bezos}".
+participation activity
+3.10.2: Positional and named replacement in format strings.
+
+first_name = 'Cardi'
+last_name = 'B'
+
+
+print("  's last name is   ".format(first_name, last_name))
+
+
+{}
+{}
+
+print(" 1 's first name is  0 ".format(first_name, last_name))
+
+
+{ }
+{ }
+
+print(" first  last ? More like  first  other "
+         .format(first=first_name, last=last_name, other='Z'))
+
+
+Cardi
+'s last name is
+B
+B
+
+'s first name is
+Cardi
+
+Cardi
+B
+? More like
+Cardi
+Z
+{     }{    }            {     }{     }
+Captions
+
+    Empty replacement fields infer their position based on the order of values in format().
+    Numbers in replacement fields indicate the position of the value in format().
+    Names in replacement fields indicate a named keyword from format(). Replacement fields can appear more than once in the format.
+
+participation activity
+3.10.3: string.format() usage.
+
+Determine the output of the following code snippets.
+1)
+
+print('April {}, {}'.format(22, 2020))
+
+2)
+
+date = 'April {}, {}'
+print(date.format(22, 2020))
+
+3)
+
+date = 'April {}, {}'
+print(date.format(22, 2020))
+print(date.format(23, 2024))
+
+4)
+
+print('{0}:{1}'.format(9, 43))
+
+5)
+
+print('{0}:{0}'.format(9, 43))
+
+6)
+
+print('Hi {{{0}}}!'.format('Bilbo'))
+
+7)
+
+month = 'April'
+day = 22
+print('Today is {month} {0}'.format(day, month=month))
+
+Format specifications
+
+A format specification inside of a replacement field allows a value's formatting in the string to be customized. Ex: Using a format specification, a variable with the integer value 4 can be output as a floating-point number (4.0) or with leading zeros (004).
+
+A common format specification is to provide a presentation type for the value, such as integer (4), floating point (4.0), fixed precision decimal (4.000), percentage (4%), binary (100), etc. A presentation type can be set in a replacement field by inserting a colon : and providing one of the presentation type characters described below.
+Table 3.10.2: Common formatting specification presentation types.
+'
+Type 	Description 	Example 	Output
+s 	String (default presentation type - can be omitted)
+
+'{:s}'.format('Aiden')
+
+
+
+Aiden
+
+d 	Decimal (integer values only)
+
+'{:d}'.format(4)
+
+
+
+4
+
+b 	Binary (integer values only)
+
+'{:b}'.format(4)
+
+
+
+100
+
+x, X 	Hexadecimal in lowercase (x) and uppercase (X) (integer values only)
+
+'{:x}'.format(15)
+
+
+
+f
+
+e 	Exponent notation
+
+'{:e}'.format(44)
+
+
+
+4.400000e+01
+
+f 	Fixed-point notation (6 places of precision)
+
+'{:f}'.format(4)
+
+
+
+4.000000
+
+.[precision]f 	Fixed-point notation (programmer-defined precision)
+
+'{:.2f}'.format(4)
+
+
+
+4.00
+
+0[precision]d 	Leading 0 notation
+
+'{:03d}'.format(4)
+
+
+
+004
+
+participation activity
+3.10.4: Format specifications and presentation types.
+
+Enter the most appropriate format specification to produce the desired output.
+1)
+The value of num as a decimal (base 10) integer:
+
+31
+
+num = 31
+print('{:}'.format(num))
+
+2)
+The value of num as a hexadecimal (base 16) integer:
+
+1f
+
+num = 31
+print('{:}'.format(num))
+
+3)
+The value of num as a binary (base 2) integer:
+
+11111
+
+num = 31
+print('{:}'.format(num))
+
+Referencing format() values correctly
+
+The colon : in the replacement field separates the "what" on the left from the "how" on the right. The left "what" side references a value in the format() parentheses. The left side may be omitted (inferred positional replacement), a number (positional replacement), or a name (named replacement). The right "how" side determines how to show the value, such as a presentation type. More advanced format specifications, like fill and alignment, are provided in a later section.
+Table 3.10.3: Referencing the correct format() values in replacement fields.
+Replacement type 	Example 	Output
+Inferred positional replacement
+
+'{:s} ${:.2f} tacos is ${:.2f} total'.format('Three', 1.50, 4.50)
+
+
+
+Three $1.50 tacos is $4.50 total
+
+Positional replacement
+
+'{0:s} ${2:.2f} tacos is ${1:.2f} total'.format('Three', 4.50, 1.50)
+
+
+
+Three $1.50 tacos is $4.50 total
+
+Named replacement
+
+'{cnt:s} ${cost:.2f} tacos is ${sum:.2f} total'.format(cnt = 'Three', cost = 1.50, sum = 4.50)
+
+
+
+Three $1.50 tacos is $4.50 total
+
+participation activity
+3.10.5: Matching code blocks to formatted strings.
+
+Match each code block to the code output. If the code would generate an error, mark as "Error".
+
+    '{:.1f} + {:.1f} = {:.2f}'.format(25, 50, 75)
+    '{1:} + {0:} = {2:}'.format(25, 50, 75)
+    '{b} + {a} = {c:.2f}'.format(a=25, b=50, c=75.009)
+    '{} + {} = {}'.format(25, 50, 75)
+    '{} + {} = {2}'.format(25, 50, 75)
+
+25 + 50 = 75
+50 + 25 = 75
+25.0 + 50.0 = 75.00
+50 + 25 = 75.01
+Error
+challenge activity
+3.10.1: String Formatting.
+343716.2144758.qx3zqy7
+
+Type the program's output
+name = 'May'
+
+print('Their name is {}'.format(name))
+
+1
+2
+3
+4
+5
+6
+7
+1
+2
+3
+4
+5
+6
+7
+challenge activity
+3.10.2: Printing a string.
+Write a single statement to print: user_word,user_number. Note that there is no space between the comma and user_number.
+
+Sample output with inputs: Amy 5
+
+Amy,5
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+3.10.3: String formatting.
+343716.2144758.qx3zqy7
+num_students = 34
+
+print('The math class has                    students.'.format(num_students))
+Select the most appropriate replacement field definitions.
+
+
+
+
+The math class has 34 students.
+1
+2
+3
+4
+1
+2
+3
+4
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+3.11 Additional practice: Health data

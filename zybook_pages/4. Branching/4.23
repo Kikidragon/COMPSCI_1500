@@ -1,0 +1,15 @@
+
+4.23 LAB: Max of 3
+
+Write a program that takes in three integers and outputs the largest value.
+
+Ex: If the input is:
+
+1
+2
+3
+
+the output is:
+
+3
+

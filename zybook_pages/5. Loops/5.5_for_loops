@@ -1,0 +1,252 @@
+
+5.5 For loops
+Survey
+
+The following questions are part of a zyBooks survey to help us improve our content so we can offer the best experience for students. The survey can be taken anonymously. Please take a short moment to answer below.
+
+Link: Student survey
+Basics
+
+A common programming task is to access all of the elements in a container. Ex: Printing every item in a list. A for loop statement loops over each element in a container one at a time, assigning a variable with the next element that can then be used in the loop body. The container in the for loop statement is typically a list, tuple, or string. Each iteration of the loop assigns the name given in the for loop statement with the next element in the container.
+Construct 5.5.1
+
+for variable in container:
+    # Loop body: Sub-statements to execute
+    # for each item in the container
+
+# Statements to execute after the for loop is complete
+
+participation activity
+5.5.1: Iterating over a list using a for loop.
+
+for name in ['Bill', 'Nicole', 'John']:
+  print('Hi {}!'.format(name))
+
+
+name:
+
+'John'
+
+
+'Nicole'
+
+
+'Bill'
+
+
+Hi Bill!
+Hi Nicole!
+Hi John!
+Captions
+
+    The first iteration assigns the variable name with 'Bill' and prints 'Hi Bill!' to the screen.
+    The second iteration assigns the variable name with 'Nicole' and prints 'Hi Nicole!'.
+    The third iteration assigns the variable name with 'John' and prints 'Hi John!'.
+
+The for loop above iterates over the list ['Bill', 'Nicole', 'John']. The first iteration assigns the variable name with 'Bill', the second iteration assigns name with 'Nicole', and the final iteration assigns name with 'John'. For sequence types like lists and tuples, the assignment order follows the position of the elements in the container, starting with position 0 (the leftmost element) and continuing until the last element is reached.
+
+Iterating over a dictionary using a for loop assigns the loop variable with the keys of the dictionary. The values can then be accessed using the key.
+Figure 5.5.1: A for loop assigns the loop variable with a dictionary's keys.
+
+channels = {
+    'MTV': 35,
+    'CNN': 28,
+    'FOX': 11,
+    'NBC': 4,
+    'CBS': 12
+}
+
+for c in channels:
+    print('{} is on channel {}'.format(c, channels[c]))
+
+
+
+MTV is on channel 35
+CNN is on channel 28
+FOX is on channel 11
+NBC is on channel 4
+CBS is on channel 12
+
+A for loop can also iterate over a string. Each iteration assigns the loop variable with the next character of the string. Strings are sequence types just like lists, so the behavior is identical (leftmost character first, then each following character).
+Figure 5.5.2: Using a for loop to access each character of a string.
+
+my_str = ''
+for character in "Take me to the moon.":
+    my_str += character + '_'
+print(my_str)
+
+
+
+T_a_k_e_ _m_e_ _t_o_ _t_h_e_ _m_o_o_n_._
+
+participation activity
+5.5.2: Creating for loops.
+
+Complete the for loop statement by giving the loop variable and container.
+1)
+Iterate over the given list using a variable called my_pet.
+
+for  in ['Scooter', 'Kobe', 'Bella']:
+    # Loop body statements
+
+2)
+Iterate over the list my_prices using a variable called price.
+
+for :
+    # Loop body statements
+
+3)
+Iterate the string '911' using a variable called number.
+
+for :
+    # Loop body statements
+
+For loop examples
+
+For loops can be used to perform some action during each loop iteration. A simple example would be printing the value, as above examples demonstrated. The program below uses an additional variable to sum list elements to calculate weekly revenue and an average daily revenue.
+Figure 5.5.3: For loop example: Calculating shop revenue.
+
+daily_revenues = [
+    2356.23,  # Monday
+    1800.12,  # Tuesday
+    1792.50,  # Wednesday
+    2058.10,  # Thursday
+    1988.00,  # Friday
+    2002.99,  # Saturday
+    1890.75   # Sunday
+]
+
+total = 0
+for day in daily_revenues:
+    total += day
+
+average = total / len(daily_revenues)
+
+print('Weekly revenue: ${:.2f}'.format(total))
+print('Daily average revenue: ${:.2f}'.format(average))
+
+
+
+Weekly revenue: $13888.69
+Daily average revenue: $1984.10
+
+A for loop may also iterate backwards over a sequence, starting at the last element and ending with the first element, by using the reversed() function to reverse the order of the elements.
+Figure 5.5.4: For loop example: Looping over a sequence in reverse.
+
+The following program first prints a list that is ordered alphabetically, then prints the same list in reverse order.
+
+names = [
+    'Biffle',
+    'Bowyer',
+    'Busch',
+    'Gordon',
+    'Patrick'
+]
+
+for name in names:
+    print(name, '|', end=' ')
+
+print('\nPrinting in reverse:')
+for name in reversed(names):
+    print(name, '|', end=' ')
+
+
+
+Biffle | Bowyer | Busch | Gordon | Patrick |
+Printing in reverse:
+Patrick | Gordon | Busch | Bowyer | Biffle |
+
+participation activity
+5.5.3: For loops.
+Fill in the missing code to perform the desired calculation.
+1)
+Compute the average number of kids.
+
+# Each list item is the number of kids in a family.
+num_kids = [1, 1, 2, 2, 1, 4, 3, 1]
+
+total = 0
+for num in num_kids:
+    total +=
+
+average = total / len(num_kids)
+
+
+2)
+Assign num_neg with the number of below-freezing Celsius temperatures in the list.
+
+temperatures = [30, 20, 2, -5, -15, -8, -1, 0, 5, 35]
+
+num_neg = 0
+for temp in temperatures:
+    if temp < 0:
+
+
+
+3)
+Print scores in order from highest to lowest. Note: List is pre-sorted from lowest to highest.
+
+scores = [75, 77, 80, 85, 90, 95, 99]
+
+for scr in :
+    print(scr, end=' ')
+
+
+challenge activity
+5.5.1: Looping over strings, lists, and dictionaries.
+343716.2144758.qx3zqy7
+
+Type the program's output
+numbers = [3, 7, 4]
+for number in numbers:
+    print(number)
+
+1
+2
+3
+4
+5
+1
+2
+3
+4
+5
+challenge activity
+5.5.2: For loop: Printing a list
+Write an expression to print each price in stock_prices.
+
+Sample output with inputs: 34.62 76.30 85.05
+
+$ 34.62
+$ 76.30
+$ 85.05
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+challenge activity
+5.5.3: For loop: Printing a dictionary
+Write a for loop to print each contact in contact_emails.
+
+Sample output with inputs: 'Alf' 'alf1@hmail.com'
+
+mike.filt@bmail.com is Mike Filt
+s.reyn@email.com is Sue Reyn
+narty042@nmail.com is Nate Arty
+alf1@hmail.com is Alf
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+5.6 Counting using the range() function

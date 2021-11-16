@@ -1,0 +1,242 @@
+
+2.10 Representing text
+Unicode
+
+String variables represent text, such as the character 'G' or the word 'Pineapple'. Python uses Unicode to represent every possible character as a unique number, known as a code point. For example, the character 'G' has the code point decimal value of 71. Below is a table with some Unicode code points and the character represented by each code point. In total, there are over 1 million code points in the Unicode standard character set.
+Table 2.10.1: Encoded text values.
+Decimal 	Character
+32 	space
+33 	!
+34 	"
+35 	#
+36 	$
+37 	%
+38 	&
+39 	'
+40 	(
+41 	)
+42 	*
+43 	+
+44 	,
+45 	-
+46 	.
+47 	/
+48 	0
+49 	1
+50 	2
+51 	3
+52 	4
+53 	5
+54 	6
+55 	7
+56 	8
+57 	9
+58 	:
+59 	;
+60 	<
+61 	=
+62 	>
+63 	?
+
+Decimal 	Character
+64 	@
+65 	A
+66 	B
+67 	C
+68 	D
+69 	E
+70 	F
+71 	G
+72 	H
+73 	I
+74 	J
+75 	K
+76 	L
+77 	M
+78 	N
+79 	O
+80 	P
+81 	Q
+82 	R
+83 	S
+84 	T
+85 	U
+86 	V
+87 	W
+88 	X
+89 	Y
+90 	Z
+91 	[
+92 	\
+93 	]
+94 	^
+95 	_
+
+Decimal 	Character
+96 	`
+97 	a
+98 	b
+99 	c
+100 	d
+101 	e
+102 	f
+103 	g
+104 	h
+105 	i
+106 	j
+107 	k
+108 	l
+109 	m
+110 	n
+111 	o
+112 	p
+113 	q
+114 	r
+115 	s
+116 	t
+117 	u
+118 	v
+119 	w
+120 	x
+121 	y
+122 	z
+123 	{
+124 	|
+125 	}
+126 	~
+participation activity
+2.10.1: Unicode.
+1)
+What is the decimal encoding of the '{' character?
+
+Escape sequences
+
+In addition to visible characters like a, $, or 5, several special characters exist. A newline character, which indicates the end of a line of text, is encoded as 10. Since there is no visible character for a newline, the language uses the two-item sequence \n to represent a newline character. The \ is known as a backslash. Upon reaching a \, the interpreter recognizes that item as the start of a special character's two-item sequence and then looks at the next item to determine the special character. The two-item sequence is called an escape sequence.
+Table 2.10.2: Common escape sequences.
+Escape Sequence 	Explanation 	Example code 	Output
+\\ 	Backslash (\)
+
+print('\\home\\users\\')
+
+
+
+\home\users\
+
+\' 	Single quote (')
+
+print('Name: John O\'Donald')
+
+
+
+Name: John O'Donald
+
+\" 	Double quote (")
+
+print("He said, \"Hello friend!\".")
+
+
+
+He said, "Hello friend!".
+
+\n 	Newline
+
+print('My name...\nIs John...')
+
+
+
+My name...
+Is John...
+
+\t 	Tab (indent)
+
+print('1. Bake cookies\n\t1.1. Preheat oven')
+
+
+
+1. Bake cookies
+    1.1. Preheat oven
+
+participation activity
+2.10.2: Escape sequences.
+1)
+What is the output of
+print('\\c\\users\\juan')
+2)
+What is the output of
+print('My name is \'Tator Tot\'.')
+3)
+What is the output of
+print('10...\n9...')
+Raw strings and converting between an encoding and text
+
+Escape sequences can be ignored using a raw string. A raw string is created by adding an 'r' before a string literal, as in r'this is a raw string\'', which would output as this is a raw string\'.
+Figure 2.10.1: Ignoring escape characters with a raw string.
+
+my_string = 'This is a \n \'normal\' string\n'
+my_raw_string = r'This is a \n \'raw\' string'
+
+print(my_string)
+print(my_raw_string)
+
+
+
+This is a
+ 'normal' string
+
+This is a \n \'raw\' string
+
+Sometimes converting between a text character and the encoded value is useful. The built-in function ord() returns an encoded integer value for a string of length one. The built-in function chr() returns a string of one character for an encoded integer.
+participation activity
+2.10.3: Using ord() to convert a character to the encoded value.
+Type any character and observe the output of the ord() function, which is the numerical encoding of the character. Try upper- and lowercase letters, as well as special characters like "%" or "$", or a space (should result in "32"). Try copy/pasting any one of these characters (from the Korean Unicode character set) 강 남 스 타 일.
+Type a character: ord('
+')
+Encoded number: 65
+participation activity
+2.10.4: Using chr() to convert an encoded value to a character.
+Type any number greater than or equal to 0 and observe the encoded value's character equivalent. Note that not all numbers will result in a visible character.
+Type a number (0-255):
+chr(
+)
+ASCII char: Z
+challenge activity
+2.10.1: Enter the output of the print() statements.
+343716.2144758.qx3zqy7
+
+Type the program's output
+print('The name of the dog is "Ruby".')
+
+1
+2
+3
+4
+5
+1
+2
+3
+4
+5
+participation activity
+2.10.5: Text.
+1)
+Complete the code to output
+
+\\
+
+print()
+
+2)
+Use a raw string literal to assign "C:\file.doc" to my_str (without quotes).
+
+my_str =
+
+Exploring further:
+
+    Unicode HOWTO from the official Python documentation.
+
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+2.11 Additional practice: Number games

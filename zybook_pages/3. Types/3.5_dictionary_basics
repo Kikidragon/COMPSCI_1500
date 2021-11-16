@@ -1,0 +1,138 @@
+
+3.5 Dictionary basics
+Creating a dictionary
+
+Consider a normal English language dictionary – a reader looks up the word "cat" and finds the definition, "A small, domesticated carnivore." The relationship between "cat" and its definition is associative, i.e., "cat" is associated with some words describing "cat."
+
+A dictionary is a Python container used to describe associative relationships. A dictionary is represented by the dict object type. A dictionary associates (or "maps") keys with values. A key is a term that can be located in a dictionary, such as the word "cat" in the English dictionary. A value describes some data associated with a key, such as a definition. A key can be any immutable type, such as a number, string, or tuple; a value can be any type.
+
+A dict object is created using curly braces { } to surround the key:value pairs that comprise the dictionary contents. Ex: players = {'Lionel Messi': 10, 'Cristiano Ronaldo': 7} creates a dictionary called players with two keys: 'Lionel Messi' and 'Cristiano Ronaldo', associated with the values 10 and 7 (their respective jersey numbers). An empty dictionary is created with the expression players = { }.
+
+Dictionaries are typically used in place of lists when an associative relationship exists. Ex: If a program contains a collection of anonymous student test scores, those scores should be stored in a list. However, if each score is associated with a student name, a dictionary could be used to associate student names to their score. Other examples of associative relationships include last names and addresses, car models and price, or student ID number and university email address.
+Figure 3.5.1: Creating a dictionary.
+
+players = {
+    'Lionel Messi': 10,
+    'Cristiano Ronaldo': 7
+}
+
+print(players)
+
+
+
+{'Lionel Messi': 10, 'Cristiano Ronaldo': 7}
+
+Note that formatting list or dictionary entries like in the above example, where elements appear on consecutive lines, helps to improve the readability of the code. The behavior of the code is not changed.
+zyDE 3.5.1: Creating dictionaries.
+
+Run the program below that displays the caffeine content in milligrams for 100 ml/grams of some popular foods. The indentation and spacing of the caffeine_content_mg key-value pairs simply provides more readability. Note that order is maintained in the dict when printed (not standard before Python 3.7).
+
+Try adding new items into the dictionary, using this U.S. federal government report on caffeine content.
+
+
+participation activity
+3.5.1: Create a dictionary.
+1)
+Use braces to create a dictionary called ages that maps the names 'Bob' and 'Frank' to their ages, 27 and 75, respectively. For this exercise, make 'Bob' the first entry in the dict.
+
+ages =
+
+Accessing dictionary entries
+
+Though dictionaries maintain a left-to-right ordering, dictionary entries cannot be accessed by indexing. To access an entry, the key is specified in brackets [ ]. If no entry with a matching key exists in the dictionary, then a KeyError runtime error occurs and the program is terminated.
+Figure 3.5.2: Accessing dictionary entries.
+
+prices = {'apples': 1.99, 'oranges': 1.49}
+
+print('The price of apples is', prices['apples'])
+print('\nThe price of lemons is', prices['lemons'])
+
+
+
+The price of apples is 1.99
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+KeyError: 'lemons'
+
+participation activity
+3.5.2: Accessing dictionary entries.
+1)
+A dictionary entry is accessed by placing a key in curly braces { }.
+2)
+Dictionary entries are ordered by position.
+Adding, modifying, and removing dictionary entries
+
+A dictionary is mutable, so entries can be added, modified, and deleted as necessary by a programmer. A new dictionary entry is added by using brackets to specify the key: prices['banana'] = 1.49. A dictionary key is unique – attempting to create a new entry with a key that already exists in the dictionary replaces the existing entry. The del keyword is used to remove entries from a dictionary: del prices['papaya'] removes the entry whose key is 'papaya'. If the requested key to delete does not exist then a KeyError occurs.
+
+Adding new entries to a dictionary:
+
+    dict[k] = v: Adds the new key-value pair k-v, if dict[k] does not already exist.
+    Example: students['John'] = 'A+'
+
+Modifying existing entries in a dictionary:
+
+    dict[k] = v: Updates the existing entry dict[k], if dict[k] already exists.
+    Example: students['Jessica'] = 'A+'
+
+Removing entries from a dictionary:
+
+    del dict[k]: Deletes the entry dict[k].
+    Example: del students['Rachel']
+
+Figure 3.5.3: Adding and editing dictionary entries.
+
+prices = {}  # Create empty dictionary
+prices['banana'] = 1.49  # Add new entry
+print(prices)
+
+prices['banana'] = 1.69  # Modify entry
+print(prices)
+
+del prices['banana']  # Remove entry
+print(prices)
+
+
+
+{'banana': 1.49}
+{'banana': 1.69}
+{}
+
+participation activity
+3.5.3: Modifying dictionaries.
+1)
+Which statement adds 'pears' to the following dictionary?
+
+prices = {'apples': 1.99, 'oranges': 1.49, 'kiwi': 0.79}
+
+2)
+Executing the following statements produces a KeyError:
+
+prices = {'apples': 1.99, 'oranges': 1.49, 'kiwi': 0.79}
+del prices['limes']
+
+3)
+Executing the following statements adds a new entry to the dictionary:
+
+prices = {'apples': 1.99, 'oranges': 1.49, 'kiwi': 0.79}
+prices['oranges'] = 1.29
+
+challenge activity
+3.5.1: Modify and add to dictionary.
+Write a statement to add the key Tesla with value USA to car_makers. Modify the car maker of Fiat to Italy. Sample output for the given program:
+
+Acura made in Japan
+Fiat made in Italy
+Tesla made in USA
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+3.6 Common data types summary
