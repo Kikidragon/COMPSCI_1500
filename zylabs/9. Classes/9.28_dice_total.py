@@ -1,4 +1,3 @@
-# FIXME UNFINISHED
 import random
 
 
@@ -10,7 +9,7 @@ class GVDie:
 
     def roll(self):
         self.my_value = self.rand.randint(1, 6)
-
+        return self.my_value
         # set the random number generator seed for testing
 
     def set_seed(self, seed):
@@ -28,8 +27,6 @@ def roll_specific_times(die, rolls):
         x = die.roll()
         total += x
     return total
-
-# FIXME it says the die.roll isnt right type check if its being used right
 
 
 if __name__ == "__main__":
