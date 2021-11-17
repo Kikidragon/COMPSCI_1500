@@ -1,4 +1,3 @@
-# FIXME UNFINISHED
 class Student:
     def __init__(self, first, last, gpa):
         self.first = first  # first name
@@ -28,13 +27,12 @@ class Course:
             # print(type(i.get_gpa()))
             # print(type(maxx))
             if i.get_gpa() > maxx:
-                maxx = i
+                maxx = i.get_gpa()
             else:
                 continue
         for i in self.roster:
             if i.get_gpa() == maxx:
                 return i
-        # FIXME it says > not supported between student and float but i tested and theyre both float
 
 
 if __name__ == "__main__":

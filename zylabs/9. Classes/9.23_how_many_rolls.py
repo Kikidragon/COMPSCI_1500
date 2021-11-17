@@ -1,4 +1,3 @@
-# FIXME UNIFNISHED
 import random
 
 
@@ -10,6 +9,7 @@ class GVDie:
 
     def roll(self):
         self.my_value = self.rand.randint(1, 6)
+        return self.my_value
 
         # set the random number generator seed for testing
 
@@ -22,9 +22,24 @@ class GVDie:
 
 
 def roll_total(die, total):
-    pass
+    die_tot = 0
+    count = 0
+    while die_tot < total:
+        x = die.roll()
+        # print(die_tot)
+        die_tot += x
+        count += 1
+        # print(x)
+        # print(die_tot)
+        # print(count)
+    return count
+    # die_tot = 0
+    # while total > 0:
+    #     x = die.roll(i)
+    #     die_tot += x
+    #     total -= 1
+    # return die_tot
 
-# Type your code here
 
 if __name__ == "__main__":
     die = GVDie()  # Create a GVDie object

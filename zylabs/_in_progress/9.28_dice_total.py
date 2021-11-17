@@ -25,7 +25,8 @@ def roll_specific_times(die, rolls):
     total = 0
     while rolls > 0:
         rolls -= 1
-        total += die.roll()
+        x = die.roll()
+        total += x
     return total
 
 # FIXME it says the die.roll isnt right type check if its being used right
