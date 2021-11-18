@@ -1,30 +1,29 @@
-# FIXME UNFINISHED
 class BankAccount:
-    def __init__(self, name, savings, checking):
+    def __init__(self, name, checking, savings):
         self.name = name
-        self.savings = savings
-        self.checking = checking
+        self.savings_balance = savings
+        self.checking_balance = checking
 
     def deposit_checking(self, more):
         if more > 0:
-            self.checking = self.checking + more
+            self.checking_balance = self.checking_balance + more
 
     def deposit_savings(self, more):
         if more > 0:
-            self.savings = self.savings + more
+            self.savings_balance = self.savings_balance + more
 
     def withdraw_checking(self, less):
         if less > 0:
-            self.checking = self.checking - less
+            self.checking_balance = self.checking_balance - less
 
     def withdraw_savings(self, less):
         if less > 0:
-            self.savings = self.savings - less
+            self.savings_balance = self.savings_balance - less
 
     def transfer_to_savings(self, change):
         if change > 0:
-            self.checking = self.checking - change
-            self.savings = self.savings + change
+            self.checking_balance = self.checking_balance - change
+            self.savings_balance = self.savings_balance + change
 
 
 if __name__ == "__main__":

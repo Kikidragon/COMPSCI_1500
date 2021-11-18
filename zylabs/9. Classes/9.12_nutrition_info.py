@@ -1,6 +1,5 @@
-#FIXME 8/10 it says intialized wrong ?
 class FoodItem:
-    def __init__(self, name=None, fat=0.0, carbs=0.0, protein=0.0):
+    def __init__(self, name="None", fat=0.0, carbs=0.0, protein=0.0):
         self.name = name
         self.fat = fat
         self.carbs = carbs

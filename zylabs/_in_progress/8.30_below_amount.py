@@ -1,4 +1,4 @@
-# Define your get_user_values function here
+# FIXME UNFINISHED
 def get_user_values(nums):
     num = nums[0]
     values = []
@@ -6,16 +6,25 @@ def get_user_values(nums):
         num = int(input())
         num = int(num)
         values.append(num)
+        if num == -1:
+            break
     values.pop()
     return values
 
-
-# num_values = int(input())
+# numint = int(input())
 # values = []
-# while num_values > 0:
-#     num = float(input())
-#     values.append(num)
-#     num_values = num_values - 1
+# while numint > 0:
+#     numint -= 1
+#     value = int(input())
+#     values.append(value)
+# threshold = int(input())
+# for value in values:
+#     if value <= threshold:
+#         print(value, end=',')
+#     else:
+#         continue
+# # print(values)
+#
 
 
 # Define your output_ints_less_than_or_equal_to_threshold function here

@@ -1,6 +1,5 @@
-# FIXME unfinished
 class Artist:
-    def __init__(self, name, birth_year, death_year):
+    def __init__(self, name='None', birth_year=0, death_year=0):
         self.name = name
         self.birth_year = birth_year
         self.death_year = death_year
@@ -10,7 +9,7 @@ class Artist:
 
     def print_info(self):
         if self.death_year == -1:
-            print("Artist: {} ({})".format(self.name, self.birth_year))
+            print("Artist: {}, born {}".format(self.name, self.birth_year))
         else:
             print("Artist: {} ({}-{})".format(self.name, self.birth_year, self.death_year))
 
@@ -18,7 +17,7 @@ class Artist:
 
 
 class Artwork:
-    def __init__(self, title, year_created, artist):
+    def __init__(self, title='None', year_created=0, artist=Artist):
         self.title = title
         self.year_created = year_created
         self.artist = artist
@@ -27,7 +26,7 @@ class Artwork:
     #       (title, year_created, artist)
 
     def print_info(self):
-        Artist.print_info()
+        self.artist.print_info()
         print("Title: {}, {}".format(self.title, self.year_created))
 
     # Define print_info() method

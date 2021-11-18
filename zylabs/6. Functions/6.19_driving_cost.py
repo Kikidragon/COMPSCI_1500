@@ -1,4 +1,4 @@
-def driving_cost(miles_per_gallon, dollars_per_gallon, x):
+def driving_cost(x, miles_per_gallon, dollars_per_gallon):
     y = (dollars_per_gallon * x) / miles_per_gallon
     # print('{:.2f}'.format(y))
     return y
@@ -9,11 +9,11 @@ if __name__ == '__main__':
     dol_per_gal = float(input())
 
     if (mi_per_gal >= 0) and (dol_per_gal >= 0):
-        cost = driving_cost(mi_per_gal, dol_per_gal, 10)
+        cost = driving_cost(10, mi_per_gal, dol_per_gal)
         print('{:.2f}'.format(cost))
-        cost = driving_cost(mi_per_gal, dol_per_gal, 50)
+        cost = driving_cost(50, mi_per_gal, dol_per_gal)
         print('{:.2f}'.format(cost))
-        cost = driving_cost(mi_per_gal, dol_per_gal, 400)
+        cost = driving_cost(400, mi_per_gal, dol_per_gal)
         print('{:.2f}'.format(cost))
     else:
         print("driving_cost({},{},{}) does not exist".format(mi_per_gal, dol_per_gal, 10))

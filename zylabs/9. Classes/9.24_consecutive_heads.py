@@ -1,4 +1,3 @@
-# FIXME UNFINISHED
 import random
 
 class GVCoin :
@@ -23,24 +22,22 @@ class GVCoin :
         if self.is_heads == 1:
             self.heads += 1
         return self.is_heads
-    #fixme should not have return here its for testing
 
     def get_is_heads(self):
         return self.is_heads
 
+
 def consecutive_heads(gv_coin, goal):
     heads = 0
     count = 0
-    while heads <= goal:
+    while heads < goal:
         x = gv_coin.flip()
         count += 1
         if x == 1:
             heads += 1
         else:
-            continue
+            heads = 0
     return count
-# fixme it works for 5 but nothing else
-# fixme while not is tails and if tails break and repeat
 
 
 if __name__ == "__main__":
