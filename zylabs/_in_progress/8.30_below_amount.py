@@ -1,6 +1,6 @@
 # FIXME UNFINISHED
-def get_user_values(nums):
-    num = nums[0]
+def get_user_values(values):
+    num = int(input())
     values = []
     while num != -1:
         num = int(input())
@@ -39,11 +39,9 @@ def output_ints_less_than_or_equal_to_threshold(nums, threshold):
 
 if __name__ == '__main__':
     threshold = int(input())
-    num = input()
-    nums = [num]
+    nums = []
 
     get_user_values(nums)
     print(get_user_values(nums))
 
     output_ints_less_than_or_equal_to_threshold(nums, threshold)
-
