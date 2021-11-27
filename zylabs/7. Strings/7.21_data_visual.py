@@ -1,4 +1,3 @@
-# FIXME UNFINISHED
 title = input("Enter a title for the data:\n")
 print("You entered: {}".format(title))
 print()

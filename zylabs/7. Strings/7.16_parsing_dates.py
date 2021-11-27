@@ -30,16 +30,27 @@ def get_month_as_int(monthString):
     return month_int
 
 
-user_string = input()
-enter = [user_string]
-while user_string != -1:
+user_string = 0
+enter = []
+while user_string != '-1':
     user_string = input()
     enter.append(user_string)
-    continue
+    if user_string == '-1':
+        enter.pop()
 
-print(enter)
-# TODO: Read dates from input, parse the dates to find the one
-#       in the correct format, and output in m/d/yyyy format
+for i in enter:
+    if ',' in i:
+        # print(i)
+        split_comma = i.split(',')
+        month_day = split_comma[0].split()
+        month = get_month_as_int(month_day[0])
+        day = month_day[1]
+        year = split_comma[1].strip()
+        print("{}/{}/{}".format(month, day, year))
+
+    else:
+        continue
+# month / day / year
+# print(enter)
 
 
-# USE IMPORT DATETIME
