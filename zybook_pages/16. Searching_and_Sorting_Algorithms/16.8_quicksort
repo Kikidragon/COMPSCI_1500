@@ -1,0 +1,372 @@
+
+16.8 Quicksort
+Quicksort and partitioning
+
+Quicksort is a sorting algorithm that repeatedly partitions the input into low and high parts (each part unsorted), and then recursively sorts each of those parts. To partition the input, quicksort chooses a pivot to divide the data into low and high parts. The pivot can be any value within the array being sorted, commonly the value of the middle array element. Ex: For the list [4, 34, 10, 25, 1], the middle element is located at index 2 (the middle of indices 0..4) and has a value of 10.
+
+To partition the input, the quicksort algorithm divides the array into two parts, referred to as the low partition and the high partition. All values in the low partition are less than or equal to the pivot value. All values in the high partition are greater than or equal to the pivot value. The values in each partition are not necessarily sorted. Ex: Partitioning [4, 34, 10, 25, 1] with a pivot value of 10 results in a low partition of [4, 10, 1] and a high partition of [34, 25]. Values equal to the pivot may appear in either or both of the partitions.
+participation activity
+16.8.1: Quicksort partitions data into a low part with data less than/equal to a pivot value and a high part with data greater than/equal to a pivot value.
+) / 2
++
+
+def partition(numbers, i, k):
+    # Pick middle value as pivot
+    midpoint = i + (k - i) // 2
+    pivot = numbers[midpoint]
+
+    # Initialize variables
+    done = False
+    l = i
+    h = k
+    while not done:
+        # Increment l while numbers[l] < pivot
+        while numbers[l] < pivot:
+            l = l + 1
+        # Decrement h while pivot < numbers[h]
+        while pivot < numbers[h]:
+            h = h - 1
+
+
+7
+4
+6
+18
+8
+i
+k
+midpoint
+l
+0
+1
+2
+3
+4
+pivot:
+6
+0
+4
+0
+=
+= 2
+midpoint =  i  +  (k - i) / 2
+-
+h
+Low partition
+High partition
+< 6
+6 <
+temp:
+(
+6
+18
+8
+7
+(   >=   )
+2
+0
+4
+7
+4
+2
+1
+
+""" If there are zero or one items remaining,
+        all numbers are partitioned. Return h """
+        if l >= h:
+            done = True
+        else:
+            """ Swap numbers[l] and numbers[h],
+            update l and h """
+            temp = numbers[l]
+            numbers[l] = numbers[h]
+            numbers[h] = temp
+            l = l + 1
+            h = h - 1
+    return h
+
+
+Captions
+
+    The pivot value is the value of the middle element.
+    Index l begins at element i and is incremented until a value greater than the pivot is found.
+    Index h begins at element k, and is decremented until a value less than the pivot is found.
+    Elements at indices l and h are swapped, moving those elements to the correct partitions.
+    The partition process repeats until indices l and h reach or pass each other (l >= h), indicating all elements have been partitioned.
+    Once partitioned, the algorithm returns h indicating the highest index of the low partition. The partitions are not yet sorted.
+
+The partitioning algorithm uses two index variables l and h (low and high), initialized to the left and right sides of the current elements being sorted. As long as the value at index l is less than the pivot value, the algorithm increments l, because the element should remain in the low partition. Likewise, as long as the value at index h is greater than the pivot value, the algorithm decrements h, because the element should remain in the high partition. Then, if l >= h, all elements have been partitioned, and the partitioning algorithm returns h, which is the index of the last element in the low partition. Otherwise, the elements at indices l and h are swapped to move those elements to the correct partitions. The algorithm then increments l, decrements h, and repeats.
+participation activity
+16.8.2: Quicksort pivot location and value.
+
+Determine the midpoint and pivot values.
+1)
+numbers = [1, 2, 3, 4, 5], i = 0, k = 4
+
+ midpoint =
+
+2)
+numbers = [1, 2, 3, 4, 5], i = 0, k = 4
+
+ pivot =
+
+3)
+numbers = [200, 11, 38, 9], i = 0, k = 3
+
+ midpoint =
+
+4)
+numbers = [200, 11, 38, 9], i = 0, k = 3
+
+ pivot =
+
+5)
+numbers = [55, 7, 81, 26, 0, 34, 68, 125], i = 3, k = 7
+
+ midpoint =
+
+6)
+numbers = [55, 7, 81, 26, 0, 34, 68, 125], i = 3, k = 7
+
+ pivot =
+
+participation activity
+16.8.3: Low and high partitions.
+
+Determine if the low and high partitions are correct given h and pivot.
+1)
+pivot = 35
+List with elements 1, 4, 35, 62, and 98. h points to 35.
+2)
+pivot = 65
+List with elements 29, 17, 65, 39, and 84. h points to 39.
+3)
+pivot = 5
+List with elements 5, 13, 16, 77, 84, 20, and 19. h points to 13.
+4)
+pivot = 8
+List with elements 8, 3, 8, 41, 57, and 8. h points to the second occurrence of 8.
+Quicksort algorithm and runtime
+
+Once partitioned, each partition needs to be sorted. Quicksort is typically implemented as a recursive algorithm using calls to quicksort to sort the low and high partitions. This recursive sorting process continues until a partition has one or zero elements, and thus already sorted.
+participation activity
+16.8.4: Quicksort.
+3
+8
+2
+7
+4
+18
+3
+8
+2
+7
+1
+6
+0
+4
+4
+8
+3
+18
+2
+7
+1
+4
+0
+6
+7
+4
+6
+18
+8
+Low partition
+High partition
+6
+4
+18
+7
+8
+Sorted:
+0
+1
+2
+3
+4
+1
+0
+4
+2
+3
+pivot: 6
+pivot: 6
+pivot: 18
+pivot: 7
+Sorted
+Sorted
+Sorted
+Sorted
+Sorted
+j: 1
+j: 0
+j: 3
+j: 2
+
+def quicksort(numbers, i, k):
+
+   """ Base case: If 1 or zero elements,
+     partition is already sorted """
+   if i >= k:
+       return
+
+   """ Partition the array.
+       Value j is the location of last
+       element in low partition. """
+   j = partition(numbers, i, k)
+
+   """ Recursively sort low and high
+      partitions """
+   quicksort(numbers, i, j)
+   quicksort(numbers, j + 1, k)
+
+   return
+
+
+Captions
+
+    List contains more than one element. Partition the list.
+    Recursively call quicksort on the low and high partitions.
+    Low partition contains more than one element. Partition the low partition and recursively call quicksort.
+    Low partition contains one element, so partition is already sorted. High partition contains one element, so partition is already sorted.
+    High partition contains more than one element. Partition the high partition and recursively call quicksort.
+    Low partition contains more than one element. Partition the low partition and recursively call quicksort.
+    Low partition contains one element, so partition is already sorted. High partition contains one element, so partition is already sorted.
+    High partition contains one element, so partition is already sorted.
+    All elements are sorted.
+
+Below is the recursive quicksort algorithm, including its key component the partitioning .
+Figure 16.8.1: Quicksort algorithm.
+
+def partition(numbers, i, k):
+    #  Pick middle element as pivot
+    midpoint = i + (k - i) // 2
+    pivot = numbers[midpoint]
+
+    #  Initialize variables
+    done = False
+    l = i
+    h = k
+    while not done:
+        #  Increment l while numbers[l] < pivot
+        while numbers[l] < pivot:
+            l = l + 1
+        #  Decrement h while pivot < numbers[h]
+        while pivot < numbers[h]:
+            h = h - 1
+        """  If there are zero or one items remaining,
+              all numbers are partitioned. Return h """
+        if l >= h:
+            done = True
+        else:
+            """  Swap numbers[l] and numbers[h],
+                  update l and h """
+            temp = numbers[l]
+            numbers[l] = numbers[h]
+            numbers[h] = temp
+            l = l + 1
+            h = h - 1
+    return h
+
+
+def quicksort(numbers, i, k):
+    j = 0
+    """  Base case: If there are 1 or zero entries to sort,
+          partition is already sorted  """
+    if i >= k:
+        return
+    """  Partition the data within the array. Value j returned
+          from partitioning is location of last item in low partition. """
+    j = partition(numbers, i, k)
+    """  Recursively sort low partition (i to j) and
+          high partition (j + 1 to k) """
+    quicksort(numbers, i, j)
+    quicksort(numbers, j + 1, k)
+    return
+
+
+numbers = [10, 2, 78, 4, 45, 32, 7, 11]
+print ('UNSORTED:', end=' ')
+for num in numbers:
+    print (str(num), end=' ')
+print()
+
+#  Initial call to quicksort
+quicksort(numbers, 0, len(numbers) - 1)
+print ('SORTED:', end=' ')
+for num in numbers:
+    print (str(num), end=' ')
+print()
+
+UNSORTED: 10 2 78 4 45 32 7 11
+SORTED: 2 4 7 10 11 32 45 78
+
+The following activity helps build intuition as to how partitioning a list into two unsorted parts, one part <= a pivot value and the other part >= a pivot value, and then recursively sorting each part, ultimately leads to a sorted list.
+participation activity
+16.8.5: Quicksort tool.
+Select all values in the current window that are less than the pivot for the left part, then press "Partition".
+
+
+
+
+X 	X 	X 	X 	X 	X 	X
+
+
+Time -Best time -
+
+
+
+
+
+
+
+
+
+The quicksort algorithm's runtime is typically O(N log N). Quicksort has several partitioning levels , the first level dividing the input into 2 parts, the second into 4 parts, the third into 8 parts, etc. At each level, the algorithm does at most N comparisons moving the l and h indices. If the pivot yields two equal-sized parts, then there will be log N levels, requiring the N * log N comparisons.
+participation activity
+16.8.6: Quicksort runtime.
+
+Assume quicksort always chooses a pivot that divides the elements into two equal parts.
+1)
+How many partitioning levels are required for a list of 8 elements?
+
+2)
+How many partitioning "levels" are required for a list of 1024 elements?
+
+3)
+How many total comparisons are required to sort a list of 1024 elements?
+
+For typical unsorted data, such equal partitioning occurs. However, partitioning may yield unequal sized part in some cases. If the pivot selected for partitioning is the smallest or largest element, one partition will have just 1 element, and the other partition will have all other elements. If this unequal partitioning happens at every level, there will be N - 1 levels, yielding
+, which is O(N). So the worst case runtime for the quicksort algorithm is O(N
+
+). Fortunately, this worst case runtime rarely occurs.
+participation activity
+16.8.7: Worst case quicksort runtime.
+Assume quicksort always chooses the smallest element as the pivot.
+1)
+Given numbers = [7, 4, 2, 25, 19], i = 0, and k = 4, what is contents of the low partition? Use brackets in your answer, e.g., "[1, 2, 3]".
+
+2)
+How many partitioning "levels" of are required for a list of 5 elements?
+
+3)
+How many partitioning "levels" are required for a list of 1024 elements?
+
+4)
+How many total comparisons are required to sort a list of 1024 elements?
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+16.9 Merge sort

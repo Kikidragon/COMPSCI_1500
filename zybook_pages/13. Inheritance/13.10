@@ -1,0 +1,34 @@
+
+13.10 LAB: Book information (overriding member methods)
+
+Given the base class Book, define a derived class called Encyclopedia. Within the derived Encyclopedia class, define a print_info() method that overrides the Book class' print_info() method by printing not only the title, author, publisher, and publication date, but also the edition and number of volumes.
+
+Ex: If the input is:
+
+The Hobbit
+J. R. R. Tolkien
+George Allen & Unwin
+21 September 1937
+The Illustrated Encyclopedia of the Universe
+James W. Guthrie
+Watson-Guptill
+2001
+2nd
+1
+
+the output is:
+
+Book Information:
+   Book Title: The Hobbit
+   Author: J. R. R. Tolkien
+   Publisher: George Allen & Unwin
+   Publication Date: 21 September 1937
+Book Information:
+   Book Title: The Illustrated Encyclopedia of the Universe
+   Author: James W. Guthrie
+   Publisher: Watson-Guptill
+   Publication Date: 2001
+   Edition: 2nd
+   Number of Volumes: 1
+
+Note: Indentations use 3 spaces.

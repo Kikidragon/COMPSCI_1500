@@ -1,0 +1,154 @@
+
+14.2 Recursive algorithm: Search
+
+An algorithm is a sequence of steps for solving a problem. For example, an algorithm for making lemonade is:
+
+    Make lemonade
+        Add sugar to pitcher
+        Add lemon juice
+        Add water
+        Stir
+
+Each step is distinct. Alternatively, an algorithm, for mowing the lawn is:
+
+    Mow the lawn
+        Mow the frontyard
+            Mow the left front
+            Mow the right front
+        Mow the backyard
+            Mow the left back
+            Mow the right back
+
+The mowing algorithm is defined recursively, i.e., the mowing algorithm's steps themselves consist of mowing, but of a smaller region.
+
+Consider a guessing game program where a friend thinks of a number from 0-100 and you try to guess the number, with the friend telling you to guess higher or lower until you guess correctly. What algorithm would you use to minimize the number of guesses? An algorithm that simply guesses in increments of 1 -- Is it 0? Is it 1? Is it 2? -- requires too many guesses (50 on average). An algorithm that guesses by 10s and then by 1s -- Is it 10? Higher: Is it 20? Higher: Is it 30? Lower: Is it 21? 22? 23? -- does better but still requires about 10 guesses on average (5 to find the correct tens digit and 5 to guess the correct ones digit). An even better algorithm uses a binary search approach, guessing the midpoint of the range and halving the range after each guess -- Is it 50 (the middle of 0-100)? Lower: Is it 25 (the middle of 0-50)? Higher: Is it 38 (the middle of 26-50)? Lower: Is it 32 (the middle of 26-38). After each guess, the binary search algorithm is applied again, just on a smaller range, i.e., the algorithm is recursive. The following animation illustrates.
+participation activity
+14.2.1: Binary search: A well-known recursive algorithm.
+0
+100
+50
+Given numbers 0-100, find the number 32.
+0
+25
+50
+38
+26
+50
+32
+26
+38
+Captions
+
+    The midpoint of 0 and 100 is 50.
+    32 is lower than 50, so the window is halved and the midpoint of 0 and 50 is found.
+    32 is greater than 25, so the window is halved and the midpoint of 26 and 50 is found.
+    32 is less than 38, so the window is halved and the midpoint of 26 and 38, which is 32, is found.
+
+A recursive function is a natural match for the recursive binary search algorithm. We can define a function find(low, high) whose parameters indicate the low and high sides of the guessing range. The function guesses at the midpoint of the range. If the user says lower, the function calls find(low, mid). If the user says higher, the function calls find(mid+1, high)Note_mid. The following program illustrates.
+Figure 14.2.1: A recursive function find() carrying out a binary search algorithm.
+
+def find(low, high):
+    mid = (high + low) // 2  # Midpoint of low..high
+    answer  = input('Is it {}? (l/h/y): '.format(mid))
+
+    if (answer != 'l') and (answer != 'h'):  # Base case
+        print('Got it!')
+    else:
+        if answer == 'l':
+            find(low, mid)
+        else:
+            find(mid+1, high)
+
+print('Choose a number from 0 to 100.')
+print('Answer with:')
+print('   l (your num is lower)')
+print('   h (your num is higher)')
+print(' any other key (guess is right).')
+
+find(0, 100)
+
+
+
+Choose a number from 0 to 100.
+Answer with:
+   l (your num is lower)
+   h (your num is higher)
+ any other key (guess is right).
+Is it 50? (l/h/y): l
+Is it 25? (l/h/y): h
+Is it 38? (l/h/y): h
+Is it 44? (l/h/y): l
+Is it 41? (l/h/y): y
+Got it!
+
+The recursive function has an if-else statement, where the if branch is the end of the recursion, known as the base case. The else part has the recursive calls. Such an if-else pattern is quite common in recursive functions.
+
+Consider the following program, in which a recursive algorithm is used to find an item in a sorted list. This example is for demonstration purposes only, a programmer would be better off using the list.index() or "in" operator to find a specific list element. Consider having a list of attendees at a conference, whose names have been stored in alphabetical order in a list. The following program determines whether a particular person is in attendance.
+Figure 14.2.2: Recursively searching a sorted list.
+
+def find(lst, item, low, high):
+    """
+    Finds index of string in list of strings, else -1.
+    Searches only the index range low to high
+    Note: Upper/Lower case characters matter
+    """
+    range_size = (high - low) + 1
+    mid = (high + low) // 2
+
+    if item == lst[mid]:  # Base case 1: Found at mid
+        pos = mid
+    elif range_size == 1:  # Base case 2: Not found
+        pos = -1
+    else:  # Recursive search: Search lower or upper half
+        if item < lst[mid]:  # Search lower half
+            pos = find(lst, item, low, mid)
+        else:  # Search upper half
+            pos = find(lst, item, mid+1, high)
+
+    return pos
+
+attendees = []
+
+attendees.append('Adams, Mary')
+attendees.append('Carver, Michael')
+attendees.append('Domer, Hugo')
+attendees.append('Fredericks, Carlo')
+attendees.append('Li, Jie')
+
+name = input("Enter person's name: Last, First: ")
+pos = find(attendees, name, 0, len(attendees)-1)
+
+if pos >= 0:
+    print('Found at position {}.'.format(pos))
+else:
+    print('Not found.')
+
+
+
+Enter person's name: Last, First: Simpson, Homer
+Not found.
+...
+Enter person's name: Last, First: Domer, Hugo
+Found at position 2.
+
+The find() function restricts its search to elements within the range "low" to "high". The script passes a range encompassing the entire list, namely 0 to (list length - 1). find() compares to the middle element, returning that element's position if matching. If not matching, then find() checks if the window's size is just one element, returning -1 in that case to indicate the item was not found because there is nothing left to search in the window. If neither of those two base cases are satisfied, then find() uses recursive binary search, recursively searching either the lower or upper half of the range as appropriate. Use the below tool to step through execution of the above program.
+
+In general, any recursive solution can also be done using loops. However, in some cases using a recursive algorithm may make a solution more clear, concise, and understandable. Candidates for recursion are problems that can be reduced into smaller and identical problems, and then solved. Above, the binary search algorithms iteratively reduced the problem by half, eventually reached a base case where the problem could be solved (i.e., the desired element was located).
+participation activity
+14.2.2: Recursive search algorithm.
+1)
+If a sorted list has elements numbers 0 to 50 and the item being searched for happens to be at location 6, how many times will the find() function be called?
+
+2)
+If an alphabetically sorted list (ascending) has elements numbered 0 to 50, and the item at element 0 is "Bananas", how many recursive calls to find() will be made during the failed search for "Apples"?
+
+3)
+A list of 5 elements is: A B D E F. A is element 0 and F is element 4. find(0,4) is called to search for item C. Write the last call to find() that would occur when searching for item C.
+
+(*Note_mid) Because mid has already been checked, it need not be part of the new window, so mid+1 rather than mid can be used for the window's new low side, or mid-1 for the window's new high side. But the mid-1 can have the drawback of a non-intuitive base case (i.e., mid < low, because if the current window is say 4..5, mid is 4, so the new window would be 4..4-1, or 4..3). We believe range==1 is more intuitive, and thus use mid rather than mid-1. However, we still have to use mid+1 when searching higher, due to integer rounding. In particular, for window 99..100, mid is 99 ((99+100)//2=99.5, rounded to 99 due to truncation of the fraction). So the next window would again be 99..100, and the algorithm would repeat with this window forever. mid+1 prevents the problem, and doesn't miss any numbers because mid was checked and thus need not be part of the window.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+14.3 Adding output statements for debugging

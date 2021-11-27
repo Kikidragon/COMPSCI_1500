@@ -1,0 +1,187 @@
+
+17.1 Basic graphics
+Creating a graphics frame
+
+Python supports a set of objects for developing graphical applications. A graphical application is a program that displays drawings and other graphical objects. TKinter is a standard Python package for graphical applications. TKinter displays contents inside a window called a frame using a Frame object. The following program shows how to create and configure an Frame object to display an empty application window.
+Figure 17.1.1: Creating a Frame object for a graphical application.
+
+import tkinter as tk
+
+class Application(tk.Frame):
+   def __init__(self, master=None):
+       super().__init__(master)
+       self.master = master
+
+       # Set the frame's title
+       self.master.title('An Empty Frame')
+       self.pack()
+
+app_frame = tk.Tk()
+
+# Set the frame's width (400) and height (250) in pixels
+app_frame.geometry('400x250')
+
+# Make the frame visible to the user
+app = Application(master=app_frame)
+app.mainloop()
+
+Figure 17.1.2: Screenshot of empty application window.
+Screenshot of an application's empty frame.
+
+Constructing a Frame object does not immediately display a frame. The program uses the methods supported by the Frame object to configure and display the frame as follows:
+
+    Set the frame's size by calling the geometry() method with arguments for the width and height, as in app_frame.geometry('400x250'). Forgetting to set the frame's size results in a frame too small to see.
+    Set the frame's title by calling the title() method with a String as the argument.
+    Make the frame visible to the user by calling the mainloop() method.
+
+participation activity
+17.1.1: Configuring a Frame.
+
+Select the code statement that would resolve the described problem. Assume an empty Frame object named appFrame.
+1)
+The frame window lacks a title. User would like the title to be "My program".
+2)
+The program called the mainloop() method correctly, but the frame is not visible on the screen. The frame should be 500 pixels wide and 300 pixels tall.
+Drawing graphical objects
+
+A Frame can be used to draw graphical objects, such as rectangles, circles, and lines. To display graphical objects, a programmer can add a Canvas object to a frame. A Canvas is a graphical component that a programmer can use to draw basic shapes.
+
+The following program demonstrates how to build a class that creates a Canvas to draw 2D graphics.
+Figure 17.1.3: Basic example showing how to create a class to draw 2D graphics using Canvas.
+
+import tkinter as tk
+from tkinter import Canvas, Frame, BOTH
+
+class Application(tk.Frame):
+   def __init__(self, master=None):
+       super().__init__(master)
+       self.master = master
+       self.pack(fill=BOTH, expand=1)
+
+       canvas = Canvas(self)
+       # Write your drawing instructions
+
+app_frame = tk.Tk()
+app_frame.geometry('400x250')
+app = Application(master=app_frame)
+app.mainloop()
+
+The above code defines a class named Application that uses a Canvas object. A programmer completes the template by providing custom drawing instructions after the Canvas object has been created. In the animation below, the programmer uses Canvas's create_rectangle() to draw a rectangle in the frame.
+
+Canvas's create_rectangle() takes the following arguments:
+
+    Arguments 1 and 2: coordinate for the top left corner (x0, y0) of the rectangle
+    Arguments 3 and 4: coordinate for the bottom right corner (x1, y1)
+    Argument 5 (optional): rectangle outline color (if not set, the outline will be black)
+    Argument 6 (optional): rectangle fill color
+
+Many more optional arguments exist for the create_rectangle() method, such as width (width of border) and dash (make the border dashed).
+participation activity
+17.1.2: Drawing a filled rectangle.
+
+canvas = Canvas(self)
+canvas.create_rectangle(10, 75, 160, 125,
+         outline="cyan", fill="cyan")
+
+
+rectangle size
+Internal data:
+(10, 75)
+(160, 125)
+rectangle color
+Internal data:
+outline="cyan",
+fill="cyan"
+Histogram Viewer
+Internal data:
+outline="cyan",
+fill="cyan"
+canvas object
+frame
+canvas object
+Captions
+
+    The canvas variable is set to a Canvas object for drawing 2D graphics.
+    The create_rectangle() method draws a rectangle with the coordinates (10, 75) and (150, 50), with the outline and fill color set to "cyan".
+
+The programmer needs to know the positioning coordinate system in order to draw shapes in the intended location. As the following figure illustrates, the top-left corner of a Canvas corresponds to coordinates (0, 0). The x-coordinate increases horizontally to the right and the y-coordinate increases vertically downward.
+Figure 17.1.4: Graphics coordinate system.
+Image of a Canvas coordinate system with the second bin drawn.
+participation activity
+17.1.3: Drawing colored rectangles.
+
+Select the code statement that would resolve the described problem. Assume canvas is a Canvas object.
+1)
+The user wants a rectangle's top left corner coordinates to be x0=5 and y0=5 and the rectangle to be 100 x 100 pixels in size.
+2)
+The user wants a pink rectangle to have a blue outline.
+Ex: Drawing a basic histogram
+
+The following program uses a Canvas object to draw a simple histogram using Canvas's create_rectangle() method. The program first creates a HistogramViewer object named histogram_viewer and adds the object to the Frame. The HistrogramViewer class creates three rectangles by calling Canvas's create_rectangle() method.
+Figure 17.1.5: Drawing a histogram in a frame.
+HistogramApp.py
+
+import tkinter as tk
+from tkinter import Canvas, Frame, BOTH
+
+class HistogramViewer(tk.Frame):
+   def __init__(self, master=None):
+       super().__init__(master)
+       self.master = master
+       self.master.title('Histogram Viewer')
+       self.pack(fill=BOTH, expand=1)
+
+       canvas = Canvas(self)
+       canvas.create_rectangle(10, 10, 210, 60, outline='darkolivegreen4', fill='darkolivegreen4')
+       canvas.create_rectangle(10, 75, 160, 125, outline='cyan', fill='cyan')
+       canvas.create_rectangle(10, 140, 360, 190, outline='gray40', fill='gray40')
+
+       canvas.pack(fill=BOTH, expand=1)
+       self.pack()
+
+app_frame = tk.Tk()
+app_frame.geometry('400x250')
+histogram_viewer = HistogramViewer(master=app_frame)
+histogram_viewer.mainloop()
+
+Figure 17.1.6: Screenshot of HistogramViewer application.
+Screenshot of an application's histogram.
+participation activity
+17.1.4: Drawing rectangles.
+
+Which code segment (type the number) performs the described operation? Assume the Canvas object is called graphicsObj.
+
+    graphicsObj.create_rectangle(0, 0, 150, 100, fill='green')
+
+    graphicsObj.create_rectangle(0, 100, 200, 300, outline='red', fill='red')
+
+    graphicsObj.create_rectangle(0, 100, 50, 250, outline='purple', fill='purple')
+
+1)
+Draws a filled in square.
+
+2)
+Draws the outline of a rectangle 50 pixels wide and 150 pixels in height.
+
+3)
+Draws a rectangle whose top-left corner is located at the origin of the coordinate system.
+
+4)
+Draws a rectangle with a black outline.
+
+Canvas provides methods for drawing structured graphics, of which some common shapes are summarized below:
+Table 17.1.1: Summary of common shapes for drawing.
+Shape 	Description 	Documentation
+Rectangle 	Draws a rectangle on the canvas. 	create_rectangle() method
+Oval 	Draws and ellipse on the canvas. 	create_oval() method
+Line 	Draws a line on the canvas. 	create_line() method
+Polygon 	Draws a polygon on the canvas. 	create_polygon() method
+Exploring further:
+
+    Color chart for TKinter (all available color names)
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas

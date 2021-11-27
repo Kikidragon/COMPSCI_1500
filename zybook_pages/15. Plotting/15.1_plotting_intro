@@ -1,0 +1,77 @@
+
+15.1 Introduction to plotting and visualizing data
+
+Many programs interact with sets of data, such as a list of ocean temperatures or daily calorie expenditure. A program can graphically plot, or visualize, such data.
+Figure 15.1.1: Plot of ocean temperature from 1850 to 2011.
+Graph of ocean temperatures from 1850 to 2011 showing the warmest temperatures in history in the 2000s. Source: Data source, ocean_temp.csv.
+
+The matplotlib package can be used for plotting in Python. matplotlib replicates the plotting capability of MATLAB, an engineering-oriented programming language. matplotlib is short for "MATLAB plotting library."
+
+matplotlib is not included with Python, but can be downloaded and installed from http://matplotlib.org/downloads.html. matplotlib also requires the NumPy package.
+participation activity
+15.1.1: Introduction to plotting using matplotlib.
+1)
+matplotlib is a package that _________ .
+2)
+matplotlib is installed by default with Python.
+
+A program to plot ocean temperature is below. File ocean_temps.csv contains the data, with one temperature on each line, for year 1850, then 1851, etc.
+Figure 15.1.2: A program to plot ocean temperatures read from a file.
+
+import matplotlib.pyplot as plt
+
+with open('ocean_temps.csv') as temp_file:
+    temps = []
+    for t in temp_file:
+        temps.append(float(t))
+
+years = range(1850, 2012)
+
+plt.plot(years, temps)
+plt.show()
+
+
+
+Resulting basic line graph of ocean temperatures from 1840 to 2011.
+
+The program imports the pyplot module from the matplotlib package, renaming matplotlib.pyplot to plt using the as keyword. The as keyword renames an imported module or package. The program then reads the temperatures from a file and stores the temperatures in a list. The plt.show() function displays the graph.
+
+The plt.plot() function plots data onto the graph. plot() accepts various arguments. Above, two lists are passed to the function: The years list is the x-coordinate of each point to plot, and the temps list is the y-coordinate. plot() combines the lists into (x, y) coordinates. Above, years[0] is 1850 and temps[0] is -0.1, so plot() draws a point at (1850, -0.1). The next coordinate is (years[1], temps[1]), or (1851, -0.7). plot() also draws a line between successive points.
+
+If provided just one list, as in plt.plot(temps), plot() uses 0, 1, ... for x values, as in (0, temps[0]), (1, temps[1]), etc.
+
+Calling plot multiple times draws multiple lines.
+Figure 15.1.3: Plotting multiple lines in the same graph.
+
+The below image shows the result when plot() is called twice. The first call plots ocean temperatures per year, and the second call plots the number of pirates (suggesting a correlation between rising ocean temperature and a decrease in piracy).
+
+import matplotlib.pyplot as plt
+
+with open('ocean_temp.csv') as temp_file:
+    temps = []
+    for t in temp_file:
+        temps.append(float(t))
+
+temp_years = range(1850, 2012)
+plt.plot(temp_years, temps)
+
+pirate_years = range(1850, 2025, 25)
+num_pirates_thousands = [20, 17, 15, 5, 0.4, 0.05, 0.025]
+plt.plot(pirate_years, num_pirates_thousands)
+plt.show()
+
+
+
+Basic line graph plotting the number of pirates versus ocean temperatures showing a drastic decrease in the number of pirates in the 1900s.
+participation activity
+15.1.2: Plotting data using matplotlib.
+1)
+The plot() function of matplotlib.pyplot can accept as an argument
+2)
+The function call plt.plot([5, 10, 15], [0.25, 0.34, 0.44]) plots an x,y coordinate at
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+15.2 Styling plots

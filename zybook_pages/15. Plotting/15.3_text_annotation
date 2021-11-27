@@ -1,0 +1,121 @@
+
+15.3 Text and annotations
+
+Text labels can help draw attention to interesting parts of a plot. Consider the plot below where a text label marks an important point on the x-axis.
+Figure 15.3.1: Adding text to a plot.
+
+import matplotlib.pyplot as plt
+
+with open('dd_stats.csv') as f:
+    total_fatalities = []
+    alcohol_fatalities = []
+    for line in f:
+        total, alcohol = line.split(',')
+        total_fatalities.append(int(total))
+        alcohol_fatalities.append(int(alcohol))
+
+years = range(1970, 2012)
+plt.plot(years, total_fatalities, label="Total")
+plt.plot(years, alcohol_fatalities, label="Alcohol-related")
+
+plt.xlabel('Year')
+plt.ylabel('Number of highway fatalities')
+plt.legend(shadow=True, loc="upper right")
+
+# Add plot title
+plt.title("Alcohol related fatalities on highways")
+
+# Add text giving x,y coordinates of the plot
+plt.text(1970.5, 11000, 'Fatalities spike\n in 1970s', color='grey', fontsize=12)
+
+# Add a vertical line at x-coordinate 1980
+plt.axvline(1980, color='grey')
+
+plt.show()
+
+
+
+Basic line graph with a legend in the upper right that indicates a solid blue line is the total number of automobile fatalities and a green line is the number of alcohol-related automobile fatalities. A gray vertical line appears at 1980 with the text 'Fatalities spike in 1970s'. The graph indicates of the total automobile fatalities and the fatalities related to alcohol showing that over half of the total are alcohol-related. Source: Data source, dd_stats.csv
+
+The text() function draws a string label on the plot. The first two arguments specify an x,y coordinate of the label. Optional keyword arguments customize the appearance of the label.
+
+The annotate() function creates an annotation that links a text label with a specific data point. The programmer specifies the coordinates of the text label and the data point, and an arrow is automatically drawn from text to data point.
+Figure 15.3.2: Annotating a specific data point.
+
+import matplotlib.pyplot as plt
+
+with open('dd_stats.csv') as f:
+    total_fatalities = []
+    alcohol_fatalities = []
+    for line in f:
+        total, alcohol = line.split(',')
+        total_fatalities.append(int(total))
+        alcohol_fatalities.append(int(alcohol))
+
+years = range(1970, 2012)
+plt.plot(years, total_fatalities, label="Total")
+plt.plot(years, alcohol_fatalities, label="Alcohol-related")
+
+plt.xlabel('Year')
+plt.ylabel('Number of highway fatalities')
+plt.legend(shadow=True, loc="upper right")
+
+# Add plot title
+plt.title("Alcohol related fatalities on highways")
+
+# Add text giving x,y coordinates of the plot
+plt.text(1970.5, 11000, 'Fatalities spike\n in 1970s', color='grey', fontsize=12)
+
+# Add a vertical line at x-coordinate 1980
+plt.axvline(1980, color='grey')
+
+# Add annotation
+arrow_properties = {
+    'facecolor': 'black',
+    'shrink': 0.1,
+    'headlength': 10,
+    'width': 2
+}
+
+plt.annotate('Drinking age changed to 21',
+             xy=(1984, 24762),
+             xytext=(1986, 30000),
+             arrowprops=arrow_properties)
+
+plt.show()
+
+
+
+Same basic line graph as above. Graph additional include an arrow pointing to the green trend line at 1984 with the accompanying text 'Drinking age changed to 21'.
+
+The first argument to annotate() is the label to display, which is placed at the coordinate described by xytext. Argument xy is the datapoint that the arrowhead points to. The arrow's appearance can be customized by passing a dictionary of arrow properties.
+participation activity
+15.3.1: Text and annotations.
+1)
+Draw the string "Peak current" at coordinate (5, 10).
+
+plt.text()
+
+2)
+Annotate the data point at (100, 5), placing the text 'Peak current' at (115, 10).
+
+plt.annotate('Peak current', )
+
+3)
+Complete the call that results in the following annotation:
+
+Basic line plot with an arrow pointing to blue trend line at x = 4 and y = 2. The arrow is accompanied by the text 'Q1 Sales' positioned at x = 4 and y = 3.
+
+plt.annotate()
+
+Exploring further:
+
+    Customizing the appearance of text labels
+    Customizing the appearance of arrows
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+15.4 Numpy

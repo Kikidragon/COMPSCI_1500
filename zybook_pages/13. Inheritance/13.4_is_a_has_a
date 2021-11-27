@@ -1,0 +1,65 @@
+
+13.4 Is-a versus has-a relationships
+
+The concept of inheritance is often confused with composition. Composition is the idea that one object may be made up of other objects. For instance, a "mother" class can be made up of objects like "name" (possibly a string object), "children" (which may be a list of Child objects), etc. Defining that "mother" class does not involve inheritance, but rather just composing the sub-objects in the class.
+Figure 13.4.1: Composition.
+
+The 'has-a' relationship. A Mother object 'has-a' string object and 'has' child objects, but no inheritance is involved.
+
+class Child:
+    def __init__(self):
+        self.name = ''
+        self.birthdate = ''
+        self.schoolname = ''
+    # ...
+
+class Mother:
+    def __init__(self):
+        self.name = ''
+        self.birthdate = ''
+        self.spouse_name = ''
+        self.children = []
+    # ...
+
+In contrast, a programmer may note that a mother and a child are both a kind of person, and all persons have a name and birthdate. So the programmer may decide to better organize the program by defining a Person class, and then by creating the Mother and Child classes as derived from Person.
+Figure 13.4.2: Inheritance.
+
+The 'is-a' relationship. A Mother object 'is a' kind of Person. The Mother class thus inherits from the Person class. Likewise for the Child class.
+
+class Person:
+    def __init__(self):
+        self.name = ''
+        self.birthdate = ''
+    # ...
+
+class Child(Person):
+    def __init__(self):
+        Person.__init__(self)
+        self.schoolname = ''
+    # ...
+
+class Mother(Person):
+    def __init__(self):
+        Person.__init__(self)
+        self.spousename = ''
+        self.children = []
+    # ...
+
+participation activity
+13.4.1: Is-a vs. has-a relationships.
+
+Indicate whether the relationship of the everyday items is an is-a or has-a relationship. Derived classes and inheritance are related to is-a relationships, not has-a relationships.
+1)
+Pear / Fruit
+2)
+House / Door
+3)
+Dog / Owner
+4)
+Mug / Cup
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+13.5 Mixin classes and multiple inheritance

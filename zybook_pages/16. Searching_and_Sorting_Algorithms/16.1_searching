@@ -1,0 +1,118 @@
+
+16.1 Searching and algorithms
+Algorithms and linear search
+
+An algorithm is a sequence of steps for accomplishing a task. Linear search is a search algorithm that starts from the beginning of a list, and checks each element until the search key is found or the end of the list is reached.
+participation activity
+16.1.1: Linear search algorithm checks each element until key is found.
+Search key:
+14
+numbers:
+0
+1
+2
+3
+4
+5
+6
+7
+6
+24
+16
+14
+5
+32
+63
+2
+!= 6
+14
+!= 24
+!= 16
+== 14
+Search key found at index 3
+11
+11
+!= 6
+!= 24
+!= 16
+!=14
+!= 5
+!= 32
+!= 63
+!= 2
+Search key 11 not found
+Unsearched
+Searched
+Current
+Captions
+
+    Linear search starts at first element and searches elements one-by-one.
+    Linear search will compare all elements if the search key is not present.
+
+Figure 16.1.1: Linear search algorithm.
+
+def linear_search(numbers, key):
+    for i in range(len(numbers)):
+        if numbers[i] == key:
+            return i
+    return -1   # not found
+
+
+numbers = [2, 4, 7, 10, 11, 32, 45, 87]
+print('NUMBERS:', end=' ')
+for num in numbers:
+    print(str(num), end=' ')
+print()
+
+key = int(input('Enter a value: '))
+key_index = linear_search(numbers, key)
+
+if key_index == -1:
+    print(str(key) + ' was not found.')
+else:
+    print('Found ' + str(key) + ' at index ' + str(key_index) + '.')
+
+NUMBERS: 2 4 7 10 11 32 45 87
+Enter a value: 10
+Found 10 at index 3.
+...
+NUMBERS: 2 4 7 10 11 32 45 87
+Enter a value: 17
+17 was not found.
+
+participation activity
+16.1.2: Linear search algorithm execution.
+
+Given list: [ 20, 4, 114, 23, 34, 25, 45, 66, 77, 89, 11 ].
+1)
+How many list elements will be compared to find 77 using linear search?
+
+2)
+How many list elements will be checked to find the value 114 using linear search?
+
+3)
+How many list elements will be checked if the search key is not found using linear search?
+
+Algorithm runtime
+
+An algorithm's runtime is the time the algorithm takes to execute. If each comparison takes 1 µs (1 microsecond), a linear search algorithm's runtime is up to 1 second to search a list with 1,000,000 elements, 10 s for 10,000,000 elements, and so on. Ex: Searching Amazon's online store, which has more than 200 million items, could require more than 3 minutes.
+
+An algorithm typically uses a number of steps proportional to the size of the input. For a list with 32 elements, linear search requires at most 32 comparisons: 1 comparison if the search key is found at index 0, 2 if found at index 1, and so on, up to 32 comparisons if the search key is not found. For a list with N elements, linear search thus requires at most N comparisons. The algorithm is said to require "on the order" of N comparisons.
+participation activity
+16.1.3: Linear search runtime.
+1)
+Given a list of 10,000 elements, and if each comparison takes 2 µs, what is the fastest possible runtime for linear search?
+
+   µs
+
+2)
+Given a list of 10,000 elements, and if each comparison takes 2 µs, what is the longest possible runtime for linear search?
+
+   µs
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+16.2 Binary search

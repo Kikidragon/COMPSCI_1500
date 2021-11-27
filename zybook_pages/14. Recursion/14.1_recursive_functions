@@ -1,0 +1,69 @@
+
+14.1 Recursive functions
+
+A function may call other functions, including calling itself. A function that calls itself is known as a recursive function. The following program illustrates.
+participation activity
+14.1.1: A recursive function example.
+
+def count_down(count):
+    if count == 0:
+        print('Go!')
+    else:
+        print(count)
+        count_down(count-1)
+
+count_down(2)
+
+
+count_down()
+count: 2
+count_down()
+count: 1
+count_down()
+count: 0
+2
+1
+Go!
+Captions
+
+    count_down is called and count = 2.
+    count_down is recursively called and count = 1.
+    count_down is recursively called and count = 0.
+
+The function is mostly useful for demonstrating recursion; counting down is easily done instead of using a loop. Each call to count_down creates a new namespace for the local scope of the function. The script makes the first call to count_down(), creating a namespace with the count argument bound to the integer value 2. That first function call prints 2, and calls count_down() with an argument of 1. A new namespace is created again for the local variables in count_down()'s local scope with the count argument bound to the integer value 1. That second function call prints 1, and calls count_down() with an argument of 0. That third function call prints GO!, and then because count == 0 is true, returns. The second function call is then done so it returns. The first function call is then done so it returns. Finally, the script finishes.
+participation activity
+14.1.2: Recursive functions.
+1)
+How many times is count_down() called if the script calls count_down(5)?
+
+2)
+How many times is count_down() called if the script calls count_down(0)?
+
+3)
+Is there a difference in how we define the parameters of a recursive versus non-recursive function? Answer yes or no.
+
+challenge activity
+14.1.1: Calling a recursive function.
+Write a statement that calls the recursive function backwards_alphabet() with input starting_letter.
+
+Sample output with input: 'f'
+
+f
+e
+d
+c
+b
+a
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+406 / 412 pts
+Due: 12/10/2021, 11:59 PM CST
+406 / 412 pts submitted to canvas
+14.2 Recursive algorithm: Search

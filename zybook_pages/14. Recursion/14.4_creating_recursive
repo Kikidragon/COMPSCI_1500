@@ -1,0 +1,95 @@
+
+14.4 Creating a recursive function
+
+Creating a recursive function can be accomplished in two steps.
+
+    Write base case -- Every recursive function must have a case that returns a value without performing a recursive call. That case is called the base case. A programmer may write that part of the function first, and then test. There may be multiple base cases.
+    Write recursive case -- The programmer then adds the recursive case to the function.
+
+The following illustrates for a simple function that computes the factorial of N (N!). The base case is n=1 or 1!, which evaluates to 1. The recursive case is n*nfact(n-1), which is written and tested. Note: Factorial is not necessarily a good candidate for a recursive function, because a non-recursive version using a loop is so simple; however, factorial makes a simple example for demonstrating recursion. Actually useful cases for recursion are rarer in Python than for other programming languages, since Python programmers tend to prefer more natural iterative loop structures. Typically, recursion is useful when dealing with data structures of unknown size and connectivity, properties most commonly associated with tree-shaped data structures.
+participation activity
+14.4.1: Writing a recursive function for factorial: First writing the base case, then adding the recursive case.
+
+def nfact(n):
+    fact = 0
+    if n == 1 or n == 0:  # Base case
+        fact = 1
+    # : Finish
+    return fact
+
+# Get n from user, print nfact(n)
+
+
+def nfact(n):
+    if n == 1 or n == 0:  # Base case
+        fact = 1
+    else:       # Recursive case
+        fact = n * nfact(n-1)
+    return fact
+
+# Get n from user, print nfact(n)
+
+
+Enter N: 1
+N! is: 1
+Enter N: 6
+N! is: 720
+Enter N: 1
+N! is: 1
+Captions
+
+    The base case (non-recursive case) has to be written and tested.
+    The recursive case has to be added and tested.
+
+Before writing a recursive function, a programmer should determine: (1) Whether the problem has a naturally recursive solution, and (2) whether that solution is better than a non-recursive solution. For example, computing E = M*C*C doesn't seem to have a natural recursive solution. Computing n! (n factorial) does have a natural recursive solution, but a recursive solution is not better than a non-recursive solution that simply uses a loop, as in for i in range(n, 0, -1): result *= ifactorial Binary search has a natural recursive solution, and that solution may be easier to understand than a non-recursive solution.
+
+A common error is to not cover all possible base cases in a recursive function. Another common error is to write a recursive function that doesn't always reach a base case. Both errors may lead to infinite recursion, causing the program to fail.
+
+Commonly, programmers will use two functions for recursion. An "outer" function is intended to be called from other parts of the program, like the function "factorial(n)". An "inner" function is intended only to be called from that outer function, like the function " _factorial(n)" (note the "_"). The outer function may check for a valid input value, e.g., ensuring n is not negative, and then calling the inner function. Commonly, the inner function has parameters that are mainly of use as part of the recursion, and need not be part of the outer function, thus keeping the outer function more intuitive.
+participation activity
+14.4.2: Creating a recursive function.
+1)
+A recursive function with parameter n counts up from any negative number to 0. An appropriate base case would be n==0.
+2)
+A recursive function can have two base cases, such as n==0 returning 0, and n==1 returning 1.
+3)
+n factorial (n!) is commonly implemented as a recursive function due to being easier to understand and executing faster than a loop implementation.
+challenge activity
+14.4.1: Recursive function: Writing the base case.
+Add an if branch to complete double_pennies()'s base case.
+
+Sample output with inputs: 1 10
+
+Number of pennies after 10 days: 1024
+
+
+
+Note: If the submitted code has an infinite loop, the system will stop running the code after a few seconds, and report "Program end never reached." The system doesn't print the test case that caused the reported message.
+
+343716.2144758.qx3zqy7
+
+1 test passed
+All tests passed
+challenge activity
+14.4.2: Recursive function: Writing the recursive case.
+Write code to complete factorial_str()'s recursive case.
+
+Sample output with input: 5
+
+5! = 5 * 4 * 3 * 2 * 1 = 120
+
+
+
+343716.2144758.qx3zqy7
+
+1 test passed
+All tests passed
+View your last submission
+
+(*factorial) In this discussion, we ignore the fact that the math module has a very convenient math.factorial(n) function.
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+14.5 Recursive math functions

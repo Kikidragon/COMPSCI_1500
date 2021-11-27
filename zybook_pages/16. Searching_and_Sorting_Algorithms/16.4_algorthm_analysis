@@ -1,0 +1,268 @@
+
+16.4 Algorithm analysis
+Worst-case algorithm analysis
+
+To analyze how runtime of an algorithm scales as the input size increases, we first determine how many operations the algorithm executes for a specific input size, N. Then, the big-O notation for that function is determined. Algorithm runtime analysis often focuses on the worst-case runtime complexity. The worst-case runtime of an algorithm is the runtime complexity for an input that results in the longest execution. Other runtime analyses include best-case runtime and average-case runtime. Determining the average-case runtime requires knowledge of the statistical properties of the expected data inputs.
+participation activity
+16.4.1: Runtime analysis: Finding the max value.
+
+maxVal = numbers[0]
+for num in numbers:
+    if num > maxVal:
+        maxVal = num
+
+
+f(N)  =
+1 operation
+N iterations
+1
+(            )
+N
+2 operations (worst-case)
+2
+1 operation
++
+1
++
+= 1 + 3N
+= O(N)
+Captions
+
+    Runtime analysis determines the total number of operations. Operations include assignment, addition, comparison, etc.
+    The for loop iterates N times, in this case size of list numbers.
+    For each loop iteration, num is assigned the next value in the list. In the worst-case, the if's expression is true, resulting in 2 operations.
+    The function f(N) specifies the number of operations executed for input size N. The big-O notation for the function is the algorithm's worst-case runtime complexity.
+
+participation activity
+16.4.2: Worst-case runtime analysis.
+1)
+Which function best represents the number of operations in the worst-case?
+
+sum = 0
+for num in numbers:
+    sum = sum + num
+
+2)
+What is the big-O notation for the worst-case runtime?
+
+neg_count = 0
+for num in numbers:
+    if num < 0:
+        neg_count = neg_count + 1
+
+3)
+What is the big-O notation for the worst-case runtime?
+
+for i in range(N):
+    if i % 2 == 0:
+        out_val[i] = in_vals[i] * i
+
+4)
+What is the big-O notation for the worst-case runtime?
+
+n_val = N
+steps = 0
+while n_val > 0:
+    n_val = n_val // 2
+    steps = steps + 1
+
+5)
+What is the big-O notation for the best-case runtime?
+
+below_min_sum = 0.0
+below_min_count = 0
+while (i < len(numbers)) and (numbers[i] <= max_val):
+    below_min_count = below_min_count + 1
+    below_min_sum = numbers[i]
+    i = i + 1
+avg_below = below_min_sum / below_min_count
+
+Counting constant time operations
+
+For algorithm analysis, the definition of a single operation does not need to be precise. An operation can be any statement (or constant number of statements) that has a constant runtime complexity, O(1). Since constants are omitted in big-O notation, any constant number of constant time operations is O(1). So, precisely counting the number of constant time operations in a finite sequence is not needed. Ex: An algorithm with a single loop that executes 5 operations before the loop, 3 operations in each loop iteration, and 6 operations after the loop would have a runtime of f(N) = 5 + 3N + 6, which can be written as O(1) + O(N) + O(1) = O(N). If the number of operations before the loop was 100, the big-O notation for those operation is still O(1).
+participation activity
+16.4.3: Simplified runtime analysis: A constant number of constant time operations is O(1).
+
+sum = 0.0
+for num in numbers:
+    absVal = num
+    if absVal < 0:
+        absVal = -absVal
+    sum += absVal
+avgAbsVal = sum / N
+
+
+O(1)
+O(1)
+O(1)
+N iterations
+O(1)
++
+N
+O(1)
++
+O(1)
+= O(N)
+Captions
+
+    Constants are omitted in big-O notation, so any constant number of constant time operations is O(1).
+    The for loop iterates N times. Big-O complexity can be written as a composite function and simplified.
+
+participation activity
+16.4.4: Constant time operations.
+1)
+A for loop of the form for num in numbers: that does not have nested loops or function calls, and does not modify num in the loop will always has a complexity of O(N).
+2)
+The complexity of the algorithm below is O(1).
+
+if time_hour < 6:
+    toll_amount = 1.55
+elif time_hour < 10:
+    toll_amount = 4.65
+elif time_hour < 18:
+    toll_amount = 2.35
+else:
+    toll_amount = 1.55
+
+3)
+The complexity of the algorithm below is O(1).
+
+for i in range(24):
+    if time_hour < 6:
+        toll_schedule[i] = 1.55
+    elif time_hour < 10:
+        toll_schedule[i] = 4.65
+    elif time_hour < 18:
+        toll_schedule[i] = 2.35
+    else:
+        toll_schedule[i] = 1.55
+
+Runtime analysis of nested loops
+
+Runtime analysis for nested loops requires summing the runtime of the inner loop over each outer loop iteration. The resulting summation can be simplified to determine the big-O notation.
+participation activity
+16.4.5: Runtime analysis of nested loop: Selection sort algorithm.
+
+N = len(numbers)
+
+for i in range(N):
+  index_smallest = i
+
+  for j in range(i+1, N):
+     if numbers[j] < numbers[index_smallest]:
+        index_smallest = j
+
+  temp = numbers[i]
+  numbers[i] = numbers[index_smallest]
+  numbers[index_smallest] = temp
+
+
+f(N) =
+i =
+0
+j = 1 to N - 1
+N - 1 iterations
+(N - 1)
++
+1
+j = 2 to N - 1
+N - 2 iterations
+(N - 2)
++      +
+...
+N - 2
+j = N - 1 to N - 1
+1 iteration
+2
++
+1
+=
+N(N -1)
+2
+c
+c
+(
+)
+(
+)
++ d(N)
++ d·N
+=
+O(f(N)) = O(
+(N
+2
+c
+- N) + d·N)
+2
+2
+= O(N  + N)
+2
+= O(N )
+3 operations, generalized
+as constant c
+
+Each of the N outer loop iterations
+executes 5 operations, generalized
+as constant d
+
+d
+Captions
+
+    For each iteration of the outer loop, the runtime of the inner loop is determined and added together to form a summation. For iteration i = 0, the inner loop executes N - 1 iterations.
+    For i = 1, the inner loop iterates N - 2 times: iterating from j = 2 to N - 1.
+    For i = N - 2, the inner loop iterates once: iterating from j = N - 1 to N - 1.
+    The summation is the sum of a consecutive sequence of numbers, and can be simplified.
+    Each iteration of the loops requires a constant number of operations, which is defined as the constant c.
+    Additionally, each iteration of the outer loop requires a constant number of operations, which is defined as the constant d.
+    Big-O notation omits the constant values, and the runtime is equal to the summation of the total inner loop iterations.
+
+Figure 16.4.1: Common summation: Summation of consecutive numbers.
+participation activity
+16.4.6: Nested loops.
+
+Determine the big-O worst-case runtime for each algorithm. For each algorithm, N = len(numbers).
+1)
+
+for i in range(N):
+    for j in range(N):
+        if numbers[i] < numbers[j]:
+            eq_perms = eq_perms + 1
+        else:
+            neq_perms = neq_perms + 1
+
+2)
+
+for i in range(N):
+    for j in range(N - 1):
+        if numbers[j + 1] < numbers[j]:
+            temp = numbers[j]
+            numbers[j] = numbers[j + 1]
+            numbers[j + 1] = temp
+
+3)
+
+for i in range(0, N, 2):
+    for j in range(0, N, 2):
+        c_vals[i][j] = in_vals[i] * j
+
+4)
+
+for i in range(N):
+    for j in range(i, N - 1):
+        c_vals[i][j] = in_vals[i] * j
+
+5)
+
+for i in range(N):
+    sum = 0
+    for j in range(N):
+        for k in range(N):
+            sum = sum + a_vals[i][k] * b_vals[k][j]
+        c_vals[i][j] = sum
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+16.5 Sorting: Introduction

@@ -1,0 +1,196 @@
+
+16.7 Insertion sort
+Insertion sort algorithm
+
+Insertion sort is a sorting algorithm that treats the input as two parts, a sorted part and an unsorted part, and repeatedly inserts the next value from the unsorted part into the correct location in the sorted part.
+participation activity
+16.7.1: Insertion sort.
+temp:
+
+for i in range(1, len(numbers)):
+   j = i
+   # Insert numbers[i] into sorted part
+   # stopping once numbers[i] in correct position
+   while j > 0 and numbers[j] < numbers[j - 1]:
+
+      # Swap numbers[j] and numbers[j - 1]
+      temp = numbers[j]
+      numbers[j] = numbers[j - 1]
+      numbers[j - 1] = temp
+      j = j - 1
+
+
+Unsorted
+Sorted
+0
+1
+2
+3
+4
+numbers:
+32
+6
+15
+3
+20
+i
+j
+6
+32
+15
+32
+15
+6
+3
+32
+3
+15
+3
+6
+20
+32
+20
+15
+<
+<
+<
+Captions
+
+    Insertion sort treats the input as two parts, a sorted and unsorted part. Variable i is the index of the first unsorted element. Initially, the element at index 0 is assumed to be sorted, so i starts at 1.
+    Variable j keeps track of the index of the current element being inserted into the sorted part. If the current element is less than the element to the left, the values are swapped.
+    Once the current element is inserted in the correct location in the sorted part, i is incremented to the next element in the unsorted part.
+    If the current element being inserted is smaller than all elements in the sorted part, that element will be repeatedly swapped with each sorted element until index 0 is reached.
+    Once all elements in the unsorted part are inserted in the sorted part, the list is sorted.
+
+Figure 16.7.1: Insertion sort algorithm.
+
+def insertion_sort(numbers):
+    for i in range(1, len(numbers)):
+        j = i
+        # Insert numbers[i] into sorted part
+        # stopping once numbers[i] in correct position
+        while j > 0 and numbers[j] < numbers[j - 1]:
+            # Swap numbers[j] and numbers[j - 1]
+            temp = numbers[j]
+            numbers[j] = numbers[j - 1]
+            numbers[j - 1] = temp
+            j = j - 1
+
+
+numbers = [10, 2, 78, 4, 45, 32, 7, 11]
+print ('UNSORTED:', end=' ')
+for num in numbers:
+    print (str(num), end=' ')
+print()
+
+insertion_sort(numbers)
+print ('SORTED:', end=' ')
+for num in numbers:
+    print (str(num), end=' ')
+print()
+
+UNSORTED: 10 2 78 4 45 32 7 11
+SORTED: 2 4 7 10 11 32 45 78
+
+Insertion sort execution
+
+The index variable i denotes the starting position of the current element in the unsorted part. Initially, the first element (i.e., element at index 0) is assumed to be sorted, so the outer for loop initializes i to 1. The inner while loop inserts the current element into the sorted part by repeatedly swapping the current element with the elements in the sorted part that are larger. Once a smaller or equal element is found in sorted part, the current element has been inserted in the correct location and the while loop terminates.
+participation activity
+16.7.2: Insertion sort algorithm execution.
+
+Assume insertion sort's goal is to sort in ascending order.
+1)
+Given list [20, 14, 85, 3, 9], what value will be in the 0
+element after the first pass over the outer loop (i = 1)?
+
+2)
+Given list [10, 20, 6, 14, 7], what will be the list after completing the second outer loop iteration (i = 2)? Use brackets in your answer, e.g. "[1, 2, 3]".
+
+3)
+Given list [1, 9, 17, 18, 2], how many swaps will occur during the outer loop execution (i = 4)?
+
+Insertion sort runtime
+
+Insertion sort's typical runtime is O(N
+). If a list has N elements, the outer loop executes N - 1 times. For each outer loop execution, the inner loop may need to examine all elements in the sorted part. Thus, the inner loop executes on average times. So the total number of comparisons is proportional to , or O(N
+
+). Other sorting algorithms involve more complex algorithms but faster execution.
+participation activity
+16.7.3: Insertion sort runtime.
+1)
+In the worst case, assuming each comparison takes 1 µs, how long will insertion sort algorithm take to sort a list of 10 elements?
+
+ µs
+
+2)
+Using the Big O runtime complexity, how many times longer will sorting a list of 20 elements take compared to sorting a list of 10 elements?
+
+Insertion sort for nearly sorted lists
+
+For sorted or nearly sorted inputs, insertion sort's runtime is O(N). A nearly sorted list only contains a few elements not in sorted order. Ex: [4, 5, 17, 25, 89, 14] is nearly sorted having only one element not in sorted position.
+participation activity
+16.7.4: Nearly sorted lists.
+
+Determine if each of the following lists is unsorted, sorted, or nearly sorted. Assume ascending order.
+1)
+[6, 14, 85, 102, 102, 151]
+2)
+[23, 24, 36, 48, 19, 50, 101]
+3)
+[15, 19, 21, 24, 2, 3, 6, 11]
+
+For each outer loop execution, if the element is already in sorted position, only a single comparison is made. Each element not in sorted position requires at most N comparisons. If there are a constant number, C, of unsorted elements, sorting the N - C sorted elements requires one comparison each, and sorting the C unsorted elements requires at most N comparisons each. The runtime for nearly sorted inputs is O((N - C) * 1 + C * N) = O(N).
+participation activity
+16.7.5: Using insertion sort for nearly sorted list.
+0
+1
+2
+3
+4
+numbers:
+3
+7
+9
+18
+Unsorted
+Sorted
+Current
+3
+7
+<
+9
+7
+9
+18
+18
+8
+>
+8
+>
+8
+8
+Captions
+
+    Unsorted part initially contains the first element.
+    An element already in sorted position only requires a single comparison, which is O(1) complexity.
+    An element not in sorted position requires O(N) comparisons. For nearly sorted inputs, insertion sort's runtime is O(N).
+
+participation activity
+16.7.6: Insertion sort algorithm execution for nearly sorted input.
+
+Assume insertion sort's goal is to sort in ascending order.
+1)
+Given list [10, 11, 12, 13, 14, 5], how many comparisons will be made during the third outer loop execution (i = 3)?
+
+2)
+Given list [10, 11, 12, 13, 14, 7], how many comparisons will be made during the final outer loop execution (i = 5)?
+
+3)
+Given list [18, 23, 34, 75, 3], how many total comparisons will insertion sort require?
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+16.8 Quicksort

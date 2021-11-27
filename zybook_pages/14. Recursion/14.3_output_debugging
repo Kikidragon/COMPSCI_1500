@@ -1,0 +1,96 @@
+
+14.3 Adding output statements for debugging
+
+Recursive functions can be particularly challenging to debug. Adding output statements can be helpful. Furthermore, an additional trick is to indent the print statements to show the current depth of recursion. The following program adds a parameter indent to a find() function that searches a sorted list for an item. All of the find() function's print statements start with "print indent, ...". The indent variable is typically some number of spaces. The script sets indent to three spaces " ". Each recursive call adds three more spaces. Note how the output now clearly shows the recursion depth.
+Figure 14.3.1: Output statements can help debug recursive functions, especially if indented based on recursion depth.
+
+def find(lst, item, low, high, indent):
+    """
+    Finds index of string in list of strings, else -1.
+    Searches only the index range low to high
+    Note: Upper/Lower case characters matter
+    """
+    print(indent, 'find() range', low, high)
+    range_size = (high - low) + 1
+    mid = (high + low) // 2
+
+    if item == lst[mid]:  # Base case 1: Found at mid
+        print(indent, 'Found person.')
+        pos = mid
+    elif range_size == 1:  # Base case 2: Not found
+        print(indent, 'Person not found.')
+        pos = -1
+    else:  # Recursive search: Search lower or upper half
+        if item < lst[mid]:  # Search lower half
+            print(indent, 'Searching lower half.')
+            pos = find(lst, item, low, mid, indent + '   ')
+        else:  # Search upper half
+            print(indent, 'Searching upper half.')
+            pos = find(lst, item, mid+1, high, indent + '   ')
+
+    print(indent, 'Returning pos = {}.'.format(pos))
+    return pos
+
+attendees = []
+
+attendees.append('Adams, Mary')
+attendees.append('Carver, Michael')
+attendees.append('Domer, Hugo')
+attendees.append('Fredericks, Carlo')
+attendees.append('Li, Jie')
+
+name = input("Enter person's name: Last, First: ")
+pos = find(attendees, name, 0, len(attendees)-1, '   ')
+
+if pos >= 0:
+    print('Found at position {}.'.format(pos))
+else:
+    print( 'Not found.')
+
+
+
+Enter person's name: Last, First: Meeks, Stan
+    find() range 0 4
+    Searching upper half.
+       find() range 3 4
+       Searching upper half.
+          find() range 4 4
+          Person not found.
+          Returning pos = -1.
+       Returning pos = -1.
+    Returning pos = -1.
+Not found.
+...
+Enter person's name: Last, First: Adams, Mary
+    find() range 0 4
+    Searching lower half.
+       find() range 0 2
+       Searching lower half.
+          find() range 0 1
+          Found person.
+          Returning pos = 0.
+       Returning pos = 0.
+    Returning pos = 0.
+Found at position 0.
+
+Some programmers like to leave the output statements in the code, commenting them out with "#" when not in use. The statements actually serve as a form of comment. More advanced techniques for handling debug output exist too, such as the logging Python standard library (beyond this section's scope).
+zyDE 14.3.1: Output statements in a recursive function.
+
+Run the recursive find program having the output statements for debugging, searching for "Aaron, Joe", and observe the correct output indicating the person is not found. Next, introduce an error in the algorithm by changing "pos = -1" to "pos = 0" in the base case where the person is found. Run the program again and notice how the indented print statements helps you isolate the error; in particular, note how the "Person not found" output is followed by "Returning pos = 0", which may lead one to realize the wrong value is being returned. Try instead introducing different errors and seeing how the indented print statements might help.
+
+
+
+participation activity
+14.3.1: Recursive function debug statements.
+1)
+The above debug approach requires an extra parameter be passed to indicate the amount of indentation.
+2)
+Each recursive call should add a few spaces to the indent parameter.
+3)
+The function should remove a few spaces from the indent parameter before returning.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+14.4 Creating a recursive function

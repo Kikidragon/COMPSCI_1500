@@ -1,0 +1,109 @@
+
+13.3 Overriding class methods
+
+A derived class may define a method having the same name as a method in the base class. Such a member function overrides the method of the base class. The following example shows the earlier Item/Produce example where the Produce class has its own display() method that overrides the display() method of the Item class.
+Figure 13.3.1: Produce's display() function overrides Item's display() function.
+
+class Item:
+   def __init__(self):
+       self.name = ''
+       self.quantity = 0
+
+   def set_name(self, nm):
+       self.name = nm
+
+   def set_quantity(self, qnty):
+       self.quantity = qnty
+
+   def display(self):
+       print(self.name, self.quantity)
+
+
+class Produce(Item):  # Derived from Item
+   def __init__(self):
+       Item.__init__(self)  # Call base class constructor
+       self.expiration = ''
+
+   def set_expiration(self, expir):
+       self.expiration = expir
+
+   def get_expiration(self):
+       return self.expiration
+
+   def display(self):
+       print(self.name, self.quantity, end=' ')
+       print('  (Expires: {})'.format(self.expiration))
+
+
+item1 = Item()
+item1.set_name('Smith Cereal')
+item1.set_quantity(9)
+item1.display()  # Will call Item's display()
+
+item2 = Produce()
+item2.set_name('Apples')
+item2.set_quantity(40)
+item2.set_expiration('May 5, 2012')
+item2.display()  # Will call Produce's display()
+
+
+
+Smith Cereal 9
+Apples 40   (Expires: May 5, 2012)
+
+When the derived class defines the method being overwritten, that method is placed in the class's namespace. Because attribute references search the inheritance tree by starting with the derived class and then recursively searching base classes, the method called will always be the method defined in the instance's class.
+
+A programmer will often want to extend, rather than replace, the base class method. The base class method can be explicitly called at the start of the method, with the derived class then performing additional operations:
+Figure 13.3.2: Method calling overridden method of base class.
+
+class Produce(Item):
+    # ...
+    def display(self):
+        Item.display(self)
+        print('  (Expires: {})'.format(self.expiration))
+    # ...
+
+Above, the display() method of Produce calls the display() method of Item, passing self as the first argument. Thus, when Item's display() executes, the name and quantity instance attributes from the Produce instance are retrieved and printed.
+participation activity
+13.3.1: Overriding base class methods.
+
+Assume my_item is an instance of Item, and my_produce is an instance of Produce, with classes Item and Produce defined as above.
+1)
+Will my_item.display() call the display() function for Item or for Produce?
+
+2)
+Will my_produce.display() call the display() function for Item or for Produce?
+
+3)
+Provide a statement within the display() method of the Produce class to call the display() method of Produce's base class.
+
+4)
+If Produce did NOT have its own display() method defined, the display method of which class would be called in the following code? Type "ERROR" if appropriate.
+
+p = Produce()
+p.display()
+
+challenge activity
+13.3.1: Basic derived class member override.
+Define a member method print_all() for class PetData. Make use of the base class' print_all() method.
+
+Sample output for the given program with inputs: 'Fluffy' 5 4444
+
+Name: Fluffy
+Age: 5
+ID: 4444
+
+
+
+
+343716.2144758.qx3zqy7
+
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+13.4 Is-a versus has-a relationships

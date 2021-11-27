@@ -1,0 +1,277 @@
+
+14.6 Recursive exploration of all possibilities
+
+Recursion is a powerful tool for exploring all possibilities, such as all possible reorderings of a word's letters, all possible subsets of items, all possible paths between cities, etc. This section provides several examples of using recursion for such exploration.
+
+Consider the problem of printing all possible combinations (or "scramblings") of a word's letters. For example, the letters of "abc" can be scrambled in 6 ways: abc, acb, bac, bca, cab, cba. Those possibilities can be obtained by thinking of three choices: Choosing the first letter ("a", "b", or "c"), then choosing the second letter (if "a" was the first choice, then second possible choices are "b" or "c"; if "b" was the first choice, then second possible choices are "a" and "c"; etc.), then choosing the third letter. The choices can be depicted using a tree. Each level represents a choice. Each node in the tree shows the unchosen letters on the left, and the chosen letters on the right, as in the animation figure below.
+
+Such a tree forms the basis for a recursive exploration function to generate all possible combinations of a string's letters. The function will take two parameters, one for the unchosen letters, and one for the already chosen letters. The base case will be when no letters exist in the unchosen letters, in which case the chosen letters are printed. The recursive case will call the function once for each letter in the unchosen letters. The following animation depicts how such a recursive algorithm would traverse the tree. The leaves of the tree (the bottommost nodes) represent the base case.
+participation activity
+14.6.1: Exploring all possibilities viewed as a tree of choices.
+abc/
+bc/
+a
+ac/
+b
+ab/
+c
+c/
+ab
+b/
+ac
+c/
+ba
+a/
+bc
+b/
+ca
+a/
+cb
+/
+abc
+/
+acb
+/
+bac
+/
+bca
+/
+cab
+/
+cba
+remaining-letters /
+chosen-letters
+Choose 1st letter
+Choose 2nd letter
+Choose 3rd letter
+Captions
+
+    "a" is chosen from "abc", then "b" is chosen from "bc". Finally, "c" is chosen from "c".
+    "b" has already been chosen from "bc". "c" can also be chosen. "acb" is chosen from "b".
+    "b" is chosen from "abc".
+    "c" is chosen from "abc".
+
+The program below receives a word from the user then jumbles all of its letters in to every possible ordering. The base case is that all letters have been used. In the recursive case, a remaining letter is moved to the scrambled letters, recursively explored, then put back. This is done for each remaining letter.
+Figure 14.6.1: Scramble a word's letters in every possible way.
+
+def scramble(r_letters, s_letters):
+    """
+    Output every possible combination of a word.
+    Each recursive call moves a letter from
+    r_letters (remaining letters) to
+    s_letters (scrambled letters)
+    """
+    if len(r_letters) == 0:
+        # Base case: All letters used
+        print(s_letters)
+    else:
+        # Recursive case: For each call to scramble()
+        # move a letter from remaining to scrambled
+        for i in range(len(r_letters)):
+            # The letter at index i will be scrambled
+            scramble_letter = r_letters[i]
+
+            # Remove letter to scramble from remaining letters list
+            remaining_letters = r_letters[:i] + r_letters[i+1:]
+
+            # Scramble letter
+            scramble(remaining_letters, s_letters + scramble_letter)
+
+word = input('Enter a word to be scrambled: ')
+scramble(word, '')
+
+
+
+Enter a word to be scrambled: cat
+cat
+cta
+act
+atc
+tca
+tac
+
+Recursion is useful for finding all possible subsets of a set of items. The following example is a shopping spree in which you may select a 3-item subset from a larger set of items. The program should print all possible 3-item subsets given the larger set. The program also happens to print the total price value of those items.
+
+The ShoppingBagCombinations() function has a parameter for the current bag contents, and a parameter for the remaining items from which to choose. The base case is that the current bag already has 3 items. The recursive case is to move one of the remaining items to the bag, recursively call the function, then move the item back from the bag to the remaining items.
+Figure 14.6.2: Shopping spree in which you can fit 3 items in your shopping bag.
+
+max_items_in_bag = 3
+
+def shopping_bag_combinations(curr_bag, remaining_items):
+    """
+    Output every combination of items that fit
+    in a shopping bag. Each recursive call moves
+    one item into the shopping bag.
+    """
+    if len(curr_bag) == max_items_in_bag:
+        # Base case: Shopping bag full
+        bag_value = 0
+        for item in curr_bag:
+            bag_value += item['price']
+            print(item['name'], ' ', end=' ')
+        print('=', bag_value)
+    else:
+        # Recursive case: Move one of the remaining items
+        # to the shopping bag.
+        for index, item in enumerate(remaining_items):
+            # Move item into bag
+            curr_bag.append(item)
+            remaining_items.pop(index)
+
+            shopping_bag_combinations(curr_bag, remaining_items)
+
+            # Take item out of bag
+            remaining_items.insert(index, item)
+            curr_bag.pop()
+
+items = [
+    {
+        'name': 'Milk',
+        'price': 1.25
+    },
+    {
+        'name': 'Belt',
+        'price': 23.55
+    },
+    {
+        'name': 'Toys',
+        'price': 19.05
+    },
+    {
+        'name': 'Cups',
+        'price': 11.85
+    }
+]
+
+bag = []
+shopping_bag_combinations(bag, items)
+
+
+
+Milk   Belt   Toys   = 43.85
+Milk   Belt   Cups   = 36.65
+Milk   Toys   Belt   = 43.85
+Milk   Toys   Cups   = 32.15
+Milk   Cups   Belt   = 36.65
+Milk   Cups   Toys   = 32.15
+Belt   Milk   Toys   = 43.85
+Belt   Milk   Cups   = 36.65
+Belt   Toys   Milk   = 43.85
+Belt   Toys   Cups   = 54.45
+Belt   Cups   Milk   = 36.65
+Belt   Cups   Toys   = 54.45
+Toys   Milk   Belt   = 43.85
+Toys   Milk   Cups   = 32.15
+Toys   Belt   Milk   = 43.85
+Toys   Belt   Cups   = 54.45
+Toys   Cups   Milk   = 32.15
+Toys   Cups   Belt   = 54.45
+Cups   Milk   Belt   = 36.65
+Cups   Milk   Toys   = 32.15
+Cups   Belt   Milk   = 36.65
+Cups   Belt   Toys   = 54.45
+Cups   Toys   Milk   = 32.15
+Cups   Toys   Belt   = 54.45
+
+Recursion is useful for finding all possible paths. In the following example, a salesman must travel to 3 cities: Boston, Chicago, and Los Angeles. The salesman wants to know all possible paths among those three cities, starting from any city. A recursive exploration of all travel paths can be used. The base case is that the salesman has traveled to all cities. The recursive case is to travel to a new city, explore possibilities, then return to the previous city.
+Figure 14.6.3: Find distance of traveling to 3 cities.
+
+num_cities = 3
+city_names = []
+distances = []
+
+def travel_paths(curr_path, need_to_visit):
+    if len(curr_path) == num_cities:  # Base case: Visited all cities
+        total_distance = 0
+        for i in range(len(curr_path)):
+            print(city_names[curr_path[i]], '  ', end=' ')
+
+            if i > 0:
+                total_distance += distances[curr_path[i-1]][curr_path[i]]
+
+        print('=', total_distance)
+    else:  # Recursive case: Travel to each city
+        for i in range(len(need_to_visit)):
+            # Visit city
+            city = need_to_visit[i]
+            need_to_visit.pop(i)
+            curr_path.append(city)
+
+            travel_paths(curr_path, need_to_visit)
+
+            need_to_visit.insert(i, city)
+            curr_path.pop()
+
+distances.append([0])
+distances[0].append(960)  # Boston-Chicago
+distances[0].append(2960) # Boston-Los Angeles
+distances.append([960])   # Chicago Boston
+distances[1].append(0)
+distances[1].append(2011) # Chicago-Los Angeles
+distances.append([2960])  # Los Angeles-Boston
+distances[2].append(2011) # Los Angeles-Chicago
+distances[2].append(0)
+
+city_names = ["Boston", "Chicago", "Los Angeles"]
+
+path = []
+need_to_visit = [0, 1, 2] # (Need to visit all 3 cities)
+travel_paths(path, need_to_visit)
+
+
+
+Boston    Chicago    Los Angeles    = 2971
+Boston    Los Angeles    Chicago    = 4971
+Chicago    Boston    Los Angeles    = 3920
+Chicago    Los Angeles    Boston    = 4971
+Los Angeles    Boston    Chicago    = 3920
+Los Angeles    Chicago    Boston    = 2971
+
+participation activity
+14.6.2: Recursive exploration.
+1)
+What is the output of: scramble("xy", "")? Determine your answer by manually tracing the code, not by running the program.
+
+2)
+You wish to generate all possible 3-letter subsets from the letters in an N-letter word (N>3). Which of the above recursive functions is the closest (just enter the function's name)?
+
+challenge activity
+14.6.1: Enter the output of recursive exploration.
+343716.2144758.qx3zqy7
+
+Type the program's output
+def scramble_nums(remain_nums, scram_nums):
+    if len(remain_nums) == 0:
+        print(scram_nums[0], scram_nums[1], scram_nums[2], sep='')
+    else:
+        for i in range(len(remain_nums)):
+            tmp_remain_nums = remain_nums[:] # Make a copy.
+            tmp_removed_num = tmp_remain_nums[i]
+            tmp_remain_nums.pop(i) # Remove element at i
+            scram_nums.append(tmp_removed_num)
+            scramble_nums(tmp_remain_nums, scram_nums)
+            scram_nums.pop() # Remove last element
+
+nums_to_scramble = []
+result_nums = []
+
+nums_to_scramble.append(0)
+nums_to_scramble.append(3)
+nums_to_scramble.append(8)
+
+scramble_nums(nums_to_scramble, result_nums)
+
+1
+2
+1
+2
+Exploring further:
+
+    More on recursion trees from Wikipedia.org.
+
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+14.7 LAB: Fibonacci sequence (recursion)

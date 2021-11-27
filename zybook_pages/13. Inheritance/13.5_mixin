@@ -1,0 +1,108 @@
+
+13.5 Mixin classes and multiple inheritance
+
+A class can inherit from more than one base class, a concept known as multiple inheritance. The derived class inherits all of the class attributes and methods of every base class.
+participation activity
+13.5.1: Multiple inheritance.
+VampireBat
+wingspan
+flap_wings()
+breathe()
+give_birth()
+WingedAnimal
+wingspan
+flap_wings()
+Mammal
+breathe()
+give_birth()
+WingedAnimal
+Mammal
+Vampire Bat
+Captions
+
+    Vampire bats are both winged animals and mammals.
+    VampireBat can access methods of WingedAnimal and Mammal.
+
+A class can inherit from multiple base classes by specifying multiple items in the inheritance list:
+Figure 13.5.1: Inheriting from multiple base classes.
+
+class VampireBat(WingedAnimal, Mammal):  # Inherit from WingedAnimal, Mammal classes
+    # ...
+
+A common usage of multiple inheritance is extending the functionality of a class using mixins. Mixins are classes that provide some additional behavior, by "mixin in" new methods, but are not themselves meant to be instantiated.
+Figure 13.5.2: Using mixins to extend a class' functionality with new methods.
+
+class DrivingMixin(object):
+    def drive(self, distance):
+        # ...
+
+    def change_tire(self):
+        # ...
+
+    def check_oil(self):
+        # ...
+
+class FlyingMixin(object):
+    def fly(self, distance, altitude):
+        # ...
+
+    def roll(self):
+        # ...
+
+    def eject(self):
+        # ...
+
+class TransportMode(object):
+    def __init__(self, name, speed):
+        self.name = name
+        self.speed = speed
+
+    def display(self):
+        print('{} can go {} mpg'.format(self.name, self.speed))
+
+class SemiTruck(TransportMode, DrivingMixin):
+    def __init__(self, name, speed, cargo):
+        TransportMode.__init__(self, name, speed)
+        self.cargo = cargo
+
+    def go(self, distance):
+        self.drive(distance)
+        # ...
+
+class FlyingCar(TransportMode, FlyingMixin, DrivingMixin):
+    def __init__(self, name, speed, max_altitude):
+        TransportMode.__init__(self, name, speed)
+        self.max_altitude = max_altitude
+
+    def go(self, distance):
+        self.fly(distance / 2, self.max_altitude)
+        # ...
+        self.drive(distance / 2)
+
+s = SemiTruck('MacTruck', 85, 'Frozen beans')
+f = FlyingCar('Jetson35K', 325, 15000)
+
+s.go()
+f.go()
+
+Above, the DrivingMixin and FlyingMixin classes each define a set of methods. Any class can be derived from one or both of the mixins. Note that the resolution order by which the base classes are searched for an attribute is related to the order in which classes appear in the inheritance list parenthesis. The resolution order is from left to right, so in the FlyingCar class, TransportMode is searched first, then FlyingMixin, and finally DrivingMixin. When using a mixin class, a programmer should be careful to either avoid clashing names, or carefully choose the order of classes in the inheritance list.
+participation activity
+13.5.2: Mixin classes and multiple inheritance.
+
+Consider the above program and class inheritance tree. Match the new class definitions with methods that would be inherited by instances of that class.
+
+    class Motorcycle(DrivingMixin, TransportMode):
+    class Jet(TransportMode, FlyingMixin):
+    class HoverCraft(DrivingMixin, FlyingMixin, TransportMode):
+    class Camel(TransportMode):
+
+display()
+display(), fly(), roll(), eject()
+display(), drive(), change_tire(), check_oil()
+display(), drive(), fly(), change_tire(), roll(), eject(), check_oil()
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+13.6 Testing your code: The unittest module

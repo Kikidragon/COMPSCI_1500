@@ -1,0 +1,207 @@
+
+16.3 O notation
+Big O notation
+
+Big O notation is a mathematical way of describing how a function (running time of an algorithm) generally behaves in relation to the input size. In Big O notation, all functions that have the same growth rate (as determined by the highest order term of the function) are characterized using the same Big O notation. In essence, all functions that have the same growth rate are considered equivalent in Big O notation.
+
+Given a function that describes the running time of an algorithm, the Big O notation for that function can be determined using the following rules:
+
+    If f(x) is a sum of several terms, the highest order term (the one with the fastest growth rate) is kept and others are discarded.
+    If f(x) has a term that is a product of several factors, all constants (those that are not in terms of x) are omitted.
+
+participation activity
+16.3.1: Determining Big O notation of a function.
+5 + 13·N + 7·N
+Algorithm steps:
+Big O notation:
+2
+O(
+2
+)
+5 + 13·N + 7·N
+If f(x) is a sum of several terms, the highest order term
+is kept and others are discarded.
+= O(
+2
+7·N
+Rule 1:
+)
+Rule 2:
+If f(x) has a term that is a product of several factors,
+all constants are omitted.
+= O(
+)
+N
+2
+Pronounced: "Oh N squared"
+Captions
+
+    Determine a function that describes the running time of the algorithm, and then compute the Big O notation of that function.
+    Apply rules to obtain the Big O notation of the function.
+    All functions with the same growth rate are considered equivalent in Big O notation.
+
+participation activity
+16.3.2: Big O notation.
+1)
+Which of the following Big O notations is equivalent to O(N+9999)?
+2)
+Which of the following Big O notations is equivalent to O(734·N)?
+3)
+Which of the following Big O notations is equivalent to O(12·N +6·N
++ 1000)?
+
+The following rules are used to determine the Big O notation of composite functions: c denotes a constant
+Figure 16.3.1: Rules for determining Big O notation of composite functions.
+Composite function 	Big O notation
+c · O(f(x)) 	O(f(x))
+c + O(f(x)) 	O(f(x))
+g(x) · O(f(x)) 	O(g(x)·O(f(x)))
+g(x) + O(f(x)) 	O(g(x) + O(f(x)))
+participation activity
+16.3.3: Big O notation for composite functions.
+
+Determine the simplified Big O notation.
+1)
+10 · O(N
+)
+2)
+10 + O(N
+)
+3)
+3·N · O(N
+)
+4)
+2·N
++ O(N
+)
+5)
+Runtime growth rate
+
+One consideration in evaluating algorithms is that the efficiency of the algorithm is most critical for large input sizes. Small inputs are likely to result in fast running times because N is small, so efficiency is less of a concern. The table below shows the runtime to perform f(N) instructions for different functions f and different values of N. For large N, the difference in computation time varies greatly with the rate of growth of the function f. The data assumes that a single instruction takes 1 μs to execute.
+Table 16.3.1: Growth rates for different input sizes.
+Function 	N = 10 	N = 50 	N = 100 	N = 1000 	N = 10000 	N = 100000
+	3.3 μs 	5.65 μs 	6.6 μs 	9.9 μs 	13.3 μs 	16.6 μs
+	10 μs 	50 μs 	100 μs 	1000 μs 	10 ms 	1 s
+	.03 ms 	.28 ms 	.66 ms 	.099 s 	.132 s 	1.66 s
+	.1 ms 	2.5 ms 	10 ms 	1 s 	100 s 	2.7 hours
+	1 ms 	.125 s 	1 s 	16.7 min 	11.57 days 	31.7 years
+	.001 s 	35.7 years 	* 	* 	* 	*
+
+The interactive tool below illustrates graphically the growth rate of commonly encountered functions.
+participation activity
+16.3.4: Computational complexity graphing tool.
+Number of computations vs number of elements
+Number of elements (n)
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Number of computations
+0
+3
+6
+9
+12
+	1
+	log n
+
+1
+log n
+n
+n * log n
+n^2
+2^n
+n!
+Common Big O complexities
+
+Many commonly used algorithms have running time functions that belong to one of a handful of growth functions. These common Big O notations are summarized in the following table. The table shows the Big O notation, the common word used to describe algorithms that belong to that notation, and an example with source code. Clearly, the best algorithm is one that has constant time complexity. Unfortunately, not all problems can be solved using constant complexity algorithms. In fact, in many cases, computer scientists have proven that certain types of problems can only be solved using quadratic or exponential algorithms.
+Figure 16.3.2: Runtime complexities for various code examples.
+Notation 	Name 	Example Python
+O(1) 	Constant
+
+def find_min(x, y):
+   if x < y:
+      return x
+   else:
+      return y
+
+O(log N) 	Logarithmic
+
+def binary_search(numbers, key):
+   low = 0
+   high = len(numbers) - 1
+
+   while high >= low:
+      mid = (high + low) // 2
+      if numbers[mid] < key:
+         low = mid + 1
+      elif numbers[mid] > key:
+         high = mid - 1
+      else:
+         return mid
+   return -1  # not found
+
+O(N) 	Linear
+
+def linear_search(numbers, key):
+    for i in range(len(numbers)):
+        if numbers[i] == key:
+             return i
+    return -1  # not found
+
+O(N log N) 	Log-linear
+
+def merge_sort(numbers, i, k):
+   if i < k:
+      j = (i + k) // 2              # Find midpoint
+      merge_sort(numbers, i, j)     # Sort left part
+      merge_sort(numbers, j + 1, k) # Sort right part
+      merge(numbers, i, j, k)       # Merge parts
+
+O(N
+) 	Quadratic
+
+def selection_sort(numbers):
+    for i in range(len(numbers)):
+        index_smallest = i
+        for j in range(i + 1, len(numbers)):
+            if numbers[j] < numbers[index_smallest]:
+                index_smallest = j
+
+        temp = numbers[i]
+        numbers[i] = numbers[index_smallest]
+        numbers[index_smallest] = temp
+
+O(c
+) 	Exponential
+
+def fibonacci(N):
+    if (1 == N) or (2 == N):
+        return N
+    return fibonacci(N-1) + fibonacci(N-2)
+
+participation activity
+16.3.5: Big O notation and growth rates.
+1)
+O(5) has a _____ runtime complexity.
+2)
+O(N log N) has a _____ runtime complexity.
+3)
+O(N + N
+) has a _____ runtime complexity.
+4)
+A linear search has a _____ runtime complexity.
+5)
+A selection sort has a _____ runtime complexity.
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+16.4 Algorithm analysis

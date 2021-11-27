@@ -1,0 +1,132 @@
+
+
+15.2 Styling plots
+
+The plot() function takes an optional format string argument that specifies the color and style of the plotted line. For example, plot(x_values, y_values, 'r--') uses 'r' to specify a red color, and '--' to specify a dashed line.
+Figure 15.2.1: Format string 'r--' sets line color to red and line style to dashed.
+
+import matplotlib.pyplot as plt
+
+with open('ocean_temps.csv') as temp_file:
+    temps = []
+    for t in temp_file:
+        temps.append(float(t))
+
+years = range(1850, 2012)
+
+plt.plot(years, temps, 'r--')
+plt.show()
+
+
+
+Basic line graph with dashed line style and colored red.
+
+The below tables describe format string colors and styles. The default format string is 'b-' (solid blue line).
+Table 15.2.1: Characters to specify the line color, line style, or marker style.
+Character(s) 	Line color/style 	Character(s) 	Marker style 	Character(s) 	Marker style
+b 	Blue 	. 	Point marker 	1 	Tri-down marker
+g 	Green 	, 	Pixel marker 	2 	Tri-up marker
+r 	Red 	o 	Circle marker 	3 	Tri-left marker
+w 	White 	+ 	Plus marker 	4 	Tri-right marker
+k 	Black 	X 	X marker 	h 	Hexagon1 marker
+y 	Yellow 	v 	Triangle-down marker 	H 	Hexagon2 marker
+m 	Magenta 	^ 	Triangle-up marker 	D 	Diamond marker
+c 	Cyan 	< 	Triangle-left marker 	d 	Thin diamond marker
+- 	Solid line 	> 	Triangle-right marger 	| 	Vertical line marker
+-- 	Dashed line 	* 	Star marker 	_ 	Horizontal line marker
+-. 	Dashed-dot line 	p 	Pentagon marker 	s 	Square marker
+: 	Dotted line
+participation activity
+15.2.1: Line style format strings.
+
+Select the format string used to style the line.
+1)
+Basic line graph with solid line style and colored green.
+2)
+Basic line graph with blue circle marker line style and colored blue.
+3)
+Basic line graph with triangle-up line style colored black.
+
+Format strings are a shortcut to setting line properties. A line property is an attribute of the line object created by matplotlib when plot() is called. Line properties determine how that line is displayed when show() is called.
+
+There are more line properties than just color and style. The below table describes the most relevant properties.
+Table 15.2.2: Line properties.
+Property 	Possible property values 	Description
+alpha 	float 	alpha compositing enables transparency
+antialiased 	Boolean 	Enabled anti-aliasing of the line
+color 	A matplotlib color 	Color of the markers, line
+solid_capstyle 	'butt', 'round', or 'projecting' 	How the cap of a line appears
+solid_joinstyle 	'miter', 'round', or 'bevel' 	How the join of a line appears
+data 	[x_data, y_data] 	The arrays of x and y coordinates
+label 	string 	The label to use for the line
+linestyle 	'-', '--', '-.', ':', ... (see above) 	The style of the line
+linewidth 	float 	The width of the line when drawn.
+marker 	'+', ',', '.', '1', '2', ... (see above) 	The style of the marker to use
+markersize 	float 	The size of the marker
+visible 	Boolean 	Show/hide the line
+
+Format strings provide useful shortcuts to the color, linestyle, and marker properties. Use keyword arguments to change other properties' values.
+Figure 15.2.2: Use keyword args to change line properties.
+
+import matplotlib.pyplot as plt
+
+pirate_years = range(1850, 2025, 25)
+number_of_pirates_thousands = [20, 17, 15, 5, 0.4, 0.05, 0.025]
+plt.plot(pirate_years, number_of_pirates_thousands, 'ro-',
+         linewidth=5, markersize=5, alpha=0.35)
+plt.show()
+
+
+
+A plot with thicker lines that is slightly transparent.
+
+The plt.legend() function displays a legend of the lines, using the label arguments passed to plot() as the text. Various keyword arguments can be given to customize the legend's appearance.
+Figure 15.2.3: Adding a legend to a plot.
+
+import matplotlib.pyplot as plt
+
+with open('ocean_temp.csv') as temp_file:
+    temps = []
+    for t in temp_file:
+        temps.append(float(t))
+
+temp_years = range(1850, 2012)
+plt.plot(temp_years, temps, label="Ocean temperature change")
+
+p_years = range(1850, 2025, 25)
+pirates_thousands = [20, 17, 15, 5, 0.4, 0.05, 0.025]
+plt.plot(p_years, pirates_thousands, label="Number of pirates")
+plt.legend(shadow=True, loc="upper right")
+plt.show()
+
+
+
+Basic line graph of pirates versus ocean temperatures using a legend in the upper right corner to display line labels.
+participation activity
+15.2.2: Line properties and legends.
+1)
+Set the plotted line's marker size to 10.
+
+plt.plot(times, temperatures, )
+
+2)
+Enable width of the plotted line to 3, and the color of the line to green.
+
+plt.plot(times, temperatures, )
+
+3)
+Enable a legend located in the bottom right of a graph.
+
+plt.
+
+Exploring further:
+
+    The plot() function
+    More on customizing legends
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+15.3 Text and annotations

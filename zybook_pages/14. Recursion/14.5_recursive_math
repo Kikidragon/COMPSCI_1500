@@ -1,0 +1,162 @@
+
+14.5 Recursive math functions
+
+Recursive functions can be used to solve certain math problems, such as computing the Fibonacci sequence. The Fibonacci sequence is 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, etc. The pattern is to compute the next number by adding the previous two numbers. The sequence starts with 0 and 1.
+
+Below is a program that outputs the Fibonacci sequence step-by-step for a user-entered number of steps. The program starts after the first 0 and 1 of the Fibonacci sequence. The base case is that the program has output the requested number of steps. The recursive case computes the next step.
+Figure 14.5.1: Fibonacci sequence step-by-step.
+
+"""
+Output the Fibonacci sequence step-by-step.
+Fibonacci sequence starts as:
+0 1 1 2 3 5 8 13 21 ... in which the first
+two numbers are 0 and 1 and each additional
+number is the sum of the previous two numbers
+"""
+def fibonacci(v1, v2, run_cnt):
+    print(v1, '+', v2, '=', v1+v2)
+
+    if run_cnt <= 1:  # Base case:
+                      # Ran for user's number of steps
+        pass  # Do nothing
+    else:             # Recursive case
+        fibonacci(v2, v1+v2, run_cnt-1)
+
+
+print ('This program outputs the\n'
+       'Fibonacci sequence step-by-step,\n'
+       'starting after the first 0 and 1.\n')
+
+run_for = int(input('How many steps would you like?'))
+
+fibonacci(0, 1, run_for)
+
+
+
+This program outputs the
+Fibonacci sequence step-by-step,
+starting after the first 0 and 1.
+
+How many steps would you like?10
+0 + 1 = 1
+1 + 1 = 2
+1 + 2 = 3
+2 + 3 = 5
+3 + 5 = 8
+5 + 8 = 13
+8 + 13 = 21
+13 + 21 = 34
+21 + 34 = 55
+34 + 55 = 89
+
+zyDE 14.5.1: Recursive Fibonacci.
+
+Write a program that outputs the nth Fibonacci number, where n is a user-entered number. So if the user enters 4, the program should output 3 (without outputting the intermediate steps). Use a recursive function compute_nth_fib that takes n as a parameter and returns the Fibonacci number. The function has two base cases: input 0 returns 0, and input 1 returns 1.
+
+
+Recursion can be used to solve the greatest common divisor (GCD) problem. The GCD is the largest number that divides evenly into two numbers, e.g. GCD(12, 8) = 4. A simple algorithm to compute the GCD subtracts the smaller number from the larger number until both numbers are equal. For example, GCD(12, 8) = GCD(12-8=4, 8) = GCD(4, 8-4=4). The equal numbers are the GCD. Euclid described this algorithm around 300 BC.
+
+The below program recursively computes the GCD of two numbers. The base case is that the two numbers are equal, so that number is returned. The recursive case subtracts the smaller number from the larger number and then calls GCD with the new pair of numbers.
+Figure 14.5.2: Calculate greatest common divisor of two numbers.
+
+"""
+Determine the greatest common divisor
+of two numbers, e.g., GCD(8, 12) = 4
+"""
+
+def gcd(n1, n2):
+    if n1 % n2 == 0:           # n2 is a common factor
+        return n2
+    else:
+        return gcd(n2,n1%n2)
+
+
+print ('This program outputs the greatest '
+       'common divisor of two numbers.\n')
+
+num1 = int(input('Enter first number: '))
+num2 = int(input('Enter second number: '))
+
+if (num1 < 1) or (num2 < 1):
+    print('Note: Neither value can be below 1.')
+else:
+    my_gcd = gcd(num1, num2)
+    print('Greatest common divisor =', my_gcd)
+
+
+
+This program outputs the greatest common divisor of two numbers.
+
+Enter first number:12
+Enter second number:8
+Greatest common divisor = 4
+...
+This program outputs the greatest common divisor of two numbers.
+
+Enter first number:456
+Enter second number:784
+Greatest common divisor = 8
+
+The depth of recursion is a measure of how many recursive calls of a function have been made, but have not yet returned. Each recursive call requires the Python interpreter to allocate more memory, and eventually all of the system memory could be used. Thus, a recursion depth limit exists, accessible using the function sys.getrecursionlimit(). The default recursion depth limit is typically 1000. The limit can be changed using sys.setrecursionlimit(). Exceeding the depth limit causes a RuntimeError to occur. Ex: The following program causes 1000 recursive calls.
+Figure 14.5.3: Limit on recursion depth.
+
+def rec_func(n):
+    if n == 0:
+        return 1
+    return rec_func(n - 1)
+
+
+num = int(input('Enter the number: '))
+print(rec_func(num))
+
+
+
+Enter the number: 1000
+
+Traceback (most recent call last):
+  File "main.py", line 8, in <module>
+    print(rec_func(num))
+  File "main.py", line 4, in rec_func
+    return rec_func(n - 1)
+  File "main.py", line 4, in rec_func
+    return rec_func(n - 1)
+  File "main.py", line 4, in rec_func
+    return rec_func(n - 1)
+  [Previous line repeated 995 more times]
+  File "main.py", line 2, in rec_func
+    if n == 0:
+RecursionError: maximum recursion depth exceeded in comparison
+
+participation activity
+14.5.1: Recursive GCD.
+1)
+How many calls are made to the gcd function for gcd(12, 8)?
+
+2)
+How many calls are made to the gcd function for gcd(5, 3)?
+
+Exploring further:
+
+    More on the Fibonacci sequence from wikipedia.org
+    More on the GCD algorithm from wikipedia.org
+
+challenge activity
+14.5.1: Writing a recursive math function.
+Write code to complete raise_to_power(). Note: This example is for practicing recursion; a non-recursive function, or using the built-in function math.pow(), would be more common.
+
+Sample output with inputs: 4 2
+
+4^2 = 16
+
+
+
+343716.2144758.qx3zqy7
+1 test passed
+All tests passed
+View your last submission
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+14.6 Recursive exploration of all possibilities

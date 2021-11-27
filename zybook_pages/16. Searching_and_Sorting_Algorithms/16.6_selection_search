@@ -1,0 +1,162 @@
+
+16.6 Selection sort
+Selection sort algorithm
+
+Selection sort is a sorting algorithm that treats the input as two parts, a sorted part and an unsorted part, and repeatedly selects the proper next value to move from the unsorted part to the end of the sorted part.
+participation activity
+16.6.1: Selection sort.
+7
+9
+3
+18
+8
+Unsorted
+Sorted
+
+for i in range(len(numbers) - 1):
+    # Find index of smallest remaining element
+    index_smallest = i
+    for j in range(i + 1, len(numbers)):
+        if numbers[j] < numbers[index_smallest]:
+            index_smallest = j
+
+    # Swap numbers[i] and numbers[index_smallest]
+    temp = numbers[i]
+    numbers[i] = numbers[index_smallest]
+    numbers[index_smallest] = temp
+
+
+i
+j
+index_smallest
+temp:
+0
+1
+2
+3
+4
+9
+<
+7
+3
+<
+7
+18
+<
+3
+8
+<
+3
+7
+<
+9
+18
+<
+7
+8
+<
+7
+18
+<
+9
+8
+<
+9
+9
+<
+18
+Captions
+
+    Selection sort treats the input as two parts, a sorted and unsorted part. Variables i and j keep track of the two parts.
+    The selection sort algorithm searches the unsorted part of the array for the smallest element; index_smallest stores the index of the smallest element found.
+    Elements at i and index_smallest are swapped.
+    Indices for the sorted and unsorted parts are updated.
+    The unsorted part is searched again, swapping the smallest element with the element at i.
+    The process repeats until all elements are sorted.
+
+The index variable i denotes the dividing point. Elements to the left of i are sorted, and elements including and to the right of i are unsorted. All elements in the unsorted part are searched to find the index of the element with the smallest value. The variable index_smallest stores the index of the smallest element in the unsorted part. Once the element with the smallest value is found, that element is swapped with the element at location i. Then, the index i is advanced one place to the right, and the process repeats.
+
+The term "selection" comes from the fact that for each iteration of the outer loop, a value is selected for position i.
+participation activity
+16.6.2: Selection sort algorithm execution.
+
+Assume selection sort's goal is to sort in ascending order.
+1)
+Given list [9, 8, 7, 6, 5], what value will be in the 0
+element after the first pass over the outer loop (i = 0)?
+
+2)
+Given list [9, 8, 7, 6, 5], how many swaps will occur during the first pass of the outer loop (i = 0)?
+
+3)
+Given list [5, 9, 8, 7, 6] and i = 1, what will be the list after completing the second outer loop iteration? Use brackets in your answer, e.g., "[1, 2, 3]".
+
+Advantages of selection sort
+
+Selection sort has the advantage of being easy to code, involving one loop nested within another loop, as shown below.
+Figure 16.6.1: Selection sort algorithm.
+
+def selection_sort(numbers):
+    for i in range(len(numbers) - 1):
+        # Find index of smallest remaining element
+        index_smallest = i
+        for j in range(i + 1, len(numbers)):
+            if numbers[j] < numbers[index_smallest]:
+                index_smallest = j
+
+        # Swap numbers[i] and numbers[index_smallest]
+        temp = numbers[i]
+        numbers[i] = numbers[index_smallest]
+        numbers[index_smallest] = temp
+
+
+numbers = [10, 2, 78, 4, 45, 32, 7, 11]
+print('UNSORTED:', end=' ')
+for num in numbers:
+    print(str(num), end=' ')
+print()
+
+selection_sort(numbers)
+print('SORTED:', end=' ')
+for num in numbers:
+    print(str(num), end=' ')
+print()
+
+UNSORTED: 10 2 78 4 45 32 7 11
+SORTED: 2 4 7 10 11 32 45 78
+
+Selection sort may require a large number of comparisons. The selection sort algorithm runtime is O(N
+). If a list has N elements, the outer loop executes N - 1 times. For each of those N - 1 outer loop executions, the inner loop executes an average of times. So the total number of comparisons is proportional to , or O(N
+
+). Other sorting algorithms involve more complex algorithms but have faster execution times.
+participation activity
+16.6.3: Selection sort runtime.
+1)
+When sorting a list with 50 elements, index_smallest will be assigned a minimum of _____ times.
+
+2)
+How many times longer will sorting a list of 20 elements take compared to sorting a list of 10 elements?
+
+3)
+How many times longer will sorting a list of 500 elements take compared to a list of 50 elements?
+
+challenge activity
+16.6.1: Selection sort.
+343716.2144758.qx3zqy7
+When using selection sort to sort a list with
+ elements, what is the minimum number of assignments to
+?
+1
+2
+3
+4
+1
+2
+3
+4
+How was this section?
+Activity summary for assignment:
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+16.7 Insertion sort

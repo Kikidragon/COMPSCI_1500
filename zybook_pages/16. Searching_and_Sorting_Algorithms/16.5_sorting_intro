@@ -1,0 +1,43 @@
+
+16.5 Sorting: Introduction
+
+Sorting is the process of converting a list of elements into ascending (or descending) order. For example, given a list of numbers [17, 3, 44, 6, 9], the list after sorting is [3, 6, 9, 17, 44]. You may have carried out sorting when arranging papers in alphabetical order, or arranging envelopes to have ascending zip codes (as required for bulk mailings).
+
+The challenge of sorting is that a program can't "see" the entire list to know where to move an element. Instead, a program is limited to simpler steps, typically observing or swapping just two elements at a time. So sorting just by swapping values is an important part of sorting algorithms.
+
+Note that a Python programmer could of course make use of the sort() list method, or sorted() builtin function. This section describes what the implementation of those functions might look like.
+participation activity
+16.5.1: Sort by swapping tool.
+Sort the numbers from smallest on left to largest on right. Select two numbers then click "Swap values".
+
+X 	X 	X 	X 	X 	X 	X
+
+
+
+Time -Best time -
+participation activity
+16.5.2: Sorted elements.
+1)
+The list is sorted into ascending order:
+[3, 9, 44, 18, 76]
+2)
+The list is sorted into descending order:
+[20, 15, 10, 5, 0]
+3)
+The list is sorted into descending order:
+[99.87, 99.02, 67.93, 44.10]
+4)
+The list is sorted into descending order:
+['F', 'D', 'C', 'B', 'A']
+5)
+The list is sorted into ascending order:
+['chopsticks', 'forks', 'knives', 'spork']
+6)
+The list is sorted into ascending order:
+['great', 'greater', 'greatest']
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+16.6 Selection sort

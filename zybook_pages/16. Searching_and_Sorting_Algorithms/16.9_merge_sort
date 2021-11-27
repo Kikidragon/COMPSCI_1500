@@ -1,0 +1,395 @@
+
+16.9 Merge sort
+Merge sort and partitioning
+
+Merge sort is a sorting algorithm that divides a list into two halves, recursively sorts each half, and then merges the sorted halves to produce a sorted list. The recursive partitioning continues until a list of 1 element is reached, as a list of 1 element is already sorted.
+participation activity
+16.9.1: Merge sort recursively divides the input into two halves, sorts each half, and merges the lists together.
+(   +   ) / 2
+(   +   ) / 2
+(   +   ) / 2
+(   +   ) / 2
+(   +   ) / 2
+3
+11
+8
+18
+4
+0
+1
+2
+3
+4
+j =
+25
+5
+3
+11
+8
+18
+4
+0
+1
+2
+3
+4
+25
+5
+3
+11
+8
+18
+4
+0
+1
+2
+3
+4
+25
+5
+3
+11
+18
+4
+0
+1
+3
+4
+= 2
+j =
+0
+= 0
+j =
+3
+= 3
+j =
+0
+= 1
+j =
+3
+= 4
+0
+5
+2
+1
+5
+4
+3
+4
+8
+11
+18
+0
+1
+2
+3
+4
+25
+5
+3
+8
+11
+18
+4
+0
+1
+2
+4
+3
+25
+5
+3
+11
+8
+18
+4
+0
+1
+2
+4
+3
+25
+5
+3
+11
+18
+4
+0
+1
+3
+4
+Captions
+
+    Merge sort recursively divides the list into two halves.
+    The list is divided until a list of 1 element is found.
+    A list of 1 element is already sorted.
+    At each level, the sorted lists are merged together while maintaining the sorted order.
+
+The merge sort algorithm uses three index variables to keep track of the elements to sort for each recursive call. The index variable i is the index of the first element in the list, and the index variable k is the index of the last element. The index variable j is used to divide the list into two halves. Elements from i to j are in the left half, and elements from j + 1 to k are in the right half.
+participation activity
+16.9.2: Merge sort partitioning.
+
+Determine the index j and the left and right partitions.
+1)
+numbers = [1, 2, 3, 4, 5], i = 0, k = 4
+
+ j =
+
+2)
+numbers = [1, 2, 3, 4, 5], i = 0, k = 4
+
+ Left partition  = []
+
+3)
+numbers = [1, 2, 3, 4, 5], i = 0, k = 4
+
+ Right partition  = []
+
+4)
+numbers = [34, 78, 14, 23, 8, 35], i = 3, k = 5
+
+ j =
+
+5)
+numbers = [34, 78, 14, 23, 8, 35], i = 3, k = 5
+
+ Left partition  = []
+
+6)
+numbers = [34, 78, 14, 23, 8, 35], i = 3, k = 5
+
+ Right partition  = []
+
+Merge sort algorithm
+
+Merge sort merges the two sorted partitions into a single list by repeatedly selecting the smallest element from either the left or right partition and adding that element to a temporary merged list. Once fully merged, the elements in the temporary merged list are copied back to the original list.
+participation activity
+16.9.3: Merging partitions: Smallest element from the left or right partition is added one at a time to a temporary merged list. Once merged, the temporary list is copied back to the original list.
+3
+8
+11
+4
+18
+25
+0
+1
+2
+3
+4
+5
+numbers:
+merged_numbers:
+0
+1
+2
+3
+4
+5
+merge_pos
+left_pos
+right_pos
+<=
+Add 3 to merged_numbers
+<=
+Add 4 to merged_numbers
+<=
+Add 8 to merged_numbers
+<=
+Add 11 to merged_numbers
+Left partition
+empty
+Add remaining to merged_numbers
+3
+3
+4
+8
+8
+4
+4
+18
+25
+11
+11
+18
+8
+18
+3
+4
+8
+11
+18
+25
+merge_pos
+Right partition
+not empty
+0
+1
+2
+3
+4
+5
+25
+18
+4
+11
+8
+3
+numbers (before):
+
+def merge(numbers, i, j, k):
+    # Create temporary list merged_numbers
+    # Initialize position variables
+
+    # Add smallest element to merged numbers
+    while left_pos <= j and right_pos <= k:
+        if numbers[left_pos] <= numbers[right_pos]:
+            merged_numbers[merge_pos] = numbers[left_pos]
+            left_pos = left_pos + 1
+        else:
+            merged_numbers[merge_pos] = numbers[right_pos]
+            right_pos = right_pos + 1
+        merge_pos = merge_pos + 1
+
+
+.
+    # If left partition not empty, add remaining elements
+    while left_pos <= j:
+        merged_numbers[merge_pos] = numbers[left_pos]
+        left_pos = left_pos + 1
+        merge_pos = merge_pos + 1
+
+    # If right partition now empty, add remaining elements
+    while right_pos <= k:
+        merged_numbers[merge_pos] = numbers[right_pos]
+        right_pos = right_pos + 1
+        merge_pos = merge_pos + 1
+
+    # Copy merge number back to numbers
+    for merge_pos in range(merged_size):
+        numbers[i + merge_pos] = merged_numbers[merge_pos]
+
+
+Captions
+
+    Create a temporary list for merged numbers. Initialize mergePos, left_pos, and right_pos to the first element of each of the corresponding list.
+    Compare the element in the left and right partitions. Add the smallest value to the temporary list and update the relevant indices.
+    Continue to compare the elements in the left and right partitions until one of the partitions is empty.
+    If a partition is not empty, copy the remaining elements to the temporary list. The elements are already in sorted order.
+    Lastly, the elements in the temporary list are copied back to the original list.
+
+participation activity
+16.9.4: Tracing merge operation.
+
+Trace the merge operation by determining the next value added to merged_numbers.
+List divided into two halves. The left half contains elements 0, 1, 2 with values 14, 18, 35. The right half contains elements 3, 4, 5 with values 17, 38, 49.
+1)
+left_pos = 0, right_pos = 3
+
+2)
+left_pos = 1, right_pos = 3
+
+3)
+left_pos = 1, right_pos = 4
+
+4)
+left_pos = 2, right_pos = 4
+
+5)
+left_pos = 3, right_pos = 4
+
+6)
+left_pos = 3, right_pos = 5
+
+Figure 16.9.1: Merge sort algorithm.
+
+def merge(numbers, i, j, k):
+    merged_size = k - i + 1   #  Size of merged partition
+    merged_numbers = []        #  Temporary list for merged numbers
+    for l in range(merged_size):
+        merged_numbers.append(0)
+
+    merge_pos = 0      #  Position to insert merged number
+
+    left_pos = i       #  Initialize left partition position
+    right_pos = j + 1  #  Initialize right partition position
+
+    #  Add smallest element from left or right partition to merged numbers
+    while left_pos <= j and right_pos <= k:
+        if numbers[left_pos] < numbers[right_pos]:
+            merged_numbers[merge_pos] = numbers[left_pos]
+            left_pos = left_pos + 1
+        else:
+            merged_numbers[merge_pos] = numbers[right_pos]
+            right_pos = right_pos + 1
+        merge_pos = merge_pos + 1
+
+    #  If left partition is not empty, add remaining elements to merged numbers
+    while left_pos <= j:
+        merged_numbers[merge_pos] = numbers[left_pos]
+        left_pos = left_pos + 1
+        merge_pos = merge_pos + 1
+
+    #  If right partition is not empty, add remaining elements to merged numbers
+    while right_pos <= k:
+        merged_numbers[merge_pos] = numbers[right_pos]
+        right_pos = right_pos + 1
+        merge_pos = merge_pos + 1
+
+    #  Copy merge number back to numbers
+    merge_pos = 0
+    while merge_pos < merged_size:
+        numbers[i + merge_pos] = merged_numbers[merge_pos]
+        merge_pos = merge_pos + 1
+
+
+def merge_sort(numbers, i, k):
+    j = 0
+    if i < k:
+        j = (i + k) // 2  #  Find the midpoint in the partition
+
+        #  Recursively sort left and right partitions
+        merge_sort(numbers, i, j)
+        merge_sort(numbers, j + 1, k)
+
+        #  Merge left and right partition in sorted order
+        merge(numbers, i, j, k)
+
+
+numbers = [10, 2, 78, 4, 45, 32, 7, 11]
+print ('UNSORTED:', end=' ')
+for num in numbers:
+    print (str(num), end=' ')
+print()
+
+#  initial call to merge_sort with index
+merge_sort(numbers, 0, len(numbers) - 1)
+print ('SORTED:', end=' ')
+for num in numbers:
+    print (str(num), end=' ')
+print()
+
+UNSORTED: 10 2 78 4 45 32 7 11
+SORTED: 2 4 7 10 11 32 45 78
+
+Merge sort runtime
+
+The merge sort algorithm's runtime is O(N log N). Merge sort divides the input in half until a list of 1 element is reached, which requires log N partitioning levels. At each level, the algorithm does about N comparisons selecting and copying elements from the left and right partitions, yielding N * log N comparisons.
+
+Merge sort requires O(N) additional memory elements for the temporary array of merged elements. For the final merge operation, the temporary list has the same number of elements as the input. Some sorting algorithms sort the list elements in place and require no additional memory, but are more complex to write and understand.
+participation activity
+16.9.5: Merge sort runtime and memory complexity.
+1)
+How many recursive partitioning levels are required for a list of 8 elements?
+
+2)
+How many recursive partitioning levels are required for a list of 2048 elements?
+
+3)
+How many elements will the temporary merge list have for merging two partitions with 250 elements each?
+
+How was this section?
+Activity summary for assignment: Participation
+1097 / 1097 pts
+Due: 12/10/2021, 11:59 PM CST
+1097 / 1097 pts submitted to canvas
+16.10 LAB: Descending selection sort with output during execution
