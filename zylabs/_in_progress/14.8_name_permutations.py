@@ -1,10 +1,17 @@
 # FIXME UNFINISHED
 def all_permutations(permList, nameList):
-    if len(nameList) == 0:
-        print(permList)
+    if len(nameList) == 1:
+        return permList
     else:
-        for i in range(len(nameList)):
-            all_permutations(nameList[:i] + nameList[i+1:], permList+nameList[i])
+        for x in nameList:
+            nameList.remove(x)
+            y = all_permutations(permList, nameList)
+            permList += y
+            return nameList
+
+
+
+            # all_permutations(nameList[:i] + nameList[i+1:], permList+nameList[i:i+1])
 
 
     # if nameList + 1 >= len(permList):
@@ -34,7 +41,6 @@ def all_permutations(permList, nameList):
     #         remaining = permList[:i] + permList[i+1:]
     #         all_permutations(remaining, nameList+words)
 
-    # TODO: Implement method to create and output all permutations of the list of names.
 
 if __name__ == "__main__":
     nameList = input().split(' ')

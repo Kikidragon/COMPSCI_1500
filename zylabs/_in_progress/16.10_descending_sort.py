@@ -3,8 +3,27 @@
 # TODO: Write a selection_sort_descend_trace() function that
 #       sorts the numbers list into descending order
 def selection_sort_descend_trace(numbers):
-    for i in numbers:
-        print(i)
+    i = len(numbers)
+    print('Output: ')
+    for num in range(0, i - 1):
+        val = numbers[num]
+        start = num + 1
+        end = i
+        t = 0
+        for j in range(start, end):
+            if val < numbers[j]:
+                x = j
+                val = numbers[j]
+                t = 1
+            if t == 1:
+                y = numbers[num]
+        numbers[num] = val
+        numbers[x] = y
+    for p in range(i):
+        print(numbers[p], end=' ')
+        print('\n')
+    # for i in numbers:
+    #     print(i)
     # for i in range(len(numbers) - 1):
     #     index_smallest = i
     #     for j in range(i + 1, len(numbers)):
