@@ -1,4 +1,3 @@
-# FIXME UNFINISHED
 class Node:
     def __init__(self, value):
         self.data_val = value
@@ -15,9 +14,13 @@ class Node:
     def print_data(self):
         print(self.data_val, end=", ")
 
-
-# TODO: Write recursive print_list() function here.
-
+def print_list(head: Node):
+    head.print_data()
+    if head.next_node is None:
+        return
+    else:
+        print_list(head.next_node)
+# done in class
 
 if __name__ == "__main__":
     size = int(input())

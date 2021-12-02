@@ -1,11 +1,41 @@
-stop = 16
-total = 0
-for number in [5, 4, 4, 5, 4, 6]:
-    print(number, end=' ')
-    total += number
-    if total >= stop:
-        print('@')
-        break
-else:
-    print('| {}'.format(total))
-print('done')
+def print_space(space):
+    # base case
+    if (space == 0):
+        return;
+    print(" ", end="");
+
+    # recursively calling print_space()
+    print_space(space - 1);
+
+
+# function to print asterisks
+def print_asterisk(asterisk):
+    # base case
+    if (asterisk == 0):
+        return;
+    print("* ", end="");
+
+
+    print_asterisk(asterisk - 1);
+
+
+# function to print the pattern
+def pattern(n, num):
+    # base case
+    if (n == 0):
+        return;
+    print_space(n - 1);
+    print_asterisk(num - n + 1);
+    print("");
+
+    # recursively calling pattern()
+    pattern(n - 1, num);
+
+
+# Driver Code
+n = 5;
+pattern(n, n);
+
+
+
+#https://www.geeksforgeeks.org/programs-for-printing-pyramid-patterns-using-recursion/

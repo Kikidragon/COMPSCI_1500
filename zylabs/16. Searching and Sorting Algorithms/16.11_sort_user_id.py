@@ -1,7 +1,5 @@
-# FIXME UNFINISHED
 # Global variable
 num_calls = 0
-# TODO ^ FIX THIS ONE make it count amount of calls
 
 # : Write the partitioning algorithm - pick the middle element as the
 #       pivot, compare the values using two index variables l and h (low and high),
@@ -9,6 +7,8 @@ num_calls = 0
 #       and determine if a swap is necessary
 def partition(user_ids, i, k):
     midpoint = i + (k - i) // 2
+    # num_calls=0
+    # num_calls +=1
     pivot = user_ids[midpoint]
     done = False
     l = i
@@ -33,6 +33,8 @@ def partition(user_ids, i, k):
 #  Write the quicksort algorithm that recursively sorts the low and
 #       high partitions. Add 1 to num_calls each time quisksort() is called
 def quicksort(user_ids, i, k):
+    global num_calls
+    num_calls += 1
     if i >= k:
         return
     j = partition(user_ids, i, k)
