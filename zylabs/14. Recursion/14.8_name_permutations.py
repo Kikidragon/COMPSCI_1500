@@ -1,15 +1,27 @@
-# FIXME UNFINISHED
+# not done correctly
+import itertools
 def all_permutations(permList, nameList):
-    if len(nameList) == 1:
-        return permList
-    else:
-        for x in nameList:
-            nameList.remove(x)
-            y = all_permutations(permList, nameList)
-            permList += y
-            return nameList
+    # count = math.factorial(len(nameList)) # number of answers
+    # while count != 0:
+    #     pass
+    #
+    # if len(nameList) == 1:
+    #     print(nameList[0])
+    # else:
+    #     for x in nameList:
+    #         nameList.remove(x)
+    #         y = all_permutations(permList, nameList)
+    #         permList.append(y)
+    #         print(permList)
 
 
+    perm = list(itertools.permutations(nameList))
+    for i in perm:
+        for j in i:
+            print(j, end=' ')
+        print()
+
+#https://stackoverflow.com/questions/33312532/generate-all-permutations-of-a-string-in-python-without-using-itertools
 
             # all_permutations(nameList[:i] + nameList[i+1:], permList+nameList[i:i+1])
 

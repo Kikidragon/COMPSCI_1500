@@ -6,7 +6,7 @@ def check_character(word, index):
             elif char.isspace() == True:
                 return ("Character ' ' is a white space")
             elif char.isdigit() == True:
-                return ("Character '{}' is a digit".format(char))
+                return ("Character  '{}' is a digit".format(char))
             else:
                 return ("Character '{}' is unknown".format(char))
         else:

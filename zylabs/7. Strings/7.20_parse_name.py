@@ -1,5 +1,5 @@
 inp = input("Enter input string:\n")
-inp = input("Enter input string:\n")
+# inp = input("Enter input string:\n")
 while inp != 'q':
     if ',' in inp:
         inp = inp.replace(' ', '')

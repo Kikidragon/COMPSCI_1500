@@ -1,3 +1,3 @@
 word = input()
 pre = word[:3]
-print("Prefix: {}".format(pre))
+print("Prefix: {}".forma t(pre))
